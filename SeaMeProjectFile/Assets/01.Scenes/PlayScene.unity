@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 126940988}
   - component: {fileID: 126940987}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,9 +153,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-    keys: []
-    unityValues: []
-    values: []
+    keys:
+    - Test
+    unityValues:
+    - {fileID: 0}
+    values:
+    - 
     unityArrayValues: []
     arrayValues: []
     script: {fileID: 4458252877524076426, guid: 1397cf416346eb949a9b0cdc13e262eb, type: 3}
@@ -215,11 +218,11 @@ MonoBehaviour:
   setting: {fileID: 0}
   cameraData:
     cameraPrefab: {fileID: 5806182858035002866, guid: 5be4eddc5b02f4ec0a07a69db26df962, type: 3}
-    maxZoomDistance: 15
-    minZoomDistance: 1
-    maxPitch: 80
-    minPitch: -60
-    offset: {x: 0, y: 1, z: 0}
+    maxZoomDistance: -1
+    minZoomDistance: -1
+    maxPitch: 40
+    minPitch: 0
+    offset: {x: 0, y: 0.3, z: 0}
     lockXAxis: 0
     layer:
       serializedVersion: 2
