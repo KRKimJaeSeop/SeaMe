@@ -20,12 +20,16 @@ ScriptedImporter:
   wrapperOutputDirectory: Generated
   compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
     { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
-    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nclass
-    TestCharacter extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start()
-    {\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithZepetoId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    UnityEngine = require(\"UnityEngine\");\r\nclass TestCharacter extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    Start() {\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithZepetoId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
     \"\", \"wowjq99\", new ZEPETO_Character_Controller_1.SpawnInfo(), true);\r\n       
     ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
-    => {\r\n            let _player = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\r\n       
-    });\r\n    }\r\n}\r\nexports.default = TestCharacter;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGVzdENoYXJhY3Rlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlRlc3RDaGFyYWN0ZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBc0Q7QUFDdEQsNkVBQW9GO0FBRXBGLE1BQXFCLGFBQWMsU0FBUSxxQ0FBcUI7SUFFNUQsS0FBSztRQUNELGlFQUF1Qix3QkFBd0IsQ0FBL0MsMkNBQWEsQ0FBQyxRQUFRLEVBQTBCLEVBQUUsRUFBRSxTQUFTLEVBQUUsSUFBSSx1Q0FBUyxFQUFFLEVBQUUsSUFBSSxFQUFFO1FBQ3RGLDJDQUFhLENBQUMsUUFBUSxDQUFDLGtCQUFrQixDQUFDLFdBQVcsQ0FBQyxHQUFHLEVBQUU7WUFDdkQsSUFBSSxPQUFPLEdBQWlCLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQztRQUNuRSxDQUFDLENBQUMsQ0FBQztJQUNQLENBQUM7Q0FDSjtBQVJELGdDQVFDIn0=","assetPath":"Assets/02.Scripts/TestCharacter.ts","manifest":{"properties":[],"name":"TestCharacter","description":""},"isCompiled":true}'
-  typescriptHash: 0f969b4f3a87afb3f879f1593eefa33d
+    => {\r\n            let _player = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\r\n           
+    UnityEngine.Debug.Log(\"[START]:: LOG\");\r\n            let TestPlayer = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.ZepetoAnimator;\r\n           
+    let targetTransform = TestPlayer.GetBoneTransform(UnityEngine.HumanBodyBones.Chest);\r\n           
+    //UnityEngine.GameObject.Instantiate(this.TestObject,new Vector3(0,0,0));\r\n       
+    });\r\n    }\r\n    Update() {\r\n        UnityEngine.Debug.Log(\"[UPDATE]]\");\r\n   
+    }\r\n}\r\nexports.default = TestCharacter;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGVzdENoYXJhY3Rlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlRlc3RDaGFyYWN0ZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBc0Q7QUFDdEQsNkVBQW9GO0FBQ3BGLDJDQUEyQztBQUczQyxNQUFxQixhQUFjLFNBQVEscUNBQXFCO0lBSzVELEtBQUs7UUFDRCxpRUFBdUIsd0JBQXdCLENBQS9DLDJDQUFhLENBQUMsUUFBUSxFQUEwQixFQUFFLEVBQUUsU0FBUyxFQUFFLElBQUksdUNBQVMsRUFBRSxFQUFFLElBQUksRUFBRTtRQUN0RiwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxrQkFBa0IsQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFO1lBQ3ZELElBQUksT0FBTyxHQUFpQiwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUM7WUFFbkUsV0FBVyxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsZUFBZSxDQUFDLENBQUM7WUFFdkMsSUFBSSxVQUFVLEdBQUcsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsY0FBYyxDQUFDO1lBQzFGLElBQUksZUFBZSxHQUFHLFVBQVUsQ0FBQyxnQkFBZ0IsQ0FBQyxXQUFXLENBQUMsY0FBYyxDQUFDLEtBQUssQ0FBQyxDQUFDO1lBRXBGLHlFQUF5RTtRQUV6RSxDQUFDLENBQUMsQ0FBQztJQUNQLENBQUM7SUFFTSxNQUFNO1FBRVQsV0FBVyxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsV0FBVyxDQUFDLENBQUM7SUFDdkMsQ0FBQztDQUNKO0FBeEJELGdDQXdCQyJ9","assetPath":"Assets/02.Scripts/TestCharacter.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"TestObject","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"TestCharacter","description":""},"isCompiled":true}'
+  typescriptHash: bf1174b923282ddd02ff8bab5b2bf45a
   onlyWriteTrigger: 0

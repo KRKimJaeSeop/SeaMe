@@ -10,8 +10,12 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
 
     public multiPlay: ZepetoWorldMultiplay;
     private room: Room;
+    private customCharacter : UnityEngine.GameObject
 
     private currentPlayers: Map<string, Player> = new Map<string, Player>();
+    
+
+
     Start() {
         this.multiPlay.RoomCreated += (room: Room) => {
             this.room = room;
@@ -19,6 +23,7 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
 
         this.multiPlay.RoomJoined += (room: Room) => {
             room.OnStateChange += this.OnStateChange;
+            
         }
     }
 
@@ -62,8 +67,7 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
 
         const isLocal = this.room.SessionId === player.sessionId;
         ZepetoPlayers.instance.CreatePlayerWithUserId(sessionId, player.zepetoUserId, spawnInfo, isLocal);
-
-
+      
     }
 
 }
