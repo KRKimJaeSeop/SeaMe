@@ -11,25 +11,13 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
 
     public multiPlay: ZepetoWorldMultiplay;
     private room: Room;
-    private customCharacter : UnityEngine.GameObject
-<<<<<<< HEAD
 
     @SerializeField()
     private customCharacter: UnityEngine.GameObject
 
-    // @SerializeField()
-    // private testParent: UnityEngine.GameObject
-
     private currentPlayers: Map<string, Player> = new Map<string, Player>();
-<<<<<<< HEAD
-=======
-    
->>>>>>> 88c341d77f6cde41797ab71b40fb4f3fad8697ec
-=======
 
-    private currentPlayers: Map<string, Player> = new Map<string, Player>();
-    
->>>>>>> origin/main
+
 
 
     Start() {
@@ -39,15 +27,6 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
 
         this.multiPlay.RoomJoined += (room: Room) => {
             room.OnStateChange += this.OnStateChange;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 88c341d77f6cde41797ab71b40fb4f3fad8697ec
-=======
-            
->>>>>>> origin/main
         }
         this.StartCoroutine(this.TestRoutine());
     }
@@ -95,21 +74,9 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
 
         const isLocal = this.room.SessionId === player.sessionId;
         ZepetoPlayers.instance.CreatePlayerWithUserId(sessionId, player.zepetoUserId, spawnInfo, isLocal);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
         //UnityEngine.GameObject.Instantiate(this.customCharacter);
-
-
-
-=======
-      
->>>>>>> 88c341d77f6cde41797ab71b40fb4f3fad8697ec
-=======
-      
->>>>>>> origin/main
     }
-
     *TestRoutine() {
 
         yield new WaitForSeconds(3);
@@ -122,14 +89,9 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
         let tempVector = new Vector3(tempTransform.position.x, tempTransform.position.y, tempTransform.position.z);
 
         // Instantiate한 프리팹
-        let _gameObject = UnityEngine.GameObject.Instantiate(this.customCharacter,tempTransform)as GameObject ;
+        let _gameObject = UnityEngine.GameObject.Instantiate(this.customCharacter, tempTransform) as GameObject;
 
         _gameObject.transform.SetParent(tempTransform);
-        //    tempGO.gameObject.transform.position = tempTransform);
-
-
-        //console.log(`[OnJoinPlayer] parentPosition :: ${this.testParent.transform}`)
-        //console.log(`[OnJoinPlayer] GO Name :: ${tempGO}`)
 
     }
 }
