@@ -1335,7 +1335,7 @@ MonoBehaviour:
     minZoomDistance: -1
     maxPitch: 40
     minPitch: 0
-    offset: {x: 0, y: 0.3, z: 0}
+    offset: {x: 0, y: -0.25, z: 0}
     lockXAxis: 0
     layer:
       serializedVersion: 2
@@ -1360,15 +1360,15 @@ MonoBehaviour:
     center: {x: 0, y: 0.6, z: 0}
     radius: 0.23
     height: 1.2
-    walkSpeed: 2
-    runSpeed: 5
-    jumpPower: 10
+    walkSpeed: 0.5
+    runSpeed: 1
+    jumpPower: 5
     layer:
       serializedVersion: 2
       m_Bits: 0
     animatorController: {fileID: 9100000, guid: d45416f714b4fe74d9ddc118caf5f7c9, type: 2}
     shadow: {fileID: 1025544020809228, guid: 4512418b2a1844f42961867ad8421ab8, type: 3}
-    motionController: 1
+    motionController: 0
   controllerData:
     inputAsset: {fileID: -944628639613478452, guid: 090135bc9e5ee4c89b1642240eb723fe, type: 3}
     eventSystem: {fileID: 7328100774219155841, guid: 67971ba158b48401988f9aad07940d6f, type: 3}
@@ -1386,10 +1386,10 @@ MonoBehaviour:
     showBubbleChatOtherPlayers: 1
     useMiniProfileOnApp: 1
   motionV1Data:
-    walkSpeed: 2
-    runSpeed: 5
-    jumpPower: 5
-    animatorController: {fileID: 9100000, guid: 019901d3486cc411abc6c84594c03743, type: 2}
+    walkSpeed: 0.5
+    runSpeed: 1
+    jumpPower: 10
+    animatorController: {fileID: 9100000, guid: d45416f714b4fe74d9ddc118caf5f7c9, type: 2}
     runThreshold: 0.8
   motionV2Data:
     walkSpeed: 2
@@ -23677,13 +23677,10 @@ MonoBehaviour:
     keys:
     - multiPlay
     - customCharacter
-    - testParent
     unityValues:
     - {fileID: 1048602414}
     - {fileID: 1534177565031984648, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
-    - {fileID: 1170170635}
     values:
-    - 
     - 
     - 
     unityArrayValues: []

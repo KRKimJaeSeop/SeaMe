@@ -85,8 +85,12 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
         let _character = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;
 
         // 본 위치
-        let tempTransform = _character.character.ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.Head);
+        let tempTransform = _character.character.Context.transform;// ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.);
         let tempVector = new Vector3(tempTransform.position.x, tempTransform.position.y, tempTransform.position.z);
+
+        // 캐릭터 off
+        _character.character.ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.Hips).gameObject.SetActive(false);
+        _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);
 
         // Instantiate한 프리팹
         let _gameObject = UnityEngine.GameObject.Instantiate(this.customCharacter, tempTransform) as GameObject;
