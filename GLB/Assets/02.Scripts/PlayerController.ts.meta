@@ -1,0 +1,42 @@
+fileFormatVersion: 2
+guid: 76662c00a54a107419bb7e9cdf860a03
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nclass PlayerController extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start() {\\r\\n        UnityEngine_1.Debug.Log(\\\"[Start]\\\");\\r\\n       
+    this.StartCoroutine(this.ShootRay());\\r\\n    }\\r\\n    *ShootRay() {\\r\\n       
+    UnityEngine_1.Debug.Log(\\\"[ShootRay]\\\");\\r\\n        //Ver 1\\r\\n       
+    // let ray: Ray = new Ray(\\r\\n        //     this.transform.position, this.gameObject.transform.forward);\\r\\n       
+    // // :: \uB808\uC774\uC5B4 \uB9C8\uC2A4\uD06C\\r\\n        // const layerMask
+    = 20 << LayerMask.NameToLayer(\\\"test\\\");\\r\\n        // let ref = $ref<RaycastHit>();\\r\\n       
+    //ver 2\\r\\n        let ref = $ref();\\r\\n        let layerMask = 20 << UnityEngine_1.LayerMask.NameToLayer(\\\"test\\\");\\r\\n       
+    while (true) {\\r\\n            UnityEngine_1.Debug.Log(\\\"[while]\\\");\\r\\n           
+    UnityEngine_1.Debug.Log(UnityEngine_1.LayerMask.NameToLayer(\\\"test\\\"));\\r\\n           
+    let ray = new UnityEngine_1.Ray(this.transform.position, this.gameObject.transform.forward);\\r\\n           
+    // if (Physics.Raycast(ray, ref, 100, layerMask)) {\\r\\n            //     Debug.LogError(\\\"Hit!\\\");\\r\\n           
+    //     let hitInfo = $unref(ref);\\r\\n            //     Debug.Log(hitInfo);\\r\\n           
+    // }\\r\\n            if (UnityEngine_1.Physics.Raycast(ray, ref, 100)) {\\r\\n               
+    let hitInfo = $unref(ref);\\r\\n                UnityEngine_1.Debug.LogError(hitInfo.collider.gameObject.name);\\r\\n           
+    }\\r\\n            UnityEngine_1.Debug.DrawRay(this.transform.position, this.gameObject.transform.forward,
+    UnityEngine_1.Color.red, 0.1);\\r\\n            yield new UnityEngine_1.WaitForSeconds(0.1);\\r\\n       
+    }\\r\\n    }\\r\\n}\\r\\nexports.default = PlayerController;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGxheWVyQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBsYXllckNvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkNBQStHO0FBRy9HLE1BQXFCLGdCQUFpQixTQUFRLHFDQUFxQjtJQUV2RCxLQUFLO1FBQ1QsbUJBQUssQ0FBQyxHQUFHLENBQUMsU0FBUyxDQUFDLENBQUM7UUFDckIsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsUUFBUSxFQUFFLENBQUMsQ0FBQztJQUN6QyxDQUFDO0lBRUQsQ0FBQyxRQUFRO1FBQ0wsbUJBQUssQ0FBQyxHQUFHLENBQUMsWUFBWSxDQUFDLENBQUM7UUFDeEIsT0FBTztRQUNQLDBCQUEwQjtRQUMxQixtRUFBbUU7UUFFbkUsZ0JBQWdCO1FBQ2hCLHlEQUF5RDtRQUV6RCxnQ0FBZ0M7UUFHaEMsT0FBTztRQUVQLElBQUksR0FBRyxHQUFHLElBQUksRUFBYyxDQUFDO1FBRTdCLElBQUksU0FBUyxHQUFHLEVBQUUsSUFBSSx1QkFBUyxDQUFDLFdBQVcsQ0FBQyxNQUFNLENBQUMsQ0FBQztRQUdwRCxPQUFPLElBQUksRUFBRTtZQUNULG1CQUFLLENBQUMsR0FBRyxDQUFDLFNBQVMsQ0FBQyxDQUFDO1lBQ3JCLG1CQUFLLENBQUMsR0FBRyxDQUFDLHVCQUFTLENBQUMsV0FBVyxDQUFDLE1BQU0sQ0FBQyxDQUFDLENBQUM7WUFDekMsSUFBSSxHQUFHLEdBQVEsSUFBSSxpQkFBRyxDQUNsQixJQUFJLENBQUMsU0FBUyxDQUFDLFFBQVEsRUFBRSxJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQztZQUNoRSxtREFBbUQ7WUFDbkQsOEJBQThCO1lBQzlCLGlDQUFpQztZQUNqQywwQkFBMEI7WUFDMUIsSUFBSTtZQUNKLElBQUkscUJBQU8sQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxHQUFHLENBQUMsRUFBRTtnQkFDaEMsSUFBSSxPQUFPLEdBQUcsTUFBTSxDQUFDLEdBQUcsQ0FBQyxDQUFDO2dCQUMxQixtQkFBSyxDQUFDLFFBQVEsQ0FBQyxPQUFPLENBQUMsUUFBUSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQzthQUNwRDtZQUVELG1CQUFLLENBQUMsT0FBTyxDQUNULElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLE9BQU8sRUFDMUQsbUJBQUssQ0FBQyxHQUFHLEVBQUUsR0FBRyxDQUFDLENBQUM7WUFFcEIsTUFBTSxJQUFJLDRCQUFjLENBQUMsR0FBRyxDQUFDLENBQUM7U0FDakM7SUFFTCxDQUFDO0NBSUo7QUFwREQsbUNBb0RDIn0=\",\"assetPath\":\"Assets/02.Scripts/PlayerController.ts\",\"manifest\":{\"properties\":[],\"name\":\"PlayerController\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: dc7f566ec11440af375fca74270be918
+  onlyWriteTrigger: 0
