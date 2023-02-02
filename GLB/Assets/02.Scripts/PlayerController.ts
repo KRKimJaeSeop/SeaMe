@@ -1,6 +1,8 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Ray, LayerMask, Color } from 'UnityEngine';
+import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Ray, LayerMask, Color, Quaternion } from 'UnityEngine';
 import { Vector3 } from 'ZEPETO.Multiplay.Schema';
+import { ZepetoCamera, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
+import GameManager from './GameManager';
 
 export default class PlayerController extends ZepetoScriptBehaviour {
 
@@ -11,44 +13,31 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     *ShootRay() {
         Debug.Log("[ShootRay]");
-        //Ver 1
-        // let ray: Ray = new Ray(
-        //     this.transform.position, this.gameObject.transform.forward);
-
-        // // :: 레이어 마스크
-        // const layerMask = 20 << LayerMask.NameToLayer("test");
-
-        // let ref = $ref<RaycastHit>();
-
-
-        //ver 2
-        
+        // 레이 세팅
         let ref = $ref<RaycastHit>();
-
-        let layerMask = 20 << LayerMask.NameToLayer("test");
-
-
+        let layerMask = 1 << LayerMask.NameToLayer("test");
+        GameManager.GetInstance().intTest = 10;
         while (true) {
-            Debug.Log("[while]");
-            Debug.Log(LayerMask.NameToLayer("test"));
+
+            Debug.LogWarning(GameManager.GetInstance().intTest);
+
             let ray: Ray = new Ray(
-                this.transform.position, this.gameObject.transform.forward);
-            // if (Physics.Raycast(ray, ref, 100, layerMask)) {
-            //     Debug.LogError("Hit!");
-            //     let hitInfo = $unref(ref);
-            //     Debug.Log(hitInfo);
-            // }
-            if (Physics.Raycast(ray, ref, 100)) {
+                ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+                ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);
+
+            if (Physics.Raycast(ray, ref, 2, layerMask)) {
                 let hitInfo = $unref(ref);
-                Debug.LogError(hitInfo.collider.gameObject.name);
+                Debug.LogWarning(`Hit!${hitInfo.collider.gameObject.name}`);
             }
 
             Debug.DrawRay(
-                this.transform.position, this.gameObject.transform.forward,
-                Color.red, 0.1);
+                ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+                ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward,
+                Color.red, 0.05);
 
-            yield new WaitForSeconds(0.1);
+            yield new WaitForSeconds(0.05);
         }
+        
 
     }
 

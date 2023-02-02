@@ -20,23 +20,22 @@ ScriptedImporter:
   wrapperOutputDirectory: Generated
   compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
     \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
-    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nclass PlayerController extends
-    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start() {\\r\\n        UnityEngine_1.Debug.Log(\\\"[Start]\\\");\\r\\n       
-    this.StartCoroutine(this.ShootRay());\\r\\n    }\\r\\n    *ShootRay() {\\r\\n       
-    UnityEngine_1.Debug.Log(\\\"[ShootRay]\\\");\\r\\n        //Ver 1\\r\\n       
-    // let ray: Ray = new Ray(\\r\\n        //     this.transform.position, this.gameObject.transform.forward);\\r\\n       
-    // // :: \uB808\uC774\uC5B4 \uB9C8\uC2A4\uD06C\\r\\n        // const layerMask
-    = 20 << LayerMask.NameToLayer(\\\"test\\\");\\r\\n        // let ref = $ref<RaycastHit>();\\r\\n       
-    //ver 2\\r\\n        let ref = $ref();\\r\\n        let layerMask = 20 << UnityEngine_1.LayerMask.NameToLayer(\\\"test\\\");\\r\\n       
-    while (true) {\\r\\n            UnityEngine_1.Debug.Log(\\\"[while]\\\");\\r\\n           
-    UnityEngine_1.Debug.Log(UnityEngine_1.LayerMask.NameToLayer(\\\"test\\\"));\\r\\n           
-    let ray = new UnityEngine_1.Ray(this.transform.position, this.gameObject.transform.forward);\\r\\n           
-    // if (Physics.Raycast(ray, ref, 100, layerMask)) {\\r\\n            //     Debug.LogError(\\\"Hit!\\\");\\r\\n           
-    //     let hitInfo = $unref(ref);\\r\\n            //     Debug.Log(hitInfo);\\r\\n           
-    // }\\r\\n            if (UnityEngine_1.Physics.Raycast(ray, ref, 100)) {\\r\\n               
-    let hitInfo = $unref(ref);\\r\\n                UnityEngine_1.Debug.LogError(hitInfo.collider.gameObject.name);\\r\\n           
-    }\\r\\n            UnityEngine_1.Debug.DrawRay(this.transform.position, this.gameObject.transform.forward,
-    UnityEngine_1.Color.red, 0.1);\\r\\n            yield new UnityEngine_1.WaitForSeconds(0.1);\\r\\n       
-    }\\r\\n    }\\r\\n}\\r\\nexports.default = PlayerController;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGxheWVyQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBsYXllckNvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkNBQStHO0FBRy9HLE1BQXFCLGdCQUFpQixTQUFRLHFDQUFxQjtJQUV2RCxLQUFLO1FBQ1QsbUJBQUssQ0FBQyxHQUFHLENBQUMsU0FBUyxDQUFDLENBQUM7UUFDckIsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsUUFBUSxFQUFFLENBQUMsQ0FBQztJQUN6QyxDQUFDO0lBRUQsQ0FBQyxRQUFRO1FBQ0wsbUJBQUssQ0FBQyxHQUFHLENBQUMsWUFBWSxDQUFDLENBQUM7UUFDeEIsT0FBTztRQUNQLDBCQUEwQjtRQUMxQixtRUFBbUU7UUFFbkUsZ0JBQWdCO1FBQ2hCLHlEQUF5RDtRQUV6RCxnQ0FBZ0M7UUFHaEMsT0FBTztRQUVQLElBQUksR0FBRyxHQUFHLElBQUksRUFBYyxDQUFDO1FBRTdCLElBQUksU0FBUyxHQUFHLEVBQUUsSUFBSSx1QkFBUyxDQUFDLFdBQVcsQ0FBQyxNQUFNLENBQUMsQ0FBQztRQUdwRCxPQUFPLElBQUksRUFBRTtZQUNULG1CQUFLLENBQUMsR0FBRyxDQUFDLFNBQVMsQ0FBQyxDQUFDO1lBQ3JCLG1CQUFLLENBQUMsR0FBRyxDQUFDLHVCQUFTLENBQUMsV0FBVyxDQUFDLE1BQU0sQ0FBQyxDQUFDLENBQUM7WUFDekMsSUFBSSxHQUFHLEdBQVEsSUFBSSxpQkFBRyxDQUNsQixJQUFJLENBQUMsU0FBUyxDQUFDLFFBQVEsRUFBRSxJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQztZQUNoRSxtREFBbUQ7WUFDbkQsOEJBQThCO1lBQzlCLGlDQUFpQztZQUNqQywwQkFBMEI7WUFDMUIsSUFBSTtZQUNKLElBQUkscUJBQU8sQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxHQUFHLENBQUMsRUFBRTtnQkFDaEMsSUFBSSxPQUFPLEdBQUcsTUFBTSxDQUFDLEdBQUcsQ0FBQyxDQUFDO2dCQUMxQixtQkFBSyxDQUFDLFFBQVEsQ0FBQyxPQUFPLENBQUMsUUFBUSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQzthQUNwRDtZQUVELG1CQUFLLENBQUMsT0FBTyxDQUNULElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLE9BQU8sRUFDMUQsbUJBQUssQ0FBQyxHQUFHLEVBQUUsR0FBRyxDQUFDLENBQUM7WUFFcEIsTUFBTSxJQUFJLDRCQUFjLENBQUMsR0FBRyxDQUFDLENBQUM7U0FDakM7SUFFTCxDQUFDO0NBSUo7QUFwREQsbUNBb0RDIn0=\",\"assetPath\":\"Assets/02.Scripts/PlayerController.ts\",\"manifest\":{\"properties\":[],\"name\":\"PlayerController\",\"description\":\"\"},\"isCompiled\":true}"
-  typescriptHash: dc7f566ec11440af375fca74270be918
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst ZEPETO_Character_Controller_1
+    = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst GameManager_1 = require(\\\"./GameManager\\\");\\r\\nclass
+    PlayerController extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start()
+    {\\r\\n        UnityEngine_1.Debug.Log(\\\"[Start]\\\");\\r\\n        this.StartCoroutine(this.ShootRay());\\r\\n   
+    }\\r\\n    *ShootRay() {\\r\\n        UnityEngine_1.Debug.Log(\\\"[ShootRay]\\\");\\r\\n       
+    // \uB808\uC774 \uC138\uD305\\r\\n        let ref = $ref();\\r\\n        let
+    layerMask = 1 << UnityEngine_1.LayerMask.NameToLayer(\\\"test\\\");\\r\\n       
+    GameManager_1.default.GetInstance().intTest = 10;\\r\\n        while (true) {\\r\\n           
+    UnityEngine_1.Debug.LogWarning(GameManager_1.default.GetInstance().intTest);\\r\\n           
+    let ray = new UnityEngine_1.Ray(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);\\r\\n           
+    if (UnityEngine_1.Physics.Raycast(ray, ref, 2, layerMask)) {\\r\\n               
+    let hitInfo = $unref(ref);\\r\\n                UnityEngine_1.Debug.LogWarning(`Hit!${hitInfo.collider.gameObject.name}`);\\r\\n           
+    }\\r\\n            UnityEngine_1.Debug.DrawRay(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward,
+    UnityEngine_1.Color.red, 0.05);\\r\\n            yield new UnityEngine_1.WaitForSeconds(0.05);\\r\\n       
+    }\\r\\n    }\\r\\n}\\r\\nexports.default = PlayerController;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGxheWVyQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBsYXllckNvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQsNkNBQTJIO0FBRTNILDZFQUF3RjtBQUN4RiwrQ0FBd0M7QUFFeEMsTUFBcUIsZ0JBQWlCLFNBQVEscUNBQXFCO0lBRXZELEtBQUs7UUFDVCxtQkFBSyxDQUFDLEdBQUcsQ0FBQyxTQUFTLENBQUMsQ0FBQztRQUNyQixJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxRQUFRLEVBQUUsQ0FBQyxDQUFDO0lBQ3pDLENBQUM7SUFFRCxDQUFDLFFBQVE7UUFDTCxtQkFBSyxDQUFDLEdBQUcsQ0FBQyxZQUFZLENBQUMsQ0FBQztRQUN4QixRQUFRO1FBQ1IsSUFBSSxHQUFHLEdBQUcsSUFBSSxFQUFjLENBQUM7UUFDN0IsSUFBSSxTQUFTLEdBQUcsQ0FBQyxJQUFJLHVCQUFTLENBQUMsV0FBVyxDQUFDLE1BQU0sQ0FBQyxDQUFDO1FBQ25ELHFCQUFXLENBQUMsV0FBVyxFQUFFLENBQUMsT0FBTyxHQUFHLEVBQUUsQ0FBQztRQUN2QyxPQUFPLElBQUksRUFBRTtZQUVULG1CQUFLLENBQUMsVUFBVSxDQUFDLHFCQUFXLENBQUMsV0FBVyxFQUFFLENBQUMsT0FBTyxDQUFDLENBQUM7WUFFcEQsSUFBSSxHQUFHLEdBQVEsSUFBSSxpQkFBRyxDQUNsQiwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxRQUFRLEVBQzdELDJDQUFhLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDO1lBRWxFLElBQUkscUJBQU8sQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxDQUFDLEVBQUUsU0FBUyxDQUFDLEVBQUU7Z0JBQ3pDLElBQUksT0FBTyxHQUFHLE1BQU0sQ0FBQyxHQUFHLENBQUMsQ0FBQztnQkFDMUIsbUJBQUssQ0FBQyxVQUFVLENBQUMsT0FBTyxPQUFPLENBQUMsUUFBUSxDQUFDLFVBQVUsQ0FBQyxJQUFJLEVBQUUsQ0FBQyxDQUFDO2FBQy9EO1lBRUQsbUJBQUssQ0FBQyxPQUFPLENBQ1QsMkNBQWEsQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLE1BQU0sQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUM3RCwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxPQUFPLEVBQzVELG1CQUFLLENBQUMsR0FBRyxFQUFFLElBQUksQ0FBQyxDQUFDO1lBRXJCLE1BQU0sSUFBSSw0QkFBYyxDQUFDLElBQUksQ0FBQyxDQUFDO1NBQ2xDO0lBR0wsQ0FBQztDQUlKO0FBdkNELG1DQXVDQyJ9\",\"assetPath\":\"Assets/02.Scripts/PlayerController.ts\",\"manifest\":{\"properties\":[],\"name\":\"PlayerController\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 53b23ebd9dc782ea684486bfea83206b
   onlyWriteTrigger: 0

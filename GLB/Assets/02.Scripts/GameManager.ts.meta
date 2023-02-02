@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 47d15cacdf0e93643b93a65a4884579e
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nclass GameManager extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    static GetInstance() {\r\n        if (GameManager.Instance == null)
+    {\r\n            UnityEngine_1.Debug.Log(\"[Generate GameManager]\");\r\n           
+    var _obj = new UnityEngine_1.GameObject(\"GameManager\");\r\n            UnityEngine_1.GameObject.DontDestroyOnLoad(_obj);\r\n           
+    GameManager.Instance = _obj.AddComponent($typeof(GameManager));\r\n        }\r\n       
+    return GameManager.Instance;\r\n    }\r\n}\r\nexports.default = GameManager;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUNyRCw2Q0FBdUk7QUFFdkksTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQUluRCxNQUFNLENBQUMsV0FBVztRQUVyQixJQUFJLFdBQVcsQ0FBQyxRQUFRLElBQUksSUFBSSxFQUFFO1lBQzlCLG1CQUFLLENBQUMsR0FBRyxDQUFDLHdCQUF3QixDQUFDLENBQUM7WUFDcEMsSUFBSSxJQUFJLEdBQUcsSUFBSSx3QkFBVSxDQUFDLGFBQWEsQ0FBQyxDQUFDO1lBQ3pDLHdCQUFVLENBQUMsaUJBQWlCLENBQUMsSUFBSSxDQUFDLENBQUM7WUFDbkMsV0FBVyxDQUFDLFFBQVEsR0FBRyxJQUFJLENBQUMsWUFBWSxTQUFDLFdBQVcsRUFBRyxDQUFDO1NBQzNEO1FBQ0QsT0FBTyxXQUFXLENBQUMsUUFBUSxDQUFDO0lBQ2hDLENBQUM7Q0FLSjtBQWxCRCw4QkFrQkMifQ==","assetPath":"Assets/02.Scripts/GameManager.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"intTest","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"GameManager","description":""},"isCompiled":true}'
+  typescriptHash: 75f312704526fb42293ad34f8975701d
+  onlyWriteTrigger: 0
