@@ -1,0 +1,11 @@
+Model Information:
+* title:	Basalt column
+* source:	https://sketchfab.com/3d-models/basalt-column-a510aaba8ec64e62873b936d1a87a491
+* author:	irs1182 (https://sketchfab.com/irs1182)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Basalt column" (https://sketchfab.com/3d-models/basalt-column-a510aaba8ec64e62873b936d1a87a491) by irs1182 (https://sketchfab.com/irs1182) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
