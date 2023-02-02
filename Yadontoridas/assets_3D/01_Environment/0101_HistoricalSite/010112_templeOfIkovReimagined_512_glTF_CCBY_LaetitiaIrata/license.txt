@@ -1,0 +1,11 @@
+Model Information:
+* title:	Temple of Ikov Reimagined
+* source:	https://sketchfab.com/3d-models/temple-of-ikov-reimagined-b54f26e7807a4edeb2a84455c52b0cf6
+* author:	Laetitia Irata (https://sketchfab.com/LaetitiaIrata)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Temple of Ikov Reimagined" (https://sketchfab.com/3d-models/temple-of-ikov-reimagined-b54f26e7807a4edeb2a84455c52b0cf6) by Laetitia Irata (https://sketchfab.com/LaetitiaIrata) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

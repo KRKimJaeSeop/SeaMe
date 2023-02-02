@@ -1,0 +1,11 @@
+Model Information:
+* title:	Temple Fortress Model
+* source:	https://sketchfab.com/3d-models/temple-fortress-model-8c8fb4da7e4a4becb1f4964e0916df53
+* author:	Rejala (https://sketchfab.com/Rejala)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Temple Fortress Model" (https://sketchfab.com/3d-models/temple-fortress-model-8c8fb4da7e4a4becb1f4964e0916df53) by Rejala (https://sketchfab.com/Rejala) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
