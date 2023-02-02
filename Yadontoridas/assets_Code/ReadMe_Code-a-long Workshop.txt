@@ -7,4 +7,4 @@
 6. 텔레포트 (TeleportScript.ts)
 
 [2일차 코딩수업]
-1.
+1. 
