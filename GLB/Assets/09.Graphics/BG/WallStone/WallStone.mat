@@ -98,7 +98,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _MetalicBrightnes: 0
-    - _Metallic: -0.72
+    - _Metallic: -0.1
     - _Mode: 0
     - _NormalMapDepth: 1
     - _OcclusionStrength: 1
@@ -116,9 +116,9 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _AlbedoColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+    - _AlbedoColor: {r: 0.5660378, g: 0.53713906, b: 0.504628, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _CubemapColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
+    - _CubemapColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _TransmissionColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 0}
   m_BuildTextureStacks: []
