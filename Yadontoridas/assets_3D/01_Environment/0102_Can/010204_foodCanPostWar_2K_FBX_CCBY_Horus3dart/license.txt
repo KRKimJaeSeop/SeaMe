@@ -1,0 +1,11 @@
+Model Information:
+* title:	food can "post-war"
+* source:	https://sketchfab.com/3d-models/food-can-post-war-7f207bacacd04ac88c54babf487ae570
+* author:	Horus3dart (https://sketchfab.com/karazux)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "food can "post-war"" (https://sketchfab.com/3d-models/food-can-post-war-7f207bacacd04ac88c54babf487ae570) by Horus3dart (https://sketchfab.com/karazux) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
