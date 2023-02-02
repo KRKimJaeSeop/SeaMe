@@ -1361,7 +1361,7 @@ MonoBehaviour:
     radius: 0.23
     height: 1.2
     walkSpeed: 0.5
-    runSpeed: 1
+    runSpeed: 3.5
     jumpPower: 5
     layer:
       serializedVersion: 2
