@@ -5,11 +5,49 @@
 01.환경
 0101.유적지
 	https://polyhaven.com/a/modular_fort_01
+	https://sketchfab.com/3d-models/stone-array-3d02b69773c543b49704a92e2053fe45
+	https://sketchfab.com/3d-models/greek-egyptian-and-fantasy-column-pack-4lods-0a826412c1cc4283a8204fff5ee2dc32
+	https://sketchfab.com/3d-models/greek-pillar-a52564e77cba4243a2e8acb75770b6df
+	https://sketchfab.com/3d-models/greek-egyptian-and-fantasy-column-pack-a733a1f139854f2c83d08eac167eee3b
+	https://sketchfab.com/3d-models/temple-of-vespasianus-9f6efafca0b446d08c0678f9936519bf
+	https://sketchfab.com/3d-models/low-poly-hand-painted-dungeon-stone-pillar-9a75f641b3274d52a05d221a52780aee
+	https://sketchfab.com/3d-models/old-ruined-temple-bb2b2cc8db1f4fb49917b0eb8cb83977
+	https://sketchfab.com/3d-models/sand-and-stone-5672554cc36349d98ef5791f2270ed5f
+	https://sketchfab.com/3d-models/temple-4cb022ba21de46918bce7793abc69675
+	https://sketchfab.com/3d-models/temple-fortress-model-8c8fb4da7e4a4becb1f4964e0916df53
+	https://sketchfab.com/3d-models/temple-of-ikov-reimagined-b54f26e7807a4edeb2a84455c52b0cf6	
+	https://sketchfab.com/3d-models/door-of-time-d3f1c0a6acbd49e8b1999563e100dba1
+	https://sketchfab.com/3d-models/stone-door-baalbek-6a536d37731740f49363794c531e8b95
+	https://sketchfab.com/3d-models/stela-of-intef-09223536c8e6410f8d419cb07c0213f4
+	https://sketchfab.com/3d-models/william-starr-okbn0014-d866a67a695642cfbb13b83f2927c26c
+	https://sketchfab.com/3d-models/ancient-architecture-kitbash-3244c4a532a84a898328c19cee3db10d
+	https://sketchfab.com/3d-models/aztec-temple-3279eccde05346b3af53bf19f0f21690
 0102.깡통캔
 	https://polyhaven.com/a/russian_food_cans_01
+	https://sketchfab.com/3d-models/tin-can-damaged-9d26645f9f29493790b842d741b8e5a2
+	https://sketchfab.com/3d-models/can-of-beans-566323fb276f4fa7ac2943b38bb4e98d
+	https://sketchfab.com/3d-models/food-can-post-war-7f207bacacd04ac88c54babf487ae570
+	https://sketchfab.com/3d-models/food-cans-3d669bd31c944260b2c2dae52c200c39
 0103.바위
 	https://sketchfab.com/3d-models/stone-pack-f3e0a67b9ca243b09119177649f21e17
+	https://sketchfab.com/3d-models/rock-big-b6f5b85cf95648fe98dae6a5eee44e41
+	https://sketchfab.com/3d-models/rock-2c4df0c58da84b25bea3a2ffc1155aac
+	https://sketchfab.com/3d-models/sculpted-rock-2-fcc1653da85d4c109d088ba84d7a2df1
+	https://sketchfab.com/3d-models/basalt-column-a510aaba8ec64e62873b936d1a87a491
+	https://sketchfab.com/3d-models/elemental-stones-86fd307d0a4a489ca55c6003ec8c6149
+	https://sketchfab.com/3d-models/magic-stone-e932cbae15854c1eac01a192313c9942
 	https://sketchfab.com/3d-models/rock-17c3ff6a8f3145d68fbf653ebf650ee9
+	https://sketchfab.com/3d-models/rock-big-f869bd3e6526494a957f831c522bd655
+	https://sketchfab.com/3d-models/the-ancient-mystic-stone-f05611907ddd4d60a7dac14ebe90340a
+	https://sketchfab.com/3d-models/viking-rock-195a3e4ecebb4435a692228175d7a428
+	https://sketchfab.com/3d-models/desert-rock-fixed-pack-00c4468f1bca48509d7d2bd66b564cbc
+	https://sketchfab.com/3d-models/meeting-stone-d7ac3b30a0b848debd18ecff9b934898
+	https://sketchfab.com/3d-models/rock-da138014ea884cf9bd76909a363ed90f
+	https://sketchfab.com/3d-models/rock-d0927ee680ae491fa052792530c6408a
+	https://sketchfab.com/3d-models/stone-wall-0788f8b362a6463fa08ad75273c530ea
+	https://sketchfab.com/3d-models/stylized-stones-minipack-719d8ee393db4b218ace19ce9124918d
+	https://sketchfab.com/3d-models/stylized-stones-53766233dfed4ce389eb21eb3777fb99
+	https://sketchfab.com/3d-models/time-stones-f84c29cbf5fa44c38bd8ab15db292bdf
 02.생물
 0201.문어
 	https://sketchfab.com/3d-models/octopus-d08195133942442dae870ede04e3d7f1
@@ -23,7 +61,9 @@
 	https://www.cgtrader.com/free-3d-print-models/art/scans-replicas/shell-c00cdea7-dbe8-4b66-817a-72a4db73a509
 0203.해파리
 0204.물고기
+	https://sketchfab.com/3d-models/clownfish-ba24a46bfa464cd2b59f5f6fcb718ad5
 0205.만타가오리
 0206.거북이
+	https://sketchfab.com/3d-models/hawksbill-turtle-bd6c9327fd52469782f055a182659bd2
 
 
