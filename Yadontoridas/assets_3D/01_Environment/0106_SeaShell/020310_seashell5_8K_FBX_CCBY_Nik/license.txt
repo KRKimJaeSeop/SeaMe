@@ -1,0 +1,11 @@
+Model Information:
+* title:	Seashell
+* source:	https://sketchfab.com/3d-models/seashell-585464dfedaa4095a5f0f5b3c1d15cb6
+* author:	Nik (https://sketchfab.com/nikska)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Seashell" (https://sketchfab.com/3d-models/seashell-585464dfedaa4095a5f0f5b3c1d15cb6) by Nik (https://sketchfab.com/nikska) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

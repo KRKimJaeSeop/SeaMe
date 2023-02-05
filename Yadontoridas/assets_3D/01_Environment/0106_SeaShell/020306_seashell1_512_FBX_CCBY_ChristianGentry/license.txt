@@ -1,0 +1,11 @@
+Model Information:
+* title:	Seashell
+* source:	https://sketchfab.com/3d-models/seashell-c0a5a32803c2462b897e7a5ed051d604
+* author:	Christian Gentry (https://sketchfab.com/christianjgentry)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Seashell" (https://sketchfab.com/3d-models/seashell-c0a5a32803c2462b897e7a5ed051d604) by Christian Gentry (https://sketchfab.com/christianjgentry) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

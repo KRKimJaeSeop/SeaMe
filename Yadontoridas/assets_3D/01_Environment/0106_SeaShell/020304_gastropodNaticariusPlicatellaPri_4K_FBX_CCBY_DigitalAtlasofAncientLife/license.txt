@@ -1,0 +1,8 @@
+Model Information:
+* title:	Gastropod: Naticarius plicatella (PRI 70745)
+* source:	https://sketchfab.com/3d-models/gastropod-naticarius-plicatella-pri-70745-dbcab7f7cfc74efdb5cc74087ecd8301
+* author:	Digital Atlas of Ancient Life (https://sketchfab.com/DigitalAtlasOfAncientLife)
+
+Model License:
+* license type:	CC0-1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
+* requirements:	Credit is not mandatory. Commercial use is allowed.

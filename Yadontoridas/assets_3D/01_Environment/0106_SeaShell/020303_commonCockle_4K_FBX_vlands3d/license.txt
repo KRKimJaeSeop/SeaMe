@@ -1,0 +1,11 @@
+Model Information:
+* title:	Common cockle
+* source:	https://sketchfab.com/3d-models/common-cockle-f7c760e4f9e24abea2065964721b2e76
+* author:	vlands3d (https://sketchfab.com/vlands3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Common cockle" (https://sketchfab.com/3d-models/common-cockle-f7c760e4f9e24abea2065964721b2e76) by vlands3d (https://sketchfab.com/vlands3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
