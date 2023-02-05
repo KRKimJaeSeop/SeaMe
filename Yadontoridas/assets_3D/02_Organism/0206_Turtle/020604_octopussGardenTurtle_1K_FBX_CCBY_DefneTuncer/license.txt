@@ -1,0 +1,11 @@
+Model Information:
+* title:	Octopus's Garden
+* source:	https://sketchfab.com/3d-models/octopuss-garden-d2f8daa7e9a446aabe6b3716d2c7ef31
+* author:	Defne Tuncer (https://sketchfab.com/defnetuncer98)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Octopus's Garden" (https://sketchfab.com/3d-models/octopuss-garden-d2f8daa7e9a446aabe6b3716d2c7ef31) by Defne Tuncer (https://sketchfab.com/defnetuncer98) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
