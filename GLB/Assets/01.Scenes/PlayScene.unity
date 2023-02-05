@@ -169,12 +169,9 @@ MonoBehaviour:
   script:
     keys:
     - customCharacter
-    - multiplay
     unityValues:
     - {fileID: 16893221959919596, guid: 1bfc0a2e908ffa746a29a4537bfa8b32, type: 3}
-    - {fileID: 0}
     values:
-    - 
     - 
     unityArrayValues: []
     arrayValues: []
@@ -10496,7 +10493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &246514112
 Transform:
   m_ObjectHideFlags: 0
@@ -13664,7 +13661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &311328534
 Transform:
   m_ObjectHideFlags: 0
@@ -29787,7 +29784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &745823712
 Transform:
   m_ObjectHideFlags: 0
@@ -35539,7 +35536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &904516289
 Transform:
   m_ObjectHideFlags: 0
@@ -35568,13 +35565,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   script:
     keys:
-    - intTest
     - customCharacter
     unityValues:
     - {fileID: 0}
-    - {fileID: 0}
     values:
-    - '{"type":"System.Single, mscorlib","value":"0"}'
     - 
     unityArrayValues: []
     arrayValues: []
@@ -41351,7 +41345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1038617493
 Transform:
   m_ObjectHideFlags: 0
@@ -43010,7 +43004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1073013948
 Transform:
   m_ObjectHideFlags: 0
@@ -43849,7 +43843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1090761062
 Transform:
   m_ObjectHideFlags: 0
