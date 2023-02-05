@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pink Neon Jellyfish
+* source:	https://sketchfab.com/3d-models/pink-neon-jellyfish-3ab7e42db84945299b7c367b0e6126ad
+* author:	Caroline Forget (https://sketchfab.com/Unicone)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pink Neon Jellyfish" (https://sketchfab.com/3d-models/pink-neon-jellyfish-3ab7e42db84945299b7c367b0e6126ad) by Caroline Forget (https://sketchfab.com/Unicone) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

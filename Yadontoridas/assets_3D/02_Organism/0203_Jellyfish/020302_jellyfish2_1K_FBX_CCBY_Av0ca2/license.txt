@@ -1,0 +1,11 @@
+Model Information:
+* title:	Jellyfish
+* source:	https://sketchfab.com/3d-models/jellyfish-5719a470e4f94c619bcc4c7a2615e208
+* author:	Av0ca2 (https://sketchfab.com/Av0ca2)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Jellyfish" (https://sketchfab.com/3d-models/jellyfish-5719a470e4f94c619bcc4c7a2615e208) by Av0ca2 (https://sketchfab.com/Av0ca2) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
