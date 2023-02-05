@@ -1,0 +1,8 @@
+Model Information:
+* title:	Asteroid: starfish or seastar
+* source:	https://sketchfab.com/3d-models/asteroid-starfish-or-seastar-32de6a92ad104e20aaa841c8e3eef93f
+* author:	Digital Atlas of Ancient Life (https://sketchfab.com/DigitalAtlasOfAncientLife)
+
+Model License:
+* license type:	CC0-1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
+* requirements:	Credit is not mandatory. Commercial use is allowed.

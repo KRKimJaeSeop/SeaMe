@@ -1,0 +1,11 @@
+Model Information:
+* title:	Starfish (Blue)
+* source:	https://sketchfab.com/3d-models/starfish-blue-96b529d4b74e497d802bcf6779660669
+* author:	kodai100 (https://sketchfab.com/kodai100)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Starfish (Blue)" (https://sketchfab.com/3d-models/starfish-blue-96b529d4b74e497d802bcf6779660669) by kodai100 (https://sketchfab.com/kodai100) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
