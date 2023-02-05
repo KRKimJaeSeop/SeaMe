@@ -1,0 +1,11 @@
+Model Information:
+* title:	Two Tomato plants
+* source:	https://sketchfab.com/3d-models/two-tomato-plants-017e5dfc6d0d4c12b3f1196d85a16c9b
+* author:	cntorres (https://sketchfab.com/cntorres)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Two Tomato plants" (https://sketchfab.com/3d-models/two-tomato-plants-017e5dfc6d0d4c12b3f1196d85a16c9b) by cntorres (https://sketchfab.com/cntorres) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

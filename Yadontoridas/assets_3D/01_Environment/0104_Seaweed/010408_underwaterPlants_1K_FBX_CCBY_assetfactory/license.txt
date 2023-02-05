@@ -1,0 +1,11 @@
+Model Information:
+* title:	Underwater plant
+* source:	https://sketchfab.com/3d-models/underwater-plant-b27671c590e7431d8b55b2ed59f2a0d6
+* author:	assetfactory (https://sketchfab.com/assetfactory)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Underwater plant" (https://sketchfab.com/3d-models/underwater-plant-b27671c590e7431d8b55b2ed59f2a0d6) by assetfactory (https://sketchfab.com/assetfactory) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

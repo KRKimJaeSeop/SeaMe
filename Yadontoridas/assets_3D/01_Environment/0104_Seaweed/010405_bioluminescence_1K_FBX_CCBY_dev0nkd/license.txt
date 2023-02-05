@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bioluminescence
+* source:	https://sketchfab.com/3d-models/bioluminescence-481dbfff6e0e4fdbbf34172c3ecd8564
+* author:	dev0n_kd (https://sketchfab.com/dev0n_kd)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bioluminescence" (https://sketchfab.com/3d-models/bioluminescence-481dbfff6e0e4fdbbf34172c3ecd8564) by dev0n_kd (https://sketchfab.com/dev0n_kd) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
