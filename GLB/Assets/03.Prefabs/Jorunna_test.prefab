@@ -431,6 +431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2162201647980917938}
+  - component: {fileID: 2131938384015749129}
   m_Layer: 0
   m_Name: Jorunna_test
   m_TagString: Untagged
@@ -454,6 +455,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2131938384015749129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534177565031984648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1673316429, guid: 921f0445823004a16a499d629dd566a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  script:
+    keys:
+    - UpdateOwnerType
+    - SyncPosition
+    - UseHardSnap
+    - HardSnapIfDistanceGreaterThan
+    - InterpolationType
+    - ExtrapolationType
+    - extraMultipler
+    - moveSpeed
+    - SyncRotation
+    - RotationInterpolationType
+    - rotateSpeed
+    - SyncScale
+    - ScaleInterpolationType
+    - scaleUpSpeed
+    unityValues:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    values:
+    - '{"type":"System.String, mscorlib","value":"0"}'
+    - '{"type":"System.Boolean, mscorlib","value":"False"}'
+    - '{"type":"System.Boolean, mscorlib","value":"False"}'
+    - '{"type":"System.Single, mscorlib","value":"10"}'
+    - '{"type":"System.String, mscorlib","value":"3"}'
+    - '{"type":"System.String, mscorlib","value":"0"}'
+    - '{"type":"System.Single, mscorlib","value":"1"}'
+    - '{"type":"System.Single, mscorlib","value":"10"}'
+    - '{"type":"System.Boolean, mscorlib","value":"False"}'
+    - '{"type":"System.String, mscorlib","value":"1"}'
+    - '{"type":"System.Single, mscorlib","value":"100"}'
+    - '{"type":"System.Boolean, mscorlib","value":"False"}'
+    - '{"type":"System.String, mscorlib","value":"1"}'
+    - '{"type":"System.Single, mscorlib","value":"100"}'
+    unityArrayValues: []
+    arrayValues: []
+    script: {fileID: 4458252877524076426, guid: 5419c5d1d2ede4cde844dd059edfebce, type: 3}
+    isExpaned: 0
 --- !u!1 &1580619144055459095
 GameObject:
   m_ObjectHideFlags: 0

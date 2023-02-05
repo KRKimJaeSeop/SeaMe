@@ -1,8 +1,6 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Ray, LayerMask, Color, Quaternion } from 'UnityEngine';
-import { Vector3 } from 'ZEPETO.Multiplay.Schema';
+import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds,Vector3, Ray, LayerMask, Color, Quaternion } from 'UnityEngine';
 import { ZepetoCamera, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
-import GameManager from './GameManager';
 
 export default class PlayerController extends ZepetoScriptBehaviour {
 
@@ -16,10 +14,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         // 레이 세팅
         let ref = $ref<RaycastHit>();
         let layerMask = 1 << LayerMask.NameToLayer("test");
-        GameManager.GetInstance().intTest = 10;
         while (true) {
 
-            Debug.LogWarning(GameManager.GetInstance().intTest);
 
             let ray: Ray = new Ray(
                 ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
