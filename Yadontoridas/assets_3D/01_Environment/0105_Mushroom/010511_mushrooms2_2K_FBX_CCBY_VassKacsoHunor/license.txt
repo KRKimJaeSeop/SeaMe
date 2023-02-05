@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mushrooms
+* source:	https://sketchfab.com/3d-models/mushrooms-fddff9ecf2874c4d972680a508fdc483
+* author:	VassKacsoHunor (https://sketchfab.com/VassKacsoHunor)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mushrooms" (https://sketchfab.com/3d-models/mushrooms-fddff9ecf2874c4d972680a508fdc483) by VassKacsoHunor (https://sketchfab.com/VassKacsoHunor) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

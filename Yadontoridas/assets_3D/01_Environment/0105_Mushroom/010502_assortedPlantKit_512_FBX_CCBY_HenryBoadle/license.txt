@@ -1,0 +1,11 @@
+Model Information:
+* title:	Assorted Plant Kit
+* source:	https://sketchfab.com/3d-models/assorted-plant-kit-d808bf42e70d4e3aa80626e7ab5f1e0e
+* author:	HenryBoadle (https://sketchfab.com/HenryBoadle)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Assorted Plant Kit" (https://sketchfab.com/3d-models/assorted-plant-kit-d808bf42e70d4e3aa80626e7ab5f1e0e) by HenryBoadle (https://sketchfab.com/HenryBoadle) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
