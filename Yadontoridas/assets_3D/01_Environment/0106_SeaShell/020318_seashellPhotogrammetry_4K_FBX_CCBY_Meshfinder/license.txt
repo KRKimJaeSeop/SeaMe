@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sea Shell (Photogrammetry)
+* source:	https://sketchfab.com/3d-models/sea-shell-photogrammetry-f68ff40bd67b4b62b2f131d91e724728
+* author:	Meshfinder (https://sketchfab.com/meshfinder)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sea Shell (Photogrammetry)" (https://sketchfab.com/3d-models/sea-shell-photogrammetry-f68ff40bd67b4b62b2f131d91e724728) by Meshfinder (https://sketchfab.com/meshfinder) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

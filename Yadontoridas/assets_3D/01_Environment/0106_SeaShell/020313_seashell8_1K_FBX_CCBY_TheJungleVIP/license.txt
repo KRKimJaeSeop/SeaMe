@@ -1,0 +1,11 @@
+Model Information:
+* title:	SeaShell
+* source:	https://sketchfab.com/3d-models/seashell-6ef35603d7bb4f32aae6d5de19814f1a
+* author:	TheJungleVIP (https://sketchfab.com/TheJungleVIP)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SeaShell" (https://sketchfab.com/3d-models/seashell-6ef35603d7bb4f32aae6d5de19814f1a) by TheJungleVIP (https://sketchfab.com/TheJungleVIP) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

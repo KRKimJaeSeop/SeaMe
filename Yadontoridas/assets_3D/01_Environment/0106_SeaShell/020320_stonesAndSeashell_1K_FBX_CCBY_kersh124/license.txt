@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stones and a seashell
+* source:	https://sketchfab.com/3d-models/stones-and-a-seashell-3865850403ef4051a1f132955b631912
+* author:	kersh124 (https://sketchfab.com/kersh124)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stones and a seashell" (https://sketchfab.com/3d-models/stones-and-a-seashell-3865850403ef4051a1f132955b631912) by kersh124 (https://sketchfab.com/kersh124) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

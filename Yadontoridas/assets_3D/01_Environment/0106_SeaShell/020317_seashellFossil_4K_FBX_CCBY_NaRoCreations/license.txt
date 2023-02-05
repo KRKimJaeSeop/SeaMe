@@ -1,0 +1,11 @@
+Model Information:
+* title:	Seashell Fossil
+* source:	https://sketchfab.com/3d-models/seashell-fossil-bc4b85625dd045608b498c41f8b5c1a7
+* author:	NaRoCreations (https://sketchfab.com/NaRoCreations)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Seashell Fossil" (https://sketchfab.com/3d-models/seashell-fossil-bc4b85625dd045608b498c41f8b5c1a7) by NaRoCreations (https://sketchfab.com/NaRoCreations) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

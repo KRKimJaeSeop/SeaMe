@@ -1,0 +1,11 @@
+Model Information:
+* title:	Seashell_Croatia_#AgisoftNatureChallenge
+* source:	https://sketchfab.com/3d-models/seashell-croatia-agisoftnaturechallenge-c8afdfd838e64ea1b30ba64a41da1b79
+* author:	mparz (https://sketchfab.com/PJed)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Seashell_Croatia_#AgisoftNatureChallenge" (https://sketchfab.com/3d-models/seashell-croatia-agisoftnaturechallenge-c8afdfd838e64ea1b30ba64a41da1b79) by mparz (https://sketchfab.com/PJed) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
