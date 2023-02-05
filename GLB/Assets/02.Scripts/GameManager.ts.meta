@@ -18,30 +18,18 @@ ScriptedImporter:
   wrapperTypes: []
   WrapperFilters: []
   wrapperOutputDirectory: Generated
-  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
-    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
-    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
-    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nclass GameManager extends
-    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    static get instance() {\\r\\n       
-    if (this.m_instance === null) {\\r\\n            this.m_instance = UnityEngine_1.GameObject.FindObjectOfType($typeof(GameManager));\\r\\n           
-    if (this.m_instance === null) {\\r\\n                this.m_instance = new UnityEngine_1.GameObject(GameManager.name).AddComponent($typeof(GameManager));\\r\\n           
-    }\\r\\n        }\\r\\n        return this.m_instance;\\r\\n    }\\r\\n    Awake()
-    {\\r\\n        if (GameManager.m_instance !== null && GameManager.m_instance
-    !== this) {\\r\\n            UnityEngine_1.GameObject.Destroy(this.gameObject);\\r\\n       
-    }\\r\\n        else {\\r\\n            GameManager.m_instance = this;\\r\\n           
-    UnityEngine_1.GameObject.DontDestroyOnLoad(this.gameObject);\\r\\n        }\\r\\n   
-    }\\r\\n    Start() {\\r\\n        this.StartCoroutine(this.TestRoutine());\\r\\n   
-    }\\r\\n    *TestRoutine() {\\r\\n        yield new UnityEngine_1.WaitForSeconds(3);\\r\\n       
-    // \uB85C\uCEEC \uCE90\uB9AD\uD130\\r\\n        let _character = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;\\r\\n       
-    // \uBCF8 \uC704\uCE58\\r\\n        let tempTransform = _character.character.Context.transform;
-    // ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.);\\r\\n       
-    let tempVector = new UnityEngine_1.Vector3(tempTransform.position.x, tempTransform.position.y,
-    tempTransform.position.z);\\r\\n        // \uCE90\uB9AD\uD130 off\\r\\n       
-    _character.character.ZepetoAnimator.GetBoneTransform(UnityEngine_1.HumanBodyBones.Hips).gameObject.SetActive(false);\\r\\n       
-    _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);\\r\\n       
-    // Instantiate\uD55C \uD504\uB9AC\uD339\\r\\n        let _gameObject = UnityEngine_1.GameObject.Instantiate(this.customCharacter,
-    tempTransform);\\r\\n        _gameObject.transform.SetParent(tempTransform);\\r\\n   
-    }\\r\\n}\\r\\nexports.default = GameManager;\\r\\n/* Singleton */\\r\\nGameManager.m_instance
-    = null;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUNyRCw2RUFBb0c7QUFDcEcsNkNBQThKO0FBRTlKLE1BQXFCLFdBQVksU0FBUSxxQ0FBcUI7SUFPbkQsTUFBTSxLQUFLLFFBQVE7UUFDdEIsSUFBSSxJQUFJLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtZQUMxQixJQUFJLENBQUMsVUFBVSxHQUFHLHdCQUFVLENBQUMsZ0JBQWdCLFNBQUMsV0FBVyxFQUFHLENBQUM7WUFDN0QsSUFBSSxJQUFJLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtnQkFDMUIsSUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLHdCQUFVLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxDQUFDLFlBQVksU0FBQyxXQUFXLEVBQUcsQ0FBQzthQUNsRjtTQUNKO1FBQ0QsT0FBTyxJQUFJLENBQUMsVUFBVSxDQUFDO0lBQzNCLENBQUM7SUFDTyxLQUFLO1FBQ1QsSUFBSSxXQUFXLENBQUMsVUFBVSxLQUFLLElBQUksSUFBSSxXQUFXLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtZQUNwRSx3QkFBVSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7U0FDdkM7YUFBTTtZQUNILFdBQVcsQ0FBQyxVQUFVLEdBQUcsSUFBSSxDQUFDO1lBQzlCLHdCQUFVLENBQUMsaUJBQWlCLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1NBQ2pEO0lBQ0wsQ0FBQztJQUtELEtBQUs7UUFDRCxJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxXQUFXLEVBQUUsQ0FBQyxDQUFDO0lBQzVDLENBQUM7SUFHRCxDQUFDLFdBQVc7UUFFUixNQUFNLElBQUksNEJBQWMsQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUU1QixTQUFTO1FBQ1QsSUFBSSxVQUFVLEdBQUcsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQztRQUVqRSxPQUFPO1FBQ1AsSUFBSSxhQUFhLEdBQUcsVUFBVSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsU0FBUyxDQUFDLENBQUEsZ0VBQWdFO1FBQzNILElBQUksVUFBVSxHQUFHLElBQUkscUJBQU8sQ0FBQyxhQUFhLENBQUMsUUFBUSxDQUFDLENBQUMsRUFBRSxhQUFhLENBQUMsUUFBUSxDQUFDLENBQUMsRUFBRSxhQUFhLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBRTNHLFVBQVU7UUFDVixVQUFVLENBQUMsU0FBUyxDQUFDLGNBQWMsQ0FBQyxnQkFBZ0IsQ0FBQyw0QkFBYyxDQUFDLElBQUksQ0FBQyxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7UUFDdEcsVUFBVSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBRS9FLG1CQUFtQjtRQUNuQixJQUFJLFdBQVcsR0FBRyx3QkFBVSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsZUFBZSxFQUFFLGFBQWEsQ0FBZSxDQUFDO1FBRTVGLFdBQVcsQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLGFBQWEsQ0FBQyxDQUFDO0lBRW5ELENBQUM7O0FBckRMLDhCQXdEQztBQW5ERyxlQUFlO0FBQ0Esc0JBQVUsR0FBZ0IsSUFBSSxDQUFDIn0=\",\"assetPath\":\"Assets/02.Scripts/GameManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"customCharacter\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GameManager\",\"description\":\"\"},\"isCompiled\":true}"
-  typescriptHash: 39a0c19d00ed07c1359f8ccc9b31e4e5
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst MultiplayManager_1 = require(\"../MultiplaySync/Common/MultiplayManager\");\r\nclass
+    GameManager extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    static get
+    instance() {\r\n        if (this.m_instance === null) {\r\n            this.m_instance
+    = UnityEngine_1.GameObject.FindObjectOfType($typeof(GameManager));\r\n           
+    if (this.m_instance === null) {\r\n                this.m_instance = new UnityEngine_1.GameObject(GameManager.name).AddComponent($typeof(GameManager));\r\n           
+    }\r\n        }\r\n        return this.m_instance;\r\n    }\r\n    Awake() {\r\n       
+    if (GameManager.m_instance !== null && GameManager.m_instance !== this) {\r\n           
+    UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n        }\r\n        else
+    {\r\n            GameManager.m_instance = this;\r\n            UnityEngine_1.GameObject.DontDestroyOnLoad(this.gameObject);\r\n       
+    }\r\n        UnityEngine_1.Debug.Log(`[AwakeAwakeAwakeAwake]`);\r\n    }\r\n}\r\nexports.default
+    = GameManager;\r\n/* Singleton */\r\nGameManager.m_instance = null;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUVyRCw2Q0FBZ0s7QUFDaEssK0VBQXdFO0FBR3hFLE1BQXFCLFdBQVksU0FBUSxxQ0FBcUI7SUFPbkQsTUFBTSxLQUFLLFFBQVE7UUFDdEIsSUFBSSxJQUFJLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtZQUMxQixJQUFJLENBQUMsVUFBVSxHQUFHLHdCQUFVLENBQUMsZ0JBQWdCLFNBQUMsV0FBVyxFQUFHLENBQUM7WUFDN0QsSUFBSSxJQUFJLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtnQkFDMUIsSUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLHdCQUFVLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxDQUFDLFlBQVksU0FBQyxXQUFXLEVBQUcsQ0FBQzthQUNsRjtTQUNKO1FBQ0QsT0FBTyxJQUFJLENBQUMsVUFBVSxDQUFDO0lBQzNCLENBQUM7SUFDTyxLQUFLO1FBQ1QsSUFBSSxXQUFXLENBQUMsVUFBVSxLQUFLLElBQUksSUFBSSxXQUFXLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtZQUNwRSx3QkFBVSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7U0FDdkM7YUFBTTtZQUNILFdBQVcsQ0FBQyxVQUFVLEdBQUcsSUFBSSxDQUFDO1lBQzlCLHdCQUFVLENBQUMsaUJBQWlCLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1NBQ2pEO1FBQ0QsbUJBQUssQ0FBQyxHQUFHLENBQUMsd0JBQXdCLENBQUMsQ0FBQztJQUN4QyxDQUFDOztBQXhCTCw4QkEyQkM7QUF0QkcsZUFBZTtBQUNBLHNCQUFVLEdBQWdCLElBQUksQ0FBQyJ9","assetPath":"Assets/02.Scripts/GameManager.ts","manifest":{"properties":[{"assembly":"","name":"multiplay","type":"D:/UnityProject/SeaMe/GLB/Assets/02.Scripts/GameManager.default","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"GameManager","description":""},"isCompiled":true}'
+  typescriptHash: 60c21a857cad67b8537a0344d6a3ef34
   onlyWriteTrigger: 0

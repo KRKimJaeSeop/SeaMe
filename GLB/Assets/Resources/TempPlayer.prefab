@@ -99,6 +99,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
+      propertyPath: script.values.Array.data[1]
+      value: '{"type":"System.Boolean, mscorlib","value":"True"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
+      propertyPath: script.values.Array.data[4]
+      value: '{"type":"System.String, mscorlib","value":"2"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
+      propertyPath: script.values.Array.data[8]
+      value: '{"type":"System.Boolean, mscorlib","value":"True"}'
+      objectReference: {fileID: 0}
     - target: {fileID: 2162201647980917938, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
       propertyPath: m_RootOrder
       value: 0

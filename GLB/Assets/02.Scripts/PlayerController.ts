@@ -1,12 +1,31 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds,Vector3, Ray, LayerMask, Color, Quaternion } from 'UnityEngine';
+import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion } from 'UnityEngine';
 import { ZepetoCamera, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
+import { Room } from 'ZEPETO.Multiplay';
+import MultiplayManager from '../MultiplaySync/Common/MultiplayManager';
 
 export default class PlayerController extends ZepetoScriptBehaviour {
 
     private Start() {
-        Debug.Log("[Start]");
-        this.StartCoroutine(this.ShootRay());
+
+        if (ZepetoPlayers.instance.GetPlayer(MultiplayManager.instance.room.SessionId).isLocalPlayer) {
+
+            Debug.Log("[Start]");
+            this.StartCoroutine(this.ShootRay());
+            // 로컬 캐릭터
+            let _character = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;
+
+            // 본 위치
+            let tempTransform = _character.character.Context.transform;// ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.);
+
+            this.gameObject.transform.SetParent(tempTransform);
+            this.gameObject.transform.localPosition = Vector3.zero;
+
+            // 캐릭터 off
+            _character.character.ZepetoAnimator.GetBoneTransform(HumanBodyBones.Hips).gameObject.SetActive(false);
+            _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        // Instantiate한 프리팹       
     }
 
     *ShootRay() {
@@ -33,7 +52,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
             yield new WaitForSeconds(0.05);
         }
-        
+
 
     }
 
