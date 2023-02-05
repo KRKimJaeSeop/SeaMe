@@ -1,0 +1,11 @@
+Model Information:
+* title:	Manta
+* source:	https://sketchfab.com/3d-models/manta-17d7b1b8435c4f2391527934c8709616
+* author:	Tasuku_Minoura (https://sketchfab.com/Tasuku_Minoura)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Manta" (https://sketchfab.com/3d-models/manta-17d7b1b8435c4f2391527934c8709616) by Tasuku_Minoura (https://sketchfab.com/Tasuku_Minoura) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

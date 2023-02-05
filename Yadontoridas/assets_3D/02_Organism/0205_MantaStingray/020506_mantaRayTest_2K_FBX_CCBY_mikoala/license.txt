@@ -1,0 +1,11 @@
+Model Information:
+* title:	Manta Ray Test
+* source:	https://sketchfab.com/3d-models/manta-ray-test-4987fe343a9749028678ef45115b2739
+* author:	mikoala (https://sketchfab.com/mikoala)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Manta Ray Test" (https://sketchfab.com/3d-models/manta-ray-test-4987fe343a9749028678ef45115b2739) by mikoala (https://sketchfab.com/mikoala) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
