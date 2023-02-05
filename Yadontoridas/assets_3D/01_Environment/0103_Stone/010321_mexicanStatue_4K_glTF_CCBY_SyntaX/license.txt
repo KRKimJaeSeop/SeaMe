@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mexican Statue
+* source:	https://sketchfab.com/3d-models/mexican-statue-5f2468deb54d424ebe8b4c42ddce36f2
+* author:	SyntaX (https://sketchfab.com/syntaxcg)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mexican Statue" (https://sketchfab.com/3d-models/mexican-statue-5f2468deb54d424ebe8b4c42ddce36f2) by SyntaX (https://sketchfab.com/syntaxcg) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

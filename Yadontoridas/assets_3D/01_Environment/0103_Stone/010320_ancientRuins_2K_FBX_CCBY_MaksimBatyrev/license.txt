@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ancient Ruins
+* source:	https://sketchfab.com/3d-models/ancient-ruins-105c85f4668245208fe71cac4861cf8c
+* author:	Maksim Batyrev (https://sketchfab.com/c3posw01)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ancient Ruins" (https://sketchfab.com/3d-models/ancient-ruins-105c85f4668245208fe71cac4861cf8c) by Maksim Batyrev (https://sketchfab.com/c3posw01) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
