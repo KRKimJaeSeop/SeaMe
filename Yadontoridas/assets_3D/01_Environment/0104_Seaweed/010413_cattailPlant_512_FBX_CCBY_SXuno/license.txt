@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cattail Plant
+* source:	https://sketchfab.com/3d-models/cattail-plant-c50630051edd4a7daa9708f6b31c021f
+* author:	SXuno (https://sketchfab.com/sxuno)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cattail Plant" (https://sketchfab.com/3d-models/cattail-plant-c50630051edd4a7daa9708f6b31c021f) by SXuno (https://sketchfab.com/sxuno) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
