@@ -1,0 +1,11 @@
+Model Information:
+* title:	PLANTS WIP2
+* source:	https://sketchfab.com/3d-models/plants-wip2-3cde3541664c492d8cd7b7fa633f5453
+* author:	IgorKolinski (https://sketchfab.com/IgorKolinski)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "PLANTS WIP2" (https://sketchfab.com/3d-models/plants-wip2-3cde3541664c492d8cd7b7fa633f5453) by IgorKolinski (https://sketchfab.com/IgorKolinski) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

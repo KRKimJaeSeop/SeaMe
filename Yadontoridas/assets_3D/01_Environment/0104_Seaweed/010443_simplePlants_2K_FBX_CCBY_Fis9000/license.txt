@@ -1,0 +1,11 @@
+Model Information:
+* title:	Simple Plants
+* source:	https://sketchfab.com/3d-models/simple-plants-364e5eca919745679170354a45fae2e3
+* author:	Fis9000 (https://sketchfab.com/fiskal65)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Simple Plants" (https://sketchfab.com/3d-models/simple-plants-364e5eca919745679170354a45fae2e3) by Fis9000 (https://sketchfab.com/fiskal65) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
