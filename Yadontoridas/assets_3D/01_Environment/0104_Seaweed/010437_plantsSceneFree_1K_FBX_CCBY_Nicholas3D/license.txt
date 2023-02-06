@@ -1,0 +1,11 @@
+Model Information:
+* title:	Plants Scene Free!
+* source:	https://sketchfab.com/3d-models/plants-scene-free-5425c959e480400e957cd52c6f59c3dc
+* author:	Nicholas-3D (https://sketchfab.com/Nicholas01)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Plants Scene Free!" (https://sketchfab.com/3d-models/plants-scene-free-5425c959e480400e957cd52c6f59c3dc) by Nicholas-3D (https://sketchfab.com/Nicholas01) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
