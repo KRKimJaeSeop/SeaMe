@@ -1,0 +1,11 @@
+Model Information:
+* title:	Banana Plant
+* source:	https://sketchfab.com/3d-models/banana-plant-85695b82c7ba4b3497a663616cc3bf25
+* author:	evolveduk (https://sketchfab.com/evolveduk)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Banana Plant" (https://sketchfab.com/3d-models/banana-plant-85695b82c7ba4b3497a663616cc3bf25) by evolveduk (https://sketchfab.com/evolveduk) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

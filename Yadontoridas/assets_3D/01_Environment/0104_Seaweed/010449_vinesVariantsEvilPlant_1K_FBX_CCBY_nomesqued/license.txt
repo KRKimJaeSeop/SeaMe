@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vines Variants - Evil plant project
+* source:	https://sketchfab.com/3d-models/vines-variants-evil-plant-project-67a1bf825e064be98e65a0a9301e6708
+* author:	nomesqued (https://sketchfab.com/nomesqued)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vines Variants - Evil plant project" (https://sketchfab.com/3d-models/vines-variants-evil-plant-project-67a1bf825e064be98e65a0a9301e6708) by nomesqued (https://sketchfab.com/nomesqued) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

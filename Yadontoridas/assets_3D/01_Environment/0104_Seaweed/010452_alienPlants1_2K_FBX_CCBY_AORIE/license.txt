@@ -1,0 +1,11 @@
+Model Information:
+* title:	Alien Plants
+* source:	https://sketchfab.com/3d-models/alien-plants-74f14d78c017455fb001e1592e372ba2
+* author:	Olha Vasylchenko (https://sketchfab.com/Aorie)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Alien Plants" (https://sketchfab.com/3d-models/alien-plants-74f14d78c017455fb001e1592e372ba2) by Olha Vasylchenko (https://sketchfab.com/Aorie) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

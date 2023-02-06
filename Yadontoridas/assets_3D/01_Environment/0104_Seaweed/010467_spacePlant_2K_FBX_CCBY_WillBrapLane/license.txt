@@ -1,0 +1,11 @@
+Model Information:
+* title:	Space Plant
+* source:	https://sketchfab.com/3d-models/space-plant-b9d3d2c3e5c641c7abe1af9e2386e61c
+* author:	WillBrapLane (https://sketchfab.com/Will_Lane)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Space Plant" (https://sketchfab.com/3d-models/space-plant-b9d3d2c3e5c641c7abe1af9e2386e61c) by WillBrapLane (https://sketchfab.com/Will_Lane) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

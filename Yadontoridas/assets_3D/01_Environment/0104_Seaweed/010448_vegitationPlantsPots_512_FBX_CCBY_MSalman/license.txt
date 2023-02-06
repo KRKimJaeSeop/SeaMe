@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vegitation - Plants Pots
+* source:	https://sketchfab.com/3d-models/vegitation-plants-pots-5101295105964fc3abec71d898258282
+* author:	M Salman (https://sketchfab.com/salmanafzalwahla)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vegitation - Plants Pots" (https://sketchfab.com/3d-models/vegitation-plants-pots-5101295105964fc3abec71d898258282) by M Salman (https://sketchfab.com/salmanafzalwahla) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Alien plant STL - textured
+* source:	https://sketchfab.com/3d-models/alien-plant-stl-textured-468876bd84e948e28db21cc42e611857
+* author:	SarahC (https://sketchfab.com/SarahC)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Alien plant STL - textured" (https://sketchfab.com/3d-models/alien-plant-stl-textured-468876bd84e948e28db21cc42e611857) by SarahC (https://sketchfab.com/SarahC) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Alien Plant (Cydrakoniss)
+* source:	https://sketchfab.com/3d-models/alien-plant-cydrakoniss-d940adfc452146efacc2cbb63fa2c01d
+* author:	Blake Stahlbaum (https://sketchfab.com/Blake_Stahlbaum)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Alien Plant (Cydrakoniss)" (https://sketchfab.com/3d-models/alien-plant-cydrakoniss-d940adfc452146efacc2cbb63fa2c01d) by Blake Stahlbaum (https://sketchfab.com/Blake_Stahlbaum) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
