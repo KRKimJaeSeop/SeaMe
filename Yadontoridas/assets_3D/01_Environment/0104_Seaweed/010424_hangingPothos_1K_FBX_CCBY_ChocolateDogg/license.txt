@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hanging Pothos
+* source:	https://sketchfab.com/3d-models/hanging-pothos-9b961b9aab1443a2a14b81de726e6d5f
+* author:	kemowolfpaw (https://sketchfab.com/kemowolfpaw)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hanging Pothos" (https://sketchfab.com/3d-models/hanging-pothos-9b961b9aab1443a2a14b81de726e6d5f) by kemowolfpaw (https://sketchfab.com/kemowolfpaw) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

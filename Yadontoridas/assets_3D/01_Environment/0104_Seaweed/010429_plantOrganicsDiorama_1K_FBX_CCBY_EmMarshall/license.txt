@@ -1,0 +1,11 @@
+Model Information:
+* title:	Plant & Organics Diorama
+* source:	https://sketchfab.com/3d-models/plant-organics-diorama-a99b601e02f741a59524a06fc36b3b6f
+* author:	Em Marshall (https://sketchfab.com/emarshall)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Plant & Organics Diorama" (https://sketchfab.com/3d-models/plant-organics-diorama-a99b601e02f741a59524a06fc36b3b6f) by Em Marshall (https://sketchfab.com/emarshall) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

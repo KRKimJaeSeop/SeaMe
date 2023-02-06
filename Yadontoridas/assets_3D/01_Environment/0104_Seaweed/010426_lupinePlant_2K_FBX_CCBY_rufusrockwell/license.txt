@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lupine Plant
+* source:	https://sketchfab.com/3d-models/lupine-plant-bf30f1110c174d4baedda0ed63778439
+* author:	rufusrockwell (https://sketchfab.com/rufusrockwell)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lupine Plant" (https://sketchfab.com/3d-models/lupine-plant-bf30f1110c174d4baedda0ed63778439) by rufusrockwell (https://sketchfab.com/rufusrockwell) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

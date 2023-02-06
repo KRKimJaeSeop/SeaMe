@@ -1,0 +1,11 @@
+Model Information:
+* title:	Japanese Theme Pack
+* source:	https://sketchfab.com/3d-models/japanese-theme-pack-7374193137af460e8161f15a9cd0a806
+* author:	lesliestowe (https://sketchfab.com/lesliestowe)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Japanese Theme Pack" (https://sketchfab.com/3d-models/japanese-theme-pack-7374193137af460e8161f15a9cd0a806) by lesliestowe (https://sketchfab.com/lesliestowe) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

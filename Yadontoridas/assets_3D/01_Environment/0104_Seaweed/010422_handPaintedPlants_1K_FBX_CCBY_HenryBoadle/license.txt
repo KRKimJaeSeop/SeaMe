@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hand Painted Plants
+* source:	https://sketchfab.com/3d-models/hand-painted-plants-326a1c733d4247b1b88fafa194d34dd0
+* author:	HenryBoadle (https://sketchfab.com/HenryBoadle)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hand Painted Plants" (https://sketchfab.com/3d-models/hand-painted-plants-326a1c733d4247b1b88fafa194d34dd0) by HenryBoadle (https://sketchfab.com/HenryBoadle) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
