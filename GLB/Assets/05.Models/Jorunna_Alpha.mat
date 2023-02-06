@@ -82,7 +82,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PrimaryShift: -0.01
-    - _RimPower: 1.81
+    - _RimPower: 1.3
     - _SecondaryShift: -0.28
     - _Shininess: 0.078125
     - _SmoothnessTextureChannel: 0
@@ -90,14 +90,14 @@ Material:
     - _SpecularMultiplier: 10
     - _SpecularMultiplier2: 10
     - _SrcBlend: 1
-    - _TintPower: 0.3
+    - _TintPower: 0.35
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0, g: 0.87080383, b: 1, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 0.2688679, g: 1, b: 0.85855746, a: 1}
     - _SpecularColor2: {r: 1, g: 1, b: 1, a: 1}
     - _TintColor: {r: 1, g: 0.21226418, b: 0.9022456, a: 1}
   m_BuildTextureStacks: []
