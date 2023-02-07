@@ -1,4 +1,4 @@
-Shader "SeaMe/SeaMe_MagneticField2Side_Shader"
+Shader "SeaMe/SeaMe_Water_Shader"
 {
     Properties
     {

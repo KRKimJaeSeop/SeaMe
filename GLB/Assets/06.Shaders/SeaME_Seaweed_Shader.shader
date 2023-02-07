@@ -1,4 +1,4 @@
-Shader "SeaMe/SeaMe_Standard_Shader"
+Shader "SeaMe/SeaME_Seaweed_Shader"
 {
     Properties
     {

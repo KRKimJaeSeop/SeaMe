@@ -1,15 +1,38 @@
-Shader "SeaMe/SeaME_Seaweed2Side_Shader"
+Shader "SeaMe/SeaMe_Standard_Shader"
 {
     Properties
     {
+        [Header(_____Albedo_____)]
         _Color ("Color", Color) = (1,1,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
+        _MainTex ("Albedo Map", 2D) = "white" {}
+        [Enum(UnityEngine.Rendering.CullMode)]_Cull("Cull Mode", Float) = 2
+
+        [Space(10)]
+        [Header(_____Normal_____)]
+        [Normal] _NormalMap("Normal Map", 2D) = "normal" {}
+        _NormalScale("Normal Scale", Range(0.0, 5.0)) = 1.0
+
+        [Space(10)]
+        [Header(_____Roughness_____)]
+        _SmoothnessMap("Smoothness Map", 2D) = "smoothness" {}
+        _SmoothnessScale ("Smoothness Scale", Range(0,1)) = 0.0
+
+        [Space(10)]
+        [Header(_____Metallic_____)]
+        _MetallicsMap("Metallic Map", 2D) = "metallic" {}
+        _MetallicScale ("Metallic Scale", Range(0,1)) = 0.0
+
+        [Space(10)]
+        [Header(_____Emission_____)]
+        _EmissionColor("Emission Color", Color) = (0,0,0)
+        _EmissionMap("Emission", 2D) = "white" {}
+        _EmissioScale ("Emission Scale", Range(0,1)) = 0.0
     }
+
     SubShader
     {
         Tags { "RenderType"="Opaque" }
+        Cull [_Cull]
         LOD 200
 
         CGPROGRAM
@@ -26,8 +49,8 @@ Shader "SeaMe/SeaME_Seaweed2Side_Shader"
             float2 uv_MainTex;
         };
 
-        half _Glossiness;
-        half _Metallic;
+        half _SmoothnessScale;
+        half _MetallicScale;
         fixed4 _Color;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -42,9 +65,10 @@ Shader "SeaMe/SeaME_Seaweed2Side_Shader"
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
+
             // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
+            o.Metallic = _MetallicScale;
+            o.Smoothness = _SmoothnessScale;
             o.Alpha = c.a;
         }
         ENDCG
