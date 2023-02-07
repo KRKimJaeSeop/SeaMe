@@ -2,52 +2,85 @@ Shader "SeaMe/SeaMe_Water_Shader"
 {
     Properties
     {
-        _Color ("Color", Color) = (1,1,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
+        [Header(_____Normal_____)]
+        [Normal] _NormalTex("Normal Map", 2D) = "normal" {}
+
+        [Space(10)]
+        [Header(_____Wave_____)]
+        _WaveSpeed("Wave Speed", Range(0,1)) = 0.05
+        _WavePower("Wave Power", Range(0,1)) = 0.2
+        _WaveTilling("Wave Tilling", Range(0,50)) = 25
+
+        [Space(10)]
+        [Header(_____Cube_____)]
+        _CubeTex("Cube Map", Cube) = ""{}
+
+        [Space(10)]
+        [Header(_____Specular_____)]
+        _SpecularScale("Specular Scale", Range(0,10)) = 2
     }
+
     SubShader
     {
         Tags { "RenderType"="Opaque" }
+        Cull [_Cull]
         LOD 200
 
-        CGPROGRAM
-        // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+        GrabPass{}
 
-        // Use shader model 3.0 target, to get nicer looking lighting
+        CGPROGRAM
+        #pragma surface surf _WLight vertex:vert noambient noshadow 
         #pragma target 3.0
 
-        sampler2D _MainTex;
+        sampler2D _NormalTex;
+        sampler2D _GrabTexture;
+        samplerCUBE _CubeTex;
+
+        float _WaveSpeed;
+        float _WavePower;
+        float _WaveTilling;
+        float _SpecularScale;
+        float dotData;
 
         struct Input
         {
-            float2 uv_MainTex;
+            float2 uv_NormalTex;
+            float4 screenPos;
+            float3 viewDir;
+            float3 worldRefl;
+            INTERNAL_DATA
         };
 
-        half _Glossiness;
-        half _Metallic;
-        fixed4 _Color;
-
-        // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
-        // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
-        // #pragma instancing_options assumeuniformscaling
-        UNITY_INSTANCING_BUFFER_START(Props)
-            // put more per-instance properties here
-        UNITY_INSTANCING_BUFFER_END(Props)
-
-        void surf (Input IN, inout SurfaceOutputStandard o)
+        void vert (inout appdata_full v)
         {
-            // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            o.Albedo = c.rgb;
-            // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
+            v.vertex.y = sin(abs(v.texcoord.x*2-1) * _WaveTilling + _Time.y) * _WavePower;
+        }
+
+        void surf (Input IN, inout SurfaceOutput o)
+        {
+            float4 n1 = tex2D(_NormalTex, IN.uv_NormalTex + float2(_Time.y * _WaveSpeed, 0));
+            float4 n2 = tex2D(_NormalTex, IN.uv_NormalTex - float2(_Time.y * _WaveSpeed, 0));
+            o.Normal = UnpackNormal((n1+n2) * 0.5);
+
+            float4 sky = texCUBE(_CubeTex, WorldReflectionVector(IN, o.Normal));
+            float4 reflection = tex2D(_GrabTexture, (IN.screenPos/IN.screenPos.a).xy + o.Normal.xy * 0.03);
+            dotData = pow(saturate(1 - dot(o.Normal, IN.viewDir)), 0.6);
+            
+            float3 water = lerp(reflection, sky, dotData).rgb;
+            o.Albedo = water;
+        }
+
+        float4 Lighting_WLight(SurfaceOutput s, float3 lightDir, float3 viewDir, float atten)
+        {
+            float3 refVec = s.Normal * dot(s.Normal, viewDir) * 2 - viewDir;
+            refVec = normalize(refVec);
+
+            float specular = lerp(0, pow(saturate(dot(refVec, lightDir)), 256), dotData) * _SpecularScale;
+
+            return float4(s.Albedo + specular.rrr, 1);
         }
         ENDCG
     }
     FallBack "Diffuse"
+    //FallBack "Mobile/VertexLit"
 }
