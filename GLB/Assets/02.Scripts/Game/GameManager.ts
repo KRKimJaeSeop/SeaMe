@@ -1,7 +1,6 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { CharacterState, SpawnInfo, ZepetoPlayer, ZepetoPlayers } from "ZEPETO.Character.Controller"
 import { Physics, GameObject, RaycastHit, Input, Camera, Debug, WaitForSeconds, Vector3, Ray, LayerMask, Color, Quaternion, HumanBodyBones } from 'UnityEngine';
-import MultiplayManager from '../MultiplaySync/Common/MultiplayManager';
 import { List$1 } from 'System.Collections.Generic';
 
 export default class GameManager extends ZepetoScriptBehaviour {

@@ -28,7 +28,7 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
         this.multiPlay.RoomJoined += (room: Room) => {
             room.OnStateChange += this.OnStateChange;
         }
-        this.StartCoroutine(this.TestRoutine());
+        //this.StartCoroutine(this.TestRoutine());
     }
 
     private OnStateChange(state: State, isFirst: boolean) {
@@ -77,25 +77,25 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
 
         //UnityEngine.GameObject.Instantiate(this.customCharacter);
     }
-    *TestRoutine() {
+    // *TestRoutine() {
 
-        yield new WaitForSeconds(3);
+    //     yield new WaitForSeconds(3);
 
-        // 로컬 캐릭터
-        let _character = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;
+    //     // 로컬 캐릭터
+    //     let _character = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;
 
-        // 본 위치
-        let tempTransform = _character.character.Context.transform;// ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.);
-        let tempVector = new Vector3(tempTransform.position.x, tempTransform.position.y, tempTransform.position.z);
+    //     // 본 위치
+    //     let tempTransform = _character.character.Context.transform;// ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.);
+    //     let tempVector = new Vector3(tempTransform.position.x, tempTransform.position.y, tempTransform.position.z);
 
-        // 캐릭터 off
-        _character.character.ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.Hips).gameObject.SetActive(false);
-        _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);
+    //     // 캐릭터 off
+    //     _character.character.ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.Hips).gameObject.SetActive(false);
+    //     _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);
 
-        // Instantiate한 프리팹
-        let _gameObject = UnityEngine.GameObject.Instantiate(this.customCharacter, tempTransform) as GameObject;
+    //     // Instantiate한 프리팹
+    //     let _gameObject = UnityEngine.GameObject.Instantiate(this.customCharacter, tempTransform) as GameObject;
 
-        _gameObject.transform.SetParent(tempTransform);
+    //     _gameObject.transform.SetParent(tempTransform);
 
-    }
+    // }
 }

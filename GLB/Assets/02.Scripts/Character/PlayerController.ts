@@ -1,21 +1,34 @@
 import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion } from 'UnityEngine';
+import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion, WaitUntil } from 'UnityEngine';
 import { ZepetoCamera, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
 import { Room } from 'ZEPETO.Multiplay';
 import CharacterSettingScript from '../Table/CharacterSettingScript';
+import MultiplayManager from '../../MultiplaySync/Common/MultiplayManager';
+import { ZepetoWorldMultiplay } from 'ZEPETO.World';
+import { StyleInt } from 'UnityEngine.UIElements';
 
 export default class PlayerController extends ZepetoScriptBehaviour {
 
     @SerializeField()
     private playerValue: ZepetoScriptableObject<CharacterSettingScript>;
-
     private Start() {
 
 
         Debug.Log("[Start]");
         this.StartCoroutine(this.ShootRay());
         this.StartCoroutine(this.CoRoutine());
-        
+        Debug.LogWarning("ㅎㅇ0");
+
+        // MultiplayManager.instance.multiplay.RoomCreated += (room: Room) => {
+        //     room.AddMessageHandler("clientOnRoomCreated", (message:string) => {
+        //         Debug.LogWarning("::RoomCreated");
+        //         Debug.LogWarning(message);
+        //     });
+        // };
+        MultiplayManager.instance.room.AddMessageHandler("ABCD", (message) => {
+            Debug.Log("::RoomJoined");
+            //Debug.LogWarning(message);
+        });
 
     }
     *CoRoutine() {
@@ -32,11 +45,15 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         // 캐릭터 off
         _character.character.ZepetoAnimator.GetBoneTransform(HumanBodyBones.Hips).gameObject.SetActive(false);
         _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);
+
         this.PlayerValueSetting();
+
+
     }
 
-    private PlayerValueSetting(){
-        ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().farClipPlane= this.playerValue["cameraDistance"];
+    private PlayerValueSetting() {
+
+        ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().farClipPlane = this.playerValue["cameraDistance"];
         ZepetoPlayers.instance.characterData.jumpPower = this.playerValue["playerJumpPower"];
         ZepetoPlayers.instance.characterData.runSpeed = this.playerValue["playerMoveSpeed"];
     }
@@ -54,7 +71,10 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
             if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                 let hitInfo = $unref(ref);
-                Debug.LogWarning(`Hit!${hitInfo.collider.gameObject.name}`);
+                //Debug.LogWarning(`Hit!${hitInfo.collider.gameObject.name}`);
+                MultiplayManager.instance.room.Send("testonJoin", "충돌!");
+               // MultiplayManager.instance.room.Send("testonCreate", "send");
+
             }
 
             Debug.DrawRay(

@@ -111,7 +111,6 @@ export default class MultiplayManager extends ZepetoScriptBehaviour {
             else if (message.ownerSessionId) {
                 tf.ChangeOwner(message.ownerSessionId);
             }
-            Debug.LogWarning(`여기여기${newObj}[두번째]`);
         });
 
 
@@ -134,7 +133,6 @@ export default class MultiplayManager extends ZepetoScriptBehaviour {
      @param ownerSessionId Inject owner into objects whose transform sync type is Undefine
      */
     public Instantiate (prefabName: string, ownerSessionId?: string, spawnPosition?: Vector3, spawnRotation?: Quaternion) {
-        Debug.LogWarning(`여기여기[Instantiate]`);
         const newObjId = MultiplayManager.instance.GetServerTime().toString();
 
         const data = new RoomData();
