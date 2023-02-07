@@ -168,9 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   script:
     keys:
-    - customCharacter
+    - multiplay
     unityValues:
-    - {fileID: 16893221959919596, guid: 1bfc0a2e908ffa746a29a4537bfa8b32, type: 3}
+    - {fileID: 0}
     values:
     - 
     unityArrayValues: []
@@ -2469,7 +2469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &43302056
 MonoBehaviour:
   m_ObjectHideFlags: 0

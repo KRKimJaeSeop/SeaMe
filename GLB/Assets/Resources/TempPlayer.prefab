@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-    keys: []
-    unityValues: []
-    values: []
+    keys:
+    - playerValue
+    unityValues:
+    - {fileID: 11400000, guid: 52834717fb968894880928bf39c259b1, type: 2}
+    values:
+    - 
     unityArrayValues: []
     arrayValues: []
     script: {fileID: 4458252877524076426, guid: 76662c00a54a107419bb7e9cdf860a03, type: 3}

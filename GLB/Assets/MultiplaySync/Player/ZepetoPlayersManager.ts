@@ -153,7 +153,9 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
             spawnInfo.rotation = this.transform.rotation;
             const isLocal = this.room.SessionId === player.sessionId;
             ZepetoPlayers.instance.CreatePlayerWithUserId(sessionId, player.zepetoUserId, spawnInfo, isLocal);
-            this.StartCoroutine(this.TestRoutine());
+           
+            MultiplayManager.instance.Instantiate("TempPlayer", "", Vector3.zero, Quaternion.identity);
+            // this.StartCoroutine(this.TestRoutine());
 
         }
     }
@@ -174,6 +176,8 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
         this.currentPlayers.delete(sessionId);
         ZepetoPlayers.instance.RemovePlayer(sessionId);
     }
+
+
 
 
 

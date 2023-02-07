@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 259ccfae4b9d0e34cacf3cf687085651
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nclass WorldSettingScript {\\r\\n}\\r\\nexports.default
+    = WorldSettingScript;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiV29ybGRTZXR0aW5nU2NyaXB0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiV29ybGRTZXR0aW5nU2NyaXB0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBRUEsTUFBcUIsa0JBQWtCO0NBVXRDO0FBVkQscUNBVUMifQ==\",\"assetPath\":\"Assets/02.Scripts/Table/WorldSettingScript.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"deadLineMoveSpeed\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"Game
+    Rule Settings\\\"\"]},{\"name\":\"Tooltip\",\"args\":[\"\\\"\uC790\uAE30\uC7A5
+    \uC774\uB3D9\uC18D\uB3C4 \\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"obstructionAmount\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"Game
+    Rule Settings\\\"\"]},{\"name\":\"Tooltip\",\"args\":[\"\\\"\uBC29\uD574\uBB3C
+    \uB4F1\uC7A5 \uBE44\uC728 \\\"\"]}]}],\"name\":\"WorldSettingScript\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 594523101bf6db9c087dd8a6c0f42759
+  onlyWriteTrigger: 0

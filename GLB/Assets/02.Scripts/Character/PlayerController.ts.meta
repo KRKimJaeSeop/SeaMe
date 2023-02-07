@@ -1,0 +1,53 @@
+fileFormatVersion: 2
+guid: 76662c00a54a107419bb7e9cdf860a03
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst ZEPETO_Character_Controller_1
+    = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nclass PlayerController extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start() {\\r\\n        UnityEngine_1.Debug.Log(\\\"[Start]\\\");\\r\\n       
+    this.StartCoroutine(this.ShootRay());\\r\\n        this.StartCoroutine(this.CoRoutine());\\r\\n   
+    }\\r\\n    *CoRoutine() {\\r\\n        yield new UnityEngine_1.WaitForSeconds(1);\\r\\n       
+    // \uB85C\uCEEC \uCE90\uB9AD\uD130\\r\\n        let _character = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;\\r\\n       
+    // \uBCF8 \uC704\uCE58\\r\\n        let tempTransform = _character.character.Context.transform;
+    // ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.);\\r\\n       
+    this.gameObject.transform.SetParent(tempTransform);\\r\\n        this.gameObject.transform.localPosition
+    = UnityEngine_1.Vector3.zero;\\r\\n        // \uCE90\uB9AD\uD130 off\\r\\n       
+    _character.character.ZepetoAnimator.GetBoneTransform(UnityEngine_1.HumanBodyBones.Hips).gameObject.SetActive(false);\\r\\n       
+    _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);\\r\\n       
+    this.PlayerValueSetting();\\r\\n    }\\r\\n    PlayerValueSetting() {\\r\\n       
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent($typeof(UnityEngine_1.Camera)).farClipPlane
+    = this.playerValue.get_Item(\\\"cameraDistance\\\");\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.characterData.jumpPower
+    = this.playerValue.get_Item(\\\"playerJumpPower\\\");\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.characterData.runSpeed
+    = this.playerValue.get_Item(\\\"playerMoveSpeed\\\");\\r\\n    }\\r\\n    *ShootRay()
+    {\\r\\n        UnityEngine_1.Debug.Log(\\\"[ShootRay]\\\");\\r\\n        // \uB808\uC774
+    \uC138\uD305\\r\\n        let ref = $ref();\\r\\n        let layerMask = 1 <<
+    UnityEngine_1.LayerMask.NameToLayer(\\\"test\\\");\\r\\n        while (true)
+    {\\r\\n            let ray = new UnityEngine_1.Ray(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);\\r\\n           
+    if (UnityEngine_1.Physics.Raycast(ray, ref, this.playerValue.get_Item(\\\"playerAttackDistance\\\"),
+    layerMask)) {\\r\\n                let hitInfo = $unref(ref);\\r\\n               
+    UnityEngine_1.Debug.LogWarning(`Hit!${hitInfo.collider.gameObject.name}`);\\r\\n           
+    }\\r\\n            UnityEngine_1.Debug.DrawRay(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward,
+    UnityEngine_1.Color.red, 0.05);\\r\\n            yield new UnityEngine_1.WaitForSeconds(0.05);\\r\\n       
+    }\\r\\n    }\\r\\n}\\r\\nexports.default = PlayerController;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGxheWVyQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBsYXllckNvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBNkU7QUFDN0UsNkNBQW9KO0FBQ3BKLDZFQUF3RjtBQUl4RixNQUFxQixnQkFBaUIsU0FBUSxxQ0FBcUI7SUFLdkQsS0FBSztRQUdULG1CQUFLLENBQUMsR0FBRyxDQUFDLFNBQVMsQ0FBQyxDQUFDO1FBQ3JCLElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLFFBQVEsRUFBRSxDQUFDLENBQUM7UUFDckMsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsU0FBUyxFQUFFLENBQUMsQ0FBQztJQUcxQyxDQUFDO0lBQ0QsQ0FBQyxTQUFTO1FBQ04sTUFBTSxJQUFJLDRCQUFjLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDNUIsU0FBUztRQUNULElBQUksVUFBVSxHQUFHLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUM7UUFFakUsT0FBTztRQUNQLElBQUksYUFBYSxHQUFHLFVBQVUsQ0FBQyxTQUFTLENBQUMsT0FBTyxDQUFDLFNBQVMsQ0FBQyxDQUFBLGdFQUFnRTtRQUUzSCxJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUMsYUFBYSxDQUFDLENBQUM7UUFDbkQsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsYUFBYSxHQUFHLHFCQUFPLENBQUMsSUFBSSxDQUFDO1FBRXZELFVBQVU7UUFDVixVQUFVLENBQUMsU0FBUyxDQUFDLGNBQWMsQ0FBQyxnQkFBZ0IsQ0FBQyw0QkFBYyxDQUFDLElBQUksQ0FBQyxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7UUFDdEcsVUFBVSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBQy9FLElBQUksQ0FBQyxrQkFBa0IsRUFBRSxDQUFDO0lBQzlCLENBQUM7SUFFTyxrQkFBa0I7UUFDdEIsMkNBQWEsQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLE1BQU0sQ0FBQyxTQUFTLENBQUMsWUFBWSxTQUFDLG9CQUFNLEdBQUksWUFBWSxHQUFFLElBQUksQ0FBQyxXQUFXLFVBQUMsZ0JBQWdCLENBQUMsQ0FBQztRQUM3SCwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxhQUFhLENBQUMsU0FBUyxHQUFHLElBQUksQ0FBQyxXQUFXLFVBQUMsaUJBQWlCLENBQUMsQ0FBQztRQUNyRiwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxhQUFhLENBQUMsUUFBUSxHQUFHLElBQUksQ0FBQyxXQUFXLFVBQUMsaUJBQWlCLENBQUMsQ0FBQztJQUN4RixDQUFDO0lBRUQsQ0FBQyxRQUFRO1FBQ0wsbUJBQUssQ0FBQyxHQUFHLENBQUMsWUFBWSxDQUFDLENBQUM7UUFDeEIsUUFBUTtRQUNSLElBQUksR0FBRyxHQUFHLElBQUksRUFBYyxDQUFDO1FBQzdCLElBQUksU0FBUyxHQUFHLENBQUMsSUFBSSx1QkFBUyxDQUFDLFdBQVcsQ0FBQyxNQUFNLENBQUMsQ0FBQztRQUNuRCxPQUFPLElBQUksRUFBRTtZQUVULElBQUksR0FBRyxHQUFRLElBQUksaUJBQUcsQ0FDbEIsMkNBQWEsQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLE1BQU0sQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUM3RCwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQztZQUVsRSxJQUFJLHFCQUFPLENBQUMsT0FBTyxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUUsSUFBSSxDQUFDLFdBQVcsVUFBQyxzQkFBc0IsR0FBRyxTQUFTLENBQUMsRUFBRTtnQkFDaEYsSUFBSSxPQUFPLEdBQUcsTUFBTSxDQUFDLEdBQUcsQ0FBQyxDQUFDO2dCQUMxQixtQkFBSyxDQUFDLFVBQVUsQ0FBQyxPQUFPLE9BQU8sQ0FBQyxRQUFRLENBQUMsVUFBVSxDQUFDLElBQUksRUFBRSxDQUFDLENBQUM7YUFDL0Q7WUFFRCxtQkFBSyxDQUFDLE9BQU8sQ0FDVCwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxRQUFRLEVBQzdELDJDQUFhLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUFDLE9BQU8sRUFDNUQsbUJBQUssQ0FBQyxHQUFHLEVBQUUsSUFBSSxDQUFDLENBQUM7WUFFckIsTUFBTSxJQUFJLDRCQUFjLENBQUMsSUFBSSxDQUFDLENBQUM7U0FDbEM7SUFHTCxDQUFDO0NBSUo7QUFsRUQsbUNBa0VDIn0=\",\"assetPath\":\"Assets/02.Scripts/Character/PlayerController.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"ZEPETO.Script\",\"name\":\"playerValue\",\"type\":\"ZEPETO.Script.ZepetoScriptableObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]}],\"name\":\"PlayerController\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: fe86d417d1039cc108f0fe17b8e9a3f1
+  onlyWriteTrigger: 0
