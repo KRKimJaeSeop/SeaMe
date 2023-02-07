@@ -10,6 +10,8 @@ Shader "SeaMe/SeaMe_Water_Shader"
         _WaveSpeed("Wave Speed", Range(0,1)) = 0.05
         _WavePower("Wave Power", Range(0,1)) = 0.2
         _WaveTilling("Wave Tilling", Range(0,50)) = 25
+        [Toggle]_ActiveWaveX ("Active Wave Movement X-axis", Range(0, 1)) = 0
+        [Toggle]_ActiveWaveY ("Active Wave Movement Y-axis", Range(0, 1)) = 0
 
         [Space(10)]
         [Header(_____Cube_____)]
@@ -17,7 +19,7 @@ Shader "SeaMe/SeaMe_Water_Shader"
 
         [Space(10)]
         [Header(_____Specular_____)]
-        _SpecularScale("Specular Scale", Range(0,10)) = 2
+        _SpecularScale("Specular Scale", Range(0,50)) = 2
     }
 
     SubShader
@@ -36,12 +38,6 @@ Shader "SeaMe/SeaMe_Water_Shader"
         sampler2D _GrabTexture;
         samplerCUBE _CubeTex;
 
-        float _WaveSpeed;
-        float _WavePower;
-        float _WaveTilling;
-        float _SpecularScale;
-        float dotData;
-
         struct Input
         {
             float2 uv_NormalTex;
@@ -51,9 +47,28 @@ Shader "SeaMe/SeaMe_Water_Shader"
             INTERNAL_DATA
         };
 
+        float _WaveSpeed;
+        float _WavePower;
+        float _WaveTilling;
+        float _SpecularScale;
+        float dotData;
+        bool _ActiveWaveX;
+        bool _ActiveWaveY;
+
         void vert (inout appdata_full v)
         {
-            v.vertex.y = sin(abs(v.texcoord.x*2-1) * _WaveTilling + _Time.y) * _WavePower;
+            if(_ActiveWaveX && _ActiveWaveY)
+            {
+                v.vertex.y += (sin(abs(v.texcoord.x*2-1)*_WaveTilling+_Time.y) + sin(abs(v.texcoord.y*2-1)*_WaveTilling+_Time.y)) * _WavePower;
+            }
+            else if(_ActiveWaveX)
+            {
+                v.vertex.y += sin(abs(v.texcoord.x*2-1)*_WaveTilling+_Time.y) * _WavePower;
+            }
+            else if(_ActiveWaveY)
+            {
+                v.vertex.y += sin(abs(v.texcoord.y*2-1)*_WaveTilling+_Time.y) * _WavePower;
+            }
         }
 
         void surf (Input IN, inout SurfaceOutput o)

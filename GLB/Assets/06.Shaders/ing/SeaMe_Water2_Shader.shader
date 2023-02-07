@@ -11,7 +11,11 @@ Shader "SeaMe/SeaMe_Water2_Shader"
         _WaveSpeed("Wave Speed", Range(0,1)) = 0.05
         _WavePower("Wave Power", Range(0,1)) = 0.2
         _WaveTilling("Wave Tilling", Range(0,50)) = 10
+        [Toggle]_ActiveWaveX ("Active Wave Movement X-axis", Range(0, 1)) = 0
+        [Toggle]_ActiveWaveY ("Active Wave Movement Y-axis", Range(0, 1)) = 0
 
+        [Space(10)]
+        [Header(_____Cull_____)]
         [Space(10)]
         [Enum(UnityEngine.Rendering.CullMode)]_Cull("Cull Mode", Float) = 2
     }
@@ -20,6 +24,7 @@ Shader "SeaMe/SeaMe_Water2_Shader"
     {
         Tags { "RenderType"="Opaque" }
         Cull [_Cull]
+        LOD 200
  
         GrabPass{}        
  
@@ -30,10 +35,6 @@ Shader "SeaMe/SeaMe_Water2_Shader"
         sampler2D _NormalTex;
         sampler2D _DistortionTex;
         sampler2D _GrabTexture;
-        
-        float _WaveSpeed;
-        float _WavePower;
-        float _WaveTilling;
 
         struct Input
         {
@@ -45,9 +46,26 @@ Shader "SeaMe/SeaMe_Water2_Shader"
             INTERNAL_DATA
         };
 
+        float _WaveSpeed;
+        float _WavePower;
+        float _WaveTilling;
+        bool _ActiveWaveX;
+        bool _ActiveWaveY;
+
         void vert(inout appdata_full v)
         {
-            v.vertex.y += sin((abs(v.texcoord.x*2-1)*_WaveTilling) + _Time.y) * _WavePower + sin((abs(v.texcoord.y*2-1)*_WaveTilling) + _Time.y) * _WavePower;
+            if(_ActiveWaveX && _ActiveWaveY)
+            {
+                v.vertex.y += (sin(abs(v.texcoord.x*2-1)*_WaveTilling+_Time.y) + sin(abs(v.texcoord.y*2-1)*_WaveTilling+_Time.y)) * _WavePower;
+            }
+            else if(_ActiveWaveX)
+            {
+                v.vertex.y += sin(abs(v.texcoord.x*2-1)*_WaveTilling+_Time.y) * _WavePower;
+            }
+            else if(_ActiveWaveY)
+            {
+                v.vertex.y += sin(abs(v.texcoord.y*2-1)*_WaveTilling+_Time.y) * _WavePower;
+            }
         }
  
         void surf (Input IN, inout SurfaceOutput o)
