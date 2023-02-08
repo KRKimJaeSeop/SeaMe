@@ -5,9 +5,6 @@ import { List$1 } from 'System.Collections.Generic';
 
 export default class GameManager extends ZepetoScriptBehaviour {
 
-    public multiplay: GameManager;
-
-
     /* Singleton */
     private static m_instance: GameManager = null;
     public static get instance(): GameManager {

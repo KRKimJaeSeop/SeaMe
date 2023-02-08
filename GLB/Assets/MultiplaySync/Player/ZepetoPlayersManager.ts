@@ -1,12 +1,14 @@
-import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
+import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { WorldService, ZepetoWorldMultiplay, Content, OfficialContentType, ZepetoWorldContent } from "ZEPETO.World";
 import { Room, RoomData } from "ZEPETO.Multiplay";
 import { SpawnInfo, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
 import { State, Player } from "ZEPETO.Multiplay.Schema";
-import { GameObject, Object, Quaternion, Vector3, HumanBodyBones, WaitForSeconds, Debug } from "UnityEngine";
+import { GameObject, Object, Quaternion, Vector3, HumanBodyBones, WaitForSeconds, Debug, LayerMask } from "UnityEngine";
 import PlayerSync from './PlayerSync';
 import TransformSyncHelper, { PositionExtrapolationType, PositionInterpolationType } from '../Transform/TransformSyncHelper';
 import MultiplayManager from '../Common/MultiplayManager';
+import PlayerController from '../../02.Scripts/Character/PlayerController';
+import CharacterSettingScript from '../../02.Scripts/Table/CharacterSettingScript';
 
 export enum ZepetoPlayerSpawnType {
     NoneSpawn,//Do not create players
@@ -28,6 +30,8 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
     @Header("Gesture Sync")
     public readonly GetAnimationClipFromResources: boolean = true; // You can synchronize gestures within a resource folder.
     public readonly UseZepetoGestureAPI: boolean = false; // Synchronize the Zepeto World Gesture API animation.
+    @SerializeField()
+    private playerValue: ZepetoScriptableObject<CharacterSettingScript>;
 
     private multiplay: ZepetoWorldMultiplay;
     private room: Room;
@@ -100,6 +104,24 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
 
         // [RoomState] Remove the player instance for players that exit the room
         leave.forEach((player: Player, sessionId: string) => this.OnLeavePlayer(sessionId, player));
+
+        // 스폰시 플레이어 세팅.
+        if(isFirst){
+            ZepetoPlayers.instance.OnAddedPlayer.AddListener((sessionId: string) => {
+                const isLocal = this.room.SessionId === sessionId;
+              
+                const nowJoinPlayer = ZepetoPlayers.instance.GetPlayer(sessionId).character;
+                nowJoinPlayer.tag = "Player";
+                nowJoinPlayer.name = sessionId;
+                let zepetoGameCharacter = nowJoinPlayer.transform.gameObject.AddComponent<PlayerController>();
+                zepetoGameCharacter.userID = this.currentPlayers.get(sessionId).zepetoUserId;
+                zepetoGameCharacter.sessionID = sessionId;
+                zepetoGameCharacter.playerValue = this.playerValue;
+                zepetoGameCharacter.gameObject.layer = LayerMask.NameToLayer("Player");
+                zepetoGameCharacter.SetCharacter();
+            });
+        }
+       
     }
 
     private AddPlayerSync(sessionId: string) {
@@ -153,23 +175,8 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
             spawnInfo.rotation = this.transform.rotation;
             const isLocal = this.room.SessionId === player.sessionId;
             ZepetoPlayers.instance.CreatePlayerWithUserId(sessionId, player.zepetoUserId, spawnInfo, isLocal);
-           
-            MultiplayManager.instance.Instantiate("TempPlayer", "", Vector3.zero, Quaternion.identity);
-            // this.StartCoroutine(this.TestRoutine());
 
         }
-    }
-    *TestRoutine() {
-
-        //if (ZepetoPlayers.instance.GetPlayer(MultiplayManager.instance.room.SessionId).isLocalPlayer) 
-        {
-
-            yield new WaitForSeconds(1);
-
-            // Instantiate한 프리팹        
-            MultiplayManager.instance.Instantiate("TempPlayer", "", Vector3.zero, Quaternion.identity);
-        }
-
     }
 
     private OnLeavePlayer(sessionId: string, player: Player) {

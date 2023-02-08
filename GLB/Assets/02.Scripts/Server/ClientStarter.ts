@@ -4,7 +4,8 @@ import { ZepetoScriptBehaviour } from 'ZEPETO.Script';
 import { ZepetoWorldMultiplay } from 'ZEPETO.World';
 import { CharacterState, SpawnInfo, ZepetoPlayer, ZepetoPlayers } from "ZEPETO.Character.Controller"
 import * as UnityEngine from "UnityEngine";
-import { Vector3, GameObject, Transform, WaitForSeconds } from 'UnityEngine';
+import { Vector3, GameObject, Transform,Debug, WaitForSeconds } from 'UnityEngine';
+import PlayerController from "../Character/PlayerController";
 
 
 export default class ClientStarter extends ZepetoScriptBehaviour {
@@ -18,8 +19,6 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
     private currentPlayers: Map<string, Player> = new Map<string, Player>();
 
 
-
-
     Start() {
         this.multiPlay.RoomCreated += (room: Room) => {
             this.room = room;
@@ -28,7 +27,6 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
         this.multiPlay.RoomJoined += (room: Room) => {
             room.OnStateChange += this.OnStateChange;
         }
-        //this.StartCoroutine(this.TestRoutine());
     }
 
     private OnStateChange(state: State, isFirst: boolean) {
@@ -39,6 +37,17 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
                 myPlayer.character.OnChangedState.AddListener((cur, pev) => {
                     this.SendState(cur);
                 });
+            });
+
+            ZepetoPlayers.instance.OnAddedPlayer.AddListener((sessionId: string)=>{
+                const isLocal = this.room.SessionId === sessionId;
+              
+                const nowJoinPlayer = ZepetoPlayers.instance.GetPlayer(sessionId).character;
+                nowJoinPlayer.tag = "Player";
+                nowJoinPlayer.name = sessionId;
+              //  let zepetoGameCharacter = nowJoinPlayer.transform.gameObject.AddComponent<PlayerController>();
+               // zepetoGameCharacter.userID = this.currentPlayers.get(sessionId).zepetoUserId;
+                //zepetoGameCharacter.sessionID = sessionId;
             });
         }
 
@@ -74,28 +83,7 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
 
         const isLocal = this.room.SessionId === player.sessionId;
         ZepetoPlayers.instance.CreatePlayerWithUserId(sessionId, player.zepetoUserId, spawnInfo, isLocal);
-
-        //UnityEngine.GameObject.Instantiate(this.customCharacter);
+        const nowJoinPlayer = ZepetoPlayers.instance.GetPlayer(sessionId).character;
+        nowJoinPlayer.gameObject.AddComponent<PlayerController>();
     }
-    // *TestRoutine() {
-
-    //     yield new WaitForSeconds(3);
-
-    //     // 로컬 캐릭터
-    //     let _character = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;
-
-    //     // 본 위치
-    //     let tempTransform = _character.character.Context.transform;// ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.);
-    //     let tempVector = new Vector3(tempTransform.position.x, tempTransform.position.y, tempTransform.position.z);
-
-    //     // 캐릭터 off
-    //     _character.character.ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.Hips).gameObject.SetActive(false);
-    //     _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);
-
-    //     // Instantiate한 프리팹
-    //     let _gameObject = UnityEngine.GameObject.Instantiate(this.customCharacter, tempTransform) as GameObject;
-
-    //     _gameObject.transform.SetParent(tempTransform);
-
-    // }
 }

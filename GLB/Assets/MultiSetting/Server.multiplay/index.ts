@@ -8,8 +8,6 @@ export default class extends Sandbox {
 
     onCreate(options: SandboxOptions) {
 
-
-
         /**Zepeto Player Sync**/
         this.onMessage(MESSAGE.SyncPlayer, (client, message) => {
          
@@ -177,13 +175,6 @@ export default class extends Sandbox {
     }
 
     onJoin(client: SandboxPlayer) {
-      
-        this.onMessage(JS_Message.KILL, (clients, message) => {
-            console.log(`gameover`);
-            this.broadcast(JS_Message.GAMEOVER,`게임오버입니다..`);
-            //console.log(`log::onJoin ${message}`);
-        });
-
         const player = new Player();
         player.sessionId = client.sessionId;
         if (client.hashCode) {
@@ -198,6 +189,14 @@ export default class extends Sandbox {
             this.sessionIdQueue.push(client.sessionId.toString());
         }
         console.log(`join player, ${client.sessionId}`);
+
+        this.broadcast(JS_Message.GAMESTART,`게임시작`);
+
+        //게임 입장시, 게임오버 메세지받을 준비.
+        this.onMessage(JS_Message.KILL, (clients, message) => {
+            console.log(`gameover`);
+            this.broadcast(JS_Message.GAMEOVER,`게임오버입니다..`);
+        });
     }
 
     onLeave(client: SandboxPlayer, consented?: boolean) {
@@ -231,6 +230,8 @@ interface InstantiateObj {
     spawnPosition?: sVector3;
     spawnRotation?: sQuaternion;
 }
+
+
 
 /** racing game **/
 interface GameReport {
@@ -270,6 +271,7 @@ enum MESSAGE {
 
 
 enum JS_Message {
+    GAMESTART = "GameStart",
     GAMEOVER = "GameOver",
     KILL = "Kill",
     HIT = "Hit",
