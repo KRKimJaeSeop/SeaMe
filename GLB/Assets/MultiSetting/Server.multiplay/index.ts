@@ -8,10 +8,6 @@ export default class extends Sandbox {
 
     onCreate(options: SandboxOptions) {
 
-        this.onMessage("testonCreate", (client:SandboxPlayer, message:string) => {
-            console.log(`log::onCreate ${message}`);
-            this.broadcast("clientOnRoomCreated","onCreate")
-        });
 
 
         /**Zepeto Player Sync**/
@@ -182,8 +178,9 @@ export default class extends Sandbox {
 
     onJoin(client: SandboxPlayer) {
       
-        this.onMessage("testonJoin", (clients, message) => {
-            this.broadcast("ABCD",`ABC`);
+        this.onMessage(JS_Message.KILL, (clients, message) => {
+            console.log(`gameover`);
+            this.broadcast(JS_Message.GAMEOVER,`게임오버입니다..`);
             //console.log(`log::onJoin ${message}`);
         });
 
@@ -269,5 +266,13 @@ enum MESSAGE {
     FirstPlayerGetIn = "FirstPlayerGetIn",
     CountDownStart = "CountDownStart",
     ResponseGameReport = "ResponseGameReport"
+}
+
+
+enum JS_Message {
+    GAMEOVER = "GameOver",
+    KILL = "Kill",
+    HIT = "Hit",
+    DAMAGED = "Damaged",
 }
 

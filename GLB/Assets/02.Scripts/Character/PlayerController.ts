@@ -16,16 +16,15 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     // 내가 공격중이라면 true
     public isAttacking: bool = false;
     public AttackCoroutine: Coroutine = null;
-    public ownID: string;
-
 
 
     private Start() {
         this.StartCoroutine(this.ShootRay());
         this.StartCoroutine(this.CoRoutine());
-        //  MultiplayManager.instance.room.Send("testonJoin", "충돌!");
-        MultiplayManager.instance.room.AddMessageHandler("ABCD", (message) => {
-            Debug.Log("::RoomJoined");
+
+        MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
+            Debug.Log(message);
+            //this.GameOver();
         });
 
     }
@@ -37,7 +36,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         let _character = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;
 
         // 본 위치
-        let tempTransform = _character.character.Context.transform;// ZepetoAnimator.GetBoneTransform(UnityEngine.HumanBodyBones.);
+        let tempTransform = _character.character.Context.transform;
 
         this.gameObject.transform.SetParent(tempTransform);
         this.gameObject.transform.localPosition = Vector3.zero;
@@ -48,17 +47,16 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
         this.PlayerValueSetting();
 
-
     }
 
     //게임 입장시 플레이어의 수치를 조정한다.
     private PlayerValueSetting() {
-
         ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().farClipPlane = this.playerValue["cameraDistance"];
         ZepetoPlayers.instance.characterData.jumpPower = this.playerValue["playerJumpPower"];
         ZepetoPlayers.instance.characterData.runSpeed = this.playerValue["playerMoveSpeed"];
     }
 
+    //항상 카메라가 바라보는 방향으로 Ray를 발사한다.
     *ShootRay() {
         Debug.Log("[ShootRay]");
         // 레이 세팅
@@ -92,6 +90,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
 
     }
+
+    //공격
     *Attack() {
         for (let index = 0; index < this.playerValue["playerAttackTime"]; index++) {
             Debug.Log(index);
@@ -99,7 +99,14 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
         this.StopCoroutine(this.AttackCoroutine);
         this.AttackCoroutine = null;
+        // 상대방 게임오버를 서버로 전달한다.
+        MultiplayManager.instance.room.Send("Kill", "충돌!");
         Debug.Log("Attack::KILL");
+    }
+
+    //게임오버
+    public GameOver() {
+        this.gameObject.SetActive(false);
     }
 
 
