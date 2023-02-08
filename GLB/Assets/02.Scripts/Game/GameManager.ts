@@ -26,7 +26,6 @@ export default class GameManager extends ZepetoScriptBehaviour {
             GameManager.m_instance = this;
             GameObject.DontDestroyOnLoad(this.gameObject);
         }
-        Debug.Log(`[AwakeAwakeAwakeAwake]`);
     }
  
 

@@ -20,11 +20,12 @@ ScriptedImporter:
   wrapperOutputDirectory: Generated
   compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
     \\\"__esModule\\\", { value: true });\\r\\nclass CharacterSettingScript {\\r\\n}\\r\\nexports.default
-    = CharacterSettingScript;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcmFjdGVyU2V0dGluZ1NjcmlwdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNoYXJhY3RlclNldHRpbmdTY3JpcHQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFFQSxNQUFxQixzQkFBc0I7Q0FZekM7QUFaRix5Q0FZRSJ9\",\"assetPath\":\"Assets/02.Scripts/Table/CharacterSettingScript.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"cameraDistance\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"Character
+    = CharacterSettingScript;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcmFjdGVyU2V0dGluZ1NjcmlwdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNoYXJhY3RlclNldHRpbmdTY3JpcHQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFFQSxNQUFxQixzQkFBc0I7Q0FjekM7QUFkRix5Q0FjRSJ9\",\"assetPath\":\"Assets/02.Scripts/Table/CharacterSettingScript.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"cameraDistance\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"Character
     Settings\\\"\"]},{\"name\":\"Tooltip\",\"args\":[\"\\\"\uAC8C\uC784 \uC9C4\uC785
     \uC2DC \uCE74\uBA54\uB77C \uC2DC\uC57C \uCD5C\uB300 \uAC70\uB9AC \\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"playerMoveSpeed\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Tooltip\",\"args\":[\"\\\"\uD50C\uB808\uC774\uC5B4
     \uC774\uB3D9\uC18D\uB3C4 \\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"playerJumpPower\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Tooltip\",\"args\":[\"\\\"\uD50C\uB808\uC774\uC5B4
     \uC810\uD504 \uB192\uC774 \\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"playerAttackDistance\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Tooltip\",\"args\":[\"\\\"\uD50C\uB808\uC774\uC5B4
-    \uACF5\uACA9 \uC0AC\uAC70\uB9AC \\\"\"]}]}],\"name\":\"CharacterSettingScript\",\"description\":\"\"},\"isCompiled\":true}"
-  typescriptHash: 5af538e37321e0b22ec7a3698d998fe7
+    \uACF5\uACA9 \uC0AC\uAC70\uB9AC \\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"playerAttackTime\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Tooltip\",\"args\":[\"\\\"\uD50C\uB808\uC774\uC5B4
+    \uACF5\uACA9 \uC18C\uC694 \uC2DC\uAC04 \\\"\"]}]}],\"name\":\"CharacterSettingScript\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: b1f9e085ff649a72025cd013ef1f1e55
   onlyWriteTrigger: 0

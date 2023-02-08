@@ -11,5 +11,7 @@ export default class CharacterSettingScript {
     public playerJumpPower: number;      
     @Tooltip("플레이어 공격 사거리 ")
     public playerAttackDistance: number;      
+    @Tooltip("플레이어 공격 소요 시간 ")
+    public playerAttackTime: number;    
 
  }

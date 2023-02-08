@@ -17,15 +17,18 @@ MonoBehaviour:
   - cameraDistance
   - playerAttackDistance
   - playerJumpPower
+  - playerAttackTime
   unityValues:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   values:
   - '{"type":"System.Single, mscorlib","value":"3.5"}'
+  - '{"type":"System.Single, mscorlib","value":"50"}'
+  - '{"type":"System.Single, mscorlib","value":"10"}'
   - '{"type":"System.Single, mscorlib","value":"5"}'
-  - '{"type":"System.Single, mscorlib","value":"3"}'
   - '{"type":"System.Single, mscorlib","value":"5"}'
   unityArrayValues: []
   arrayValues: []

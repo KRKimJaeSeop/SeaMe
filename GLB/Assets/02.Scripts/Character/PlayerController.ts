@@ -1,5 +1,5 @@
 import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion, WaitUntil } from 'UnityEngine';
+import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Coroutine, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion, WaitUntil, Collider } from 'UnityEngine';
 import { ZepetoCamera, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
 import { Room } from 'ZEPETO.Multiplay';
 import CharacterSettingScript from '../Table/CharacterSettingScript';
@@ -9,28 +9,28 @@ import { StyleInt } from 'UnityEngine.UIElements';
 
 export default class PlayerController extends ZepetoScriptBehaviour {
 
+    // 스크립터블 오브젝트
     @SerializeField()
     private playerValue: ZepetoScriptableObject<CharacterSettingScript>;
+
+    // 내가 공격중이라면 true
+    public isAttacking: bool = false;
+    public AttackCoroutine: Coroutine = null;
+    public ownID: string;
+
+
+
     private Start() {
-
-
-        Debug.Log("[Start]");
         this.StartCoroutine(this.ShootRay());
         this.StartCoroutine(this.CoRoutine());
-        Debug.LogWarning("ㅎㅇ0");
-
-        // MultiplayManager.instance.multiplay.RoomCreated += (room: Room) => {
-        //     room.AddMessageHandler("clientOnRoomCreated", (message:string) => {
-        //         Debug.LogWarning("::RoomCreated");
-        //         Debug.LogWarning(message);
-        //     });
-        // };
+        //  MultiplayManager.instance.room.Send("testonJoin", "충돌!");
         MultiplayManager.instance.room.AddMessageHandler("ABCD", (message) => {
             Debug.Log("::RoomJoined");
-            //Debug.LogWarning(message);
         });
 
     }
+
+    // 룸입장 1초 후 캐릭터 변경.
     *CoRoutine() {
         yield new WaitForSeconds(1);
         // 로컬 캐릭터
@@ -51,6 +51,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     }
 
+    //게임 입장시 플레이어의 수치를 조정한다.
     private PlayerValueSetting() {
 
         ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().farClipPlane = this.playerValue["cameraDistance"];
@@ -62,32 +63,44 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         Debug.Log("[ShootRay]");
         // 레이 세팅
         let ref = $ref<RaycastHit>();
-        let layerMask = 1 << LayerMask.NameToLayer("test");
-        while (true) {
+        let layerMask = 1 << LayerMask.NameToLayer("Player");
 
+        //부딫힌게 나 자신인지 체크해야함.
+        while (true) {
             let ray: Ray = new Ray(
                 ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
                 ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);
 
+            //OnEnter
             if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                 let hitInfo = $unref(ref);
-                //Debug.LogWarning(`Hit!${hitInfo.collider.gameObject.name}`);
-                MultiplayManager.instance.room.Send("testonJoin", "충돌!");
-               // MultiplayManager.instance.room.Send("testonCreate", "send");
+                if (hitInfo.collider.gameObject.GetInstanceID() != this.gameObject.GetInstanceID()) {
 
+                    //이미 돌아가고있다면 중복호출X
+                    if (this.AttackCoroutine == null) {
+                        this.AttackCoroutine = this.StartCoroutine(this.Attack());
+                    }
+                }
             }
-
-            Debug.DrawRay(
-                ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
-                ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward,
-                Color.red, 0.05);
-
+            //OnExit
+            else if (this.AttackCoroutine != null) {
+                Debug.Log("Attack::Escape");
+                this.StopCoroutine(this.AttackCoroutine);
+                this.AttackCoroutine = null;
+            }
             yield new WaitForSeconds(0.05);
         }
 
-
     }
-
+    *Attack() {
+        for (let index = 0; index < this.playerValue["playerAttackTime"]; index++) {
+            Debug.Log(index);
+            yield new WaitForSeconds(1);
+        }
+        this.StopCoroutine(this.AttackCoroutine);
+        this.AttackCoroutine = null;
+        Debug.Log("Attack::KILL");
+    }
 
 
 }
