@@ -1,9 +1,14 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { CharacterState, SpawnInfo, ZepetoPlayer, ZepetoPlayers } from "ZEPETO.Character.Controller"
 import { Physics, GameObject, RaycastHit, Input, Camera, Debug, WaitForSeconds, Vector3, Ray, LayerMask, Color, Quaternion, HumanBodyBones } from 'UnityEngine';
+import { RawImage, Text } from "UnityEngine.UI";
 import { List$1 } from 'System.Collections.Generic';
 
 export default class GameManager extends ZepetoScriptBehaviour {
+
+    @SerializeField()
+    private testText: Text
+
 
     /* Singleton */
     private static m_instance: GameManager = null;
@@ -24,6 +29,10 @@ export default class GameManager extends ZepetoScriptBehaviour {
             GameObject.DontDestroyOnLoad(this.gameObject);
         }
     }
- 
+
+    public SetTestText(setText: string) {
+        this.testText.text = setText;
+    }
+
 
 }

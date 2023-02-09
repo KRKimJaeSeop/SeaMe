@@ -5,10 +5,11 @@ import { SpawnInfo, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Control
 import { State, Player } from "ZEPETO.Multiplay.Schema";
 import { GameObject, Object, Quaternion, Vector3, HumanBodyBones, WaitForSeconds, Debug, LayerMask } from "UnityEngine";
 import PlayerSync from './PlayerSync';
-import TransformSyncHelper, { PositionExtrapolationType, PositionInterpolationType } from '../Transform/TransformSyncHelper';
+import TransformSyncHelper, { PositionExtrapolationType, PositionInterpolationType, UpdateOwner } from '../Transform/TransformSyncHelper';
 import MultiplayManager from '../Common/MultiplayManager';
 import PlayerController from '../../02.Scripts/Character/PlayerController';
 import CharacterSettingScript from '../../02.Scripts/Table/CharacterSettingScript';
+import { UpdateMasterServerInterface } from 'UnityEngine.PlayerLoop.PreLateUpdate';
 
 export enum ZepetoPlayerSpawnType {
     NoneSpawn,//Do not create players
@@ -117,8 +118,8 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
                 zepetoGameCharacter.userID = this.currentPlayers.get(sessionId).zepetoUserId;
                 zepetoGameCharacter.sessionID = sessionId;
                 zepetoGameCharacter.playerValue = this.playerValue;
-                zepetoGameCharacter.gameObject.layer = LayerMask.NameToLayer("Player");
                 zepetoGameCharacter.SetCharacter();
+
             });
         }
        

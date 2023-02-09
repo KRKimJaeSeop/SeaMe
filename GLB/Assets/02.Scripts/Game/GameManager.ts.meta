@@ -18,8 +18,15 @@ ScriptedImporter:
   wrapperTypes: []
   WrapperFilters: []
   wrapperOutputDirectory: Generated
-  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
-    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+  compiledResult: '{"source":"\"use strict\";\r\nvar __decorate = (this && this.__decorate)
+    || function (decorators, target, key, desc) {\r\n    var c = arguments.length,
+    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target,
+    key) : desc, d;\r\n    if (typeof Reflect === \"object\" && typeof Reflect.decorate
+    === \"function\") r = Reflect.decorate(decorators, target, key, desc);\r\n   
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i])
+    r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;\r\n   
+    return c > 3 && r && Object.defineProperty(target, key, r), r;\r\n};\r\nObject.defineProperty(exports,
+    \"__esModule\", { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
     UnityEngine_1 = require(\"UnityEngine\");\r\nclass GameManager extends ZEPETO_Script_1.ZepetoScriptBehaviour
     {\r\n    static get instance() {\r\n        if (this.m_instance === null) {\r\n           
     this.m_instance = UnityEngine_1.GameObject.FindObjectOfType($typeof(GameManager));\r\n           
@@ -28,7 +35,9 @@ ScriptedImporter:
     if (GameManager.m_instance !== null && GameManager.m_instance !== this) {\r\n           
     UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n        }\r\n        else
     {\r\n            GameManager.m_instance = this;\r\n            UnityEngine_1.GameObject.DontDestroyOnLoad(this.gameObject);\r\n       
-    }\r\n    }\r\n}\r\nexports.default = GameManager;\r\n/* Singleton */\r\nGameManager.m_instance
-    = null;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUVyRCw2Q0FBZ0s7QUFHaEssTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQUluRCxNQUFNLEtBQUssUUFBUTtRQUN0QixJQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO1lBQzFCLElBQUksQ0FBQyxVQUFVLEdBQUcsd0JBQVUsQ0FBQyxnQkFBZ0IsU0FBQyxXQUFXLEVBQUcsQ0FBQztZQUM3RCxJQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO2dCQUMxQixJQUFJLENBQUMsVUFBVSxHQUFHLElBQUksd0JBQVUsQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLENBQUMsWUFBWSxTQUFDLFdBQVcsRUFBRyxDQUFDO2FBQ2xGO1NBQ0o7UUFDRCxPQUFPLElBQUksQ0FBQyxVQUFVLENBQUM7SUFDM0IsQ0FBQztJQUNPLEtBQUs7UUFDVCxJQUFJLFdBQVcsQ0FBQyxVQUFVLEtBQUssSUFBSSxJQUFJLFdBQVcsQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO1lBQ3BFLHdCQUFVLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQztTQUN2QzthQUFNO1lBQ0gsV0FBVyxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUM7WUFDOUIsd0JBQVUsQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7U0FDakQ7SUFDTCxDQUFDOztBQXBCTCw4QkF1QkM7QUFyQkcsZUFBZTtBQUNBLHNCQUFVLEdBQWdCLElBQUksQ0FBQyJ9","assetPath":"Assets/02.Scripts/Game/GameManager.ts","manifest":{"properties":[],"name":"GameManager","description":""},"isCompiled":true}'
-  typescriptHash: 6d9af8de036028fae65162b2e676db14
+    }\r\n    }\r\n    SetTestText(setText) {\r\n        this.testText.text = setText;\r\n   
+    }\r\n}\r\n/* Singleton */\r\nGameManager.m_instance = null;\r\n__decorate([],
+    GameManager.prototype, \"testText\", void 0);\r\nexports.default = GameManager;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7OztBQUFBLGlEQUFxRDtBQUVyRCw2Q0FBZ0s7QUFJaEssTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQVFuRCxNQUFNLEtBQUssUUFBUTtRQUN0QixJQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO1lBQzFCLElBQUksQ0FBQyxVQUFVLEdBQUcsd0JBQVUsQ0FBQyxnQkFBZ0IsU0FBQyxXQUFXLEVBQUcsQ0FBQztZQUM3RCxJQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO2dCQUMxQixJQUFJLENBQUMsVUFBVSxHQUFHLElBQUksd0JBQVUsQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLENBQUMsWUFBWSxTQUFDLFdBQVcsRUFBRyxDQUFDO2FBQ2xGO1NBQ0o7UUFDRCxPQUFPLElBQUksQ0FBQyxVQUFVLENBQUM7SUFDM0IsQ0FBQztJQUNPLEtBQUs7UUFDVCxJQUFJLFdBQVcsQ0FBQyxVQUFVLEtBQUssSUFBSSxJQUFJLFdBQVcsQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO1lBQ3BFLHdCQUFVLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQztTQUN2QzthQUFNO1lBQ0gsV0FBVyxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUM7WUFDOUIsd0JBQVUsQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7U0FDakQ7SUFDTCxDQUFDO0lBRU0sV0FBVyxDQUFDLE9BQWU7UUFDOUIsSUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLEdBQUcsT0FBTyxDQUFDO0lBQ2pDLENBQUM7O0FBdEJELGVBQWU7QUFDQSxzQkFBVSxHQUFnQixJQUFJLENBQUM7QUFKOUMseURBQXNCO0FBSDFCLDhCQStCQyJ9","assetPath":"Assets/02.Scripts/Game/GameManager.ts","manifest":{"properties":[{"assembly":"UnityEngine.UI","name":"testText","type":"UnityEngine.UI.Text","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"SerializeField","args":[]}]}],"name":"GameManager","description":""},"isCompiled":true}'
+  typescriptHash: f8e5be0c88702b6a277f586291cbb4be
   onlyWriteTrigger: 0

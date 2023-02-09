@@ -7,6 +7,8 @@ import MultiplayManager from '../../MultiplaySync/Common/MultiplayManager';
 import { ZepetoWorldHelper, ZepetoWorldMultiplay } from 'ZEPETO.World';
 import { StyleInt } from 'UnityEngine.UIElements';
 import GameManager from '../Game/GameManager';
+import PlayerSync from '../../MultiplaySync/Player/PlayerSync';
+import SeaHareObject from './SeaHareObject';
 
 export default class PlayerController extends ZepetoScriptBehaviour {
 
@@ -18,28 +20,24 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     private PlayerObject: GameObject;
     private AttackCoroutine: Coroutine = null;
 
-  
 
-    public SetCharacter(){
+
+    public SetCharacter() {
+
+        if (!this.transform.GetComponent<PlayerSync>()?.isLocal) {
+            Debug.Log("if문 진입");
+            return;
+        }
+        this.AddMessageHandler();
+        Debug.Log("if문 통과");
+
 
         this.StartCoroutine(this.ShootRay());
 
-        this.AddMessageHandler();
 
-        //let _character = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;
-
-        // 본 위치
-        //let tempTransform = _character.character.Context.transform;
-
-       // this.PlayerObject = GameObject.Instantiate(Resources.Load("TempPlayer"), tempTransform) as GameObject;
-        //this.gameObject.transform.SetParent(tempTransform);
-        // this.PlayerObject.transform.localPosition = Vector3.zero;
-
-        // 캐릭터 off
-       // _character.character.ZepetoAnimator.GetBoneTransform(HumanBodyBones.Hips).gameObject.SetActive(false);
-        // _character.character.Context.transform.GetChild(0).gameObject.SetActive(false);
 
         this.PlayerValueSetting();
+        MultiplayManager.instance.Instantiate("TempPlayer", this.sessionID, Vector3.zero, Quaternion.identity);
 
     }
 
@@ -50,6 +48,15 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
             Debug.Log(message);
             //this.GameOver();
+        });
+
+        // 게임 오버 수신
+        MultiplayManager.instance.room.AddMessageHandler("Instantiate", (message: string) => {
+
+            
+            //let object = message 
+            Debug.Log("여기임");
+            Debug.Log(message);
         });
 
     }
@@ -70,20 +77,17 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
         //부딫힌게 나 자신인지 체크해야함.
         while (true) {
-            // let ray: Ray = new Ray(
-            //     //ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
-            //     this.transform.position,
-            //     ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);
             let ray: Ray = new Ray(
-                this.gameObject.transform.position,
-                this.gameObject.transform.forward);
+                ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+                ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);
+
 
             //OnEnter
             if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                 let hitInfo = $unref(ref);
-                Debug.Log(hitInfo.collider.gameObject.GetComponent<PlayerController>().sessionID);
-                if (hitInfo.collider.gameObject.GetComponent<PlayerController>().sessionID != this.sessionID) {
 
+                if (hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID != this.sessionID) {
+                    GameManager.instance.SetTestText(`HIT::${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID} \n ${this.sessionID}`);
                     //이미 돌아가고있다면 중복호출X
                     if (this.AttackCoroutine == null) {
                         this.AttackCoroutine = this.StartCoroutine(this.Attack());
@@ -93,10 +97,12 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             //OnExit
             else if (this.AttackCoroutine != null) {
                 Debug.Log("Attack::Escape");
+                GameManager.instance.SetTestText("HIT::Nothing");
                 this.StopCoroutine(this.AttackCoroutine);
                 this.AttackCoroutine = null;
             }
             yield new WaitForSeconds(0.05);
+            Debug.DrawRay(ZepetoPlayers.instance.ZepetoCamera.camera.transform.position, ray.direction, Color.red);
         }
 
     }

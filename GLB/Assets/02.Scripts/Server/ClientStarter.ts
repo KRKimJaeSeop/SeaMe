@@ -45,9 +45,6 @@ export default class ClientStarter extends ZepetoScriptBehaviour {
                 const nowJoinPlayer = ZepetoPlayers.instance.GetPlayer(sessionId).character;
                 nowJoinPlayer.tag = "Player";
                 nowJoinPlayer.name = sessionId;
-              //  let zepetoGameCharacter = nowJoinPlayer.transform.gameObject.AddComponent<PlayerController>();
-               // zepetoGameCharacter.userID = this.currentPlayers.get(sessionId).zepetoUserId;
-                //zepetoGameCharacter.sessionID = sessionId;
             });
         }
 
