@@ -194,8 +194,7 @@ export default class extends Sandbox {
 
         //게임 입장시, 게임오버 메세지받을 준비.
         this.onMessage(JS_Message.KILL, (clients, message) => {
-            console.log(`gameover`);
-            this.broadcast(JS_Message.GAMEOVER,`게임오버입니다..`);
+            this.broadcast(JS_Message.GAMEOVER,`${message}`);
         });
     }
 

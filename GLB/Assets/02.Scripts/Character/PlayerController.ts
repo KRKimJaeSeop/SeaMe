@@ -17,6 +17,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     public userID: string;
     public sessionID: string = "";
 
+    public AttackID: string = "";
+
     private PlayerObject: GameObject;
     private AttackCoroutine: Coroutine = null;
 
@@ -25,11 +27,9 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     public SetCharacter() {
 
         if (!this.transform.GetComponent<PlayerSync>()?.isLocal) {
-            Debug.Log("if문 진입");
             return;
         }
         this.AddMessageHandler();
-        Debug.Log("if문 통과");
 
 
         this.StartCoroutine(this.ShootRay());
@@ -38,19 +38,22 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         this.PlayerValueSetting();
         MultiplayManager.instance.Instantiate("SeaHare_0", this.sessionID, Vector3.zero, Quaternion.identity);
 
-
     }
 
     private AddMessageHandler() {
         //게임 시작시 플레이어 세팅 수신
 
         // 게임 오버 수신
+        
         MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
             Debug.Log(message);
-            //this.GameOver();
+            if(message == this.sessionID){
+                GameManager.instance.SetTestText("Status::NONE");
+                this.gameObject.SetActive(false);
+            }
         });
 
-        // 게임 오버 수신
+        // 생성시
         MultiplayManager.instance.room.AddMessageHandler("Instantiate", (message: string) => {
 
             Debug.Log(message);
@@ -83,10 +86,12 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                 let hitInfo = $unref(ref);
 
+                //원래는 !=인데 테스트동안은 ==로 한다.
                 if (hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID != this.sessionID) {
-                    GameManager.instance.SetTestText(`HIT::${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID} \n ${this.sessionID}`);
+                    GameManager.instance.SetTestText(`Status::HIT::${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`);
                     //이미 돌아가고있다면 중복호출X
                     if (this.AttackCoroutine == null) {
+                        this.AttackID=`${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`;
                         this.AttackCoroutine = this.StartCoroutine(this.Attack());
                     }
                 }
@@ -94,7 +99,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             //OnExit
             else if (this.AttackCoroutine != null) {
                 Debug.Log("Attack::Escape");
-                GameManager.instance.SetTestText("HIT::Nothing");
+                GameManager.instance.SetTestText("Status::NONE");
+                this.AttackID="";
                 this.StopCoroutine(this.AttackCoroutine);
                 this.AttackCoroutine = null;
             }
@@ -113,7 +119,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         this.StopCoroutine(this.AttackCoroutine);
         this.AttackCoroutine = null;
         // 상대방 게임오버를 서버로 전달한다.
-        MultiplayManager.instance.room.Send("Kill", "충돌!");
+        MultiplayManager.instance.room.Send("Kill", `${this.AttackID}`);
         Debug.Log("Attack::KILL");
     }
 
