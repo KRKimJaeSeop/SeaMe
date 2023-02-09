@@ -35,9 +35,9 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         this.StartCoroutine(this.ShootRay());
 
 
-
         this.PlayerValueSetting();
-        MultiplayManager.instance.Instantiate("TempPlayer", this.sessionID, Vector3.zero, Quaternion.identity);
+        MultiplayManager.instance.Instantiate("SeaHare_0", this.sessionID, Vector3.zero, Quaternion.identity);
+
 
     }
 
@@ -53,9 +53,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         // 게임 오버 수신
         MultiplayManager.instance.room.AddMessageHandler("Instantiate", (message: string) => {
 
-            
-            //let object = message 
-            Debug.Log("여기임");
             Debug.Log(message);
         });
 

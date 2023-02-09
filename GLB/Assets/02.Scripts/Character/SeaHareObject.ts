@@ -29,7 +29,6 @@ export default class SeaHareObject extends ZepetoScriptBehaviour {
         this.transform.localPosition = Vector3.zero;
         this.userID= this.transform.parent.parent.GetComponent<PlayerController>().userID;
         this.sessionID= this.transform.parent.parent.GetComponent<PlayerController>().sessionID;
-        Debug.LogWarning("durl");
         this.transform.parent.GetChild(0).gameObject.SetActive(false);
         this.transform.parent.GetChild(1).gameObject.SetActive(false);
     }
