@@ -2,34 +2,35 @@ Shader "SeaMe/SeaMe_Water2_Shader"
 {
     Properties
     {   
+        [Header(_____Albedo_____)]
+        _Color ("Color", Color) = (1,1,1,1)
+        [Enum(UnityEngine.Rendering.CullMode)]_Cull("Cull Mode", Float) = 2
+
         [Header(_____Normal_____)]
         [Normal] _NormalTex("Normal Map", 2D) = "normal" {}
+        _NormalScale("Normal Scale", Range(0,5)) = 1.0
 
         [Space(10)]
         [Header(_____Wave_____)]
         _DistortionTex("Distortion Map", 2D) = "black" {}
         _WaveSpeed("Wave Speed", Range(0,1)) = 0.05
-        _WavePower("Wave Power", Range(0,1)) = 0.2
+        _WavePower("Wave Power", Range(0,5)) = 0.2
         _WaveTilling("Wave Tilling", Range(0,50)) = 10
         [Toggle]_ActiveWaveX ("Active Wave Movement X-axis", Range(0, 1)) = 0
         [Toggle]_ActiveWaveY ("Active Wave Movement Y-axis", Range(0, 1)) = 0
-
-        [Space(10)]
-        [Header(_____Cull_____)]
-        [Space(10)]
-        [Enum(UnityEngine.Rendering.CullMode)]_Cull("Cull Mode", Float) = 2
     }
 
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        //Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
         Cull [_Cull]
         LOD 200
  
         GrabPass{}        
  
         CGPROGRAM
-        #pragma surface surf _CatDarkLight vertex:vert noambient noshadow
+        #pragma surface surf _CatDarkLight vertex:vert noambient noshadow //alpha:blend
         #pragma target 3.0
     
         sampler2D _NormalTex;
@@ -45,6 +46,9 @@ Shader "SeaMe/SeaMe_Water2_Shader"
             float3 worldRefl;
             INTERNAL_DATA
         };
+
+        fixed4 _Color;
+        fixed _NormalScale;
 
         float _WaveSpeed;
         float _WavePower;
@@ -74,7 +78,7 @@ Shader "SeaMe/SeaMe_Water2_Shader"
             float3 nR = UnpackNormal(tex2D(_NormalTex, IN.uv_NormalTex + float2(0, _Time.y * _WaveSpeed)));
             float3 nT = UnpackNormal(tex2D(_NormalTex, IN.uv_NormalTex - float2(_Time.y * _WaveSpeed, 0)));
             float3 nB = UnpackNormal(tex2D(_NormalTex, IN.uv_NormalTex + float2(_Time.y * _WaveSpeed, 0)));
-            o.Normal = (nL + nR + nT + nB) / 4.0f;
+            o.Normal = (nL + nR + nT + nB) / 4.0f * fixed3(_NormalScale, _NormalScale, 1);
  
             float3 worldReflectionVec = WorldReflectionVector(IN, o.Normal).xyz;
             float3 reflection = UNITY_SAMPLE_TEXCUBE(unity_SpecCube0, worldReflectionVec).rgb * unity_SpecCube0_HDR.r;
@@ -86,8 +90,11 @@ Shader "SeaMe/SeaMe_Water2_Shader"
  
             float nDotV = dot(o.Normal, IN.viewDir);
             float rim = saturate(pow(1 - nDotV + 0.1f, 1));
- 
+
             o.Emission = lerp(grab.rgb, reflection, rim);
+            
+            o.Albedo = _Color.rgb;
+            //o.Alpha = _Color.a;
         }
  
         float4 Lighting_CatDarkLight(SurfaceOutput s, float3 lightDir, float3 viewDir, float atten)
@@ -98,12 +105,12 @@ Shader "SeaMe/SeaMe_Water2_Shader"
             specHDotN = pow(specHDotN, 100.0f);
 
             float4 finalColor = 0.0f;
-            finalColor = specHDotN;
+            finalColor = specHDotN * float4(s.Albedo.r, s.Albedo.g, s.Albedo.b, s.Alpha);
 
             return finalColor;
         }
         ENDCG
     }
-    FallBack "Diffuse"
-    //FallBack "Mobile/VertexLit"
+    //FallBack "Diffuse"
+    FallBack "Mobile/VertexLit"
 }

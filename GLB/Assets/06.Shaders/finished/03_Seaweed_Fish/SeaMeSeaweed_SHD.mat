@@ -34,7 +34,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 1f198e07f311b7143b6b40e76fe06c7f, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicTex:
         m_Texture: {fileID: 0}
@@ -65,8 +65,8 @@ Material:
     - _Cull: 0
     - _Culling: 2
     - _CutOff: 0
-    - _Cutoff: 0.35
-    - _CutoffSoftness: 0.5
+    - _Cutoff: 0
+    - _CutoffSoftness: 0
     - _DisplacementAmount: 0
     - _EmissionScale: 0
     - _FixedAxis: 1

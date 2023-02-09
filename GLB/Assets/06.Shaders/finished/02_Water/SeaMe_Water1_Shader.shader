@@ -1,14 +1,19 @@
-Shader "SeaMe/SeaMe_Water_Shader"
+Shader "SeaMe/SeaMe_Water1_Shader"
 {
     Properties
     {
+        [Header(_____Albedo_____)]
+        _Color ("Color", Color) = (1,1,1,1)
+        [Enum(UnityEngine.Rendering.CullMode)]_Cull("Cull Mode", Float) = 2
+
         [Header(_____Normal_____)]
         [Normal] _NormalTex("Normal Map", 2D) = "normal" {}
+        _NormalScale("Normal Scale", Range(0,5)) = 1.0
 
         [Space(10)]
         [Header(_____Wave_____)]
         _WaveSpeed("Wave Speed", Range(0,1)) = 0.05
-        _WavePower("Wave Power", Range(0,1)) = 0.2
+        _WavePower("Wave Power", Range(0,5)) = 0.2
         _WaveTilling("Wave Tilling", Range(0,50)) = 25
         [Toggle]_ActiveWaveX ("Active Wave Movement X-axis", Range(0, 1)) = 0
         [Toggle]_ActiveWaveY ("Active Wave Movement Y-axis", Range(0, 1)) = 0
@@ -25,13 +30,14 @@ Shader "SeaMe/SeaMe_Water_Shader"
     SubShader
     {
         Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
         Cull [_Cull]
         LOD 200
 
         GrabPass{}
 
         CGPROGRAM
-        #pragma surface surf _WLight vertex:vert noambient noshadow 
+        #pragma surface surf _WLight vertex:vert noambient noshadow //alpha:blend
         #pragma target 3.0
 
         sampler2D _NormalTex;
@@ -46,6 +52,9 @@ Shader "SeaMe/SeaMe_Water_Shader"
             float3 worldRefl;
             INTERNAL_DATA
         };
+
+        fixed4 _Color;
+        fixed _NormalScale;
 
         float _WaveSpeed;
         float _WavePower;
@@ -75,14 +84,15 @@ Shader "SeaMe/SeaMe_Water_Shader"
         {
             float4 n1 = tex2D(_NormalTex, IN.uv_NormalTex + float2(_Time.y * _WaveSpeed, 0));
             float4 n2 = tex2D(_NormalTex, IN.uv_NormalTex - float2(_Time.y * _WaveSpeed, 0));
-            o.Normal = UnpackNormal((n1+n2) * 0.5);
+            o.Normal = UnpackNormal((n1+n2) * 0.5) * fixed3(_NormalScale, _NormalScale, 1);
 
             float4 sky = texCUBE(_CubeTex, WorldReflectionVector(IN, o.Normal));
             float4 reflection = tex2D(_GrabTexture, (IN.screenPos/IN.screenPos.a).xy + o.Normal.xy * 0.03);
             dotData = pow(saturate(1 - dot(o.Normal, IN.viewDir)), 0.6);
             
             float3 water = lerp(reflection, sky, dotData).rgb;
-            o.Albedo = water;
+            o.Albedo = water * _Color.rgb;
+            //o.Alpha = _Color.a;
         }
 
         float4 Lighting_WLight(SurfaceOutput s, float3 lightDir, float3 viewDir, float atten)
@@ -96,6 +106,6 @@ Shader "SeaMe/SeaMe_Water_Shader"
         }
         ENDCG
     }
-    FallBack "Diffuse"
-    //FallBack "Mobile/VertexLit"
+    //FallBack "Diffuse"
+    FallBack "Mobile/VertexLit"
 }

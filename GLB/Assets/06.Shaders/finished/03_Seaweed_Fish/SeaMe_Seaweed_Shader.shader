@@ -53,7 +53,7 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
         LOD 200
 
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows vertex:vert 
+        #pragma surface surf Standard fullforwardshadows vertex:vert alpha:blend
         #pragma target 3.0
 
         sampler2D _MainTex;
