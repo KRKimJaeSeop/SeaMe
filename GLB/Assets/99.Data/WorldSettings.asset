@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 0}
   values:
   - '{"type":"System.Single, mscorlib","value":"0"}'
-  - '{"type":"System.Single, mscorlib","value":"0"}'
+  - '{"type":"System.Single, mscorlib","value":"10"}'
   unityArrayValues: []
   arrayValues: []
   script: {fileID: 4458252877524076426, guid: 259ccfae4b9d0e34cacf3cf687085651, type: 3}

@@ -10,6 +10,7 @@ import MultiplayManager from '../Common/MultiplayManager';
 import PlayerController from '../../02.Scripts/Character/PlayerController';
 import CharacterSettingScript from '../../02.Scripts/Table/CharacterSettingScript';
 import { UpdateMasterServerInterface } from 'UnityEngine.PlayerLoop.PreLateUpdate';
+import GameManager from '../../02.Scripts/Game/GameManager';
 
 export enum ZepetoPlayerSpawnType {
     NoneSpawn,//Do not create players
@@ -107,10 +108,10 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
         leave.forEach((player: Player, sessionId: string) => this.OnLeavePlayer(sessionId, player));
 
         // 스폰시 플레이어 세팅.
-        if(isFirst){
+        if (isFirst) {
             ZepetoPlayers.instance.OnAddedPlayer.AddListener((sessionId: string) => {
                 const isLocal = this.room.SessionId === sessionId;
-              
+
                 const nowJoinPlayer = ZepetoPlayers.instance.GetPlayer(sessionId).character;
                 nowJoinPlayer.tag = "Player";
                 nowJoinPlayer.name = sessionId;
@@ -119,10 +120,11 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
                 zepetoGameCharacter.sessionID = sessionId;
                 zepetoGameCharacter.playerValue = this.playerValue;
                 zepetoGameCharacter.SetCharacter();
+                GameManager.instance.SetPlayers(sessionId);
 
             });
         }
-       
+
     }
 
     private AddPlayerSync(sessionId: string) {
@@ -183,6 +185,8 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
     private OnLeavePlayer(sessionId: string, player: Player) {
         this.currentPlayers.delete(sessionId);
         ZepetoPlayers.instance.RemovePlayer(sessionId);
+        GameManager.instance.RemovePlayer(sessionId);
+
     }
 
 

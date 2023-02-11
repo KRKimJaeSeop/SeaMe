@@ -18,26 +18,49 @@ ScriptedImporter:
   wrapperTypes: []
   WrapperFilters: []
   wrapperOutputDirectory: Generated
-  compiledResult: '{"source":"\"use strict\";\r\nvar __decorate = (this && this.__decorate)
-    || function (decorators, target, key, desc) {\r\n    var c = arguments.length,
-    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target,
-    key) : desc, d;\r\n    if (typeof Reflect === \"object\" && typeof Reflect.decorate
-    === \"function\") r = Reflect.decorate(decorators, target, key, desc);\r\n   
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nvar __decorate = (this
+    && this.__decorate) || function (decorators, target, key, desc) {\\r\\n    var
+    c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target,
+    key) : desc, d;\\r\\n    if (typeof Reflect === \\\"object\\\" && typeof Reflect.decorate
+    === \\\"function\\\") r = Reflect.decorate(decorators, target, key, desc);\\r\\n   
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i])
-    r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;\r\n   
-    return c > 3 && r && Object.defineProperty(target, key, r), r;\r\n};\r\nObject.defineProperty(exports,
-    \"__esModule\", { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
-    UnityEngine_1 = require(\"UnityEngine\");\r\nclass GameManager extends ZEPETO_Script_1.ZepetoScriptBehaviour
-    {\r\n    static get instance() {\r\n        if (this.m_instance === null) {\r\n           
-    this.m_instance = UnityEngine_1.GameObject.FindObjectOfType($typeof(GameManager));\r\n           
-    if (this.m_instance === null) {\r\n                this.m_instance = new UnityEngine_1.GameObject(GameManager.name).AddComponent($typeof(GameManager));\r\n           
-    }\r\n        }\r\n        return this.m_instance;\r\n    }\r\n    Awake() {\r\n       
-    if (GameManager.m_instance !== null && GameManager.m_instance !== this) {\r\n           
-    UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n        }\r\n        else
-    {\r\n            GameManager.m_instance = this;\r\n            UnityEngine_1.GameObject.DontDestroyOnLoad(this.gameObject);\r\n       
-    }\r\n    }\r\n    SetTestText(setText) {\r\n        this.testText.text = setText;\r\n   
-    }\r\n}\r\n/* Singleton */\r\nGameManager.m_instance = null;\r\n__decorate([],
-    GameManager.prototype, \"testText\", void 0);\r\nexports.default = GameManager;\r\n//#
-    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7OztBQUFBLGlEQUFxRDtBQUVyRCw2Q0FBZ0s7QUFJaEssTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQVFuRCxNQUFNLEtBQUssUUFBUTtRQUN0QixJQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO1lBQzFCLElBQUksQ0FBQyxVQUFVLEdBQUcsd0JBQVUsQ0FBQyxnQkFBZ0IsU0FBQyxXQUFXLEVBQUcsQ0FBQztZQUM3RCxJQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO2dCQUMxQixJQUFJLENBQUMsVUFBVSxHQUFHLElBQUksd0JBQVUsQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLENBQUMsWUFBWSxTQUFDLFdBQVcsRUFBRyxDQUFDO2FBQ2xGO1NBQ0o7UUFDRCxPQUFPLElBQUksQ0FBQyxVQUFVLENBQUM7SUFDM0IsQ0FBQztJQUNPLEtBQUs7UUFDVCxJQUFJLFdBQVcsQ0FBQyxVQUFVLEtBQUssSUFBSSxJQUFJLFdBQVcsQ0FBQyxVQUFVLEtBQUssSUFBSSxFQUFFO1lBQ3BFLHdCQUFVLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQztTQUN2QzthQUFNO1lBQ0gsV0FBVyxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUM7WUFDOUIsd0JBQVUsQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7U0FDakQ7SUFDTCxDQUFDO0lBRU0sV0FBVyxDQUFDLE9BQWU7UUFDOUIsSUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLEdBQUcsT0FBTyxDQUFDO0lBQ2pDLENBQUM7O0FBdEJELGVBQWU7QUFDQSxzQkFBVSxHQUFnQixJQUFJLENBQUM7QUFKOUMseURBQXNCO0FBSDFCLDhCQStCQyJ9","assetPath":"Assets/02.Scripts/Game/GameManager.ts","manifest":{"properties":[{"assembly":"UnityEngine.UI","name":"testText","type":"UnityEngine.UI.Text","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"SerializeField","args":[]}]}],"name":"GameManager","description":""},"isCompiled":true}'
-  typescriptHash: f8e5be0c88702b6a277f586291cbb4be
+    r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;\\r\\n   
+    return c > 3 && r && Object.defineProperty(target, key, r), r;\\r\\n};\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst PlayerController_1 =
+    require(\\\"../Character/PlayerController\\\");\\r\\nclass GameManager extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    static get instance() {\\r\\n       
+    if (this.m_instance === null) {\\r\\n            this.m_instance = UnityEngine_1.GameObject.FindObjectOfType($typeof(GameManager));\\r\\n           
+    if (this.m_instance === null) {\\r\\n                this.m_instance = new UnityEngine_1.GameObject(GameManager.name).AddComponent($typeof(GameManager));\\r\\n           
+    }\\r\\n        }\\r\\n        return this.m_instance;\\r\\n    }\\r\\n    Awake()
+    {\\r\\n        if (GameManager.m_instance !== null && GameManager.m_instance
+    !== this) {\\r\\n            UnityEngine_1.GameObject.Destroy(this.gameObject);\\r\\n       
+    }\\r\\n        else {\\r\\n            GameManager.m_instance = this;\\r\\n           
+    UnityEngine_1.GameObject.DontDestroyOnLoad(this.gameObject);\\r\\n        }\\r\\n       
+    if (this.UserList[0] == \\\"empty\\\") {\\r\\n            this.UserList.shift();\\r\\n       
+    }\\r\\n    }\\r\\n    SetTestText(setText) {\\r\\n        this.testText.text
+    = setText;\\r\\n    }\\r\\n    SetPlayers(userName) {\\r\\n        this.UserList.push(userName);\\r\\n       
+    UnityEngine_1.Debug.Log(\\\"\uC2DC\uC791\\\");\\r\\n        if (!UnityEngine_1.GameObject.Find(userName).GetComponent($typeof(PlayerController_1.default)).isHaveSeaHare)
+    {\\r\\n            //\uD50C\uB808\uC774\uC5B4 \uCD94\uAC00. \uBAA8\uB4E0 \uD50C\uB808\uC774\uC5B4\uB97C
+    \uAC80\uC0C9\uD558\uACE0, \uADF8 \uD50C\uB808\uC774\uC5B4\uC758 \uD558\uC704\uC5D0
+    \uB2EC\uD33D\uC774\uAC00 \uC788\uB294\uC9C0 \uAC80\uC0C9. \uC5C6\uB2E4\uBA74
+    \uB2EC\uD33D\uC774\uB97C \uCD94\uAC00\uD574\uC900\uB2E4.\\r\\n            //\uD50C\uB808\uC774\uC5B4
+    \uD558\uC704\uC5D0 \uB2EC\uD33D\uC774\uAC00 \uC788\uB294\uAC00?\\r\\n           
+    this.UserList.forEach(element => {\\r\\n                UnityEngine_1.Debug.Log(\\\"\uCC3E\uC558\uB2E4\\\");\\r\\n               
+    let currentPlayers = UnityEngine_1.GameObject.Find(element);\\r\\n               
+    if (UnityEngine_1.GameObject.op_Inequality(currentPlayers, null)) {\\r\\n                   
+    if (!currentPlayers.GetComponent($typeof(PlayerController_1.default)).isHaveSeaHare)
+    {\\r\\n                        UnityEngine_1.Debug.Log(\\\"\uC5EC\uAE30\uB2E4\\\");\\r\\n                       
+    let currentHare = UnityEngine_1.Resources.Load(\\\"SeaHare_0\\\");\\r\\n                       
+    currentHare = UnityEngine_1.GameObject.Instantiate(currentHare);\\r\\n                       
+    currentHare.transform.SetParent(currentPlayers.transform.GetChild(0));\\r\\n                       
+    currentHare.transform.localPosition = UnityEngine_1.Vector3.zero;\\r\\n                   
+    }\\r\\n                }\\r\\n            });\\r\\n        }\\r\\n    }\\r\\n   
+    RemovePlayer(userName) {\\r\\n        for (let i = 0; i < this.UserList.length;
+    i++) {\\r\\n            if (this.UserList[i] === userName) {\\r\\n               
+    this.UserList.splice(i, 1);\\r\\n                i--;\\r\\n            }\\r\\n       
+    }\\r\\n    }\\r\\n}\\r\\n/* Singleton */\\r\\nGameManager.m_instance = null;\\r\\n__decorate([],
+    GameManager.prototype, \\\"testText\\\", void 0);\\r\\nexports.default = GameManager;\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7OztBQUFBLGlEQUFxRDtBQUVyRCw2Q0FBMks7QUFHM0ssb0VBQTZEO0FBRTdELE1BQXFCLFdBQVksU0FBUSxxQ0FBcUI7SUFTbkQsTUFBTSxLQUFLLFFBQVE7UUFDdEIsSUFBSSxJQUFJLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtZQUMxQixJQUFJLENBQUMsVUFBVSxHQUFHLHdCQUFVLENBQUMsZ0JBQWdCLFNBQUMsV0FBVyxFQUFHLENBQUM7WUFDN0QsSUFBSSxJQUFJLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtnQkFDMUIsSUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLHdCQUFVLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxDQUFDLFlBQVksU0FBQyxXQUFXLEVBQUcsQ0FBQzthQUNsRjtTQUNKO1FBQ0QsT0FBTyxJQUFJLENBQUMsVUFBVSxDQUFDO0lBQzNCLENBQUM7SUFFTyxLQUFLO1FBQ1QsSUFBSSxXQUFXLENBQUMsVUFBVSxLQUFLLElBQUksSUFBSSxXQUFXLENBQUMsVUFBVSxLQUFLLElBQUksRUFBRTtZQUNwRSx3QkFBVSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7U0FDdkM7YUFBTTtZQUNILFdBQVcsQ0FBQyxVQUFVLEdBQUcsSUFBSSxDQUFDO1lBQzlCLHdCQUFVLENBQUMsaUJBQWlCLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1NBQ2pEO1FBQ0QsSUFBSSxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxJQUFJLE9BQU8sRUFBRTtZQUM3QixJQUFJLENBQUMsUUFBUSxDQUFDLEtBQUssRUFBRSxDQUFDO1NBQ3pCO0lBQ0wsQ0FBQztJQUVNLFdBQVcsQ0FBQyxPQUFlO1FBQzlCLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxHQUFHLE9BQU8sQ0FBQztJQUNqQyxDQUFDO0lBRU0sVUFBVSxDQUFDLFFBQWdCO1FBQzlCLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDO1FBQzdCLG1CQUFLLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQ2hCLElBQUksQ0FBQyx3QkFBVSxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxZQUFZLFNBQUMsMEJBQWdCLEdBQUksYUFBYSxFQUFFO1lBQzNFLGtFQUFrRTtZQUNsRSxvQkFBb0I7WUFFcEIsSUFBSSxDQUFDLFFBQVEsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLEVBQUU7Z0JBQzVCLG1CQUFLLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFDO2dCQUNqQixJQUFJLGNBQWMsR0FBRyx3QkFBVSxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsQ0FBQztnQkFFOUMsSUFuREUsd0JBQVUsQ0E0RXN6USxhQUFjLENBekI1MFEsY0FBYyxFQUFJLElBQUksR0FBRTtvQkFDeEIsSUFBSSxDQUFDLGNBQWMsQ0FBQyxZQUFZLFNBQUMsMEJBQWdCLEdBQUksYUFBYSxFQUFFO3dCQUNoRSxtQkFBSyxDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsQ0FBQzt3QkFDakIsSUFBSSxXQUFXLEdBQUcsdUJBQVMsQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFlLENBQUM7d0JBQzVELFdBQVcsR0FBRyx3QkFBVSxDQUFDLFdBQVcsQ0FBQyxXQUFXLENBQWUsQ0FBQzt3QkFDaEUsV0FBVyxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUMsY0FBYyxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQzt3QkFDdEUsV0FBVyxDQUFDLFNBQVMsQ0FBQyxhQUFhLEdBQUcscUJBQU8sQ0FBQyxJQUFJLENBQUM7cUJBQ3REO2lCQUNKO1lBR0wsQ0FBQyxDQUFDLENBQUM7U0FDTjtJQUNMLENBQUM7SUFFTSxZQUFZLENBQUMsUUFBZ0I7UUFDaEMsS0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLElBQUksQ0FBQyxRQUFRLENBQUMsTUFBTSxFQUFFLENBQUMsRUFBRSxFQUFFO1lBQzNDLElBQUksSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsS0FBSyxRQUFRLEVBQUU7Z0JBQy9CLElBQUksQ0FBQyxRQUFRLENBQUMsTUFBTSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQztnQkFDM0IsQ0FBQyxFQUFFLENBQUM7YUFDUDtTQUNKO0lBQ0wsQ0FBQzs7QUE3REQsZUFBZTtBQUNBLHNCQUFVLEdBQWdCLElBQUksQ0FBQztBQUw5Qyx5REFBc0I7QUFIMUIsOEJBc0VDIn0=\",\"assetPath\":\"Assets/02.Scripts/Game/GameManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.UI\",\"name\":\"testText\",\"type\":\"UnityEngine.UI.Text\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]},{\"assembly\":\"mscorlib\",\"name\":\"UserList\",\"type\":\"System.String[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GameManager\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 2d96cc17b2e47f7a3d7a286f47bffe8c
   onlyWriteTrigger: 0
