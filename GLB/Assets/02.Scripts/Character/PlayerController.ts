@@ -37,50 +37,37 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         //일단 다 끄기
         this.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
         this.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+
         //자기 자신일때
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
-             
-            this.SetOtherCharacter();
-
             this.AddMessageHandler();
-
-            this.StartCoroutine(this.ShootRay());
-
             this.PlayerValueSetting();
-        //    MultiplayManager.instance.Instantiate("SeaHare_0", this.sessionID, Vector3.zero, Quaternion.identity);
         }
     }
-    
-    public SetOtherCharacter() {
 
-        // 자기 자신이 아닐때
-        if (!this.transform.GetComponent<PlayerSync>()?.isLocal) {
-
-            //모든 플레이어한테 달팽이 생성..
-           // MultiplayManager.instance.Instantiate("SeaHare_0", this.sessionID, Vector3.zero, Quaternion.identity);
+    *TestTele() {
+        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+            const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
+            localCharacter.Teleport(GameManager.instance.GetUserSpawnPosition(this.sessionID), Quaternion.identity);
         }
     }
 
     //[메세지 핸들러 등록]
     private AddMessageHandler() {
-
-        //게임 시작시 플레이어 세팅 수신
+        // 게임 시작시 플레이어 세팅 수신
+        MultiplayManager.instance.room.AddMessageHandler("tpToStadium", (message) => {
+            this.StartCoroutine(this.TestTele());
+        });
 
         // 게임 오버 수신
-
         MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
             Debug.Log(message);
             if (message == this.sessionID) {
-                GameManager.instance.SetTestText("Status::NONE");
+                GameManager.instance.SetTestText("GameOver");
                 this.gameObject.SetActive(false);
             }
         });
 
-        // 생성시
-        MultiplayManager.instance.room.AddMessageHandler("Instantiate", (message: string) => {
-
-            Debug.Log(message);
-        });
 
     }
 
@@ -97,44 +84,45 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     //항상 카메라가 바라보는 방향으로 Ray를 발사한다.
     *ShootRay() {
-        Debug.Log("[ShootRay]");
-        // 레이 세팅
-        let ref = $ref<RaycastHit>();
-        let layerMask = 1 << LayerMask.NameToLayer("Player");
+        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+            Debug.Log("[ShootRay]");
+            // 레이 세팅
+            let ref = $ref<RaycastHit>();
+            let layerMask = 1 << LayerMask.NameToLayer("Player");
 
-        //부딫힌게 나 자신인지 체크해야함.
-        while (true) {
-            let ray: Ray = new Ray(
-                ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
-                ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);
+            //부딫힌게 나 자신인지 체크해야함.
+            while (true) {
+                let ray: Ray = new Ray(
+                    ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+                    ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);
 
 
-            //OnEnter
-            if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
-                let hitInfo = $unref(ref);
+                //OnEnter
+                if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
+                    let hitInfo = $unref(ref);
 
-                //원래는 !=인데 테스트동안은 ==로 한다.
-                if (hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID != this.sessionID) {
-                    GameManager.instance.SetTestText(`Status::HIT::${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`);
-                    //이미 돌아가고있다면 중복호출X
-                    if (this.AttackCoroutine == null) {
-                        this.AttackID = `${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`;
-                        this.AttackCoroutine = this.StartCoroutine(this.Attack());
+                    //원래는 !=인데 테스트동안은 ==로 한다.
+                    if (hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID != this.sessionID) {
+                        GameManager.instance.SetTestText(`Status::HIT::${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`);
+                        //이미 돌아가고있다면 중복호출X
+                        if (this.AttackCoroutine == null) {
+                            this.AttackID = `${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`;
+                            this.AttackCoroutine = this.StartCoroutine(this.Attack());
+                        }
                     }
                 }
+                //OnExit
+                else if (this.AttackCoroutine != null) {
+                    Debug.Log("Attack::Escape");
+                    GameManager.instance.SetTestText("Status::NONE");
+                    this.AttackID = "";
+                    this.StopCoroutine(this.AttackCoroutine);
+                    this.AttackCoroutine = null;
+                }
+                yield new WaitForSeconds(0.05);
+                Debug.DrawRay(ZepetoPlayers.instance.ZepetoCamera.camera.transform.position, ray.direction, Color.red);
             }
-            //OnExit
-            else if (this.AttackCoroutine != null) {
-                Debug.Log("Attack::Escape");
-                GameManager.instance.SetTestText("Status::NONE");
-                this.AttackID = "";
-                this.StopCoroutine(this.AttackCoroutine);
-                this.AttackCoroutine = null;
-            }
-            yield new WaitForSeconds(0.05);
-            Debug.DrawRay(ZepetoPlayers.instance.ZepetoCamera.camera.transform.position, ray.direction, Color.red);
         }
-
     }
 
     //공격
@@ -159,23 +147,27 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     //#region [자기장 충돌 처리]
     OnTriggerEnter(coll: Collider) {
-        if (coll.CompareTag("Dome")) {
-            //처음 게임 진입시
-            if (this.isGamePlaying == false) {
-                GameManager.instance.SetTestText("GAME START");
-                console.log("GAMESTART::");
-                this.isGamePlaying = true;
-            }
-            //게임 진행중, 자기장 밖에서 안으로 들어올 때
-            else {
+        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+            if (coll.CompareTag("Dome")) {
+                //처음 게임 진입시
+                if (this.isGamePlaying == false) {
+                    // 레이 활성화
+                    this.StartCoroutine(this.ShootRay());
+                    this.isGamePlaying = true;
+                }
+                //게임 진행중, 자기장 밖에서 안으로 들어올 때
+                else {
 
+                }
             }
         }
     }
     OnTriggerExit(coll: Collider) {
-        if (coll.CompareTag("Dome")) {
-            console.log("StartCorutine");
-            MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
+        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+            if (coll.CompareTag("Dome")) {
+                console.log("StartCorutine");
+                MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
+            }
         }
     }
     //#endregion

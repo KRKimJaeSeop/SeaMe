@@ -10,7 +10,7 @@ export default class extends Sandbox {
 
         /**Zepeto Player Sync**/
         this.onMessage(MESSAGE.SyncPlayer, (client, message) => {
-         
+
             const player = this.state.players.get(client.sessionId);
             /** State **/
             //animation param
@@ -190,11 +190,18 @@ export default class extends Sandbox {
         }
         console.log(`join player, ${client.sessionId}`);
 
-        this.broadcast(JS_Message.GAMESTART,`게임시작`);
+
+
+        // 인원 수 충족시, 게임 시작 내려주기
+        this.onMessage(JS_Message.GAMESTART, (clients, message) => {
+            this.broadcast(JS_Message.TELEPORT_Stadium, message);
+        });
+
+
 
         //게임 입장시, 게임오버 메세지받을 준비.
         this.onMessage(JS_Message.KILL, (clients, message) => {
-            this.broadcast(JS_Message.GAMEOVER,`${message}`);
+            this.broadcast(JS_Message.GAMEOVER, `${message}`);
         });
     }
 
@@ -271,6 +278,7 @@ enum MESSAGE {
 
 enum JS_Message {
     GAMESTART = "GameStart",
+    TELEPORT_Stadium = "tpToStadium",
     GAMEOVER = "GameOver",
     KILL = "Kill",
     HIT = "Hit",

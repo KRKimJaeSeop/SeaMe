@@ -18,16 +18,13 @@ ScriptedImporter:
   wrapperTypes: []
   WrapperFilters: []
   wrapperOutputDirectory: Generated
-  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
-    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
-    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nclass Dome extends ZEPETO_Script_1.ZepetoScriptBehaviour
-    {\\r\\n    Start() {\\r\\n        UnityEngine_1.Debug.LogWarning(\\\"\uC2DC\uC791\\\");\\r\\n       
-    this.StartCoroutine(this.DomeScaleControll());\\r\\n    }\\r\\n    *DomeScaleControll()
-    {\\r\\n        UnityEngine_1.Debug.LogWarning(\\\"\uCF54\uB8E8\uD2F4\\\");\\r\\n       
-    let domeScale = this.transform.localScale.x;\\r\\n        while (true) {\\r\\n           
-    UnityEngine_1.Debug.LogWarning(domeScale);\\r\\n            this.transform.localScale
-    = new UnityEngine_1.Vector3(domeScale, domeScale, domeScale);\\r\\n           
-    domeScale -= 1;\\r\\n            yield new UnityEngine_1.WaitForSeconds(0.5);\\r\\n       
-    }\\r\\n    }\\r\\n}\\r\\nexports.default = Dome;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRG9tZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkRvbWUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBNkQ7QUFDN0QsaURBQXFEO0FBRXJELE1BQXFCLElBQUssU0FBUSxxQ0FBcUI7SUFFbkQsS0FBSztRQUNELG1CQUFLLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQ3ZCLElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLGlCQUFpQixFQUFFLENBQUMsQ0FBQztJQUNsRCxDQUFDO0lBQ0QsQ0FBQyxpQkFBaUI7UUFDZCxtQkFBSyxDQUFDLFVBQVUsQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUN4QixJQUFJLFNBQVMsR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLFVBQVUsQ0FBQyxDQUFDLENBQUM7UUFDNUMsT0FBTyxJQUFJLEVBQUU7WUFDVCxtQkFBSyxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsQ0FBQztZQUM1QixJQUFJLENBQUMsU0FBUyxDQUFDLFVBQVUsR0FBRyxJQUFJLHFCQUFPLENBQUMsU0FBUyxFQUFFLFNBQVMsRUFBRSxTQUFTLENBQUMsQ0FBQztZQUN6RSxTQUFTLElBQUksQ0FBQyxDQUFDO1lBQ2YsTUFBTSxJQUFJLDRCQUFjLENBQUMsR0FBRyxDQUFDLENBQUM7U0FDakM7SUFDTCxDQUFDO0NBRUo7QUFqQkQsdUJBaUJDIn0=\",\"assetPath\":\"Assets/02.Scripts/Game/Dome.ts\",\"manifest\":{\"properties\":[],\"name\":\"Dome\",\"description\":\"\"},\"isCompiled\":true}"
-  typescriptHash: 6eb39e3f9b6f68239f12580a77e311bf
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass Dome extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    *DomeScaleControll() {\r\n        let domeScale = this.transform.localScale.x;\r\n       
+    while (domeScale > 7) {\r\n            this.transform.localScale = new UnityEngine_1.Vector3(domeScale,
+    domeScale, domeScale);\r\n            domeScale -= 1;\r\n            yield new
+    UnityEngine_1.WaitForSeconds(0.5);\r\n        }\r\n    }\r\n}\r\nexports.default
+    = Dome;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRG9tZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkRvbWUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBNkQ7QUFDN0QsaURBQXFEO0FBRXJELE1BQXFCLElBQUssU0FBUSxxQ0FBcUI7SUFHbkQsQ0FBQyxpQkFBaUI7UUFDZCxJQUFJLFNBQVMsR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLFVBQVUsQ0FBQyxDQUFDLENBQUM7UUFDNUMsT0FBTyxTQUFTLEdBQUMsQ0FBQyxFQUFFO1lBQ2hCLElBQUksQ0FBQyxTQUFTLENBQUMsVUFBVSxHQUFHLElBQUkscUJBQU8sQ0FBQyxTQUFTLEVBQUUsU0FBUyxFQUFFLFNBQVMsQ0FBQyxDQUFDO1lBQ3pFLFNBQVMsSUFBSSxDQUFDLENBQUM7WUFDZixNQUFNLElBQUksNEJBQWMsQ0FBQyxHQUFHLENBQUMsQ0FBQztTQUNqQztJQUNMLENBQUM7Q0FFSjtBQVpELHVCQVlDIn0=","assetPath":"Assets/02.Scripts/Game/Dome.ts","manifest":{"properties":[],"name":"Dome","description":""},"isCompiled":true}'
+  typescriptHash: a187450aec8367e933833b54d3e96ee0
   onlyWriteTrigger: 0
