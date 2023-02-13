@@ -45,7 +45,8 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
 
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" "IsEmissive" = "true" }
+        //Tags{ "RenderType" = "TransparentCutout"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
         Blend SrcAlpha OneMinusSrcAlpha
         ZWrite Off
         Offset -1, -1
@@ -53,7 +54,10 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
         LOD 200
 
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows vertex:vert alpha:blend
+        //#pragma surface surf Standard fullforwardshadows vertex:vert alpha:blend
+        //#include "UnityStandardUtils.cginc"
+		#include "UnityPBSLighting.cginc"
+        #pragma surface surf StandardCustom keepalpha addshadow fullforwardshadows exclude_path:deferred vertex:vert
         #pragma target 3.0
 
         sampler2D _MainTex;
@@ -70,6 +74,18 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
             float2 uv_MetallicTex;
             float2 uv_EmissionTex;
         };
+
+        struct SurfaceOutputStandardCustom
+		{
+			fixed3 Albedo;
+			fixed3 Normal;
+			half3 Emission;
+			half Metallic;
+			half Smoothness;
+			half Occlusion;
+			fixed Alpha;
+			//fixed3 Transmission;
+		};
 
         fixed4 _Color;
         fixed4 _EmissionColor;
@@ -91,6 +107,34 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
         bool _ActiveWaveX;
         bool _ActiveWaveY;
         bool _ActiveWaveZ;
+
+        inline half4 LightingStandardCustom(SurfaceOutputStandardCustom s, half3 viewDir, UnityGI gi )
+		{
+			//half3 transmission = max(0 , -dot(s.Normal, gi.light.dir)) * gi.light.color * s.Transmission;
+			//half4 d = half4(s.Albedo * transmission , 0);
+            half3 transmission = max(0 , -dot(s.Normal, gi.light.dir)) * gi.light.color;
+			half4 d = half4(s.Albedo * transmission , 0);
+
+			SurfaceOutputStandard r;
+			r.Albedo = s.Albedo;
+			r.Normal = s.Normal;
+			r.Emission = s.Emission;
+			r.Metallic = s.Metallic;
+			r.Smoothness = s.Smoothness;
+			r.Occlusion = s.Occlusion;
+			r.Alpha = s.Alpha;
+			return LightingStandard (r, viewDir, gi) + d;
+		}
+
+		inline void LightingStandardCustom_GI(SurfaceOutputStandardCustom s, UnityGIInput data, inout UnityGI gi )
+		{
+			#if defined(UNITY_PASS_DEFERRED) && UNITY_ENABLE_REFLECTION_BUFFERS
+				gi = UnityGlobalIllumination(data, s.Occlusion, s.Normal);
+			#else
+				UNITY_GLOSSY_ENV_FROM_SURFACE( g, s, data );
+				gi = UnityGlobalIllumination( data, s.Occlusion, s.Normal, g );
+			#endif
+		}
         
         void vert (inout appdata_full v)
         {
@@ -128,7 +172,8 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
             }
         }
 
-        void surf (Input IN, inout SurfaceOutputStandard o)
+        //SurfaceOutputStandardCustom
+        void surf (Input IN, inout SurfaceOutputStandardCustom o)     //SurfaceOutputStandard
         {
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             fixed4 n = tex2D (_NormalTex, IN.uv_NormalTex);
@@ -138,7 +183,7 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
 
             o.Albedo = c.rgb;                                       //fixed3
 
-            float texAlpha = c.a;                                   //half
+            float texAlpha = tex2D (_MainTex, IN.uv_MainTex).a;     //half
             float cutoff = saturate(_Cutoff + (1 - texAlpha));
             float softAlpha = smoothstep(cutoff, cutoff + _CutoffSoftness, texAlpha);
             o.Alpha = softAlpha * texAlpha * _Color.a;

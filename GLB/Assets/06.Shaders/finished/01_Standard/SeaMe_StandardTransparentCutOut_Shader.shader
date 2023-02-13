@@ -6,6 +6,7 @@ Shader "SeaMe/SeaMe_StandardTransparentCutOut_Shader"
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo Map", 2D) = "white" {}
         _CutOff ("Alpha CutOut", range(0,1)) = 0.5
+        _CutOffSoftness("Cutoff softness", Range(0, 1)) = 0
         [Enum(UnityEngine.Rendering.CullMode)]_Cull("Cull Mode", Float) = 2
 
         [Space(10)]
@@ -60,7 +61,8 @@ Shader "SeaMe/SeaMe_StandardTransparentCutOut_Shader"
 
         fixed4 _Color;
         fixed4 _EmissionColor;
-        fixed _CutOff;
+        float _CutOff;
+        float _CutOffSoftness;
         fixed _NormalScale;
         half _SmoothnessScale;
         half _MetallicScale;
@@ -76,10 +78,18 @@ Shader "SeaMe/SeaMe_StandardTransparentCutOut_Shader"
 
             o.Albedo = c.rgb;                                       //fixed3
             
-            o.Alpha = c.a;                                          //half
-            if(o.Alpha < _CutOff) {   
-				clip(-1.0); 
-			}
+            // o.Alpha = c.a;                                          //half
+            // if(o.Alpha < _CutOff) {   
+			// 	clip(-1.0); 
+			// }
+
+            float texAlpha = tex2D (_MainTex, IN.uv_MainTex).a;     //half
+            float cutoff = saturate(_CutOff + (1 - texAlpha));
+            float softAlpha = smoothstep(cutoff, cutoff + _CutOffSoftness, texAlpha);
+            o.Alpha = softAlpha * texAlpha * _Color.a;
+            if(o.Alpha < _CutOff) {
+                clip(-1.0);
+            }
 
             fixed3 nm = UnpackNormal(n);
             o.Normal = nm * fixed3(_NormalScale, _NormalScale, 1);  //fixed3
@@ -119,6 +129,7 @@ Shader "SeaMe/SeaMe_StandardTransparentCutOut_Shader"
         fixed4 _Color;
         fixed4 _EmissionColor;
         fixed _CutOff;
+        float _CutOffSoftness;
         fixed _NormalScale;
         half _SmoothnessScale;
         half _MetallicScale;
@@ -134,10 +145,18 @@ Shader "SeaMe/SeaMe_StandardTransparentCutOut_Shader"
 
             o.Albedo = c.rgb;                                       //fixed3
             
-            o.Alpha = c.a;                                          //half
-            if(o.Alpha < _CutOff) {   
-				clip(-1.0); 
-			}
+            // o.Alpha = c.a;                                          //half
+            // if(o.Alpha < _CutOff) {   
+			// 	clip(-1.0); 
+			// }
+
+            float texAlpha = tex2D (_MainTex, IN.uv_MainTex).a;     //half
+            float cutoff = saturate(_CutOff + (1 - texAlpha));
+            float softAlpha = smoothstep(cutoff, cutoff + _CutOffSoftness, texAlpha);
+            o.Alpha = softAlpha * texAlpha * _Color.a;
+            if(o.Alpha < _CutOff) {
+                clip(-1.0);
+            }
 
             fixed3 nm = UnpackNormal(n);
             o.Normal = nm * fixed3(_NormalScale, _NormalScale, 1);  //fixed3
