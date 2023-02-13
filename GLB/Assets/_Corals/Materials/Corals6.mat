@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Corals6
-  m_Shader: {fileID: 4800000, guid: 7a0703d98e225a0429cf16cf6e0a8d54, type: 3}
-  m_ShaderKeywords: _SMOOTHFROMMAPSWITCH_ON
+  m_Shader: {fileID: 4800000, guid: 930ea12af827c774aae147f65777d8c1, type: 3}
+  m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _FIXEDAXIS_LEFT _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -51,12 +51,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionTex:
+        m_Texture: {fileID: 2800000, guid: 293aaaacce4cd7d43bcc9211b2202f07, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _HeightMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1697b2991c630644a9a78c3252b58174, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -67,7 +71,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: eee8288af0af94c44a9082ca13433273, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
         m_Texture: {fileID: 2800000, guid: eee8288af0af94c44a9082ca13433273, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -80,7 +92,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SmoothnessMap:
-        m_Texture: {fileID: 2800000, guid: 1ce42bacd82685d44b327d610832c979, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -88,24 +104,35 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _ActiveWaveX: 1
+    - _ActiveWaveY: 0
+    - _ActiveWaveZ: 1
     - _BumpScale: 1
+    - _Cull: 0
     - _Cutoff: 0.61
+    - _CutoffSoftness: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionMultiplayer: 0
+    - _EmissionScale: 0
     - _EmissionSwitch: 0
+    - _FixedAxis: 2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _MaskOffset: 0.1
     - _MetalicBrightnes: 0
     - _Metallic: 0.14
+    - _MetallicScale: 0
     - _Mode: 0
     - _NormalMapDepth: 1
+    - _NormalScale: 1
     - _OcclusionStrength: 1
     - _ParalaxOffset: 0.001
     - _Parallax: 0.02
     - _SmoothFromMapSwitch: 1
     - _SmoothRough: 0
+    - _SmoothnessScale: 0
     - _SmoothnessTextureChannel: 0
     - _Snoothness: 1
     - _SpecularHighlights: 1
@@ -113,6 +140,9 @@ Material:
     - _Tiling: 1
     - _TransmisionValue: 1
     - _UVSec: 0
+    - _WavePower: 0.1
+    - _WaveSpeed: 1
+    - _WaveTilling: 1.5
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:

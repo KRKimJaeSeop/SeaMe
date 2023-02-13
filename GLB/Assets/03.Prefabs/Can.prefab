@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2220676588189249163}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -67.5, y: 8.84, z: -148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2822,6 +2822,10 @@ PrefabInstance:
     - target: {fileID: 9003158114936947271, guid: a545a8287e6faee43b599e91aa4a6d39, type: 3}
       propertyPath: m_Name
       value: canBAPJOplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003158114936947271, guid: a545a8287e6faee43b599e91aa4a6d39, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9140598262318590969, guid: a545a8287e6faee43b599e91aa4a6d39, type: 3}
       propertyPath: m_LocalPosition.x

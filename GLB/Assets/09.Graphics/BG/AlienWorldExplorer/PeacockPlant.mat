@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PeacockPlant
-  m_Shader: {fileID: 4800000, guid: a2991a03359ecf049a1a006c200406cc, type: 3}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SMOOTHFROMMAPSWITCH_ON
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _NORMALMAP _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 1b5f052b2c827374080709a423a3d1a6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 298a669357c5ff9408fe11e6e54213d9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 1dc32c3ad7e50b844ad8c8ed3afa56c6, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicMap:
@@ -92,13 +92,13 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionMultiplayer: 0
+    - _EmissionMultiplayer: 0.18
     - _EmissionSwitch: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.1
     - _GlossyReflections: 1
     - _MetalicBrightnes: 0
-    - _Metallic: 0
+    - _Metallic: 0.6
     - _Mode: 0
     - _NormalMapDepth: 1
     - _OcclusionStrength: 1
@@ -118,5 +118,5 @@ Material:
     - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CubemapColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.43527526, g: 0.43527526, b: 0.43527526, a: 1}
   m_BuildTextureStacks: []
