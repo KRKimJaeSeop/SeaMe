@@ -121,7 +121,6 @@ export default class ZepetoPlayersManager extends ZepetoScriptBehaviour {
                 zepetoGameCharacter.playerValue = this.playerValue;
                 zepetoGameCharacter.SetCharacter();
                 GameManager.instance.SetPlayers(sessionId);
-
             });
         }
 

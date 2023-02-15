@@ -7,7 +7,8 @@ import PlayerController from '../Character/PlayerController';
 import Dome from '../Game/Dome';
 import MultiplayManager from '../../MultiplaySync/Common/MultiplayManager';
 import WorldSettingScript from '../Table/WorldSettingScript';
-
+import { ZepetoChat, MessageType, UserMessage } from 'ZEPETO.Chat';
+ 
 export default class GameManager extends ZepetoScriptBehaviour {
 
     @SerializeField()
@@ -114,6 +115,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
         }
 
         MultiplayManager.instance.room.Send("GameStart", `0`);
+        ZepetoChat.SetActiveChatUI(false);
         this.SetTestText(`Game Start!`);
     }
 
