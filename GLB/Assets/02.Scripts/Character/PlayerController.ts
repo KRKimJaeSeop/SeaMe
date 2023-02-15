@@ -145,9 +145,11 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     //#endregion
 
-    //#region [자기장 충돌 처리]
+    //#region [충돌 처리]
     OnTriggerEnter(coll: Collider) {
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+
+            // 자기장
             if (coll.CompareTag("Dome")) {
                 //처음 게임 진입시
                 if (this.isGamePlaying == false) {
@@ -155,16 +157,19 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                     this.StartCoroutine(this.ShootRay());
                     this.isGamePlaying = true;
                 }
-                //게임 진행중, 자기장 밖에서 안으로 들어올 때
-                else {
-
-                }
             }
+
+
         }
     }
     OnTriggerExit(coll: Collider) {
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
             if (coll.CompareTag("Dome")) {
+                console.log("StartCorutine");
+                MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
+            }
+
+            if (coll.CompareTag("Obstracle")) {
                 console.log("StartCorutine");
                 MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
             }
