@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4540217455190566171
 Transform:
@@ -97,7 +97,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4540217455242327065
 Transform:
@@ -176,7 +176,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8760230545275057179
 Transform:
@@ -246,9 +246,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -781027101570556506, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_Name
       value: sandAndStone_edit_for_FBX
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384810685192902715, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4375997908033944271, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalScale.y
@@ -277,6 +289,10 @@ PrefabInstance:
     - target: {fileID: 4375997908033944271, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -51.357
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920992781816481725, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8927830742676011286, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalPosition.x
@@ -376,9 +392,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -781027101570556506, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_Name
       value: sandAndStone_edit_for_FBX
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384810685192902715, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4375997908033944271, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalPosition.x
@@ -415,6 +443,10 @@ PrefabInstance:
     - target: {fileID: 4375997908033944271, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 14.929
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920992781816481725, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8927830742676011286, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalPosition.x
@@ -514,9 +546,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -781027101570556506, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_Name
       value: sandAndStone_edit_for_FBX
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384810685192902715, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4375997908033944271, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalPosition.x
@@ -525,6 +569,10 @@ PrefabInstance:
     - target: {fileID: 4375997908033944271, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920992781816481725, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8927830742676011286, guid: 6c9f0d6463b635a4eac59c47fca3c551, type: 3}
       propertyPath: m_LocalPosition.x

@@ -8,14 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: grass
-  m_Shader: {fileID: 47, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHATEST_ON _EMISSION _SMOOTHFROMMAPSWITCH_ON _TRANSPARENTSWITCH_ON
+  m_Shader: {fileID: 4800000, guid: 930ea12af827c774aae147f65777d8c1, type: 3}
+  m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _ALPHATEST_ON _EMISSION _FIXEDAXIS_TOP
+    _SMOOTHFROMMAPSWITCH_ON _TRANSPARENTSWITCH_ON
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -92,6 +92,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: b73865f12d4ec864083044a1793033de, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionTex:
+        m_Texture: {fileID: 2800000, guid: b73865f12d4ec864083044a1793033de, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _HeightMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -145,6 +149,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicMapArray:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -208,6 +216,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SmoothnessTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -230,6 +242,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - PixelSnap: 0
+    - _ActiveWaveX: 1
+    - _ActiveWaveY: 0
+    - _ActiveWaveZ: 1
     - _AlbedoDetailBrightness: 1
     - _AlbedoDetailStrenth: 1
     - _BVCNormalsScale: 1
@@ -237,13 +252,16 @@ Material:
     - _BumpScale: 1
     - _CubemapInens: 1
     - _Cull: 0
-    - _Cutoff: 0.078
+    - _Cutoff: 0.1
+    - _CutoffSoftness: 0.087
     - _DetailNormalMapScale: 1
     - _DetailNormalsScale: 1
     - _DstBlend: 0
     - _EmissionMultiplayer: 0
+    - _EmissionScale: 0.76
     - _EmissionSwitch: 0
     - _EnableExternalAlpha: 0
+    - _FixedAxis: 0
     - _FresnelPower: 0
     - _FresnelScale: 1
     - _GlossMapScale: 1
@@ -258,6 +276,7 @@ Material:
     - _MaskContrast: 1
     - _MaskIntens: 0
     - _MaskIntensity: 0
+    - _MaskOffset: 0.1
     - _MetalicBrightnes: 0
     - _MetalicBrightnes1: 0
     - _MetalicBrightnes2: 0
@@ -268,6 +287,7 @@ Material:
     - _Metallic2: 1
     - _Metallic3: 1
     - _MetallicBase: 1
+    - _MetallicScale: 0.5
     - _Mode: 1
     - _NormalExtraDetailsDeep: 1
     - _NormalMapDepth: 1
@@ -277,6 +297,7 @@ Material:
     - _NormalMapDepthBase: 1
     - _NormalMapDetailsDeep: 1
     - _NormalPower: 0.75
+    - _NormalScale: 1
     - _OcclusionStrength: 1
     - _ParalaxOffset: 0.001
     - _ParalaxOffset1: 0.001
@@ -302,6 +323,7 @@ Material:
     - _Smoothness2: 1
     - _Smoothness3: 1
     - _SmoothnessBase: 1
+    - _SmoothnessScale: 0
     - _SmoothnessTextureChannel: 0
     - _Snoothness: 1.72
     - _SpecularHighlights: 1
@@ -318,6 +340,9 @@ Material:
     - _TransmisionValue: -1.55
     - _TransparentSwitch: 1
     - _UVSec: 0
+    - _WavePower: 1.2
+    - _WaveSpeed: 1.4
+    - _WaveTilling: 3
     - _YContrast: 1
     - _ZWrite: 1
     - __dirty: 1

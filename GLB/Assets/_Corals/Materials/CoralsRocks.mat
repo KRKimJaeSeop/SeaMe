@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CoralsRocks
-  m_Shader: {fileID: 4800000, guid: 81c825f4549194341991f5ea67e69ccc, type: 3}
-  m_ShaderKeywords: _EMISSION _FIXEDAXIS_TOP _NORMALMAP _SMOOTHFROMMAPSWITCH_ON
-  m_LightmapFlags: 0
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _FIXEDAXIS_TOP _NORMALMAP _SMOOTHFROMMAPSWITCH_ON
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -122,11 +122,11 @@ Material:
     - _EmissionSwitch: 0
     - _FixedAxis: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.6
     - _GlossyReflections: 1
     - _MaskOffset: 0.1
     - _MetalicBrightnes: 0
-    - _Metallic: 0
+    - _Metallic: 0.6
     - _MetallicScale: 0
     - _Mode: 0
     - _NormalMapDepth: 1
