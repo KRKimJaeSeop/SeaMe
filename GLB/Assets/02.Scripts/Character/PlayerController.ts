@@ -159,6 +159,15 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 }
             }
 
+            if (coll.CompareTag("Obstracle")) {
+                console.log("HIT!!!!");
+
+            }
+            if (coll.CompareTag("JumpZone")) {
+                ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 15;
+                ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Jump();
+
+            }
 
         }
     }
@@ -169,10 +178,10 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
             }
 
-            if (coll.CompareTag("Obstracle")) {
-                console.log("StartCorutine");
-                MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
-            }
+        }
+
+        if (coll.CompareTag("JumpZone")) {
+            ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 0;
         }
     }
     //#endregion
