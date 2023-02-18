@@ -15,3 +15,9 @@
 12_Gregor Quendel - Designed Series - Free Cinematic Sound Effects		:방해물 또는 자기장 발동시
 13_CasualGameSounds						:기본 버튼음
 14_Fantasy SFX for Particle Distort Texture effect library			:TEXTURE
+
+
+15: Strings		1구역BGM
+07: The Shallows		2구역BGM
+
+

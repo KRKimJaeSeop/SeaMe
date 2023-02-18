@@ -88,7 +88,7 @@ Shader "SeaMe/SeaMe_MagneticField_Shader"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent"}
+        Tags { "RenderType"="Transparent" "Queue"="Transparent+1"}
         Blend SrcAlpha OneMinusSrcAlpha
         ZWrite Off
         Offset -1, -1
