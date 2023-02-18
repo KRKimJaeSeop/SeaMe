@@ -21,11 +21,11 @@ Material:
     m_TexEnvs:
     - _BumpTex:
         m_Texture: {fileID: 2800000, guid: 73879d6c1cb3d5349915ceedac6fd964, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _DisplacementGuide:
         m_Texture: {fileID: 2800000, guid: 8bb1a7319f5ec954ca59198d6aad1d58, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _DistortionTex:
         m_Texture: {fileID: 2800000, guid: 8bb1a7319f5ec954ca59198d6aad1d58, type: 3}
@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _GradientMap:
         m_Texture: {fileID: 2800000, guid: ce9e067ddce65b244831d9bc89f7d3a9, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _HexTex:
         m_Texture: {fileID: 2800000, guid: 8bb1a7319f5ec954ca59198d6aad1d58, type: 3}
@@ -45,7 +45,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: e11bf248be0567f48ba24e463614b241, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
         m_Texture: {fileID: 2800000, guid: 73879d6c1cb3d5349915ceedac6fd964, type: 3}
@@ -68,8 +68,8 @@ Material:
     - _DepthFadeMul: 1
     - _DisplacementAmount: 0.03
     - _DistortionMul: -0.1
-    - _FresnelMul: 1.5
-    - _FresnelPow: 2
+    - _FresnelMul: 10
+    - _FresnelPow: 1
     - _Glossiness: 0
     - _InnerRadius: 0
     - _InnerSpecularMul: 0.1
