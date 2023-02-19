@@ -18,13 +18,21 @@ ScriptedImporter:
   wrapperTypes: []
   WrapperFilters: []
   wrapperOutputDirectory: Generated
-  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
-    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass
-    Dome extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    *DomeScaleControll()
-    {\r\n        let domeScale = this.transform.localScale.x;\r\n        // while
-    (domeScale>7) {\r\n        //     this.transform.localScale = new Vector3(domeScale,
-    domeScale, domeScale);\r\n        //     domeScale -= 1;\r\n        //     yield
-    new WaitForSeconds(0.5);\r\n        // }\r\n    }\r\n}\r\nexports.default = Dome;\r\n//#
-    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRG9tZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkRvbWUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFDQSxpREFBcUQ7QUFFckQsTUFBcUIsSUFBSyxTQUFRLHFDQUFxQjtJQUduRCxDQUFDLGlCQUFpQjtRQUNkLElBQUksU0FBUyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsVUFBVSxDQUFDLENBQUMsQ0FBQztRQUM1Qyx3QkFBd0I7UUFDeEIsZ0ZBQWdGO1FBQ2hGLHNCQUFzQjtRQUN0QixxQ0FBcUM7UUFDckMsSUFBSTtJQUNSLENBQUM7Q0FFSjtBQVpELHVCQVlDIn0=","assetPath":"Assets/02.Scripts/Game/Dome.ts","manifest":{"properties":[],"name":"Dome","description":""},"isCompiled":true}'
-  typescriptHash: 0398cd965e5567f022c917b6d82317d9
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst WorldSettingScript_1
+    = require(\\\"../Table/WorldSettingScript\\\");\\r\\nconst GameManager_1 = require(\\\"./GameManager\\\");\\r\\nclass
+    Dome extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor() {\\r\\n       
+    super(...arguments);\\r\\n        this.wfs = new UnityEngine_1.WaitForSeconds(0.5);\\r\\n   
+    }\\r\\n    *DomeScaleControll() {\\r\\n        GameManager_1.default.instance.ui.MainNotification(\\\"\uAC8C\uC784
+    \uC2DC\uC791\\\", 3);\\r\\n        yield new UnityEngine_1.WaitForSeconds(this.worldSettings.get_Item(\\\"domeStartTime\\\")
+    * 0.7);\\r\\n        GameManager_1.default.instance.ui.MainNotification(\\\"\uC790\uAE30\uC7A5\uC774
+    \uACE7 \uC904\uC5B4\uB4ED\uB2C8\uB2E4.\\\", 3);\\r\\n        yield new UnityEngine_1.WaitForSeconds(this.worldSettings.get_Item(\\\"domeStartTime\\\")
+    * 0.3);\\r\\n        GameManager_1.default.instance.ui.MainNotification(\\\"\uC790\uAE30\uC7A5\uC774
+    \uC904\uC5B4\uB4ED\uB2C8\uB2E4.\\\", 5);\\r\\n        let domeScale = this.transform.localScale.x;\\r\\n       
+    while (domeScale > 7) {\\r\\n            this.transform.localScale = new UnityEngine_1.Vector3(domeScale,
+    domeScale, domeScale);\\r\\n            domeScale -= this.worldSettings.get_Item(\\\"domeMoveSpeed\\\");\\r\\n           
+    yield this.wfs;\\r\\n        }\\r\\n    }\\r\\n}\\r\\nexports.default = Dome;\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRG9tZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkRvbWUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBNkQ7QUFDN0QsaURBQTRFO0FBQzVFLG9FQUE2RDtBQUM3RCwrQ0FBd0M7QUFDeEMsTUFBcUIsSUFBSyxTQUFRLHFDQUFxQjtJQUF2RDs7UUFLWSxRQUFHLEdBQW1CLElBQUksNEJBQWMsQ0FBQyxHQUFHLENBQUMsQ0FBQztJQWtCMUQsQ0FBQztJQWhCRyxDQUFDLGlCQUFpQjtRQUNkLHFCQUFXLENBQUMsUUFBUSxDQUFDLEVBQUUsQ0FBQyxnQkFBZ0IsQ0FBQyxPQUFPLEVBQUMsQ0FBQyxDQUFDLENBQUM7UUFDcEQsTUFBTSxJQUFJLDRCQUFjLENBQUMsSUFBSSxDQUFDLGFBQWEsVUFBQyxlQUFlLElBQUUsR0FBRyxDQUFDLENBQUM7UUFDbEUscUJBQVcsQ0FBQyxRQUFRLENBQUMsRUFBRSxDQUFDLGdCQUFnQixDQUFDLGVBQWUsRUFBQyxDQUFDLENBQUMsQ0FBQztRQUM1RCxNQUFNLElBQUksNEJBQWMsQ0FBQyxJQUFJLENBQUMsYUFBYSxVQUFDLGVBQWUsSUFBRSxHQUFHLENBQUMsQ0FBQztRQUVsRSxxQkFBVyxDQUFDLFFBQVEsQ0FBQyxFQUFFLENBQUMsZ0JBQWdCLENBQUMsYUFBYSxFQUFDLENBQUMsQ0FBQyxDQUFDO1FBRTFELElBQUksU0FBUyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsVUFBVSxDQUFDLENBQUMsQ0FBQztRQUM1QyxPQUFPLFNBQVMsR0FBRyxDQUFDLEVBQUU7WUFDbEIsSUFBSSxDQUFDLFNBQVMsQ0FBQyxVQUFVLEdBQUcsSUFBSSxxQkFBTyxDQUFDLFNBQVMsRUFBRSxTQUFTLEVBQUUsU0FBUyxDQUFDLENBQUM7WUFDekUsU0FBUyxJQUFJLElBQUksQ0FBQyxhQUFhLFVBQUMsZUFBZSxDQUFDLENBQUM7WUFDakQsTUFBTSxJQUFJLENBQUMsR0FBRyxDQUFDO1NBQ2xCO0lBQ0wsQ0FBQztDQUVKO0FBdkJELHVCQXVCQyJ9\",\"assetPath\":\"Assets/02.Scripts/Game/Dome.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"ZEPETO.Script\",\"name\":\"worldSettings\",\"type\":\"ZEPETO.Script.ZepetoScriptableObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"Dome\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 9fed7e91a0398d9505a3f1f4757badc5
   onlyWriteTrigger: 0

@@ -9,18 +9,18 @@ import MultiplayManager from '../../MultiplaySync/Common/MultiplayManager';
 import WorldSettingScript from '../Table/WorldSettingScript';
 import { ZepetoChat, MessageType, UserMessage } from 'ZEPETO.Chat';
 import SeaHareObject from '../Character/SeaHareObject';
+import SoundManager from './SoundManager';
+import UIManager from './UIManager';
 
 export default class GameManager extends ZepetoScriptBehaviour {
 
-    @SerializeField()
-    private testText: Text
-
-    @SerializeField()
-    private damagedImage: Image;
-
-
+    //월드 세팅
     public worldSettings: ZepetoScriptableObject<WorldSettingScript>;
 
+    public soundManager: SoundManager;
+    //ui매니저
+    public uiManager: GameObject;
+    public ui: UIManager;
 
     public UserList: string[];
     public SpawnPositionList: Transform[];
@@ -53,12 +53,10 @@ export default class GameManager extends ZepetoScriptBehaviour {
         if (this.UserList[0] == "empty") {
             this.UserList.shift();
         }
+        this.ui = this.uiManager.GetComponent<UIManager>();
 
     }
 
-    public SetTestText(setText: string) {
-        this.testText.text = setText;
-    }
 
     public SetPlayers(sessionId: string) {
         this.UserList.push(sessionId);
@@ -91,8 +89,8 @@ export default class GameManager extends ZepetoScriptBehaviour {
             this.StartCoroutine(this.StartGame());
         }
         else {
-            this.SetTestText(`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`);
-
+            GameManager.instance.ui.MainNotification
+            (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 200);
         }
     }
 
@@ -137,7 +135,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
         let count = this.worldSettings["countdownBeforeGameStart"];
         while (count > 0) {
             count--;
-            this.SetTestText(`The game will begin shortly..[${count}]`);
+            GameManager.instance.ui.MainNotification(`The game will begin shortly..[${count}]`, 0.9);
             yield new WaitForSeconds(1);
         }
 
@@ -146,16 +144,10 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     }
 
-    public Damaged(value: number) {
-        this.StartCoroutine(this.DamagedRoutine(value));
-    }
-    *DamagedRoutine(value: number) {
+    // public Damaged(value: number) {
+    //     this.StartCoroutine(this.uiManager.DamagedRoutine(value));
+    // }
 
-        this.damagedImage.color = new Color(1, 1, 1, value)
-        yield new WaitForSeconds(0.3);
-        this.damagedImage.color = new Color(1, 1, 1, 0)
-
-    }
 
 
 }

@@ -42,8 +42,9 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
 
         //게임오버인 플레이어 전체에게 게임오브젝트 해제
-        MultiplayManager.instance.room.AddMessageHandler("StartObserver", (message) => {
+        MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
             Debug.Log(message);
+
             if (message == this.sessionID) {
                 this.gameObject.SetActive(false);
             }
@@ -70,15 +71,18 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             Debug.Log(message);
             if (message == this.sessionID) {
                 this.DamagedCount++;
-                GameManager.instance.Damaged(this.DamagedCount/3);
+                GameManager.instance.ui.SubNotification("아얏", 0.2);
+
+
+                //   GameManager.instance.Damaged(this.DamagedCount/3);
             }
         });
 
         // 게임 오버시 관전모드 시작
-        MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
+        MultiplayManager.instance.room.AddMessageHandler("StartObserver", (message) => {
             Debug.Log(message);
             if (message == this.sessionID) {
-                GameManager.instance.SetTestText("GameOver");
+                //  GameManager.instance.SetTestText("GameOver");
             }
         });
 
@@ -117,7 +121,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                     let hitInfo = $unref(ref);
                     let seaHare = hitInfo.collider.gameObject.GetComponent<SeaHareObject>();
-                    GameManager.instance.SetTestText(`Status::HIT::${seaHare?.sessionID}`);
+                    //    GameManager.instance.SetTestText(`Status::HIT::${seaHare?.sessionID}`);
 
                     //이미 돌아가고있다면 중복호출X
                     if (this.AttackCoroutine == null) {
@@ -167,8 +171,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
             // 자기장 진입시 레이 활성화
             if (coll.gameObject.CompareTag("Dome")) {
-
-                GameManager.instance.SetTestText(`Game Start!`);
                 this.StartCoroutine(this.ShootRay());
             }
 
@@ -179,7 +181,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (coll.gameObject.CompareTag("JumpZone")) {
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 15;
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Jump();
-
             }
 
         }

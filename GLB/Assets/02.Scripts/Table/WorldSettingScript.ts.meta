@@ -20,12 +20,14 @@ ScriptedImporter:
   wrapperOutputDirectory: Generated
   compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
     \\\"__esModule\\\", { value: true });\\r\\nclass WorldSettingScript {\\r\\n}\\r\\nexports.default
-    = WorldSettingScript;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiV29ybGRTZXR0aW5nU2NyaXB0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiV29ybGRTZXR0aW5nU2NyaXB0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBRUEsTUFBcUIsa0JBQWtCO0NBa0J0QztBQWxCRCxxQ0FrQkMifQ==\",\"assetPath\":\"Assets/02.Scripts/Table/WorldSettingScript.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"deadLineMoveSpeed\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"Game
-    Rule Settings\\\"\"]},{\"name\":\"Tooltip\",\"args\":[\"\\\"\uC790\uAE30\uC7A5
-    \uC774\uB3D9\uC18D\uB3C4 \\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"countdownBeforeGameStart\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Tooltip\",\"args\":[\"\\\"\uB300\uAE30\uC2E4\uC5D0\uC11C
-    \uC778\uC6D0\uCDA9\uC871 \uD6C4 \uAC8C\uC784\uC2DC\uC791 \uC804 \uCE74\uC6B4\uD2B8\uB2E4\uC6B4\\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"roomPlayerCapacity\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Tooltip\",\"args\":[\"\\\"\uD55C
-    \uB8F8\uC5D0 \uD50C\uB808\uC774\uC5B4 \uC218 \\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"obstructionAmount\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"Game
-    Rule Settings\\\"\"]},{\"name\":\"Tooltip\",\"args\":[\"\\\"\uBC29\uD574\uBB3C
-    \uB4F1\uC7A5 \uBE44\uC728 \\\"\"]}]}],\"name\":\"WorldSettingScript\",\"description\":\"\"},\"isCompiled\":true}"
-  typescriptHash: 84edb8bfffcaae73c4a03ef823161ef8
+    = WorldSettingScript;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiV29ybGRTZXR0aW5nU2NyaXB0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiV29ybGRTZXR0aW5nU2NyaXB0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBRUEsTUFBcUIsa0JBQWtCO0NBbUJ0QztBQW5CRCxxQ0FtQkMifQ==\",\"assetPath\":\"Assets/02.Scripts/Table/WorldSettingScript.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"roomPlayerCapacity\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"\uB300\uAE30\uC2E4
+    \uC138\uD305\\\"\"]},{\"name\":\"Tooltip\",\"args\":[\"\\\"\uD55C \uAC8C\uC784\uC5D0
+    \uD50C\uB808\uC774\uC5B4 \uC218\\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"countdownBeforeGameStart\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Tooltip\",\"args\":[\"\\\"\uB300\uAE30\uC2E4\uC5D0\uC11C
+    \uC778\uC6D0\uCDA9\uC871 \uD6C4 \uAC8C\uC784\uC2DC\uC791 \uC804 \uCE74\uC6B4\uD2B8\uB2E4\uC6B4\\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"domeStartTime\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"\uAC8C\uC784
+    \uADDC\uCE59 \uC138\uD305\\\"\"]},{\"name\":\"Tooltip\",\"args\":[\"\\\"\uAC8C\uC784
+    \uC2DC\uC791 \uD6C4 \uC790\uAE30\uC7A5 \uC2DC\uC791\uC2DC\uAC04\\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"domeMoveSpeed\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Tooltip\",\"args\":[\"\\\"\uC790\uAE30\uC7A5
+    0.5\uCD08\uB9C8\uB2E4 \uC774\uB3D9\uD558\uB294 \uAC70\uB9AC\\\"\"]}]},{\"assembly\":\"mscorlib\",\"name\":\"obstracleSpeed\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"Header\",\"args\":[\"\\\"\uC624\uBE0C\uC81D\uD2B8
+    \uC138\uD305\\\"\"]},{\"name\":\"Tooltip\",\"args\":[\"\\\"\uBC29\uD574\uBB3C
+    \uC774\uB3D9\uC18D\uB3C4 \\\"\"]}]}],\"name\":\"WorldSettingScript\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: d616b832ee2477d92065aac74c48bb7c
   onlyWriteTrigger: 0
