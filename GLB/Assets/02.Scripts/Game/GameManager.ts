@@ -8,7 +8,8 @@ import Dome from '../Game/Dome';
 import MultiplayManager from '../../MultiplaySync/Common/MultiplayManager';
 import WorldSettingScript from '../Table/WorldSettingScript';
 import { ZepetoChat, MessageType, UserMessage } from 'ZEPETO.Chat';
- 
+import SeaHareObject from '../Character/SeaHareObject';
+
 export default class GameManager extends ZepetoScriptBehaviour {
 
     @SerializeField()
@@ -18,6 +19,8 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     public UserList: string[];
     public SpawnPositionList: Transform[];
+
+    public SeaHareList: SeaHareObject[];
 
     public dome: GameObject;
 
@@ -74,11 +77,14 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         });
 
-        //추가 후 
+
+        //유저 수 충족. 카운트다운 시작
         if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
+
+
             this.StartCoroutine(this.StartGame());
         }
-        else{
+        else {
             this.SetTestText(`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`);
 
         }
@@ -92,10 +98,25 @@ export default class GameManager extends ZepetoScriptBehaviour {
             }
         }
     }
-    
+
     public GetUserSpawnPosition(sessionId: string): Vector3 {
 
+        //정렬후 스폰
+        this.UserList.sort((a, b) => {
+
+            let aValue = a.toUpperCase();
+            let bValue = b.toUpperCase();
+            if (aValue < bValue) {
+                return -1;
+            } else if (aValue > bValue) {
+                return 1;
+            }
+            return 0;
+        });
+
+        //돔 시작
         this.StartCoroutine(this.dome.GetComponent<Dome>().DomeScaleControll());
+        //위치 스폰
         for (let index = 0; index < this.UserList.Length; index++) {
 
             if (this.UserList[index] == sessionId) {
@@ -107,7 +128,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     *StartGame() {
 
-       let count = this.worldSettings["countdownBeforeGameStart"];
+        let count = this.worldSettings["countdownBeforeGameStart"];
         while (count > 0) {
             count--;
             this.SetTestText(`The game will begin shortly..[${count}]`);
@@ -116,7 +137,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         MultiplayManager.instance.room.Send("GameStart", `0`);
         ZepetoChat.SetActiveChatUI(false);
-        this.SetTestText(`Game Start!`);
+
     }
 
 

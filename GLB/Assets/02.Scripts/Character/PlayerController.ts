@@ -25,9 +25,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     private DeathDomeCountdown: Coroutine = null;
     private DeathDomeHP: number;
 
-    @SerializeField()
-    private isGamePlaying: bool = false;
-
     public isHaveSeaHare: bool = false;
 
     //#region [초기 세팅]
@@ -38,6 +35,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         this.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
         this.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
 
+
         //자기 자신일때
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
             this.AddMessageHandler();
@@ -46,10 +44,12 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     }
 
     *TestTele() {
+
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
             const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
             localCharacter.Teleport(GameManager.instance.GetUserSpawnPosition(this.sessionID), Quaternion.identity);
         }
+
     }
 
     //[메세지 핸들러 등록]
@@ -68,7 +68,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             }
         });
 
-
     }
 
     //게임 입장시 플레이어의 수치를 조정한다.
@@ -84,13 +83,16 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     //항상 카메라가 바라보는 방향으로 Ray를 발사한다.
     *ShootRay() {
+
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+
+            //내 로컬에서 보이는 나 자신의 레이어만 끄기.
             Debug.Log("[ShootRay]");
             // 레이 세팅
             let ref = $ref<RaycastHit>();
             let layerMask = 1 << LayerMask.NameToLayer("Player");
 
-            //부딫힌게 나 자신인지 체크해야함.
+            //계속 레이 발사
             while (true) {
                 let ray: Ray = new Ray(
                     ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
@@ -100,21 +102,16 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 //OnEnter
                 if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                     let hitInfo = $unref(ref);
-
-                    //원래는 !=인데 테스트동안은 ==로 한다.
-                    if (hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID != this.sessionID) {
-                        GameManager.instance.SetTestText(`Status::HIT::${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`);
-                        //이미 돌아가고있다면 중복호출X
-                        if (this.AttackCoroutine == null) {
-                            this.AttackID = `${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`;
-                            this.AttackCoroutine = this.StartCoroutine(this.Attack());
-                        }
+                    GameManager.instance.SetTestText(`Status::HIT::${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`);
+                    //이미 돌아가고있다면 중복호출X
+                    if (this.AttackCoroutine == null) {
+                        this.AttackID = `${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`;
+                        this.AttackCoroutine = this.StartCoroutine(this.Attack());
                     }
                 }
                 //OnExit
                 else if (this.AttackCoroutine != null) {
                     Debug.Log("Attack::Escape");
-                    GameManager.instance.SetTestText("Status::NONE");
                     this.AttackID = "";
                     this.StopCoroutine(this.AttackCoroutine);
                     this.AttackCoroutine = null;
@@ -149,21 +146,18 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     OnTriggerEnter(coll: Collider) {
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
 
-            // 자기장
-            if (coll.CompareTag("Dome")) {
-                //처음 게임 진입시
-                if (this.isGamePlaying == false) {
-                    // 레이 활성화
-                    this.StartCoroutine(this.ShootRay());
-                    this.isGamePlaying = true;
-                }
+            // 자기장 진입시 레이 활성화
+            if (coll.gameObject.CompareTag("Dome")) {
+
+                GameManager.instance.SetTestText(`Game Start!`);
+                this.StartCoroutine(this.ShootRay());
             }
 
-            if (coll.CompareTag("Obstracle")) {
+            //장애물과 부딫히면 액션
+            if (coll.gameObject.CompareTag("Obstracle")) {
                 console.log("HIT!!!!");
-
             }
-            if (coll.CompareTag("JumpZone")) {
+            if (coll.gameObject.CompareTag("JumpZone")) {
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 15;
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Jump();
 
@@ -172,15 +166,16 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
     }
     OnTriggerExit(coll: Collider) {
+        //돔 나가면 게임오버
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
-            if (coll.CompareTag("Dome")) {
+            if (coll.gameObject.CompareTag("Dome")) {
                 console.log("StartCorutine");
                 MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
             }
 
         }
-
-        if (coll.CompareTag("JumpZone")) {
+        //점프존 벗어나면 점프파워 원상복구
+        if (coll.gameObject.CompareTag("JumpZone")) {
             ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 0;
         }
     }

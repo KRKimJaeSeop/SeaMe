@@ -199,7 +199,7 @@ export default class extends Sandbox {
 
 
 
-        //게임 입장시, 게임오버 메세지받을 준비.
+        //플레이어 게임오버 시 방송
         this.onMessage(JS_Message.KILL, (clients, message) => {
             this.broadcast(JS_Message.GAMEOVER, `${message}`);
         });
