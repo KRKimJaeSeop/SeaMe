@@ -11,12 +11,12 @@ export default class Dome extends ZepetoScriptBehaviour {
 
 
     *DomeScaleControll() {
-        GameManager.instance.ui.MainNotification("게임 시작", 3);
+        GameManager.instance.UI.MainNotification("게임 시작", 3);
         yield new WaitForSeconds(this.worldSettings["domeStartTime"] * 0.7);
-        GameManager.instance.ui.MainNotification("자기장이 곧 줄어듭니다.", 3);
+        GameManager.instance.UI.MainNotification("자기장이 곧 줄어듭니다.", 3);
         yield new WaitForSeconds(this.worldSettings["domeStartTime"] * 0.3);
 
-        GameManager.instance.ui.MainNotification("자기장이 줄어듭니다.", 5);
+        GameManager.instance.UI.MainNotification("자기장이 줄어듭니다.", 5);
 
         let domeScale = this.transform.localScale.x;
         while (domeScale > 7) {

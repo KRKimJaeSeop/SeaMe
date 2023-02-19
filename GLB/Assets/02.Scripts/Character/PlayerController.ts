@@ -71,7 +71,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             Debug.Log(message);
             if (message == this.sessionID) {
                 this.DamagedCount++;
-                GameManager.instance.ui.SubNotification("아얏", 0.2);
+                GameManager.instance.UI.SubNotification("아얏", 0.2);
 
 
                 //   GameManager.instance.Damaged(this.DamagedCount/3);

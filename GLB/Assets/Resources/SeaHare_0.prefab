@@ -42,6 +42,14 @@ MonoBehaviour:
     arrayValues: []
     script: {fileID: 4458252877524076426, guid: d1ea894430f162e44859a795cbcd0e26, type: 3}
     isExpaned: 0
+--- !u!81 &9148616803907006756
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16893221959919596}
+  m_Enabled: 1
 --- !u!1 &8166945002910309004
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ import { ZepetoChat, MessageType, UserMessage } from 'ZEPETO.Chat';
 import SeaHareObject from '../Character/SeaHareObject';
 import UIMainNotification from '../UI/UIMainNotification';
 import UISubNotification from '../UI/UISubNotification';
+import GameManager from './GameManager';
 
 export default class UIManager extends ZepetoScriptBehaviour {
 
@@ -32,6 +33,7 @@ export default class UIManager extends ZepetoScriptBehaviour {
     testB: number = 0;
     public MainBtn: Button;
     public SubBtn: Button;
+    public SubBtn2: Button;
 
     Awake() {
         this.uiMainNotification = this.MainNotiText.GetComponent<UIMainNotification>();
@@ -41,24 +43,25 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
 
         this.MainBtn.onClick.AddListener(() => {
-            this.testA++;
-            this.MainNotification(`${this.testA}`);
+            GameManager.instance.Sound.PlayBGM(1);
         });
         this.SubBtn.onClick.AddListener(() => {
-            this.testB++;
-            this.SubNotification(`${this.testB}`);
+            GameManager.instance.Sound.PlayBGM(2);
+
+        });
+        this.SubBtn2.onClick.AddListener(() => {
+            GameManager.instance.Sound.PlayBGM(3);
+
         });
 
     }
 
 
     public MainNotification(text: string, time: number = 0.5) {
-        Debug.Log("위터치");
         this.uiMainNotification.Show(text, time);
     }
 
     public SubNotification(text: string, time: number = 0.5) {
-        Debug.Log("아래터치");
         this.uiSubNotification.Show(text, time);
     }
 

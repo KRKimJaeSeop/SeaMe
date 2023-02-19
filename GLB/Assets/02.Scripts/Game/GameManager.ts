@@ -15,12 +15,16 @@ import UIManager from './UIManager';
 export default class GameManager extends ZepetoScriptBehaviour {
 
     //월드 세팅
-    public worldSettings: ZepetoScriptableObject<WorldSettingScript>;
-
-    public soundManager: SoundManager;
+    @SerializeField()
+    private worldSettings: ZepetoScriptableObject<WorldSettingScript>;
     //ui매니저
-    public uiManager: GameObject;
-    public ui: UIManager;
+    @SerializeField()
+    private uiManager: GameObject;
+    public UI: UIManager;
+    //사운드 매니저
+    @SerializeField()
+    private sound: GameObject;
+    public Sound: SoundManager;
 
     public UserList: string[];
     public SpawnPositionList: Transform[];
@@ -53,7 +57,9 @@ export default class GameManager extends ZepetoScriptBehaviour {
         if (this.UserList[0] == "empty") {
             this.UserList.shift();
         }
-        this.ui = this.uiManager.GetComponent<UIManager>();
+
+        this.UI = this.uiManager.GetComponent<UIManager>();
+        this.Sound = this.sound.GetComponent<SoundManager>();
 
     }
 
@@ -89,7 +95,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
             this.StartCoroutine(this.StartGame());
         }
         else {
-            GameManager.instance.ui.MainNotification
+            GameManager.instance.UI.MainNotification
             (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 200);
         }
     }
@@ -135,7 +141,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
         let count = this.worldSettings["countdownBeforeGameStart"];
         while (count > 0) {
             count--;
-            GameManager.instance.ui.MainNotification(`The game will begin shortly..[${count}]`, 0.9);
+            GameManager.instance.UI.MainNotification(`The game will begin shortly..[${count}]`, 0.9);
             yield new WaitForSeconds(1);
         }
 
