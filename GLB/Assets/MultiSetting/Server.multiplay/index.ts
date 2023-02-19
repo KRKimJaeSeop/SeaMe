@@ -204,6 +204,11 @@ export default class extends Sandbox {
             this.broadcast(JS_Message.GAMEOVER, `${message}`);
             this.broadcast(JS_Message.STARTOBSERVER, `${message}`);
         });
+
+        this.onMessage(JS_Message.HIT, (clients, message) => {
+            this.broadcast(JS_Message.DAMAGED, `${message}`);
+        });
+
     }
 
     onLeave(client: SandboxPlayer, consented?: boolean) {

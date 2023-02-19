@@ -22,8 +22,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     private PlayerObject: GameObject;
     private AttackCoroutine: Coroutine = null;
 
-    private DeathDomeCountdown: Coroutine = null;
-    private DeathDomeHP: number;
+    private DamagedCount: number = 0;
 
     public isHaveSeaHare: bool = false;
 
@@ -41,6 +40,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             this.AddMessageHandler();
             this.PlayerValueSetting();
         }
+
         //게임오버인 플레이어 전체에게 게임오브젝트 해제
         MultiplayManager.instance.room.AddMessageHandler("StartObserver", (message) => {
             Debug.Log(message);
@@ -63,6 +63,15 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         // 게임 시작시 플레이어 세팅 수신
         MultiplayManager.instance.room.AddMessageHandler("tpToStadium", (message) => {
             this.StartCoroutine(this.TestTele());
+        });
+
+        // 피격시 이펙트
+        MultiplayManager.instance.room.AddMessageHandler("Damaged", (message) => {
+            Debug.Log(message);
+            if (message == this.sessionID) {
+                this.DamagedCount++;
+                GameManager.instance.Damaged(this.DamagedCount/3);
+            }
         });
 
         // 게임 오버시 관전모드 시작
@@ -107,11 +116,13 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 //OnEnter
                 if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                     let hitInfo = $unref(ref);
-                    GameManager.instance.SetTestText(`Status::HIT::${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`);
+                    let seaHare = hitInfo.collider.gameObject.GetComponent<SeaHareObject>();
+                    GameManager.instance.SetTestText(`Status::HIT::${seaHare?.sessionID}`);
+
                     //이미 돌아가고있다면 중복호출X
                     if (this.AttackCoroutine == null) {
-                        this.AttackID = `${hitInfo.collider.gameObject.GetComponent<SeaHareObject>()?.sessionID}`;
-                        this.AttackCoroutine = this.StartCoroutine(this.Attack());
+                        this.AttackID = `${seaHare?.sessionID}`;
+                        this.AttackCoroutine = this.StartCoroutine(this.Attack(seaHare, seaHare?.sessionID));
                     }
                 }
                 //OnExit
@@ -128,9 +139,10 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     }
 
     //공격
-    *Attack() {
+    *Attack(seaHare: SeaHareObject, id: string) {
         for (let index = 0; index < this.playerValue["playerAttackTime"]; index++) {
             Debug.Log(index);
+            MultiplayManager.instance.room.Send("Hit", `${id}`);
             yield new WaitForSeconds(1);
         }
         this.StopCoroutine(this.AttackCoroutine);
@@ -140,7 +152,9 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         Debug.Log("Attack::KILL");
     }
 
-    //게임오버
+
+
+    //게임오버, 관전모드로 이동
     public GameOver() {
         this.gameObject.SetActive(false);
     }

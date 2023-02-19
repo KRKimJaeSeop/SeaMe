@@ -10,6 +10,9 @@ export default class SeaHareObject extends ZepetoScriptBehaviour {
     public userID: string;
     public sessionID: string = "";
 
+
+    private damagedCount: number;
+
     @SerializeField()
     private Light: Light;
 
@@ -39,5 +42,7 @@ export default class SeaHareObject extends ZepetoScriptBehaviour {
 
         }
     }
+
+
 
 }

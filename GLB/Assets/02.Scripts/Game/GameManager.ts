@@ -1,7 +1,7 @@
 import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { CharacterState, SpawnInfo, ZepetoPlayer, ZepetoPlayers } from "ZEPETO.Character.Controller"
 import { Physics, GameObject, RaycastHit, Input, Camera, Debug, WaitForSeconds, Vector3, Ray, LayerMask, Color, Quaternion, HumanBodyBones, Resources, Transform } from 'UnityEngine';
-import { RawImage, Text } from "UnityEngine.UI";
+import { RawImage, Text, Image } from "UnityEngine.UI";
 import { List$1 } from 'System.Collections.Generic';
 import PlayerController from '../Character/PlayerController';
 import Dome from '../Game/Dome';
@@ -14,6 +14,11 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     @SerializeField()
     private testText: Text
+
+    @SerializeField()
+    private damagedImage: Image;
+
+
     public worldSettings: ZepetoScriptableObject<WorldSettingScript>;
 
 
@@ -48,6 +53,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
         if (this.UserList[0] == "empty") {
             this.UserList.shift();
         }
+
     }
 
     public SetTestText(setText: string) {
@@ -137,6 +143,17 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         MultiplayManager.instance.room.Send("GameStart", `0`);
         ZepetoChat.SetActiveChatUI(false);
+
+    }
+
+    public Damaged(value: number) {
+        this.StartCoroutine(this.DamagedRoutine(value));
+    }
+    *DamagedRoutine(value: number) {
+
+        this.damagedImage.color = new Color(1, 1, 1, value)
+        yield new WaitForSeconds(0.3);
+        this.damagedImage.color = new Color(1, 1, 1, 0)
 
     }
 
