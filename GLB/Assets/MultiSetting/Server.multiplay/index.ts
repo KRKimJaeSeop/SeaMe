@@ -202,6 +202,7 @@ export default class extends Sandbox {
         //플레이어 게임오버 시 방송
         this.onMessage(JS_Message.KILL, (clients, message) => {
             this.broadcast(JS_Message.GAMEOVER, `${message}`);
+            this.broadcast(JS_Message.STARTOBSERVER, `${message}`);
         });
     }
 
@@ -280,6 +281,7 @@ enum JS_Message {
     GAMESTART = "GameStart",
     TELEPORT_Stadium = "tpToStadium",
     GAMEOVER = "GameOver",
+    STARTOBSERVER = "StartObserver",
     KILL = "Kill",
     HIT = "Hit",
     DAMAGED = "Damaged",

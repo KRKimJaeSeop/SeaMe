@@ -41,10 +41,16 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             this.AddMessageHandler();
             this.PlayerValueSetting();
         }
+        //게임오버인 플레이어 전체에게 게임오브젝트 해제
+        MultiplayManager.instance.room.AddMessageHandler("StartObserver", (message) => {
+            Debug.Log(message);
+            if (message == this.sessionID) {
+                this.gameObject.SetActive(false);
+            }
+        });
     }
 
     *TestTele() {
-
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
             const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
             localCharacter.Teleport(GameManager.instance.GetUserSpawnPosition(this.sessionID), Quaternion.identity);
@@ -59,12 +65,11 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             this.StartCoroutine(this.TestTele());
         });
 
-        // 게임 오버 수신
+        // 게임 오버시 관전모드 시작
         MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
             Debug.Log(message);
             if (message == this.sessionID) {
                 GameManager.instance.SetTestText("GameOver");
-                this.gameObject.SetActive(false);
             }
         });
 
