@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: BANDING SECONDARY_TEX
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -58,14 +58,14 @@ Material:
     m_Floats:
     - _Angle: 20
     - _Banding: 1
-    - _Bands: 3
-    - _BurnSize: 10
+    - _Bands: 5
+    - _BurnSize: 5
     - _CircleMask: 0
     - _Contrast: 0.72
-    - _Culling: 1
+    - _Culling: 0
     - _Cutoff: 0.156
     - _CutoffSoftness: 0.182
-    - _DepthFadeMul: 1
+    - _DepthFadeMul: 10
     - _DisplacementAmount: 0.03
     - _DistortionMul: -0.1
     - _FresnelMul: 10
@@ -76,7 +76,7 @@ Material:
     - _InnerSpecularPow: 30
     - _IntersectionThresholdMax: 1
     - _Metallic: 0
-    - _OuterRadius: 0.5
+    - _OuterRadius: 0
     - _PolarCoords: 0
     - _Power: 0.82
     - _RectHeight: 0
@@ -85,7 +85,7 @@ Material:
     - _RectSmoothness: 0
     - _RectWidth: 0
     - _SecondTex: 1
-    - _Smoothness: 0.2
+    - _Smoothness: 0
     - _SoftBlend: 0
     - _VertexOffset: 0
     - _VertexOffsetAmount: 0
@@ -99,5 +99,5 @@ Material:
     - _InnerSpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _OverlapColor: {r: 0.049001217, g: 0, b: 1, a: 1}
     - _PanningSpeed: {r: -0.03, g: -0.03, b: 0, a: 0}
-    - _SecondaryPanningSpeed: {r: 0.06, g: 0.03, b: 0, a: 0}
+    - _SecondaryPanningSpeed: {r: 0.02, g: 0.02, b: 0, a: 0}
   m_BuildTextureStacks: []
