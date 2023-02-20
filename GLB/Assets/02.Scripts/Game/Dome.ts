@@ -9,8 +9,14 @@ export default class Dome extends ZepetoScriptBehaviour {
 
     private wfs: WaitForSeconds = new WaitForSeconds(0.5);
 
+    private InitScale: Vector3
+
+    Awake() {
+        this.InitScale = this.transform.localScale;
+    }
 
     *DomeScaleControll() {
+        this.transform.localScale = this.InitScale;
         GameManager.instance.UI.MainNotification("게임 시작", 3);
         yield new WaitForSeconds(this.worldSettings["domeStartTime"] * 0.7);
         GameManager.instance.UI.MainNotification("자기장이 곧 줄어듭니다.", 3);
@@ -25,5 +31,7 @@ export default class Dome extends ZepetoScriptBehaviour {
             yield this.wfs;
         }
     }
+    
+
 
 }

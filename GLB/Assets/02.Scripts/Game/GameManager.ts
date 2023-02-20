@@ -1,6 +1,6 @@
 import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { CharacterState, SpawnInfo, ZepetoPlayer, ZepetoPlayers } from "ZEPETO.Character.Controller"
-import { Physics, GameObject, RaycastHit, Input, Camera, Debug, WaitForSeconds, Vector3, Ray, LayerMask, Color, Quaternion, HumanBodyBones, Resources, Transform } from 'UnityEngine';
+import { Physics, GameObject, RaycastHit, Input, Camera, Debug, WaitForSeconds, Vector3, Ray, LayerMask, Color, Quaternion, HumanBodyBones, Resources, Transform, Coroutine } from 'UnityEngine';
 import { RawImage, Text, Image } from "UnityEngine.UI";
 import { List$1 } from 'System.Collections.Generic';
 import PlayerController from '../Character/PlayerController';
@@ -11,6 +11,7 @@ import { ZepetoChat, MessageType, UserMessage } from 'ZEPETO.Chat';
 import SeaHareObject from '../Character/SeaHareObject';
 import SoundManager from './SoundManager';
 import UIManager from './UIManager';
+import { UnityEvent } from 'UnityEngine.Events';
 
 export default class GameManager extends ZepetoScriptBehaviour {
 
@@ -27,12 +28,14 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public Sound: SoundManager;
 
     public UserList: string[];
-    public SpawnPositionList: Transform[];
+    public SurvivorList: string[];
 
-    public SeaHareList: SeaHareObject[];
+    public SpawnPositionList: Transform[];
+    private DomeCorouine: Coroutine = null;
+
 
     public dome: GameObject;
-
+    private GameResetEvent: UnityEvent;
 
     /* Singleton */
     private static m_instance: GameManager = null;
@@ -61,10 +64,14 @@ export default class GameManager extends ZepetoScriptBehaviour {
         this.UI = this.uiManager.GetComponent<UIManager>();
         this.Sound = this.sound.GetComponent<SoundManager>();
 
+        this.GameResetEvent = new UnityEvent();
+        this.GameResetEvent.AddListener(() => this.ResetGameManager());
     }
 
 
     public SetPlayers(sessionId: string) {
+
+
         this.UserList.push(sessionId);
 
         this.UserList.forEach(element => {
@@ -84,19 +91,16 @@ export default class GameManager extends ZepetoScriptBehaviour {
                     currentHare.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
             }
-
         });
 
 
         //유저 수 충족. 카운트다운 시작
         if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
-
-
             this.StartCoroutine(this.StartGame());
         }
         else {
             GameManager.instance.UI.MainNotification
-            (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 200);
+                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 200);
         }
     }
 
@@ -106,6 +110,20 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 this.UserList.splice(i, 1);
                 i--;
             }
+        }
+    }
+
+    public RemoveSurvivorList(sessionId: string) {
+        for (let i = 0; i < this.SurvivorList.length; i++) {
+            if (this.SurvivorList[i] == sessionId) {
+                this.SurvivorList.splice(i, 1);
+                i--;
+
+            }
+        }
+        //지우고 나서, 남은유저가 1명 이하일 때 
+        if (this.SurvivorList.length <= 1) {
+            this.StartCoroutine(this.FinishGame());
         }
     }
 
@@ -124,11 +142,18 @@ export default class GameManager extends ZepetoScriptBehaviour {
             return 0;
         });
 
+        if (this.DomeCorouine != null) {
+            this.StopCoroutine(this.DomeCorouine);
+            this.DomeCorouine = null;
+        }
         //돔 시작
-        this.StartCoroutine(this.dome.GetComponent<Dome>().DomeScaleControll());
+        this.DomeCorouine =
+            this.StartCoroutine(this.dome.GetComponent<Dome>().DomeScaleControll());
+
+
         //위치 스폰
         for (let index = 0; index < this.UserList.Length; index++) {
-
+            this.SurvivorList.push(sessionId);
             if (this.UserList[index] == sessionId) {
                 return this.SpawnPositionList[index].position;
             }
@@ -150,5 +175,21 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     }
 
-    
+    *FinishGame() {
+        GameManager.instance.UI.MainNotification("게임 종료");
+        ZepetoChat.SetActiveChatUI(true);
+        this.GameResetEvent.Invoke();
+    }
+
+    ResetGameManager() {
+        if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
+            this.StartCoroutine(this.StartGame());
+        }
+        else {
+            GameManager.instance.UI.MainNotification
+                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 200);
+        }
+    }
+
+
 }

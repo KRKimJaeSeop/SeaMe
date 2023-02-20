@@ -12,6 +12,7 @@ import SeaHareObject from '../Character/SeaHareObject';
 import UIMainNotification from '../UI/UIMainNotification';
 import UISubNotification from '../UI/UISubNotification';
 import GameManager from './GameManager';
+import { SceneManager } from 'UnityEngine.SceneManagement';
 
 export default class UIManager extends ZepetoScriptBehaviour {
 
@@ -50,8 +51,7 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
         });
         this.SubBtn2.onClick.AddListener(() => {
-            GameManager.instance.Sound.PlayBGM(3);
-
+             GameManager.instance.Sound.PlayBGM(3);
         });
 
     }

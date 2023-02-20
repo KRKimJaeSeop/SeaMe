@@ -20,6 +20,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     public AttackID: string = "";
 
     private PlayerObject: GameObject;
+    private ShootCoroutine: Coroutine = null;
     private AttackCoroutine: Coroutine = null;
 
     private DamagedCount: number = 0;
@@ -42,12 +43,13 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
 
         //게임오버인 플레이어 전체에게 게임오브젝트 해제
-        MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
+        MultiplayManager.instance.room.AddMessageHandler("GameOver", (message: string) => {
             Debug.Log(message);
-
-            if (message == this.sessionID) {
-                this.gameObject.SetActive(false);
-            }
+            Debug.Log("라랄라라라");
+            GameManager.instance.RemoveSurvivorList(message);
+            // if (message == this.sessionID) {
+            //     this.gameObject.SetActive(false);
+            // }
         });
     }
 
@@ -82,7 +84,9 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         MultiplayManager.instance.room.AddMessageHandler("StartObserver", (message) => {
             Debug.Log(message);
             if (message == this.sessionID) {
-                //  GameManager.instance.SetTestText("GameOver");
+                GameManager.instance.UI.MainNotification("게임오버.. ", 100);
+                const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
+                localCharacter.Teleport(new Vector3(150, 10.8, 0), Quaternion.identity);
             }
         });
 
@@ -171,7 +175,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
             // 자기장 진입시 레이 활성화
             if (coll.gameObject.CompareTag("Dome")) {
-                this.StartCoroutine(this.ShootRay());
+                this.ShootCoroutine = this.StartCoroutine(this.ShootRay());
             }
 
             //장애물과 부딫히면 액션
@@ -192,6 +196,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (coll.gameObject.CompareTag("Dome")) {
                 console.log("StartCorutine");
                 MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
+                this.StopCoroutine(this.ShootCoroutine);
             }
 
         }
@@ -204,7 +209,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     *OnTriggerObstracle() {
 
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = -3;
-        
+
         for (let index = 0; index < 3; index++) {
             GameManager.instance.UI.ShotDamagedEffect(0.3);
             yield new WaitForSeconds(1);
