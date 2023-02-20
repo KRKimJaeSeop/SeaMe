@@ -1086,6 +1086,17 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &490529067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3777566842258546710, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+  m_PrefabInstance: {fileID: 928373737416074827}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &521499853
 GameObject:
   m_ObjectHideFlags: 0
@@ -5859,6 +5870,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: script.keys.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: script.values.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: script.keys.Array.data[8]
+      value: inkImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: script.unityValues.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: script.unityValues.Array.data[8]
+      value: 
+      objectReference: {fileID: 490529067}
     - target: {fileID: 928373736998484810, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: m_Pivot.x
       value: 0

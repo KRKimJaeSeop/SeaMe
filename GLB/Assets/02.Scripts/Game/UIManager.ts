@@ -13,6 +13,7 @@ import UIMainNotification from '../UI/UIMainNotification';
 import UISubNotification from '../UI/UISubNotification';
 import GameManager from './GameManager';
 import { SceneManager } from 'UnityEngine.SceneManagement';
+import { TimelineClipExtensions } from 'UnityEngine.Timeline';
 
 export default class UIManager extends ZepetoScriptBehaviour {
 
@@ -29,6 +30,9 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
     @SerializeField()
     private damagedImage: Image;
+
+    @SerializeField()
+    private inkImage: Image;        //잉크이미지 추가
 
     testA: number = 0;
     testB: number = 0;
@@ -77,6 +81,21 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
     }
 
+    //잉크
+    public ShotInkEffect(time: number) {
+        this.StartCoroutine(this.InkRoutine(time));
+    }
 
+    //잉크 코루틴
+    private *InkRoutine(time: number) {
+        this.inkImage.color = new Color(1, 1, 1, 1);
+
+        for(let alpha=1; alpha>=0; alpha -= 0.1)
+        {
+            yield new WaitForSeconds(time);
+            if(alpha >= 0.6) continue;
+            this.inkImage.color = new Color(1,1,1,alpha);
+        }
+    }
 
 }

@@ -210,6 +210,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = -3;
 
+        GameManager.instance.UI.ShotInkEffect(0.3);     //잉크 UI 테스트
+
         for (let index = 0; index < 3; index++) {
             GameManager.instance.UI.ShotDamagedEffect(0.3);
             yield new WaitForSeconds(1);
