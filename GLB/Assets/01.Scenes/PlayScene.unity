@@ -209,13 +209,13 @@ MonoBehaviour:
     useDefaultVirtualController: 1
     useDefaultInputController: 1
     controlMode: 0
-    verticalController: {fileID: 8523051459139762370, guid: 33446b9369e354b00a7ab43885afbe88, type: 3}
-    horizontalController: {fileID: 2787167779785370926, guid: 9b7a03709461140b4b3fc85aa8c5d741, type: 3}
+    verticalController: {fileID: 8523051459139762370, guid: 93ae5ec5a7658f540b0c70962c7778cf, type: 3}
+    horizontalController: {fileID: 2787167779785370926, guid: 4f0f5bbf73ad82d4ea747165cc5c91b9, type: 3}
     verticalDefaultController: {fileID: 8523051459139762370, guid: 33446b9369e354b00a7ab43885afbe88, type: 3}
     horizontalDefaultController: {fileID: 2787167779785370926, guid: 9b7a03709461140b4b3fc85aa8c5d741, type: 3}
   floatingUIData:
     showNickNameLocalPlayer: 0
-    showNickNameOtherPlayers: 1
+    showNickNameOtherPlayers: 0
     showBubbleChatLocalPlayer: 1
     showBubbleChatOtherPlayers: 1
     useMiniProfileOnApp: 1
@@ -337,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71047072}
   m_Layer: 0
-  m_Name: "\uC774\uAC8C \uBCF4\uC778\uB2E4\uBA74 \uCEE4\uBC0B\uC774 \uC798 \uB41C\uAC833"
+  m_Name: "\uC774\uAC8C \uBCF4\uC778\uB2E4\uBA74 \uCEE4\uBC0B\uC774 \uC798 \uB41C\uAC834"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
