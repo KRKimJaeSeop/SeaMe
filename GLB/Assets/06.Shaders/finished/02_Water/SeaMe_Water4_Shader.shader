@@ -31,7 +31,7 @@ Shader "SeaMe/SeaMe_Water4_Shader"
 		
 	SubShader
 	{
-		Tags {"Queue" = "Transparent" }
+		Tags {"Queue" = "Transparent-1" }
 		LOD 200
 		
 		Pass

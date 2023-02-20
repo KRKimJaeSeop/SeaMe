@@ -1,16 +1,38 @@
-import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
+import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { CharacterState, SpawnInfo, ZepetoPlayer, ZepetoPlayers } from "ZEPETO.Character.Controller"
-import { Physics, GameObject, RaycastHit, Input, Camera, Debug, WaitForSeconds, Vector3, Ray, LayerMask, Color, Quaternion, HumanBodyBones, Resources } from 'UnityEngine';
-import { RawImage, Text } from "UnityEngine.UI";
+import { Physics, GameObject, RaycastHit, Input, Camera, Debug, WaitForSeconds, Vector3, Ray, LayerMask, Color, Quaternion, HumanBodyBones, Resources, Transform } from 'UnityEngine';
+import { RawImage, Text, Image } from "UnityEngine.UI";
 import { List$1 } from 'System.Collections.Generic';
 import PlayerController from '../Character/PlayerController';
+import Dome from '../Game/Dome';
+import MultiplayManager from '../../MultiplaySync/Common/MultiplayManager';
+import WorldSettingScript from '../Table/WorldSettingScript';
+import { ZepetoChat, MessageType, UserMessage } from 'ZEPETO.Chat';
+import SeaHareObject from '../Character/SeaHareObject';
+import SoundManager from './SoundManager';
+import UIManager from './UIManager';
 
 export default class GameManager extends ZepetoScriptBehaviour {
 
+    //월드 세팅
     @SerializeField()
-    private testText: Text
+    private worldSettings: ZepetoScriptableObject<WorldSettingScript>;
+    //ui매니저
+    @SerializeField()
+    private uiManager: GameObject;
+    public UI: UIManager;
+    //사운드 매니저
+    @SerializeField()
+    private sound: GameObject;
+    public Sound: SoundManager;
 
     public UserList: string[];
+    public SpawnPositionList: Transform[];
+
+    public SeaHareList: SeaHareObject[];
+
+    public dome: GameObject;
+
 
     /* Singleton */
     private static m_instance: GameManager = null;
@@ -25,6 +47,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
     }
 
     private Awake() {
+        Debug.LogWarning(`==========================`);
         if (GameManager.m_instance !== null && GameManager.m_instance !== this) {
             GameObject.Destroy(this.gameObject);
         } else {
@@ -34,45 +57,103 @@ export default class GameManager extends ZepetoScriptBehaviour {
         if (this.UserList[0] == "empty") {
             this.UserList.shift();
         }
+
+        this.UI = this.uiManager.GetComponent<UIManager>();
+        this.Sound = this.sound.GetComponent<SoundManager>();
+
     }
 
-    public SetTestText(setText: string) {
-        this.testText.text = setText;
-    }
 
-    public SetPlayers(userName: string) {
-        this.UserList.push(userName);
-        Debug.Log("시작");
-        if (!GameObject.Find(userName).GetComponent<PlayerController>().isHaveSeaHare) {
-            //플레이어 추가. 모든 플레이어를 검색하고, 그 플레이어의 하위에 달팽이가 있는지 검색. 없다면 달팽이를 추가해준다.
-            //플레이어 하위에 달팽이가 있는가?
+    public SetPlayers(sessionId: string) {
+        this.UserList.push(sessionId);
 
-            this.UserList.forEach(element => {
-                Debug.Log("찾았다");
-                let currentPlayers = GameObject.Find(element);
+        this.UserList.forEach(element => {
+            Debug.Log(`SetPlayers:: Enter forEach${element}`);
+            //오브젝트를 리스트에 있는 게임오브젝트를 찾는다.
+            let currentPlayers = GameObject.Find(element);
+            Debug.Log(`${currentPlayers}}`);
+            //찾은 오브젝트가 널이 아니라면
+            if (currentPlayers != null) {
 
-                if (currentPlayers != null) {
-                    if (!currentPlayers.GetComponent<PlayerController>().isHaveSeaHare) {
-                        Debug.Log("여기다");
-                        let currentHare = Resources.Load("SeaHare_0") as GameObject;
-                        currentHare = GameObject.Instantiate(currentHare) as GameObject;
-                        currentHare.transform.SetParent(currentPlayers.transform.GetChild(0));
-                        currentHare.transform.localPosition = Vector3.zero;
-                    }
+                //찾은 오브젝트가 달팽이를 가지고있다고 뜨지 않으면
+                if (!currentPlayers.GetComponent<PlayerController>().isHaveSeaHare) {
+                    let currentHare = Resources.Load("SeaHare_0") as GameObject;
+                    currentHare = GameObject.Instantiate(currentHare) as GameObject;
+                    currentHare.transform.SetParent(currentPlayers.transform.GetChild(0));
+                    currentHare.transform.localPosition = Vector3.zero;
+                    currentHare.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
+            }
+
+        });
 
 
-            });
+        //유저 수 충족. 카운트다운 시작
+        if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
+
+
+            this.StartCoroutine(this.StartGame());
+        }
+        else {
+            GameManager.instance.UI.MainNotification
+            (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 200);
         }
     }
 
-    public RemovePlayer(userName: string) {
+    public RemovePlayer(sessionId: string) {
         for (let i = 0; i < this.UserList.length; i++) {
-            if (this.UserList[i] === userName) {
+            if (this.UserList[i] === sessionId) {
                 this.UserList.splice(i, 1);
                 i--;
             }
         }
     }
+
+    public GetUserSpawnPosition(sessionId: string): Vector3 {
+
+        //정렬후 스폰
+        this.UserList.sort((a, b) => {
+
+            let aValue = a.toUpperCase();
+            let bValue = b.toUpperCase();
+            if (aValue < bValue) {
+                return -1;
+            } else if (aValue > bValue) {
+                return 1;
+            }
+            return 0;
+        });
+
+        //돔 시작
+        this.StartCoroutine(this.dome.GetComponent<Dome>().DomeScaleControll());
+        //위치 스폰
+        for (let index = 0; index < this.UserList.Length; index++) {
+
+            if (this.UserList[index] == sessionId) {
+                return this.SpawnPositionList[index].position;
+            }
+        }
+        return this.SpawnPositionList[5].position;
+    }
+
+    *StartGame() {
+
+        let count = this.worldSettings["countdownBeforeGameStart"];
+        while (count > 0) {
+            count--;
+            GameManager.instance.UI.MainNotification(`The game will begin shortly..[${count}]`, 0.9);
+            yield new WaitForSeconds(1);
+        }
+
+        MultiplayManager.instance.room.Send("GameStart", `0`);
+        ZepetoChat.SetActiveChatUI(false);
+
+    }
+
+    // public Damaged(value: number) {
+    //     this.StartCoroutine(this.uiManager.DamagedRoutine(value));
+    // }
+
+
 
 }

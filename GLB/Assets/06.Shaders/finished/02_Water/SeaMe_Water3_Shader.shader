@@ -24,7 +24,7 @@ Shader "SeaMe/SeaMe_Water3_Shader"
 
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent-2" }
         Cull [_Cull]
         LOD 200
 

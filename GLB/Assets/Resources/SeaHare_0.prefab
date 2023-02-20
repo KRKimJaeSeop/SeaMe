@@ -42,6 +42,14 @@ MonoBehaviour:
     arrayValues: []
     script: {fileID: 4458252877524076426, guid: d1ea894430f162e44859a795cbcd0e26, type: 3}
     isExpaned: 0
+--- !u!81 &9148616803907006756
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16893221959919596}
+  m_Enabled: 1
 --- !u!1 &8166945002910309004
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +75,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8166945002910309004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0629, z: 0.0192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 826363145864363350}
@@ -224,7 +232,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
       propertyPath: script.values.Array.data[8]
-      value: '{"type":"System.Boolean, mscorlib","value":"True"}'
+      value: '{"type":"System.Boolean, mscorlib","value":"False"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
+      propertyPath: script.values.Array.data[9]
+      value: '{"type":"System.String, mscorlib","value":"2"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
+      propertyPath: script.values.Array.data[10]
+      value: '{"type":"System.Single, mscorlib","value":"300"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
+      propertyPath: script.values.Array.data[11]
+      value: '{"type":"System.Boolean, mscorlib","value":"False"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
+      propertyPath: script.values.Array.data[12]
+      value: '{"type":"System.String, mscorlib","value":"0"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131938384015749129, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
+      propertyPath: script.values.Array.data[13]
+      value: '{"type":"System.Single, mscorlib","value":"100"}'
       objectReference: {fileID: 0}
     - target: {fileID: 2162201647980917938, guid: 5964569c9aeed3840bfc5f7eff84fcdf, type: 3}
       propertyPath: m_RootOrder

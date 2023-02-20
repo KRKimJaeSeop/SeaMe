@@ -1,0 +1,46 @@
+fileFormatVersion: 2
+guid: 97ed797ecb781074088abe238e6f2f85
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst PlayerController_1 =
+    require(\\\"../Character/PlayerController\\\");\\r\\nconst Dome_1 = require(\\\"../Game/Dome\\\");\\r\\nconst
+    MultiplayManager_1 = require(\\\"../../MultiplaySync/Common/MultiplayManager\\\");\\r\\nconst
+    WorldSettingScript_1 = require(\\\"../Table/WorldSettingScript\\\");\\r\\nconst
+    SeaHareObject_1 = require(\\\"../Character/SeaHareObject\\\");\\r\\nconst UIMainNotification_1
+    = require(\\\"../UI/UIMainNotification\\\");\\r\\nconst UISubNotification_1 =
+    require(\\\"../UI/UISubNotification\\\");\\r\\nconst GameManager_1 = require(\\\"./GameManager\\\");\\r\\nclass
+    UIManager extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor()
+    {\\r\\n        //\uC804\uCCB4\uACF5\uC9C0 , \uC791\uC740\uACF5\uC9C0 \uB098\uB204\uAE30\\r\\n       
+    super(...arguments);\\r\\n        this.testA = 0;\\r\\n        this.testB = 0;\\r\\n   
+    }\\r\\n    Awake() {\\r\\n        this.uiMainNotification = this.MainNotiText.GetComponent($typeof(UIMainNotification_1.default));\\r\\n       
+    this.MainNotiText.SetActive(false);\\r\\n        this.uiSubNotification = this.SubNotiText.GetComponent($typeof(UISubNotification_1.default));\\r\\n       
+    this.SubNotiText.SetActive(false);\\r\\n        this.MainBtn.onClick.AddListener(()
+    => {\\r\\n            GameManager_1.default.instance.Sound.PlayBGM(1);\\r\\n       
+    });\\r\\n        this.SubBtn.onClick.AddListener(() => {\\r\\n            GameManager_1.default.instance.Sound.PlayBGM(2);\\r\\n       
+    });\\r\\n        this.SubBtn2.onClick.AddListener(() => {\\r\\n            GameManager_1.default.instance.Sound.PlayBGM(3);\\r\\n       
+    });\\r\\n    }\\r\\n    MainNotification(text, time = 0.5) {\\r\\n        this.uiMainNotification.Show(text,
+    time);\\r\\n    }\\r\\n    SubNotification(text, time = 0.5) {\\r\\n        this.uiSubNotification.Show(text,
+    time);\\r\\n    }\\r\\n    *DamagedRoutine(value) {\\r\\n        this.damagedImage.color
+    = new UnityEngine_1.Color(1, 1, 1, value);\\r\\n        yield new UnityEngine_1.WaitForSeconds(0.3);\\r\\n       
+    this.damagedImage.color = new UnityEngine_1.Color(1, 1, 1, 0);\\r\\n    }\\r\\n}\\r\\nexports.default
+    = UIManager;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVUlNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVUlNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsaURBQTZFO0FBRTdFLDZDQUErTDtBQUcvTCxvRUFBNkQ7QUFDN0QsdUNBQWdDO0FBQ2hDLGtGQUEyRTtBQUMzRSxvRUFBNkQ7QUFFN0QsOERBQXVEO0FBQ3ZELGlFQUEwRDtBQUMxRCwrREFBd0Q7QUFDeEQsK0NBQXdDO0FBRXhDLE1BQXFCLFNBQVUsU0FBUSxxQ0FBcUI7SUFBNUQ7UUFFSSxpQkFBaUI7O1FBY2pCLFVBQUssR0FBVyxDQUFDLENBQUM7UUFDbEIsVUFBSyxHQUFXLENBQUMsQ0FBQztJQTZDdEIsQ0FBQztJQXhDRyxLQUFLO1FBQ0QsSUFBSSxDQUFDLGtCQUFrQixHQUFHLElBQUksQ0FBQyxZQUFZLENBQUMsWUFBWSxTQUFDLDRCQUFrQixFQUFHLENBQUM7UUFDL0UsSUFBSSxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7UUFDbkMsSUFBSSxDQUFDLGlCQUFpQixHQUFHLElBQUksQ0FBQyxXQUFXLENBQUMsWUFBWSxTQUFDLDJCQUFpQixFQUFHLENBQUM7UUFDNUUsSUFBSSxDQUFDLFdBQVcsQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7UUFHbEMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRTtZQUNsQyxxQkFBVyxDQUFDLFFBQVEsQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBQzFDLENBQUMsQ0FBQyxDQUFDO1FBQ0gsSUFBSSxDQUFDLE1BQU0sQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRTtZQUNqQyxxQkFBVyxDQUFDLFFBQVEsQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBRTFDLENBQUMsQ0FBQyxDQUFDO1FBQ0gsSUFBSSxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRTtZQUNsQyxxQkFBVyxDQUFDLFFBQVEsQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBRTFDLENBQUMsQ0FBQyxDQUFDO0lBRVAsQ0FBQztJQUdNLGdCQUFnQixDQUFDLElBQVksRUFBRSxPQUFlLEdBQUc7UUFDcEQsSUFBSSxDQUFDLGtCQUFrQixDQUFDLElBQUksQ0FBQyxJQUFJLEVBQUUsSUFBSSxDQUFDLENBQUM7SUFDN0MsQ0FBQztJQUVNLGVBQWUsQ0FBQyxJQUFZLEVBQUUsT0FBZSxHQUFHO1FBQ25ELElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsSUFBSSxFQUFFLElBQUksQ0FBQyxDQUFDO0lBQzVDLENBQUM7SUFFTSxDQUFDLGNBQWMsQ0FBQyxLQUFhO1FBRWhDLElBQUksQ0FBQyxZQUFZLENBQUMsS0FBSyxHQUFHLElBQUksbUJBQUssQ0FBQyxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsRUFBRSxLQUFLLENBQUMsQ0FBQztRQUNwRCxNQUFNLElBQUksNEJBQWMsQ0FBQyxHQUFHLENBQUMsQ0FBQztRQUM5QixJQUFJLENBQUMsWUFBWSxDQUFDLEtBQUssR0FBRyxJQUFJLG1CQUFLLENBQUMsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUM7SUFFcEQsQ0FBQztDQUlKO0FBOURELDRCQThEQyJ9\",\"assetPath\":\"Assets/02.Scripts/Game/UIManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"MainNotiText\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"SubNotiText\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"damagedImage\",\"type\":\"UnityEngine.UI.Image\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]},{\"assembly\":\"mscorlib\",\"name\":\"testA\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"testB\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"MainBtn\",\"type\":\"UnityEngine.UI.Button\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"SubBtn\",\"type\":\"UnityEngine.UI.Button\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"SubBtn2\",\"type\":\"UnityEngine.UI.Button\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"UIManager\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 33996bbbfb926ad6aceaa0573e6c2cca
+  onlyWriteTrigger: 0

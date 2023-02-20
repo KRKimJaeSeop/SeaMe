@@ -98,7 +98,8 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cull: 0
-    - _CutOff: 0.5
+    - _CutOff: 0.089
+    - _CutOffSoftness: 0.047
     - _Cutoff: 0.95
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -128,7 +129,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}

@@ -13,14 +13,23 @@ MonoBehaviour:
   m_Name: WorldSettings
   m_EditorClassIdentifier: 
   keys:
-  - obstructionAmount
-  - deadLineMoveSpeed
+  - domeStartTime
+  - countdownBeforeGameStart
+  - roomPlayerCapacity
+  - domeMoveSpeed
+  - obstracleSpeed
   unityValues:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   values:
-  - '{"type":"System.Single, mscorlib","value":"0"}'
-  - '{"type":"System.Single, mscorlib","value":"10"}'
+  - '{"type":"System.Single, mscorlib","value":"1000"}'
+  - '{"type":"System.Single, mscorlib","value":"5"}'
+  - '{"type":"System.Single, mscorlib","value":"1"}'
+  - '{"type":"System.Single, mscorlib","value":"1"}'
+  - '{"type":"System.Single, mscorlib","value":"2"}'
   unityArrayValues: []
   arrayValues: []
   script: {fileID: 4458252877524076426, guid: 259ccfae4b9d0e34cacf3cf687085651, type: 3}
