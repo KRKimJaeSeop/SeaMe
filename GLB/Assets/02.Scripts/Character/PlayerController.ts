@@ -73,7 +73,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             Debug.Log(message);
             if (message == this.sessionID) {
                 this.DamagedCount++;
-                GameManager.instance.UI.SubNotification("아얏", 0.2);
+                GameManager.instance.UI.SubNotification("Ouch!", 0.2);       //아얏
 
 
                 //   GameManager.instance.Damaged(this.DamagedCount/3);
@@ -84,7 +84,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         MultiplayManager.instance.room.AddMessageHandler("StartObserver", (message) => {
             Debug.Log(message);
             if (message == this.sessionID) {
-                GameManager.instance.UI.MainNotification("게임오버.. ", 100);
+                GameManager.instance.UI.MainNotification("Game Over.. ", 100);       //게임오버.. 
                 const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
                 localCharacter.Teleport(new Vector3(150, 10.8, 0), Quaternion.identity);
             }

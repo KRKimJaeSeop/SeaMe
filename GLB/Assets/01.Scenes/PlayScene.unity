@@ -5866,6 +5866,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 928373736854849511, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
     - target: {fileID: 928373736998484662, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -5974,6 +5978,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 928373737028363885, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
+    - target: {fileID: 928373737509563896, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 928373737545756368, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: m_IsActive
       value: 1

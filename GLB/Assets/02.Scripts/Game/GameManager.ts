@@ -176,7 +176,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
     }
 
     *FinishGame() {
-        GameManager.instance.UI.MainNotification("게임 종료");
+        GameManager.instance.UI.MainNotification("Game Over");  //게임 종료
         ZepetoChat.SetActiveChatUI(true);
         this.GameResetEvent.Invoke();
     }
