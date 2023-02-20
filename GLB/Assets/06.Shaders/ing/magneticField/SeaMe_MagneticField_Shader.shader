@@ -339,7 +339,7 @@ Shader "SeaMe/SeaMe_MagneticField_Shader"
                 //fixed fRim_Basic = Fuc_Rim(fNDotV, _FresnelPow, _FresnelMul);
 	            //half4 fRim_Color = fRim_Basic * _FresnelColor;
 
-                //! 텝스 텍스처를 LinearEyeDepth함수를 통해 월드->뷰 공간으로 변환 
+                //! 뎁스 텍스처를 LinearEyeDepth함수를 통해 월드->뷰 공간으로 변환 
                 //float fDepthMap_R = abs(LinearEyeDepth(tex2Dproj(_CameraDepthTexture, i.scrPos).r) - i.scrPos.z);
                 //fixed fDepthIntersect = saturate(fDepthMap_R / _DepthFadeMul);
                 //half4 fDepthIntersectColor = (1 - fDepthIntersect) * _DepthIntersectColor;

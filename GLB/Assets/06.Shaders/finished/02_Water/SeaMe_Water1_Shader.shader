@@ -29,15 +29,18 @@ Shader "SeaMe/SeaMe_Water1_Shader"
 
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        //Tags { "RenderType"="Opaque" }
         Tags { "RenderType"="Transparent" "Queue"="AlphaTest" }   //Transparent
+        Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
         Cull [_Cull]
         LOD 200
 
         GrabPass{}
 
         CGPROGRAM
-        #pragma surface surf _WLight vertex:vert noambient noshadow //alpha:blend
+        #pragma surface surf _WLight vertex:vert noambient noshadow alpha:fade
+        //#pragma surface surf Lambert vertex:vert noambient noshadow alpha:fade
         #pragma target 3.0
 
         sampler2D _NormalTex;
@@ -83,8 +86,9 @@ Shader "SeaMe/SeaMe_Water1_Shader"
         void surf (Input IN, inout SurfaceOutput o)
         {
             float4 n1 = tex2D(_NormalTex, IN.uv_NormalTex + float2(_Time.y * _WaveSpeed, 0));
-            float4 n2 = tex2D(_NormalTex, IN.uv_NormalTex - float2(_Time.y * _WaveSpeed, 0));
-            o.Normal = UnpackNormal((n1+n2) * 0.5) * fixed3(_NormalScale, _NormalScale, 1);
+            //float4 n2 = tex2D(_NormalTex, IN.uv_NormalTex - float2(_Time.y * _WaveSpeed, 0));
+            //o.Normal = UnpackNormal((n1+n2) * 0.5) * fixed3(_NormalScale, _NormalScale, 1);
+            o.Normal = UnpackNormal(n1) * fixed3(_NormalScale, _NormalScale, 1);
 
             float4 sky = texCUBE(_CubeTex, WorldReflectionVector(IN, o.Normal));
             float4 reflection = tex2D(_GrabTexture, (IN.screenPos/IN.screenPos.a).xy + o.Normal.xy * 0.03);
@@ -92,17 +96,18 @@ Shader "SeaMe/SeaMe_Water1_Shader"
             
             float3 water = lerp(reflection, sky, dotData).rgb;
             o.Albedo = water * _Color.rgb;
-            //o.Alpha = _Color.a;
+            o.Alpha = _Color.a;
         }
 
         float4 Lighting_WLight(SurfaceOutput s, float3 lightDir, float3 viewDir, float atten)
         {
-            float3 refVec = s.Normal * dot(s.Normal, viewDir) * 2 - viewDir;
+            //float3 refVec = s.Normal * dot(s.Normal, viewDir) * 2 - viewDir;
+            float3 refVec = s.Normal * dot(s.Normal, lightDir) * 2 - lightDir;
             refVec = normalize(refVec);
 
             float specular = lerp(0, pow(saturate(dot(refVec, lightDir)), 256), dotData) * _SpecularScale;
 
-            return float4(s.Albedo + specular.rrr, 1);
+            return float4(s.Albedo + specular.rrr, s.Alpha);
         }
         ENDCG
     }
