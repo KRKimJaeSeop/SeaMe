@@ -150,10 +150,5 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     }
 
-    // public Damaged(value: number) {
-    //     this.StartCoroutine(this.uiManager.DamagedRoutine(value));
-    // }
-
-
-
+    
 }

@@ -177,6 +177,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             //장애물과 부딫히면 액션
             if (coll.gameObject.CompareTag("Obstracle")) {
                 console.log("HIT!!!!");
+                this.StartCoroutine(this.OnTriggerObstracle());
             }
             if (coll.gameObject.CompareTag("JumpZone")) {
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 15;
@@ -198,6 +199,19 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         if (coll.gameObject.CompareTag("JumpZone")) {
             ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 0;
         }
+    }
+
+    *OnTriggerObstracle() {
+
+        ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = -3;
+        
+        for (let index = 0; index < 3; index++) {
+            GameManager.instance.UI.ShotDamagedEffect(0.3);
+            yield new WaitForSeconds(1);
+        }
+
+        ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = 0;
+
     }
     //#endregion
 

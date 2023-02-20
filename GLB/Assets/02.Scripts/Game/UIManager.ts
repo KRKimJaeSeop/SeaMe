@@ -65,9 +65,13 @@ export default class UIManager extends ZepetoScriptBehaviour {
         this.uiSubNotification.Show(text, time);
     }
 
-    public *DamagedRoutine(value: number) {
+    public ShotDamagedEffect(time: number) {
+        this.StartCoroutine(this.DamagedRoutine(time));
+    }
 
-        this.damagedImage.color = new Color(1, 1, 1, value);
+    private *DamagedRoutine(time: number) {
+
+        this.damagedImage.color = new Color(1, 1, 1, 1);
         yield new WaitForSeconds(0.3);
         this.damagedImage.color = new Color(1, 1, 1, 0);
 

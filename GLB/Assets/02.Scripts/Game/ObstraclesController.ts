@@ -12,24 +12,23 @@ export default class ObstraclesController extends ZepetoScriptBehaviour {
 
    *Move() {
 
-      let speed = new Vector3(0, this.worldSettings["obstracleSpeed"], 0);
+      let spinSpeed = new Vector3(0, this.worldSettings["obstracleSpeed"], 0);
+      let verticalSpeed = this.worldSettings["obstracleSpeed"];
       let wfs = new WaitForSeconds(0.01);
-      let temp = 0;
+
+      let currentPosition = this.transform.position.y;
 
       while (true) {
-         // this.transform.Rotate(speed);
-         if (temp > 0) {
-            temp--;
-            this.transform.Translate(this.transform.position.x,this.transform.position.y,this.transform.position.z)
-         }
-         else {
-            temp++;
-         }
-         this.transform.position =
+         this.transform.Rotate(spinSpeed);
 
+         if (this.transform.position.y < currentPosition - 1)
+            verticalSpeed *= -1;
 
+         else if (this.transform.position.y > currentPosition + 1)
+            verticalSpeed *= -1;
 
-            yield wfs;
+         this.transform.Translate(0, verticalSpeed * 0.1, 0);
+         yield wfs;
 
       }
    }
