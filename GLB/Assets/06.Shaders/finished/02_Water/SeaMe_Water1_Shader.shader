@@ -101,8 +101,8 @@ Shader "SeaMe/SeaMe_Water1_Shader"
 
         float4 Lighting_WLight(SurfaceOutput s, float3 lightDir, float3 viewDir, float atten)
         {
-            //float3 refVec = s.Normal * dot(s.Normal, viewDir) * 2 - viewDir;
-            float3 refVec = s.Normal * dot(s.Normal, lightDir) * 2 - lightDir;
+            float3 refVec = s.Normal * dot(s.Normal, viewDir) * 2 - viewDir;
+            //float3 refVec = s.Normal * dot(s.Normal, lightDir) * 2 - lightDir;
             refVec = normalize(refVec);
 
             float specular = lerp(0, pow(saturate(dot(refVec, lightDir)), 256), dotData) * _SpecularScale;

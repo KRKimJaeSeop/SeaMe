@@ -157,18 +157,18 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
             if(_ActiveWaveX)
             {
                 v.vertex.x += sin(uX * UNITY_PI * _WaveTilling + _Time.y * _WaveSpeed) * _WavePower * mask;
-                //v.vertex.x += sin(worldPos.x *_WaveTilling + _Time.y * _WaveSpeed) * _WavePower * uY;
+                //v.vertex.x += sin(worldPos.x *_WaveTilling + _Time.y * _WaveSpeed) * _WavePower * mask;
             }
             if(_ActiveWaveY)
             {
                 v.vertex.y += (sin(uY * UNITY_PI * _WaveTilling + _Time.y * _WaveSpeed) + sin(uX * UNITY_PI * _WaveTilling + _Time.y * _WaveSpeed)) * _WavePower * mask;
-                //v.vertex.y += sin(abs(uY *2-1)*_WaveTilling+_Time.y*_WaveSpeed) * _WavePower * uY;
-                //v.vertex.y += sin(worldPos.y *_WaveTilling + _Time.y * _WaveSpeed) * _WavePower * uY;
+                //v.vertex.y += sin(worldPos.y *_WaveTilling + _Time.y * _WaveSpeed) * _WavePower * mask;
+                //v.vertex.y += sin(worldPos.x *_WaveTilling + _Time.y * _WaveSpeed) * _WavePower * mask;
             }
             if(_ActiveWaveZ)
             {
                 v.vertex.z += sin(uX * UNITY_PI *_WaveTilling + _Time.y * _WaveSpeed) * _WavePower * mask;
-                //v.vertex.z += sin(worldPos.z *_WaveTilling + _Time.y * _WaveSpeed) * _WavePower * uY;
+                //v.vertex.z += sin(worldPos.z *_WaveTilling + _Time.y * _WaveSpeed) * _WavePower * mask;
             }
         }
 

@@ -89,6 +89,6 @@ Material:
     - _WaveTilling: 25
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0.39215687}
+    - _Color: {r: 0.25763726, g: 0.25477037, b: 0.3679245, a: 0.39215687}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
