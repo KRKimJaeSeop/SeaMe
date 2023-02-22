@@ -1,5 +1,5 @@
 import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Coroutine, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion, WaitUntil, Collider, Resources, GameObject } from 'UnityEngine';
+import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Coroutine, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion, WaitUntil, Collider, Resources, GameObject, CameraClearFlags, Color32 } from 'UnityEngine';
 import { ZepetoCamera, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
 import { Room } from 'ZEPETO.Multiplay';
 import CharacterSettingScript from '../Table/CharacterSettingScript';
@@ -95,6 +95,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     //게임 입장시 플레이어의 수치를 조정한다.
     private PlayerValueSetting() {
         ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().farClipPlane = this.playerValue["cameraDistance"];
+        ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
+        ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().backgroundColor = new Color(0,0.01176471,0.06666667,1);
         ZepetoPlayers.instance.characterData.jumpPower = this.playerValue["playerJumpPower"];
         ZepetoPlayers.instance.characterData.runSpeed = this.playerValue["playerMoveSpeed"];
     }
