@@ -49,14 +49,14 @@ MonoBehaviour:
     - worldSettings
     - SpawnPositionList
     - dome
-    - SeaHareList
     - uiManager
     - UI
     - Sound
     - sound
+    - SurvivorList
     unityValues:
     - {fileID: 0}
-    - {fileID: 11400000, guid: b11113607fc904a479c170fd29dfc7bb, type: 2}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -75,7 +75,8 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
+    - '{"type":"ZEPETO.Script.ZepetoScriptSerializer+ArrayInfo, ZEPETO.Script","value":"{\"offset\":1,\"length\":0,\"type\":\"System.String,
+      mscorlib\",\"isUnity\":false}"}'
     unityArrayValues:
     - {fileID: 0}
     - {fileID: 0}

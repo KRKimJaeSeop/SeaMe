@@ -25,7 +25,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   values:
-  - '{"type":"System.Single, mscorlib","value":"10"}'
+  - '{"type":"System.Single, mscorlib","value":"999999"}'
   - '{"type":"System.Single, mscorlib","value":"10"}'
   - '{"type":"System.Single, mscorlib","value":"1"}'
   - '{"type":"System.Single, mscorlib","value":"1"}'
