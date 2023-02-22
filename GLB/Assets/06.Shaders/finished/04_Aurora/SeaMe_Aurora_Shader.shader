@@ -1,6 +1,6 @@
 //Zepeto World Shader
 //FX_Master_Addtive_Two.shd
-Shader "SeaMe/SeaMe_Water5_Shader"
+Shader "SeaMe/SeaMe_Aurora_Shader"
 {
 	Properties
 	{
@@ -29,7 +29,7 @@ Shader "SeaMe/SeaMe_Water5_Shader"
 
 	SubShader
 	{
-		Tags{ "RenderType" = "Transparent"  "Queue" = "AlphaTest+0" "IsEmissive" = "true"  }
+		Tags{ "RenderType" = "Transparent"  "Queue" = "AlphaTest+1" "IsEmissive" = "true"  }
 		Cull Off
 		ZWrite Off
 		Blend SrcAlpha One , SrcAlpha One

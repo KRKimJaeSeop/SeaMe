@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SeaMe_Aurora3_SHD
-  m_Shader: {fileID: 4800000, guid: d9c11d598c3f4d14999ef1efc09c10ef, type: 3}
+  m_Name: bubble_SHD
+  m_Shader: {fileID: 10721, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -35,24 +35,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Distortion_Texture:
-        m_Texture: {fileID: 2800000, guid: 9a51df0cb708be948a0123eb16e49e05, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: af4fefbb29bc08d418c935180c04113c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Mask_Texture:
-        m_Texture: {fileID: 2800000, guid: 474bde4d3b17ecd48b87024c2277ec40, type: 3}
+        m_Texture: {fileID: 2800000, guid: 840cc1f714ccadf4696fa8429b005261, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -67,69 +55,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SubTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _tex3coord3:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _texcoord:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _Burn: 1.1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Dissolve: 1
-    - _Dissolve_Sharpness: 1.6
-    - _Distortion_Intensity: 0.08
-    - _Distortion_U_Panning: 0.06
-    - _Distortion_U_Tiling: 5
-    - _Distortion_V_Panning: 0.03
-    - _Distortion_V_Tiling: 2
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _InitRotate: 0
-    - _InitRotate2: 0
-    - _InitScale: 1
-    - _InitScale2: 1
-    - _InitUOffset: 0
-    - _InitUOffset2: 0
-    - _InitVOffset: 0
-    - _InitVOffset2: 0
-    - _MainTex_U_Panning: -0.06
-    - _MainTex_V_Panning: 0
-    - _Main_U_Tiling: 4
-    - _Main_V_Tiling: 0.6
     - _Metallic: 0
     - _Mode: 0
-    - _Multiplier: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RotateSpeed: 0
-    - _RotateSpeed2: 0
-    - _ScaleSpeed: 0
-    - _ScaleSpeed2: 0
-    - _ShowSecondOnly: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _USpeed: 0
-    - _USpeed2: 0
     - _UVSec: 0
-    - _Use_CustomData: 0
-    - _VSpeed: 0
-    - _VSpeed2: 0
     - _ZWrite: 1
-    - __dirty: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
