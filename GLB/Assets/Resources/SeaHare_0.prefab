@@ -13,6 +13,14 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0.03423504, z: 0}
+--- !u!81 &9148616803907006756
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16893221959919596}
+  m_Enabled: 1
 --- !u!114 &2907939307642844532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,14 +50,6 @@ MonoBehaviour:
     arrayValues: []
     script: {fileID: 4458252877524076426, guid: d1ea894430f162e44859a795cbcd0e26, type: 3}
     isExpaned: 0
---- !u!81 &9148616803907006756
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16893221959919596}
-  m_Enabled: 1
 --- !u!1 &8166945002910309004
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,10 +93,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 100
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_Intensity: 3
+  m_Range: 70
+  m_SpotAngle: 75
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
