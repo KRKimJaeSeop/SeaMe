@@ -9,9 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: initialShadingGroup1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _FIXEDAXIS_TOP
+  m_ShaderKeywords: _EMISSION _FIXEDAXIS_TOP _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -19,7 +19,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: 69fdb870627d3914690070c3d8cf9c81, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubemapBlured:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cubmap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -43,6 +55,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: b5042cb9e88d09c4a9c9d2e29241620d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 69fdb870627d3914690070c3d8cf9c81, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -51,7 +67,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -67,7 +91,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SmoothnessTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -81,28 +113,40 @@ Material:
     - _CutoffSoftness: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissionMultiplayer: 0.5
     - _EmissionScale: 0.2
+    - _EmissionSwitch: 0
     - _FixedAxis: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.4
     - _GlossyReflections: 1
     - _MaskOffset: 0.1
-    - _Metallic: 0
+    - _MetalicBrightnes: 0
+    - _Metallic: 0.4
     - _MetallicScale: 0
     - _Mode: 0
+    - _NormalMapDepth: 1
     - _NormalScale: 1
     - _OcclusionStrength: 1
+    - _ParalaxOffset: 0.001
     - _Parallax: 0.02
+    - _SmoothFromMapSwitch: 1
+    - _SmoothRough: 0
     - _SmoothnessScale: 0
     - _SmoothnessTextureChannel: 0
+    - _Snoothness: 0.55
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Tiling: 1
     - _UVSec: 0
     - _WavePower: 0.2
     - _WaveSpeed: 0.05
     - _WaveTilling: 25
     - _ZWrite: 1
+    - __dirty: 1
     m_Colors:
+    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CubemapColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

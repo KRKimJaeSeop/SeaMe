@@ -803,6 +803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948711320577646537}
   - component: {fileID: 1865314578575913111}
+  - component: {fileID: 6997877806257482870}
   m_Layer: 0
   m_Name: Octopus
   m_TagString: Untagged
@@ -903,6 +904,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.53739023, y: 0.19921017, z: 0.31920767}
     m_Extent: {x: 1.6656139, y: 4.23057, z: 4.1590075}
   m_DirtyAABB: 0
+--- !u!64 &6997877806257482870
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456255661677649163}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8482645243257346704, guid: 4294785476f298e43b818761fa39c52e, type: 3}
 --- !u!1 &7633072104792383959
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _EMISSIONSWITCH_ON _FIXEDAXIS_TOP
     _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionTex:
-        m_Texture: {fileID: 2800000, guid: 5653b33da046f2c479b8dc81d56f7a7e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -103,7 +103,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionMultiplayer: 0
-    - _EmissionScale: 0.5
+    - _EmissionScale: 0
     - _EmissionSwitch: 1
     - _FixedAxis: 0
     - _GlossMapScale: 1
