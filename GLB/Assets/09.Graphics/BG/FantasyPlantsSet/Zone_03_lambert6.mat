@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _EMISSION _FIXEDAXIS_TOP _SMOOTHFROMMAPSWITCH_ON
     _SMOOTHROUGH_ON
   m_LightmapFlags: 1
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8e31f1e1a719ef4499d35836ffaac5a2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 01b5541df152748439cb00cc78503f45, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -111,12 +111,13 @@ Material:
     - _BumpScale: 1
     - _Cull: 0
     - _CutOff: 0.5
+    - _CutOffSoftness: 0
     - _Cutoff: 0
     - _CutoffSoftness: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionMultiplayer: 0
-    - _EmissionScale: 0.74
+    - _EmissionScale: 1
     - _EmissionSwitch: 0
     - _FixedAxis: 0
     - _GlossMapScale: 1

@@ -8,10 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Corals3
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: a2991a03359ecf049a1a006c200406cc, type: 3}
   m_ShaderKeywords: _EMISSION _NORMALMAP _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -163,7 +163,7 @@ Material:
     - _MetalicBrightnes2: 0
     - _MetalicBrightnes3: 0
     - _MetalicBrightnesBase: 0
-    - _Metallic: 0
+    - _Metallic: 1
     - _Metallic1: 1
     - _Metallic2: 1
     - _Metallic3: 1
@@ -195,7 +195,7 @@ Material:
     - _Smoothness3: 1
     - _SmoothnessBase: 1
     - _SmoothnessTextureChannel: 0
-    - _Snoothness: 1.59
+    - _Snoothness: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _StructureGlowIntens: 0

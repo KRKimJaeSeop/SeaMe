@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _ALPHAPREMULTIPLY_ON _EMISSION
     _FIXEDAXIS_TOP
   m_LightmapFlags: 1
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -82,7 +82,7 @@ Material:
     - _CutoffSoftness: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
-    - _EmissionScale: 0.42
+    - _EmissionScale: 0.2
     - _FixedAxis: 0
     - _GlossMapScale: 1
     - _Glossiness: 0

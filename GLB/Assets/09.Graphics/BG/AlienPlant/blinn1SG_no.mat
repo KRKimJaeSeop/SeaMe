@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _ALPHATEST_ON _EMISSION _EMISSIONSWITCH_ON
     _FIXEDAXIS_TOP _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 1
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -110,7 +110,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _MaskOffset: 0.1
-    - _Metallic: 0
+    - _Metallic: 0.4
     - _MetallicScale: 0
     - _Mode: 1
     - _NormalMapDepth: 1
@@ -121,7 +121,7 @@ Material:
     - _SmoothRough: 0
     - _SmoothnessScale: 0
     - _SmoothnessTextureChannel: 0
-    - _Snoothness: 1
+    - _Snoothness: 0.2
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TransmisionValue: 1
