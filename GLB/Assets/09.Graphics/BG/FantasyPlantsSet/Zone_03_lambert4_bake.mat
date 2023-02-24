@@ -114,7 +114,7 @@ Material:
     - _CutoffSoftness: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionMultiplayer: 4
+    - _EmissionMultiplayer: 2
     - _EmissionScale: 0.5
     - _EmissionSwitch: 1
     - _FixedAxis: 3

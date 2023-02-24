@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: initialShadingGroup1
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: a2991a03359ecf049a1a006c200406cc, type: 3}
   m_ShaderKeywords: _EMISSION _FIXEDAXIS_TOP _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
@@ -113,7 +113,7 @@ Material:
     - _CutoffSoftness: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionMultiplayer: 0.5
+    - _EmissionMultiplayer: 1
     - _EmissionScale: 0.2
     - _EmissionSwitch: 0
     - _FixedAxis: 0
@@ -147,6 +147,6 @@ Material:
     m_Colors:
     - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _CubemapColor: {r: 0, g: 0, b: 0, a: 1}
+    - _CubemapColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
