@@ -55,6 +55,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4298504531981694249}
     m_Modifications:
     - target: {fileID: 4944880909338008488, guid: d4c63c552d3c2574cb220c88cab31ac6, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944880909338008488, guid: d4c63c552d3c2574cb220c88cab31ac6, type: 3}
       propertyPath: randomSeed
       value: 465053392
       objectReference: {fileID: 0}
@@ -68,11 +72,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4944880909338008488, guid: d4c63c552d3c2574cb220c88cab31ac6, type: 3}
       propertyPath: startDelay.scalar
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4944880909338008488, guid: d4c63c552d3c2574cb220c88cab31ac6, type: 3}
       propertyPath: startDelay.minMaxState
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4944880909338008488, guid: d4c63c552d3c2574cb220c88cab31ac6, type: 3}
       propertyPath: ShapeModule.radius.value
