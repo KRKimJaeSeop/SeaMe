@@ -26,6 +26,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     private DamagedCount: number = 0;
 
     public isHaveSeaHare: bool = false;
+    private isEnterOctopusZone: bool = false;
 
     //#region [초기 세팅]
 
@@ -171,7 +172,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     //#endregion
 
-    //#region [충돌 처리]
+    //#region [충돌 처리] : 트리거 충돌 시 1회 호출
     OnTriggerEnter(coll: Collider) {
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
 
@@ -185,10 +186,11 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 console.log("HIT!!!!");
                 this.StartCoroutine(this.OnTriggerObstracle());
             }
-            //문어와 부딪히면 액션
+            //문어존에 진입시 액션
             if (coll.gameObject.CompareTag("Octopus")) {
                 console.log("Ink HIT!!!!");
-                this.StartCoroutine(this.OnTriggerOctopus());
+                this.isEnterOctopusZone = true;
+                this.StartCoroutine(this.OnTriggerOctopus(10));
             }
             //버블점프존 액션
             if (coll.gameObject.CompareTag("JumpZone")) {
@@ -199,15 +201,21 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
     }
     OnTriggerExit(coll: Collider) {
-        //돔 나가면 게임오버
+        
         if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+            //돔 나가면 게임오버
             if (coll.gameObject.CompareTag("Dome")) {
                 console.log("StartCorutine");
                 MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
                 this.StopCoroutine(this.ShootCoroutine);
             }
-
+            //문어존에 나가면 액션 중지
+            if (coll.gameObject.CompareTag("Octopus")) {
+                console.log("Get out of the Octopus Zone.");
+                this.isEnterOctopusZone = false;
+            }
         }
+
         //점프존 벗어나면 점프파워 원상복구
         if (coll.gameObject.CompareTag("JumpZone")) {
             ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 0;
@@ -228,14 +236,13 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     }
 
     //문어 충돌 시
-    *OnTriggerOctopus() {
+    *OnTriggerOctopus(time : number) {
+        while(this.isEnterOctopusZone)
+        {
+            GameManager.instance.UI.ShotInkEffect(time/5);     //잉크 UI
+            yield new WaitForSeconds(time);
+        }
 
-        ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = -1;
-
-        GameManager.instance.UI.ShotInkEffect(0.3);     //잉크 UI
-        //yield new WaitForSeconds(5);
-
-        ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = 0;
     }
     
     //#endregion

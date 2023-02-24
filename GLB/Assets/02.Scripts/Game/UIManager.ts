@@ -89,11 +89,11 @@ export default class UIManager extends ZepetoScriptBehaviour {
     //잉크 코루틴
     private *InkRoutine(time: number) {
         this.inkImage.color = new Color(1, 1, 1, 1);
+        yield new WaitForSeconds(time);
 
         for(let alpha=1; alpha>=0; alpha -= 0.1)
-        {
-            yield new WaitForSeconds(time);
-            if(alpha >= 0.6) continue;
+        {   
+            yield new WaitForSeconds(time/10);
             this.inkImage.color = new Color(1,1,1,alpha);
         }
     }
