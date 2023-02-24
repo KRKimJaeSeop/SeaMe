@@ -162,7 +162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4944880909338008488, guid: d4c63c552d3c2574cb220c88cab31ac6, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4944880909338008488, guid: d4c63c552d3c2574cb220c88cab31ac6, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value

@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GradientMap:
-        m_Texture: {fileID: 2800000, guid: ce9e067ddce65b244831d9bc89f7d3a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41c2b79e1eb2a1e45bead973fa1c2156, type: 3}
         m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _HexTex:
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e11bf248be0567f48ba24e463614b241, type: 3}
+        m_Texture: {fileID: 2800000, guid: bdeb51fa340324643a7605f5aca9fccd, type: 3}
         m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondaryTex:
-        m_Texture: {fileID: 2800000, guid: 5cb6acd9521ebd043934c23177ae9eec, type: 3}
+        m_Texture: {fileID: 2800000, guid: bcd5e8828fa813449a18c69ff161c8c7, type: 3}
         m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     m_Floats:
