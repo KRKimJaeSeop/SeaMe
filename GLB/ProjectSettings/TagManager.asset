@@ -7,6 +7,7 @@ TagManager:
   - Dome
   - Obstracle
   - JumpZone
+  - Octopus
   layers:
   - Default
   - TransparentFX

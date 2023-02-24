@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: d7b581b2b0a7a1f43821c4fedaab0b1a
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass ObstraclesController_RotateOnly
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Awake() {\r\n        this.StartCoroutine(this.Move());\r\n   
+    }\r\n    *Move() {\r\n        let spinSpeed = new UnityEngine_1.Vector3(0, this.worldSettings.get_Item(\"obstracleSpeed\"),
+    0);\r\n        //let verticalSpeed = this.worldSettings[\"obstracleSpeed\"];\r\n       
+    let wfs = new UnityEngine_1.WaitForSeconds(0.01);\r\n        //let currentPosition
+    = this.transform.position.y;\r\n        while (true) {\r\n            this.transform.Rotate(spinSpeed);\r\n           
+    //  if (this.transform.position.y < currentPosition - 1)\r\n            //    
+    verticalSpeed *= -1;\r\n            //  else if (this.transform.position.y >
+    currentPosition + 1)\r\n            //     verticalSpeed *= -1;\r\n           
+    //  this.transform.Translate(0, verticalSpeed * 0.1, 0);\r\n            yield
+    wfs;\r\n        }\r\n    }\r\n}\r\nexports.default = ObstraclesController_RotateOnly;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiT2JzdHJhY2xlc0NvbnRyb2xsZXJfUm90YXRlT25seS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIk9ic3RyYWNsZXNDb250cm9sbGVyX1JvdGF0ZU9ubHkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBc0Q7QUFDdEQsaURBQTZFO0FBRzdFLE1BQXFCLCtCQUFnQyxTQUFRLHFDQUFxQjtJQUkvRSxLQUFLO1FBQ0YsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsSUFBSSxFQUFFLENBQUMsQ0FBQTtJQUNuQyxDQUFDO0lBRUQsQ0FBQyxJQUFJO1FBRUYsSUFBSSxTQUFTLEdBQUcsSUFBSSxxQkFBTyxDQUFDLENBQUMsRUFBRSxJQUFJLENBQUMsYUFBYSxVQUFDLGdCQUFnQixHQUFHLENBQUMsQ0FBQyxDQUFDO1FBQ3hFLDJEQUEyRDtRQUMzRCxJQUFJLEdBQUcsR0FBRyxJQUFJLDRCQUFjLENBQUMsSUFBSSxDQUFDLENBQUM7UUFFbkMsa0RBQWtEO1FBRWxELE9BQU8sSUFBSSxFQUFFO1lBQ1YsSUFBSSxDQUFDLFNBQVMsQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUFDLENBQUM7WUFFbEMsd0RBQXdEO1lBQ3hELDJCQUEyQjtZQUUzQiw2REFBNkQ7WUFDN0QsMkJBQTJCO1lBRTNCLHdEQUF3RDtZQUN2RCxNQUFNLEdBQUcsQ0FBQztTQUVaO0lBQ0osQ0FBQztDQUNIO0FBOUJELGtEQThCQyJ9","assetPath":"Assets/02.Scripts/Game/ObstraclesController_RotateOnly.ts","manifest":{"properties":[{"assembly":"ZEPETO.Script","name":"worldSettings","type":"ZEPETO.Script.ZepetoScriptableObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"ObstraclesController_RotateOnly","description":""},"isCompiled":true}'
+  typescriptHash: d4cdf6ffdeec482934c426c03f7c7352
+  onlyWriteTrigger: 0

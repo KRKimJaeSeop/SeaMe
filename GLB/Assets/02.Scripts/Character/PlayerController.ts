@@ -185,6 +185,12 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 console.log("HIT!!!!");
                 this.StartCoroutine(this.OnTriggerObstracle());
             }
+            //문어와 부딪히면 액션
+            if (coll.gameObject.CompareTag("Octopus")) {
+                console.log("Ink HIT!!!!");
+                this.StartCoroutine(this.OnTriggerOctopus());
+            }
+            //버블점프존 액션
             if (coll.gameObject.CompareTag("JumpZone")) {
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 15;
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Jump();
@@ -208,11 +214,10 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
     }
 
+    //장애물 충돌 시
     *OnTriggerObstracle() {
 
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = -3;
-
-        GameManager.instance.UI.ShotInkEffect(0.3);     //잉크 UI 테스트
 
         for (let index = 0; index < 3; index++) {
             GameManager.instance.UI.ShotDamagedEffect(0.3);
@@ -220,8 +225,19 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
 
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = 0;
-
     }
+
+    //문어 충돌 시
+    *OnTriggerOctopus() {
+
+        ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = -1;
+
+        GameManager.instance.UI.ShotInkEffect(0.3);     //잉크 UI
+        //yield new WaitForSeconds(5);
+
+        ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = 0;
+    }
+    
     //#endregion
 
 }
