@@ -575,7 +575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71047072}
   m_Layer: 0
-  m_Name: "\uC774\uAC8C \uBCF4\uC778\uB2E4\uBA74..\uBCA0\uC774\uD0B9"
+  m_Name: "\uC774\uAC8C \uBCF4\uC778\uB2E4\uBA74..\uBCA0\uC774\uD0B9_\uBB38\uC5B4\uBA39\uBB3C\uCD94\uAC00"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11684,7 +11684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8243720405446296304, guid: d43bdb8eca7060e498f348d1dc5abc46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8243720405446296304, guid: d43bdb8eca7060e498f348d1dc5abc46, type: 3}
       propertyPath: m_LocalPosition.z
