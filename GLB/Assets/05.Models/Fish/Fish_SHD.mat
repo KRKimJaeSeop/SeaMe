@@ -85,7 +85,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 0.6
     - _Mode: 3
     - _NormalMapDepth: 1
     - _OcclusionStrength: 1
@@ -93,7 +93,7 @@ Material:
     - _SmoothFromMapSwitch: 1
     - _SmoothRough: 0
     - _SmoothnessTextureChannel: 0
-    - _Snoothness: 1
+    - _Snoothness: 0.3
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TransmisionValue: 1
