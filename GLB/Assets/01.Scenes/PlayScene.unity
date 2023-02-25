@@ -19,7 +19,7 @@ RenderSettings:
   m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 0
-  m_LinearFogEnd: 15
+  m_LinearFogEnd: 10
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -952,6 +952,17 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &211589401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2515033279784180479, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+  m_PrefabInstance: {fileID: 928373737416074827}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &217464691
 GameObject:
   m_ObjectHideFlags: 0
@@ -12985,11 +12996,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.keys.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.values.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.keys.Array.data[4]
@@ -13013,7 +13024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.keys.Array.data[9]
-      value: SurvivorList
+      value: GameResetEvent
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.values.Array.data[8]
@@ -13022,12 +13033,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.values.Array.data[9]
-      value: '{"type":"ZEPETO.Script.ZepetoScriptSerializer+ArrayInfo, ZEPETO.Script","value":"{\"offset\":1,\"length\":0,\"type\":\"System.String,
-        mscorlib\",\"isUnity\":false}"}'
+      value: '{"type":"UnityEngine.Events.UnityEvent, UnityEngine.CoreModule","value":"{\"m_PersistentCalls\":{\"m_Calls\":[]}}"}'
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.unityValues.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.unityValues.Array.data[1]
@@ -14406,7 +14416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 928373736636432020, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -316
       objectReference: {fileID: 0}
     - target: {fileID: 928373736636432021, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: m_IsActive
@@ -14422,11 +14432,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: script.keys.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: script.values.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: script.keys.Array.data[8]
@@ -14434,12 +14444,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: script.unityValues.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: script.unityValues.Array.data[8]
       value: 
       objectReference: {fileID: 490529067}
+    - target: {fileID: 928373736998484809, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
+      propertyPath: script.unityValues.Array.data[9]
+      value: 
+      objectReference: {fileID: 211589401}
     - target: {fileID: 928373736998484810, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
