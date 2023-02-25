@@ -1,6 +1,6 @@
 import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Coroutine, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion, WaitUntil, Collider, Resources, GameObject, CameraClearFlags, Color32 } from 'UnityEngine';
-import { ZepetoCamera, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
+import { CharacterJumpState, ZepetoCamera, ZepetoCharacter, ZepetoCharacterCreator, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
 import { Room } from 'ZEPETO.Multiplay';
 import CharacterSettingScript from '../Table/CharacterSettingScript';
 import MultiplayManager from '../../MultiplaySync/Common/MultiplayManager';
@@ -22,14 +22,18 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     private PlayerObject: GameObject;
     private ShootCoroutine: Coroutine = null;
     private AttackCoroutine: Coroutine = null;
+    private WalkCoroutine: Coroutine = null;
 
     private DamagedCount: number = 0;
 
     public isHaveSeaHare: bool = false;
     private isEnterOctopusZone: bool = false;
 
-    //#region [초기 세팅]
+    private wfs005: WaitForSeconds = new WaitForSeconds(0.5);
+    private wfs1: WaitForSeconds = new WaitForSeconds(1);
 
+    private sync: PlayerSync;
+    //#region [초기 세팅]
 
     public SetCharacter() {
         //일단 다 끄기
@@ -37,16 +41,19 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         this.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
 
 
+
+        this.sync = this.transform.GetComponent<PlayerSync>();
         //자기 자신일때
-        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+        if (this.sync?.isLocal) {
             this.AddMessageHandler();
             this.PlayerValueSetting();
+
+
         }
 
         //게임오버인 플레이어 전체에게 게임오브젝트 해제
         MultiplayManager.instance.room.AddMessageHandler("GameOver", (message: string) => {
             Debug.Log(message);
-            Debug.Log("라랄라라라");
             GameManager.instance.RemoveSurvivorList(message);
             // if (message == this.sessionID) {
             //     this.gameObject.SetActive(false);
@@ -55,7 +62,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     }
 
     *TestTele() {
-        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+        if (this.sync.isLocal) {
             const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
             localCharacter.Teleport(GameManager.instance.GetUserSpawnPosition(this.sessionID), Quaternion.identity);
         }
@@ -67,6 +74,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         // 게임 시작시 플레이어 세팅 수신
         MultiplayManager.instance.room.AddMessageHandler("tpToStadium", (message) => {
             this.StartCoroutine(this.TestTele());
+            GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_1_2);
         });
 
         // 피격시 이펙트
@@ -85,9 +93,11 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         MultiplayManager.instance.room.AddMessageHandler("StartObserver", (message) => {
             Debug.Log(message);
             if (message == this.sessionID) {
-                GameManager.instance.UI.MainNotification("Game Over.. ", 100);       //게임오버.. 
+                GameManager.instance.UI.MainNotification("Game Over.. ", 100);       //게임오버..         
                 const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
                 localCharacter.Teleport(new Vector3(150, 10.8, 0), Quaternion.identity);
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DIE);
+                GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_1_2);
             }
         });
 
@@ -97,7 +107,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     private PlayerValueSetting() {
         ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().farClipPlane = this.playerValue["cameraDistance"];
         ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
-        ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().backgroundColor = new Color(0,0.01176471,0.06666667,1);
+        ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetComponent<Camera>().backgroundColor = new Color(0, 0.01176471, 0.06666667, 1);
         ZepetoPlayers.instance.characterData.jumpPower = this.playerValue["playerJumpPower"];
         ZepetoPlayers.instance.characterData.runSpeed = this.playerValue["playerMoveSpeed"];
     }
@@ -109,7 +119,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     //항상 카메라가 바라보는 방향으로 Ray를 발사한다.
     *ShootRay() {
 
-        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+        if (this.sync?.isLocal) {
 
             //내 로컬에서 보이는 나 자신의 레이어만 끄기.
             Debug.Log("[ShootRay]");
@@ -143,7 +153,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                     this.StopCoroutine(this.AttackCoroutine);
                     this.AttackCoroutine = null;
                 }
-                yield new WaitForSeconds(0.05);
+                yield this.wfs005;
                 Debug.DrawRay(ZepetoPlayers.instance.ZepetoCamera.camera.transform.position, ray.direction, Color.red);
             }
         }
@@ -174,35 +184,44 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     //#region [충돌 처리] : 트리거 충돌 시 1회 호출
     OnTriggerEnter(coll: Collider) {
-        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+        if (this.sync?.isLocal) {
 
             // 자기장 진입시 레이 활성화
             if (coll.gameObject.CompareTag("Dome")) {
                 this.ShootCoroutine = this.StartCoroutine(this.ShootRay());
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_GOMAP);
             }
-
+            // 3구역 진입시
+            if (coll.gameObject.CompareTag("Area3")) {
+                console.log("HIT!!!!");
+                GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_3);
+            }
             //장애물과 부딫히면 액션
             if (coll.gameObject.CompareTag("Obstracle")) {
                 console.log("HIT!!!!");
                 this.StartCoroutine(this.OnTriggerObstracle());
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED);
             }
-            //문어존에 진입시 액션
+            //문어랑 닿으면 잉크뿌림
             if (coll.gameObject.CompareTag("Octopus")) {
                 console.log("Ink HIT!!!!");
                 this.isEnterOctopusZone = true;
-                this.StartCoroutine(this.OnTriggerOctopus(10));
+                GameManager.instance.UI.ShotInkEffect(3);
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.MAP_OCTO);
+                //this.StartCoroutine(this.OnTriggerOctopus(10));
             }
             //버블점프존 액션
             if (coll.gameObject.CompareTag("JumpZone")) {
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalJumpPower = 15;
                 ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Jump();
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_SUPERJUMP);
             }
 
         }
     }
     OnTriggerExit(coll: Collider) {
-        
-        if (this.transform.GetComponent<PlayerSync>()?.isLocal) {
+
+        if (this.sync?.isLocal) {
             //돔 나가면 게임오버
             if (coll.gameObject.CompareTag("Dome")) {
                 console.log("StartCorutine");
@@ -227,24 +246,51 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = -3;
 
-        for (let index = 0; index < 3; index++) {
+        for (let index = 0; index < 2; index++) {
             GameManager.instance.UI.ShotDamagedEffect(0.3);
-            yield new WaitForSeconds(1);
+            yield this.wfs1;
+
         }
 
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = 0;
     }
 
-    //문어 충돌 시
-    *OnTriggerOctopus(time : number) {
-        while(this.isEnterOctopusZone)
-        {
-            GameManager.instance.UI.ShotInkEffect(time/5);     //잉크 UI
-            yield new WaitForSeconds(time);
-        }
+    // //문어 충돌 시
+    // *OnTriggerOctopus(time: number) {
+    //     while (this.isEnterOctopusZone) {
+    //         GameManager.instance.UI.ShotInkEffect(time / 5);     //잉크 UI
+    //         yield new WaitForSeconds(time);
+    //     }
 
+    // }
+
+    Update() {
+
+        if (!this.sync)
+            return;
+        if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.characterController.isGrounded) {
+            if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.tryJump) {
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_JUMP);
+            }
+        }
+        if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.characterController.isGrounded) {
+            if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.tryMove) {
+                if (this.WalkCoroutine == null) {
+                    this.WalkCoroutine = this.StartCoroutine(this.WalkStep());
+                    Debug.Log("걷기");
+                }
+            }
+
+        }
     }
-    
-    //#endregion
+
+    *WalkStep() {
+
+        GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
+        yield this.wfs1;
+        this.StopCoroutine(this.WalkCoroutine);
+        this.WalkCoroutine = null;
+    }
+
 
 }

@@ -23,6 +23,7 @@ export default class Dome extends ZepetoScriptBehaviour {
         yield new WaitForSeconds(this.worldSettings["domeStartTime"] * 0.3);          
 
         GameManager.instance.UI.MainNotification("The magnetic field begins to decrease.", 5);            //자기장이 줄어듭니다.
+        GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.MAP_DOME);
 
         let domeScale = this.transform.localScale.x;
         while (domeScale > 7) {
