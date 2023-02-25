@@ -51,14 +51,14 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
 
         this.MainBtn.onClick.AddListener(() => {
-            GameManager.instance.Sound.PlayBGM(1);
+         //   GameManager.instance.Sound.PlayBGM(1);
         });
         this.SubBtn.onClick.AddListener(() => {
-            GameManager.instance.Sound.PlayBGM(2);
+          //  GameManager.instance.Sound.PlayBGM(2);
 
         });
         this.SubBtn2.onClick.AddListener(() => {
-             GameManager.instance.Sound.PlayBGM(3);
+          //   GameManager.instance.Sound.PlayBGM(3);
         });
 
     }
