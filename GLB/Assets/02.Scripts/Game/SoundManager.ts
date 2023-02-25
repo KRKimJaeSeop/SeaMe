@@ -24,6 +24,9 @@ export default class SoundManager extends ZepetoScriptBehaviour {
     @SerializeField()
     @Tooltip("3구역 BGM")
     private ClipArea_3: AudioClip;
+    @SerializeField()
+    @Tooltip("대기실 BGM")
+    private ClipArea_WaitRoom: AudioClip;
 
     @Header("SFX")
     @Header("Character")
@@ -72,6 +75,8 @@ export default class SoundManager extends ZepetoScriptBehaviour {
     public AREA_1_2: string = "AREA_1_2"
     @HideInInspector()
     public AREA_3: string = "AREA_3"
+    @HideInInspector()
+    public AREA_WAITROOM: string = "AREA_WaitRoom"
 
     @HideInInspector()
     public WAITROOM_SPAWN: string = "WAITROOM_SPAWN"
@@ -110,6 +115,10 @@ export default class SoundManager extends ZepetoScriptBehaviour {
 
             case this.AREA_3:
                 this.BGM.clip = this.ClipArea_3;
+                break;
+
+            case this.AREA_WAITROOM:
+                this.BGM.clip = this.ClipArea_WaitRoom;
                 break;
 
             default:

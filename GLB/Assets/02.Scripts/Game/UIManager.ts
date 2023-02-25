@@ -51,14 +51,19 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
 
         this.MainBtn.onClick.AddListener(() => {
-         //   GameManager.instance.Sound.PlayBGM(1);
+            // let nummm = Math.floor(Math.random() * (5 - 0 + 1));
+            Debug.Log("UIManager::버튼 진입");
+
+            GameManager.instance.RemoveSurvivorList("");
+            // Debug.Log(nummm);
+            //   GameManager.instance.Sound.PlayBGM(1);
         });
         this.SubBtn.onClick.AddListener(() => {
-          //  GameManager.instance.Sound.PlayBGM(2);
+            //  GameManager.instance.Sound.PlayBGM(2);
 
         });
         this.SubBtn2.onClick.AddListener(() => {
-          //   GameManager.instance.Sound.PlayBGM(3);
+            //   GameManager.instance.Sound.PlayBGM(3);
         });
 
     }
@@ -93,10 +98,9 @@ export default class UIManager extends ZepetoScriptBehaviour {
         this.inkImage.color = new Color(1, 1, 1, 1);
         yield new WaitForSeconds(time);
 
-        for(let alpha=1; alpha>=0; alpha -= 0.1)
-        {   
-            yield new WaitForSeconds(time/10);
-            this.inkImage.color = new Color(1,1,1,alpha);
+        for (let alpha = 1; alpha >= 0; alpha -= 0.1) {
+            yield new WaitForSeconds(time / 10);
+            this.inkImage.color = new Color(1, 1, 1, alpha);
         }
     }
 

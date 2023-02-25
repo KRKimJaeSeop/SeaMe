@@ -111,7 +111,7 @@ export default class extends Sandbox {
             client.send(MESSAGE.CheckServerTimeResponse, Timestamp);
         });
         this.onMessage(MESSAGE.CheckMaster, (client, message) => {
-            console.log(`master->, ${this.sessionIdQueue[0]}`);
+            // console.log(`master->, ${this.sessionIdQueue[0]}`);
             this.broadcast(MESSAGE.MasterResponse, this.sessionIdQueue[0]);
         });
         this.onMessage(MESSAGE.PauseUser, (client) => {
@@ -120,7 +120,7 @@ export default class extends Sandbox {
                 this.sessionIdQueue.splice(pausePlayerIndex, 1);
 
                 if (pausePlayerIndex == 0) {
-                    console.log(`master->, ${this.sessionIdQueue[0]}`);
+                    //  console.log(`master->, ${this.sessionIdQueue[0]}`);
                     this.broadcast(MESSAGE.MasterResponse, this.sessionIdQueue[0]);
                 }
             }
@@ -160,7 +160,7 @@ export default class extends Sandbox {
         });
         this.onMessage(MESSAGE.FinishPlayer, (client, finishTime: number) => {
             let playerLapTime = (finishTime - startServerTime) / 1000;
-            console.log(`${client.sessionId}is enter! ${playerLapTime}`);
+            //console.log(`${client.sessionId}is enter! ${playerLapTime}`);
             const gameReport: GameReport = {
                 playerUserId: client.userId,
                 playerLapTime: playerLapTime,
@@ -188,38 +188,46 @@ export default class extends Sandbox {
         if (!this.sessionIdQueue.includes(client.sessionId)) {
             this.sessionIdQueue.push(client.sessionId.toString());
         }
-        console.log(`join player, ${client.sessionId}`);
+        //console.log(`join player, ${client.sessionId}`);
 
-
-
-        // 인원 수 충족시, 게임 시작 내려주기
+        // 인원 수 충족시, 인원들을 전투맵으로 텔포시킴
         this.onMessage(JS_Message.GAMESTART, (clients, message) => {
             this.broadcast(JS_Message.TELEPORT_Stadium, message);
         });
 
-
-
+        //공격시 피격내려줌
+        this.onMessage(JS_Message.HIT, (clients, message) => {
+            this.broadcast(JS_Message.DAMAGED, `${message}`);
+        });
+        
         //플레이어 게임오버 시 방송
         this.onMessage(JS_Message.KILL, (clients, message) => {
             this.broadcast(JS_Message.GAMEOVER, `${message}`);
             this.broadcast(JS_Message.STARTOBSERVER, `${message}`);
         });
 
-        this.onMessage(JS_Message.HIT, (clients, message) => {
-            this.broadcast(JS_Message.DAMAGED, `${message}`);
+        // 최후의 1인 ID를 보내줌.
+        this.onMessage(JS_Message.WINNER, (clients, message) => {
+            this.broadcast(JS_Message.WiNNERID, message);
         });
+
+        // 전체에게 게임 재시작을 내려줌!
+        this.onMessage(JS_Message.READY_GAMERESET, (clients, message) => {
+            this.broadcast(JS_Message.GAMERESET, message);
+        });
+
 
     }
 
     onLeave(client: SandboxPlayer, consented?: boolean) {
-        console.log(`leave player, ${client.sessionId}`);
+        //console.log(`leave player, ${client.sessionId}`);
 
         this.state.players.delete(client.sessionId);
         if (this.sessionIdQueue.includes(client.sessionId)) {
             const leavePlayerIndex = this.sessionIdQueue.indexOf(client.sessionId);
             this.sessionIdQueue.splice(leavePlayerIndex, 1);
             if (leavePlayerIndex == 0) {
-                console.log(`master->, ${this.sessionIdQueue[0]}`);
+                //console.log(`master->, ${this.sessionIdQueue[0]}`);
                 this.broadcast(MESSAGE.MasterResponse, this.sessionIdQueue[0]);
             }
         }
@@ -285,6 +293,10 @@ enum MESSAGE {
 enum JS_Message {
     GAMESTART = "GameStart",
     TELEPORT_Stadium = "tpToStadium",
+    WINNER = "Winner",
+    WiNNERID = "WinnerID",
+    READY_GAMERESET = "ReadyGameReset",
+    GAMERESET = "GameReset",
     GAMEOVER = "GameOver",
     STARTOBSERVER = "StartObserver",
     KILL = "Kill",

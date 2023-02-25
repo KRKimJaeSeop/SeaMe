@@ -36,6 +36,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     //#region [초기 세팅]
 
     public SetCharacter() {
+        GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
+
         //일단 다 끄기
         this.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
         this.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
@@ -47,17 +49,12 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         if (this.sync?.isLocal) {
             this.AddMessageHandler();
             this.PlayerValueSetting();
-
-
         }
 
         //게임오버인 플레이어 전체에게 게임오브젝트 해제
         MultiplayManager.instance.room.AddMessageHandler("GameOver", (message: string) => {
             Debug.Log(message);
             GameManager.instance.RemoveSurvivorList(message);
-            // if (message == this.sessionID) {
-            //     this.gameObject.SetActive(false);
-            // }
         });
     }
 
@@ -73,8 +70,10 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     private AddMessageHandler() {
         // 게임 시작시 플레이어 세팅 수신
         MultiplayManager.instance.room.AddMessageHandler("tpToStadium", (message) => {
-            this.StartCoroutine(this.TestTele());
-            GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_1_2);
+            if (this.sync.isLocal) {
+                this.StartCoroutine(this.TestTele());
+                GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_1_2);
+            }
         });
 
         // 피격시 이펙트
@@ -83,22 +82,40 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (message == this.sessionID) {
                 this.DamagedCount++;
                 GameManager.instance.UI.SubNotification("Ouch!", 0.2);       //아얏
-
-
-                //   GameManager.instance.Damaged(this.DamagedCount/3);
             }
         });
-
-        // 게임 오버시 관전모드 시작
+        // 게임 오버시 대기실로 이동
         MultiplayManager.instance.room.AddMessageHandler("StartObserver", (message) => {
             Debug.Log(message);
             if (message == this.sessionID) {
                 GameManager.instance.UI.MainNotification("Game Over.. ", 100);       //게임오버..         
                 const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
-                localCharacter.Teleport(new Vector3(150, 10.8, 0), Quaternion.identity);
+                localCharacter.Teleport(new Vector3(150, 11, 0), Quaternion.identity);
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DIE);
-                GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_1_2);
+                GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
             }
+        });
+
+        // 최후의 1인 ID을 받는다.
+        // 받은 ID가 내꺼라면, 전체에게 게임초기화 하라고 시킨다.
+        MultiplayManager.instance.room.AddMessageHandler("WinnerID", (message) => {
+            Debug.Log("최후의 1인은..");
+            if (message == this.sessionID) {
+                GameManager.instance.UI.MainNotification("Victory!");
+                GameManager.instance.UI.GameWinEffect(3);
+            }
+            else {
+                GameManager.instance.UI.MainNotification("Game Over");
+            }
+            MultiplayManager.instance.room.Send("ReadyGameReset", `0`);
+        });
+
+        // 게임 초기화
+        MultiplayManager.instance.room.AddMessageHandler("GameReset", (message) => {
+            GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
+         
+            //최종적으로 게임매니저,게임 초기화.
+            GameManager.instance.ResetGame();
         });
 
     }

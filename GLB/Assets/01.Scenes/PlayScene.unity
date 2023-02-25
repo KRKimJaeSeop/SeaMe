@@ -4426,6 +4426,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3028584533058409836, guid: b2608c7f0b3ba95449397789a0cc6f16, type: 3}
+      propertyPath: script.keys.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028584533058409836, guid: b2608c7f0b3ba95449397789a0cc6f16, type: 3}
+      propertyPath: script.values.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028584533058409836, guid: b2608c7f0b3ba95449397789a0cc6f16, type: 3}
+      propertyPath: script.keys.Array.data[20]
+      value: ClipArea_WaitRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028584533058409836, guid: b2608c7f0b3ba95449397789a0cc6f16, type: 3}
+      propertyPath: script.unityValues.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028584533058409836, guid: b2608c7f0b3ba95449397789a0cc6f16, type: 3}
+      propertyPath: script.unityValues.Array.data[20]
+      value: 
+      objectReference: {fileID: 8300000, guid: 230ccb7f3fa7a2948816979000381b4b, type: 3}
     - target: {fileID: 3028584533058409838, guid: b2608c7f0b3ba95449397789a0cc6f16, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -13024,7 +13044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.keys.Array.data[9]
-      value: GameResetEvent
+      value: isAbleDie
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.values.Array.data[8]
@@ -13033,7 +13053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.values.Array.data[9]
-      value: '{"type":"UnityEngine.Events.UnityEvent, UnityEngine.CoreModule","value":"{\"m_PersistentCalls\":{\"m_Calls\":[]}}"}'
+      value: '{"type":"System.Boolean, mscorlib","value":"False"}'
       objectReference: {fileID: 0}
     - target: {fileID: 345864881342859012, guid: 8283b3dc5da10154fadf2eb86550972c, type: 3}
       propertyPath: script.unityValues.Array.size
@@ -14420,7 +14440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 928373736636432021, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 928373736854849511, guid: 69275f5479a77284a9f5aa83b9e6594f, type: 3}
       propertyPath: m_FontData.m_Font

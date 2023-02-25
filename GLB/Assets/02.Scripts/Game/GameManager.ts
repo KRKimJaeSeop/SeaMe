@@ -31,11 +31,13 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public SurvivorList: string[];
 
     public SpawnPositionList: Transform[];
-    private DomeCorouine: Coroutine = null;
 
+    private wfs1: WaitForSeconds = new WaitForSeconds(1);
 
     public dome: GameObject;
-    private GameResetEvent: UnityEvent;
+
+    public isAbleDie: bool = false;
+    //public GameResetEvent: UnityEvent;
 
     /* Singleton */
     private static m_instance: GameManager = null;
@@ -64,8 +66,9 @@ export default class GameManager extends ZepetoScriptBehaviour {
         this.UI = this.uiManager.GetComponent<UIManager>();
         this.Sound = this.sound.GetComponent<SoundManager>();
 
-        this.GameResetEvent = new UnityEvent();
-        this.GameResetEvent.AddListener(() => this.ResetGameManager());
+        //  this.GameResetEvent = new UnityEvent();
+        //  this.GameResetEvent.AddListener(() => this.ResetGameManager());
+
     }
 
 
@@ -84,8 +87,9 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
                 //찾은 오브젝트가 달팽이를 가지고있다고 뜨지 않으면
                 if (!currentPlayers.GetComponent<PlayerController>().isHaveSeaHare) {
-                    let currentHare = Resources.Load("SeaHare_0") as GameObject;
-                    currentHare = GameObject.Instantiate(currentHare) as GameObject;
+                    let currentHare = this.RandomSeaHare();
+                    // let currentHare = Resources.Load("SeaHare_0") as GameObject;
+                    // currentHare = GameObject.Instantiate(currentHare) as GameObject;
                     currentHare.transform.SetParent(currentPlayers.transform.GetChild(0));
                     currentHare.transform.localPosition = Vector3.zero;
                     currentHare.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -96,11 +100,50 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         //유저 수 충족. 카운트다운 시작
         if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
-            this.StartCoroutine(this.StartGame());
+
+            if (this.SurvivorList.length == 0) {
+                this.StartCoroutine(this.StartGame());
+
+            }
         }
         else {
             GameManager.instance.UI.MainNotification
-                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 200);
+                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 9999);
+        }
+    }
+    public RandomSeaHare(): GameObject {
+
+        let randomNum = Math.floor(Math.random() * (5 - 0 + 1));
+
+        switch (randomNum) {
+            case 0:
+                let currentHare0 = Resources.Load("SeaHare_0") as GameObject;
+                return GameObject.Instantiate(currentHare0) as GameObject;
+                break;
+            case 1:
+                let currentHare1 = Resources.Load("SeaHare_1") as GameObject;
+                return GameObject.Instantiate(currentHare1) as GameObject;
+                break;
+            case 2:
+                let currentHare2 = Resources.Load("SeaHare_2") as GameObject;
+                return GameObject.Instantiate(currentHare2) as GameObject;
+                break;
+            case 3:
+                let currentHare3 = Resources.Load("SeaHare_3") as GameObject;
+                return GameObject.Instantiate(currentHare3) as GameObject;
+                break;
+            case 4:
+                let currentHare4 = Resources.Load("SeaHare_4") as GameObject;
+                return GameObject.Instantiate(currentHare4) as GameObject;
+                break;
+            case 5:
+                let currentHare5 = Resources.Load("SeaHare_5") as GameObject;
+                return GameObject.Instantiate(currentHare5) as GameObject;
+                break;
+            default:
+                let currentHareDefalut = Resources.Load("SeaHare_0") as GameObject;
+                return GameObject.Instantiate(currentHare0) as GameObject;
+                break;
         }
     }
 
@@ -111,19 +154,24 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 i--;
             }
         }
+        this.RemoveSurvivorList(sessionId);
+
     }
 
     public RemoveSurvivorList(sessionId: string) {
+        Debug.Log("RemoveSurvivorList::함수 진입");
         for (let i = 0; i < this.SurvivorList.length; i++) {
             if (this.SurvivorList[i] == sessionId) {
                 this.SurvivorList.splice(i, 1);
                 i--;
-
             }
         }
         //지우고 나서, 남은유저가 1명 이하일 때 
-        if (this.SurvivorList.length <= 1) {
-            this.StartCoroutine(this.FinishGame());
+        if (this.SurvivorList.length == 1) {
+            MultiplayManager.instance.room.Send("Winner", this.SurvivorList[0]);
+            Debug.Log("RemoveSurvivorList::멀티로 보내기 진입");
+
+            // this.StartCoroutine(this.FinishGame());
         }
     }
 
@@ -141,15 +189,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
             }
             return 0;
         });
-
-        if (this.DomeCorouine != null) {
-            this.StopCoroutine(this.DomeCorouine);
-            this.DomeCorouine = null;
-        }
-        //돔 시작
-        this.DomeCorouine =
-            this.StartCoroutine(this.dome.GetComponent<Dome>().DomeScaleControll());
-
+        this.dome.GetComponent<Dome>().StartDome();
 
         //위치 스폰
         for (let index = 0; index < this.UserList.Length; index++) {
@@ -172,26 +212,33 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         MultiplayManager.instance.room.Send("GameStart", `0`);
         ZepetoChat.SetActiveChatUI(false);
-
     }
 
-    //승리
-    *FinishGame() {
-        GameManager.instance.UI.MainNotification("Victory!");
-        GameManager.instance.UI.GameWinEffect(3);
+    public ResetGame() {
+        this.StartCoroutine(this.FinishGame());
+    }
+
+
+    // 남은유저가 1명 이하일때 바로 시작되는 코루틴
+    public *FinishGame() {
+        this.dome.GetComponent<Dome>().EndDome();
         ZepetoChat.SetActiveChatUI(true);
-        this.GameResetEvent.Invoke();
-    }
+        yield this.wfs1;
+        GameManager.instance.UI.MainNotification(`game finish`, 0.9);
+        yield this.wfs1;
+        GameManager.instance.UI.MainNotification(`will be start`, 0.9);
+        yield this.wfs1;
+        const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
+        localCharacter.Teleport(new Vector3(150, 11, 0), Quaternion.identity);
+        this.SurvivorList.length = 0;
+        // if (this.SurvivorList.length == 0) {
+        //     this.StartCoroutine(this.StartGame());
+        // }
+        // else {
+        //     GameManager.instance.UI.MainNotification
+        //         (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 9999);
+        // }
 
-    ResetGameManager() {
-        if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
-            this.StartCoroutine(this.StartGame());
-        }
-        else {
-            GameManager.instance.UI.MainNotification
-                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 200);
-        }
     }
-
 
 }
