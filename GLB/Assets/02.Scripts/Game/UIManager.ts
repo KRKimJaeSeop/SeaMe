@@ -34,6 +34,9 @@ export default class UIManager extends ZepetoScriptBehaviour {
     @SerializeField()
     private inkImage: Image;        //잉크이미지 추가
 
+    @SerializeField()
+    private gameWinImage: Image;    //최후 1인 게임클리어 이미지 추가
+
     testA: number = 0;
     testB: number = 0;
     public MainBtn: Button;
@@ -78,7 +81,6 @@ export default class UIManager extends ZepetoScriptBehaviour {
         this.damagedImage.color = new Color(1, 1, 1, 1);
         yield new WaitForSeconds(0.3);
         this.damagedImage.color = new Color(1, 1, 1, 0);
-
     }
 
     //잉크
@@ -96,6 +98,18 @@ export default class UIManager extends ZepetoScriptBehaviour {
             yield new WaitForSeconds(time/10);
             this.inkImage.color = new Color(1,1,1,alpha);
         }
+    }
+
+    //승리
+    public GameWinEffect(time: number) {
+        this.StartCoroutine(this.WinRoutine(time));
+    }
+
+    //승리 코루틴
+    private *WinRoutine(time: number) {
+        this.gameWinImage.color = new Color(1, 1, 1, 1);
+        yield new WaitForSeconds(time);
+        this.gameWinImage.color = new Color(1, 1, 1, 0);
     }
 
 }
