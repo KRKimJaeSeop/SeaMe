@@ -3,17 +3,7 @@ guid: 17a3bff5ad5d83b43b620b476d5d6633
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Jorunna_Alpha_shd
-    second: {fileID: 2100000, guid: 916c8a853a26c404ab0d0f13626e2e28, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Jorunna_shd
-    second: {fileID: 2100000, guid: 020da4de07eab3949a88048d10129d57, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
