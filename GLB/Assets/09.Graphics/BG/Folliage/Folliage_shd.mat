@@ -135,6 +135,6 @@ Material:
     m_Colors:
     - _AlbedoColor: {r: 0, g: 0.41799998, b: 0.17476216, a: 1}
     - _Color: {r: 0, g: 0.3962264, b: 0.25554866, a: 1}
-    - _EmissionColor: {r: 0, g: 0.67209864, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _TransmissionColor: {r: 1, g: 0.95554924, b: 0, a: 0}
   m_BuildTextureStacks: []

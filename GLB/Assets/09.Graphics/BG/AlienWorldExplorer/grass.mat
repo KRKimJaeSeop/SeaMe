@@ -258,7 +258,7 @@ Material:
     - _DetailNormalsScale: 1
     - _DstBlend: 0
     - _EmissionMultiplayer: 0
-    - _EmissionScale: 0.76
+    - _EmissionScale: 0.3
     - _EmissionSwitch: 0
     - _EnableExternalAlpha: 0
     - _FixedAxis: 0
