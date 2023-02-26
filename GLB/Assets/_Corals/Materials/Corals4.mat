@@ -118,7 +118,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _MetalicBrightnes: 0
-    - _Metallic: 0.5
+    - _Metallic: -0.63
     - _MetallicScale: 0
     - _Mode: 1
     - _NormalMapDepth: 1

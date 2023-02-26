@@ -92,7 +92,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionMultiplayer: 4
+    - _EmissionMultiplayer: 10
     - _EmissionSwitch: 0
     - _GlossMapScale: 1
     - _Glossiness: 0

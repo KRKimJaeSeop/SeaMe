@@ -82,7 +82,7 @@ Material:
     - _CutoffSoftness: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
-    - _EmissionScale: 0.2
+    - _EmissionScale: 0
     - _FixedAxis: 0
     - _GlossMapScale: 1
     - _Glossiness: 0

@@ -145,7 +145,7 @@ Material:
     - _Cutoff: 0.61
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionMultiplayer: 0
+    - _EmissionMultiplayer: 0.7
     - _EmissionSwitch: 0
     - _FresnelPower: 0
     - _FresnelScale: 1
@@ -163,7 +163,7 @@ Material:
     - _MetalicBrightnes2: 0
     - _MetalicBrightnes3: 0
     - _MetalicBrightnesBase: 0
-    - _Metallic: 1
+    - _Metallic: 0.5
     - _Metallic1: 1
     - _Metallic2: 1
     - _Metallic3: 1

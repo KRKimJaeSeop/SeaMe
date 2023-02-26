@@ -98,7 +98,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _MetalicBrightnes: 0
-    - _Metallic: 1
+    - _Metallic: 0.1
     - _Mode: 0
     - _NormalMapDepth: 1
     - _OcclusionStrength: 1
@@ -107,7 +107,7 @@ Material:
     - _SmoothFromMapSwitch: 1
     - _SmoothRough: 0
     - _SmoothnessTextureChannel: 0
-    - _Snoothness: 1
+    - _Snoothness: 0.7
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Tiling: 1

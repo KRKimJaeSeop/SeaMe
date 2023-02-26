@@ -103,7 +103,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionMultiplayer: 0
-    - _EmissionScale: 0.5
+    - _EmissionScale: 0.4
     - _EmissionSwitch: 1
     - _FixedAxis: 0
     - _GlossMapScale: 1

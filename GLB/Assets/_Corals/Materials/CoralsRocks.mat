@@ -151,7 +151,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _AlbedoColor: {r: 0.7264151, g: 0.6990032, b: 0.6990032, a: 1}
-    - _Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CubemapColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _TransmissionColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 0}
