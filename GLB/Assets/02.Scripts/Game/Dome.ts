@@ -30,9 +30,10 @@ export default class Dome extends ZepetoScriptBehaviour {
     public EndDome() {
         if (this.DomeCorouine != null) {
             this.StopCoroutine(this.DomeCorouine);
+            this.DomeCorouine = null;
         }
     }
-    
+
     *DomeScaleControll() {
         this.transform.localScale = this.InitScale;
         GameManager.instance.UI.MainNotification("Game Start", 3);                                  //게임 시작

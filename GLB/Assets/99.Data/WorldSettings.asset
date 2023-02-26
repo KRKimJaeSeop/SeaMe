@@ -25,9 +25,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   values:
-  - '{"type":"System.Single, mscorlib","value":"99999"}'
   - '{"type":"System.Single, mscorlib","value":"3"}'
-  - '{"type":"System.Single, mscorlib","value":"1"}'
+  - '{"type":"System.Single, mscorlib","value":"3"}'
+  - '{"type":"System.Single, mscorlib","value":"2"}'
   - '{"type":"System.Single, mscorlib","value":"5"}'
   - '{"type":"System.Single, mscorlib","value":"0.1"}'
   unityArrayValues: []

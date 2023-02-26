@@ -40,6 +40,8 @@ export default class UIManager extends ZepetoScriptBehaviour {
     testA: number = 0;
     testB: number = 0;
     public MainBtn: Button;
+    @SerializeField()
+    private MainBtnText: Text;
     public SubBtn: Button;
     public SubBtn2: Button;
 
@@ -52,10 +54,13 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
         this.MainBtn.onClick.AddListener(() => {
             // let nummm = Math.floor(Math.random() * (5 - 0 + 1));
-            Debug.Log("UIManager::버튼 진입");
+            const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.id;
 
-            GameManager.instance.RemoveSurvivorList("");
-            // Debug.Log(nummm);
+
+
+            MultiplayManager.instance.room.Send("Kill", `${localCharacter}`);
+            //GameManager.instance.RemoveSurvivorList("");
+            //
             //   GameManager.instance.Sound.PlayBGM(1);
         });
         this.SubBtn.onClick.AddListener(() => {
@@ -69,12 +74,20 @@ export default class UIManager extends ZepetoScriptBehaviour {
     }
 
 
+    Update() {
+        this.MainBtnText.text = `${GameManager.instance.SurvivorList.Length} /${GameManager.instance.UserList.Length} `;
+
+    }
+
+
     public MainNotification(text: string, time: number = 0.5) {
         this.uiMainNotification.Show(text, time);
+        GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.UI_NOTI);
     }
 
     public SubNotification(text: string, time: number = 0.5) {
         this.uiSubNotification.Show(text, time);
+        GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.UI_NOTI);
     }
 
     public ShotDamagedEffect(time: number) {

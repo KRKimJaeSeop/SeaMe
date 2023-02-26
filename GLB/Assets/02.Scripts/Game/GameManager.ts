@@ -33,10 +33,9 @@ export default class GameManager extends ZepetoScriptBehaviour {
     public SpawnPositionList: Transform[];
 
     private wfs1: WaitForSeconds = new WaitForSeconds(1);
+    private wfs3: WaitForSeconds = new WaitForSeconds(3);
 
     public dome: GameObject;
-
-    public isAbleDie: bool = false;
     //public GameResetEvent: UnityEvent;
 
     /* Singleton */
@@ -101,9 +100,9 @@ export default class GameManager extends ZepetoScriptBehaviour {
         //유저 수 충족. 카운트다운 시작
         if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
 
+
             if (this.SurvivorList.length == 0) {
                 this.StartCoroutine(this.StartGame());
-
             }
         }
         else {
@@ -111,6 +110,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 9999);
         }
     }
+
     public RandomSeaHare(): GameObject {
 
         let randomNum = Math.floor(Math.random() * (5 - 0 + 1));
@@ -160,18 +160,18 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     public RemoveSurvivorList(sessionId: string) {
         Debug.Log("RemoveSurvivorList::함수 진입");
+        //제거하지말고, 그대로 게임 종료시키기
         for (let i = 0; i < this.SurvivorList.length; i++) {
             if (this.SurvivorList[i] == sessionId) {
                 this.SurvivorList.splice(i, 1);
                 i--;
             }
         }
-        //지우고 나서, 남은유저가 1명 이하일 때 
-        if (this.SurvivorList.length == 1) {
+        if (!this.IsAbleDie()) {
+            Debug.Log("RemoveSurvivorList::Send Winner");
+            //지우고 나서, 남은유저가 1명 이하일 때 
             MultiplayManager.instance.room.Send("Winner", this.SurvivorList[0]);
             Debug.Log("RemoveSurvivorList::멀티로 보내기 진입");
-
-            // this.StartCoroutine(this.FinishGame());
         }
     }
 
@@ -193,11 +193,12 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         //위치 스폰
         for (let index = 0; index < this.UserList.Length; index++) {
-            this.SurvivorList.push(sessionId);
             if (this.UserList[index] == sessionId) {
                 return this.SpawnPositionList[index].position;
             }
         }
+
+
         return this.SpawnPositionList[5].position;
     }
 
@@ -209,35 +210,72 @@ export default class GameManager extends ZepetoScriptBehaviour {
             GameManager.instance.UI.MainNotification(`The game will begin shortly..[${count}]`, 0.9);
             yield new WaitForSeconds(1);
         }
+        if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.id == this.UserList[0]) {
+            MultiplayManager.instance.room.Send("GameStart", `0`);
+        }
 
-        MultiplayManager.instance.room.Send("GameStart", `0`);
+        this.SurvivorList.splice(0, this.SurvivorList.length)
+        //생존자 리스트 추가
+        for (let index = 0; index < this.UserList.Length; index++) {
+            this.SurvivorList.push(this.UserList[index]);
+        }
+
         ZepetoChat.SetActiveChatUI(false);
     }
 
     public ResetGame() {
+        Debug.Log(`ResetGame Coroutine::Start `);
         this.StartCoroutine(this.FinishGame());
     }
 
+    public IsAbleDie(): bool {
+        if (this.SurvivorList.length > 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     // 남은유저가 1명 이하일때 바로 시작되는 코루틴
-    public *FinishGame() {
+    *FinishGame() {
+
+        yield this.wfs3;
+        //자기장 이동 정지, 채팅UI 활성화
         this.dome.GetComponent<Dome>().EndDome();
         ZepetoChat.SetActiveChatUI(true);
-        yield this.wfs1;
-        GameManager.instance.UI.MainNotification(`game finish`, 0.9);
-        yield this.wfs1;
-        GameManager.instance.UI.MainNotification(`will be start`, 0.9);
-        yield this.wfs1;
+        //승리 플레이어 닉네임 UI표시
+        let _winner = "";
+        if (this.SurvivorList[0] == null) {
+            _winner = "X";
+        }
+        else {
+            _winner = ZepetoPlayers.instance.GetPlayer(this.SurvivorList[0]).name;
+        }
+        GameManager.instance.UI.MainNotification(`game finish`, 3);
+        GameManager.instance.UI.SubNotification(`Winner : ${_winner}`, 6);
+        yield this.wfs3;
+
+        //곧 시작합니다
+        GameManager.instance.UI.MainNotification(`will be start`, 3);
+        yield this.wfs3;
+
+        //텔레포트
         const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;
         localCharacter.Teleport(new Vector3(150, 11, 0), Quaternion.identity);
-        this.SurvivorList.length = 0;
-        // if (this.SurvivorList.length == 0) {
-        //     this.StartCoroutine(this.StartGame());
-        // }
-        // else {
-        //     GameManager.instance.UI.MainNotification
-        //         (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 9999);
-        // }
+        //생존자 수 0으로 세팅
+        this.SurvivorList.splice(0, this.SurvivorList.length)
+        //브금틀기
+        GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
+
+        //생존자 수가 0일때 게임시작?
+        if (this.UserList.Length == this.worldSettings["roomPlayerCapacity"]) {
+            this.StartCoroutine(this.StartGame());
+        }
+        else {
+            GameManager.instance.UI.MainNotification
+                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 99999);
+        }
 
     }
 
