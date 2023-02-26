@@ -27,7 +27,7 @@ MonoBehaviour:
   values:
   - '{"type":"System.Single, mscorlib","value":"20"}'
   - '{"type":"System.Single, mscorlib","value":"10"}'
-  - '{"type":"System.Single, mscorlib","value":"1"}'
+  - '{"type":"System.Single, mscorlib","value":"2"}'
   - '{"type":"System.Single, mscorlib","value":"0.3"}'
   - '{"type":"System.Single, mscorlib","value":"0.1"}'
   unityArrayValues: []
