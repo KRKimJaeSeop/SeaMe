@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stone array
+* source:	https://sketchfab.com/3d-models/stone-array-3d02b69773c543b49704a92e2053fe45
+* author:	dreamloveer (https://sketchfab.com/dreamloveer)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stone array" (https://sketchfab.com/3d-models/stone-array-3d02b69773c543b49704a92e2053fe45) by dreamloveer (https://sketchfab.com/dreamloveer) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

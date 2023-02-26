@@ -1,0 +1,11 @@
+Model Information:
+* title:	Temple
+* source:	https://sketchfab.com/3d-models/temple-4cb022ba21de46918bce7793abc69675
+* author:	Bindestrek (https://sketchfab.com/KNUT-OLAV_UTISTOG)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Temple" (https://sketchfab.com/3d-models/temple-4cb022ba21de46918bce7793abc69675) by Bindestrek (https://sketchfab.com/KNUT-OLAV_UTISTOG) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

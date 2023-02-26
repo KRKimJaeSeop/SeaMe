@@ -1,0 +1,11 @@
+Model Information:
+* title:	Door of Time
+* source:	https://sketchfab.com/3d-models/door-of-time-d3f1c0a6acbd49e8b1999563e100dba1
+* author:	Iso-Didact (https://sketchfab.com/Iso-Didact)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Door of Time" (https://sketchfab.com/3d-models/door-of-time-d3f1c0a6acbd49e8b1999563e100dba1) by Iso-Didact (https://sketchfab.com/Iso-Didact) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

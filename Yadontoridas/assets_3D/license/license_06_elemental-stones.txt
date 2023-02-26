@@ -1,0 +1,11 @@
+Model Information:
+* title:	Elemental stones
+* source:	https://sketchfab.com/3d-models/elemental-stones-86fd307d0a4a489ca55c6003ec8c6149
+* author:	Mandrake (https://sketchfab.com/mandrake_3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Elemental stones" (https://sketchfab.com/3d-models/elemental-stones-86fd307d0a4a489ca55c6003ec8c6149) by Mandrake (https://sketchfab.com/mandrake_3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

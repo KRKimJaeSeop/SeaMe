@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sand And Stone
+* source:	https://sketchfab.com/3d-models/sand-and-stone-5672554cc36349d98ef5791f2270ed5f
+* author:	MrSpacePenguin (https://sketchfab.com/PenguinMafia)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sand And Stone" (https://sketchfab.com/3d-models/sand-and-stone-5672554cc36349d98ef5791f2270ed5f) by MrSpacePenguin (https://sketchfab.com/PenguinMafia) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
