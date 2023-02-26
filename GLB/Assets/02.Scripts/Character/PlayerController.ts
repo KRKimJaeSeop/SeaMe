@@ -32,6 +32,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     private wfs005: WaitForSeconds = new WaitForSeconds(0.5);
     private wfs1: WaitForSeconds = new WaitForSeconds(1);
     private wfs03: WaitForSeconds = new WaitForSeconds(0.3);
+    private wfs5: WaitForSeconds = new WaitForSeconds(5);
 
     private sync: PlayerSync;
     //#region [초기 세팅]
@@ -65,12 +66,19 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         localCharacter.Teleport(GameManager.instance.GetUserSpawnPosition(this.sessionID), Quaternion.identity);
     }
 
+    *SetGuide(){
+        GameManager.instance.UI.SetGuideImage(true);
+        yield this.wfs5;
+        GameManager.instance.UI.SetGuideImage(false);
+    }
+
     //[메세지 핸들러 등록]
     private AddMessageHandler() {
         // 게임 시작시 플레이어 세팅 수신
         MultiplayManager.instance.room.AddMessageHandler("tpToStadium", (message) => {
             if (this.sync.isLocal) {
                 this.StartCoroutine(this.TestTele());
+                this.StartCoroutine(this.SetGuide());
                 GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_1_2);
             }
         });
@@ -83,6 +91,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 //GameManager.instance.UI.SubNotification("Ouch!", 0.2);       //아얏
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OTHER);
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OBSTRACLE);
+                GameManager.instance.UI.ShotDamagedEffect();
             }
         });
         // 게임 오버시 대기실로 이동
@@ -168,9 +177,11 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                     let hitInfo = $unref(ref);
                     let seaHare = hitInfo.collider.gameObject.GetComponent<SeaHareObject>();
                     //    GameManager.instance.SetTestText(`Status::HIT::${seaHare?.sessionID}`);
-
+                    // Debug.Log(`gd`)
+                    // Debug.Log(`${seaHare}  ${seaHare.sessionID}  ${seaHare.userID}`)
                     //이미 돌아가고있다면 중복호출X
-                    if (this.AttackCoroutine == null) {
+                    if (this.AttackCoroutine == null && seaHare != null) {
+
                         this.AttackID = `${seaHare?.sessionID}`;
                         this.AttackCoroutine = this.StartCoroutine(this.Attack(seaHare, seaHare?.sessionID));
                     }
@@ -218,7 +229,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             // 자기장 진입시 레이 활성화
             if (coll.gameObject.CompareTag("Dome")) {
                 this.ShootCoroutine = this.StartCoroutine(this.ShootRay());
-                GameManager.instance.UI.SetBlackImage(false);
+                GameManager.instance.UI.SetBlackImage(true);
                 ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(true);
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_GOMAP);
             }
@@ -288,15 +299,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = 0;
     }
 
-    // //문어 충돌 시
-    // *OnTriggerOctopus(time: number) {
-    //     while (this.isEnterOctopusZone) {
-    //         GameManager.instance.UI.ShotInkEffect(time / 5);     //잉크 UI
-    //         yield new WaitForSeconds(time);
-    //     }
-
-    // }
-
+  
     Update() {
 
         if (!this.sync)
@@ -318,6 +321,11 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     *WalkStep() {
 
+        if (GameManager.instance.IsAbleDie()) {
+            if (GameManager.instance.Sound.RandomNumber(0, 100) < 3) {
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_SCARY);
+            }
+        }
         GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
         yield this.wfs03;
         this.StopCoroutine(this.WalkCoroutine);

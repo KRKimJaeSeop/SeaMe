@@ -65,6 +65,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
         this.UI = this.uiManager.GetComponent<UIManager>();
         this.Sound = this.sound.GetComponent<SoundManager>();
 
+        this.UI.SetIntroImage(true);
         //  this.GameResetEvent = new UnityEvent();
         //  this.GameResetEvent.AddListener(() => this.ResetGameManager());
 
@@ -95,6 +96,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 }
             }
         });
+        this.UI.SetIntroImage(false);
 
 
         //유저 수 충족. 카운트다운 시작

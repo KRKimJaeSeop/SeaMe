@@ -47,17 +47,20 @@ export default class UIManager extends ZepetoScriptBehaviour {
     public SubBtn: Button;
     public SubBtn2: Button;
 
+    public IntroImage: GameObject;
+    public GuideImage: GameObject;
+
     private wfs1: WaitForSeconds = new WaitForSeconds(1);
     private wfs3: WaitForSeconds = new WaitForSeconds(3);
     private wfs03: WaitForSeconds = new WaitForSeconds(0.3);
 
 
     Awake() {
+        
         this.uiMainNotification = this.MainNotiText.GetComponent<UIMainNotification>();
         this.MainNotiText.SetActive(false);
         this.uiSubNotification = this.SubNotiText.GetComponent<UISubNotification>();
         this.SubNotiText.SetActive(false);
-
 
         this.MainBtn.onClick.AddListener(() => {
             GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
@@ -69,8 +72,16 @@ export default class UIManager extends ZepetoScriptBehaviour {
         this.SubBtn2.onClick.AddListener(() => {
             //   GameManager.instance.Sound.PlayBGM(3);
         });
-
     }
+
+    public SetIntroImage(state: bool) {
+        this.IntroImage.SetActive(state);
+    }
+
+    public SetGuideImage(state: bool) {
+        this.GuideImage.SetActive(state);
+    }
+
     public SetBlackImage(state: bool) {
         this.BlackImage.SetActive(state);
     }

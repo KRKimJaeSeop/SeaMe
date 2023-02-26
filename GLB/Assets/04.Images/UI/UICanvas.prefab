@@ -860,6 +860,8 @@ MonoBehaviour:
     - MainNotiText
     - SubBtn2
     - BlackImage
+    - IntroImage
+    - GuideImage
     unityValues:
     - {fileID: 928373736117495389}
     - {fileID: 928373736636432043}
@@ -871,7 +873,11 @@ MonoBehaviour:
     - {fileID: 928373736709199532}
     - {fileID: 928373737545756374}
     - {fileID: 320328983911642876}
+    - {fileID: 0}
+    - {fileID: 0}
     values:
+    - 
+    - 
     - 
     - 
     - 
