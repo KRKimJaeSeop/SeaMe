@@ -8,9 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Folliage_shd
-  m_Shader: {fileID: 4800000, guid: 930ea12af827c774aae147f65777d8c1, type: 3}
-  m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _EMISSIONSWITCH_ON _FIXEDAXIS_RIGHT
-    _SMOOTHFROMMAPSWITCH_ON
+  m_Shader: {fileID: 4800000, guid: 6072432a75dfe5e4d848365c682afd58, type: 3}
+  m_ShaderKeywords: _ACTIVEWAVEX_ON _EMISSIONSWITCH_ON _FIXEDAXIS_RIGHT _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -95,7 +94,9 @@ Material:
     m_Floats:
     - _ActiveWaveX: 1
     - _ActiveWaveY: 0
-    - _ActiveWaveZ: 1
+    - _ActiveWaveZ: 0
+    - _BrightAmount: 1
+    - _BrightPower: 1
     - _BumpScale: 1
     - _Cull: 0
     - _CutOff: 0.5
@@ -110,7 +111,13 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.6
     - _GlossyReflections: 1
-    - _MaskOffset: 0.075
+    - _InnerAOAmount: 3.65
+    - _InnerAOLength: 4.34
+    - _InnerAOPower: 6.19
+    - _LightvectorX: 0.5
+    - _LightvectorY: 0.5
+    - _LightvectorZ: 0.5
+    - _MaskOffset: 0.05
     - _Metallic: 0.4
     - _MetallicScale: 0
     - _Mode: 0
@@ -128,13 +135,18 @@ Material:
     - _TransmisionValue: 1
     - _UVSec: 0
     - _WavePower: 0.5
-    - _WaveSpeed: 1.5
-    - _WaveTilling: 1.5
+    - _WaveSpeed: 2
+    - _WaveTilling: 3
+    - _WindFoliageAmplitude: 0
+    - _WindFoliageSpeed: 0
+    - _WorldYPosition: 0.247
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
     - _AlbedoColor: {r: 0, g: 0.41799998, b: 0.17476216, a: 1}
-    - _Color: {r: 0, g: 0.3962264, b: 0.25554866, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 0.3962264, b: 0.25554866, a: 0.92156863}
+    - _EmissionColor: {r: 0.030333217, g: 0.030161522, b: 0.030161522, a: 1}
+    - _InnerAOColor: {r: 0.6457992, g: 0.6886792, b: 0.6736712, a: 1}
+    - _SSSColor: {r: 1, g: 1, b: 1, a: 1}
     - _TransmissionColor: {r: 1, g: 0.95554924, b: 0, a: 0}
   m_BuildTextureStacks: []

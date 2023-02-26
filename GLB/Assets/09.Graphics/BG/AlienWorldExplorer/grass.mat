@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: grass
-  m_Shader: {fileID: 4800000, guid: 930ea12af827c774aae147f65777d8c1, type: 3}
-  m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _ALPHATEST_ON _EMISSION _FIXEDAXIS_TOP
-    _SMOOTHFROMMAPSWITCH_ON _TRANSPARENTSWITCH_ON
+  m_Shader: {fileID: 4800000, guid: 6072432a75dfe5e4d848365c682afd58, type: 3}
+  m_ShaderKeywords: _ACTIVEWAVEX_ON _ALPHATEST_ON _EMISSION _FIXEDAXIS_TOP _SMOOTHFROMMAPSWITCH_ON
+    _TRANSPARENTSWITCH_ON
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -244,11 +244,13 @@ Material:
     - PixelSnap: 0
     - _ActiveWaveX: 1
     - _ActiveWaveY: 0
-    - _ActiveWaveZ: 1
+    - _ActiveWaveZ: 0
     - _AlbedoDetailBrightness: 1
     - _AlbedoDetailStrenth: 1
     - _BVCNormalsScale: 1
     - _BlendContrast: 1
+    - _BrightAmount: 1
+    - _BrightPower: 1
     - _BumpScale: 1
     - _CubemapInens: 1
     - _Cull: 0
@@ -271,12 +273,18 @@ Material:
     - _Height2: 2
     - _Height3: 2
     - _HeightMultiplayer: 0
+    - _InnerAOAmount: 0
+    - _InnerAOLength: 0.5
+    - _InnerAOPower: 0
     - _InnerStructMapTilling: 0
     - _InnerStructureDepth: 0
+    - _LightvectorX: 0.5
+    - _LightvectorY: 0.5
+    - _LightvectorZ: 0.5
     - _MaskContrast: 1
     - _MaskIntens: 0
     - _MaskIntensity: 0
-    - _MaskOffset: 0.1
+    - _MaskOffset: 0.03
     - _MetalicBrightnes: 0
     - _MetalicBrightnes1: 0
     - _MetalicBrightnes2: 0
@@ -340,9 +348,12 @@ Material:
     - _TransmisionValue: -1.55
     - _TransparentSwitch: 1
     - _UVSec: 0
-    - _WavePower: 1.2
+    - _WavePower: 2
     - _WaveSpeed: 1.4
-    - _WaveTilling: 3
+    - _WaveTilling: 2
+    - _WindFoliageAmplitude: 0
+    - _WindFoliageSpeed: 0
+    - _WorldYPosition: 0
     - _YContrast: 1
     - _ZWrite: 1
     - __dirty: 1
@@ -357,9 +368,11 @@ Material:
     - _CubemapColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _InnerAOColor: {r: 1, g: 1, b: 1, a: 1}
     - _RVCTint: {r: 0, g: 0, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 0}
+    - _SSSColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularColor2: {r: 1, g: 1, b: 1, a: 1}
     - _StructureColor: {r: 0, g: 0, b: 0, a: 0}

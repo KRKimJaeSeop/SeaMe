@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Zone_03_lambert4_1
-  m_Shader: {fileID: 4800000, guid: 930ea12af827c774aae147f65777d8c1, type: 3}
-  m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEZ_ON _ALPHATEST_ON _EMISSIONSWITCH_ON
+  m_Shader: {fileID: 4800000, guid: 6072432a75dfe5e4d848365c682afd58, type: 3}
+  m_ShaderKeywords: _ACTIVEWAVEX_ON _ACTIVEWAVEY_ON _ALPHATEST_ON _EMISSIONSWITCH_ON
     _FIXEDAXIS_TOP _SMOOTHFROMMAPSWITCH_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -94,12 +94,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _ActiveWaveX: 1
-    - _ActiveWaveY: 0
-    - _ActiveWaveZ: 1
+    - _ActiveWaveY: 1
+    - _ActiveWaveZ: 0
+    - _BrightAmount: 1
+    - _BrightPower: 1
     - _BumpScale: 1
     - _Cull: 0
     - _Cutoff: 0.01
-    - _CutoffSoftness: 0
+    - _CutoffSoftness: 0.05
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionMultiplayer: 0
@@ -109,6 +111,12 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _InnerAOAmount: 0
+    - _InnerAOLength: 0.5
+    - _InnerAOPower: 0
+    - _LightvectorX: 0.5
+    - _LightvectorY: 0.5
+    - _LightvectorZ: 0.5
     - _MaskOffset: 0.2
     - _Metallic: 0
     - _MetallicScale: 0
@@ -126,14 +134,19 @@ Material:
     - _SrcBlend: 1
     - _TransmisionValue: 1
     - _UVSec: 0
-    - _WavePower: 0.3
+    - _WavePower: 0.5
     - _WaveSpeed: 1
-    - _WaveTilling: 1
+    - _WaveTilling: 2
+    - _WindFoliageAmplitude: 0
+    - _WindFoliageSpeed: 0
+    - _WorldYPosition: 0
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
     - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
+    - _InnerAOColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SSSColor: {r: 1, g: 1, b: 1, a: 1}
     - _TransmissionColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

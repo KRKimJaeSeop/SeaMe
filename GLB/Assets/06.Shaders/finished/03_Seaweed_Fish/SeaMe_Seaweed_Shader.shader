@@ -142,7 +142,7 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
             float mask;
             float uX = v.texcoord.x;
             float uY = v.texcoord.y;
-            float uZ = v.texcoord.z;
+            //float uZ = v.texcoord.z;
             //float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 
             if(_FixedAxis==0) { fixedAxis = 1-uY; }         //TOP
