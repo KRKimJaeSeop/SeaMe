@@ -96,7 +96,7 @@ Material:
     - _Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 0.99215686, b: 0, a: 1}
-    - _SpecularColor: {r: 1, g: 0.27058828, b: 0.97253966, a: 1}
-    - _SpecularColor2: {r: 1, g: 0.6924528, b: 0.91099143, a: 1}
-    - _TintColor: {r: 0.6946057, g: 0.09483798, b: 0.6981132, a: 1}
+    - _SpecularColor: {r: 1, g: 0.6264151, b: 0.98594034, a: 1}
+    - _SpecularColor2: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 0.8186128, g: 0.4909042, b: 0.8207547, a: 1}
   m_BuildTextureStacks: []
