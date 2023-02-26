@@ -38,6 +38,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     public SetCharacter() {
         GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
+        GameManager.instance.UI.SetBlackImage(false);
 
         //일단 다 끄기
         this.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
@@ -79,7 +80,9 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             Debug.Log(message);
             if (message == this.sessionID) {
                 this.DamagedCount++;
-                GameManager.instance.UI.SubNotification("Ouch!", 0.2);       //아얏
+                //GameManager.instance.UI.SubNotification("Ouch!", 0.2);       //아얏
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OTHER);
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OBSTRACLE);
             }
         });
         // 게임 오버시 대기실로 이동
@@ -92,6 +95,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DIE);
                 Debug.Log(`브금틀기`);
                 GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
+                GameManager.instance.UI.SetBlackImage(false);
+
             }
         });
 
@@ -101,11 +106,16 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
 
             if (message == this.sessionID) {
-                GameManager.instance.UI.MainNotification("Victory!");
-                GameManager.instance.UI.GameWinEffect(3);
+                GameManager.instance.UI.MainNotification("Victory!", 3);
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.UI_WIN);
+                GameManager.instance.UI.GameWinEffect();
             }
             else {
-                GameManager.instance.UI.MainNotification("Game Over");
+                GameManager.instance.UI.MainNotification("Game Over", 3);
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.UI_LOSE);
+
+                GameManager.instance.UI.GameLoseEffect();
+
             }
             Debug.Log(`Send ReadyGameReset ::${message}`);
             MultiplayManager.instance.room.Send("ReadyGameReset", `0`);
@@ -181,7 +191,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     //공격
     *Attack(seaHare: SeaHareObject, id: string) {
         for (let index = 0; index < this.playerValue["playerAttackTime"]; index++) {
-            Debug.Log(index);
+            GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OTHER);
             MultiplayManager.instance.room.Send("Hit", `${id}`);
             yield new WaitForSeconds(1);
         }
@@ -208,7 +218,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             // 자기장 진입시 레이 활성화
             if (coll.gameObject.CompareTag("Dome")) {
                 this.ShootCoroutine = this.StartCoroutine(this.ShootRay());
-                //GameManager.instance.dome.GetComponent<Dome>().StartDome();
+                GameManager.instance.UI.SetBlackImage(false);
                 ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(true);
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_GOMAP);
             }
@@ -221,13 +231,13 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (coll.gameObject.CompareTag("Obstracle")) {
                 console.log("HIT!!!!");
                 this.StartCoroutine(this.OnTriggerObstracle());
-                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED);
+                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OBSTRACLE);
             }
             //문어랑 닿으면 잉크뿌림
             if (coll.gameObject.CompareTag("Octopus")) {
                 console.log("Ink HIT!!!!");
                 this.isEnterOctopusZone = true;
-                GameManager.instance.UI.ShotInkEffect(3);
+                GameManager.instance.UI.ShotInkEffect();
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.MAP_OCTO);
                 //this.StartCoroutine(this.OnTriggerOctopus(10));
             }
@@ -270,7 +280,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = -3;
 
         for (let index = 0; index < 2; index++) {
-            GameManager.instance.UI.ShotDamagedEffect(0.3);
+            GameManager.instance.UI.ShotDamagedEffect();
             yield this.wfs1;
 
         }
@@ -300,7 +310,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.tryMove) {
                 if (this.WalkCoroutine == null) {
                     this.WalkCoroutine = this.StartCoroutine(this.WalkStep());
-                    Debug.Log("걷기");
                 }
             }
 

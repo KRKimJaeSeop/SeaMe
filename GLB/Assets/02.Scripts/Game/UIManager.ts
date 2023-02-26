@@ -31,19 +31,26 @@ export default class UIManager extends ZepetoScriptBehaviour {
     @SerializeField()
     private damagedImage: Image;
 
+
+    @SerializeField()
+    private BlackImage: GameObject;
+
     @SerializeField()
     private inkImage: Image;        //잉크이미지 추가
 
     @SerializeField()
     private gameWinImage: Image;    //최후 1인 게임클리어 이미지 추가
-
-    testA: number = 0;
-    testB: number = 0;
-    public MainBtn: Button;
     @SerializeField()
-    private MainBtnText: Text;
+    private gameLoseImage: Image;    //게임 패배 이미지 추가
+
+    public MainBtn: Button;
     public SubBtn: Button;
     public SubBtn2: Button;
+
+    private wfs1: WaitForSeconds = new WaitForSeconds(1);
+    private wfs3: WaitForSeconds = new WaitForSeconds(3);
+    private wfs03: WaitForSeconds = new WaitForSeconds(0.3);
+
 
     Awake() {
         this.uiMainNotification = this.MainNotiText.GetComponent<UIMainNotification>();
@@ -53,18 +60,10 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
 
         this.MainBtn.onClick.AddListener(() => {
-            // let nummm = Math.floor(Math.random() * (5 - 0 + 1));
-            const localCharacter = ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.id;
-
-
-
-            MultiplayManager.instance.room.Send("Kill", `${localCharacter}`);
-            //GameManager.instance.RemoveSurvivorList("");
-            //
-            //   GameManager.instance.Sound.PlayBGM(1);
+            GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
         });
         this.SubBtn.onClick.AddListener(() => {
-            //  GameManager.instance.Sound.PlayBGM(2);
+            GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OBSTRACLE);
 
         });
         this.SubBtn2.onClick.AddListener(() => {
@@ -72,13 +71,9 @@ export default class UIManager extends ZepetoScriptBehaviour {
         });
 
     }
-
-
-    Update() {
-        this.MainBtnText.text = `${GameManager.instance.SurvivorList.Length} /${GameManager.instance.UserList.Length} `;
-
+    public SetBlackImage(state: bool) {
+        this.BlackImage.SetActive(state);
     }
-
 
     public MainNotification(text: string, time: number = 0.5) {
         this.uiMainNotification.Show(text, time);
@@ -89,47 +84,58 @@ export default class UIManager extends ZepetoScriptBehaviour {
         this.uiSubNotification.Show(text, time);
     }
 
-    public ShotDamagedEffect(time: number) {
-        this.StartCoroutine(this.DamagedRoutine(time));
+
+    public ShotDamagedEffect() {
+        this.StartCoroutine(this.DamagedRoutine());
     }
 
-    private *DamagedRoutine(time: number) {
+    private *DamagedRoutine() {
 
         this.damagedImage.color = new Color(1, 1, 1, 1);
-        yield new WaitForSeconds(0.3);
+        yield this.wfs03;
         this.damagedImage.color = new Color(1, 1, 1, 0);
     }
 
+
     //잉크
-    public ShotInkEffect(time: number) {
-        this.StartCoroutine(this.InkRoutine(time));
+    public ShotInkEffect() {
+        this.StartCoroutine(this.InkRoutine());
     }
 
     //잉크 코루틴
-    private *InkRoutine(time: number) {
+    private *InkRoutine() {
         this.inkImage.color = new Color(1, 1, 1, 1);
-        yield new WaitForSeconds(time);
+        yield this.wfs3;
 
         for (let alpha = 1; alpha >= 0; alpha -= 0.1) {
-            yield new WaitForSeconds(time / 10);
+            yield this.wfs03;
             this.inkImage.color = new Color(1, 1, 1, alpha);
         }
     }
 
     //승리
-    public GameWinEffect(time: number) {
-        this.StartCoroutine(this.WinRoutine(time));
+    public GameWinEffect() {
+        this.StartCoroutine(this.WinRoutine());
     }
 
     //승리 코루틴
-    private *WinRoutine(time: number) {
+    private *WinRoutine() {
         this.gameWinImage.gameObject.SetActive(false);
-        yield new WaitForSeconds(time);
+        yield this.wfs3;
         this.gameWinImage.gameObject.SetActive(true);
+    }
 
-        // this.gameWinImage.color = new Color(1, 1, 1, 1);
-        // yield new WaitForSeconds(time);
-        // this.gameWinImage.color = new Color(1, 1, 1, 0);
+    //패배
+    public GameLoseEffect() {
+        this.StartCoroutine(this.LoseRoutine());
+    }
+
+    //패배 코루틴
+    private *LoseRoutine() {
+        this.gameLoseImage.gameObject.SetActive(false);
+        yield this.wfs3;
+        this.gameLoseImage.gameObject.SetActive(true);
+
     }
 
 }

@@ -267,6 +267,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
         this.SurvivorList.splice(0, this.SurvivorList.length)
         //브금틀기
         GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
+        GameManager.instance.UI.SetBlackImage(false);
 
         //생존자 수가 0일때 게임시작?
         if (this.UserList.Length == this.worldSettings["roomPlayerCapacity"]) {

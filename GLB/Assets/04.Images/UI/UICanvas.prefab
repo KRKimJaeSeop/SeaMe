@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2489458191816974578}
   - component: {fileID: 642371584789313627}
   m_Layer: 5
-  m_Name: UIGameFlashlightFilter
+  m_Name: BlackImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 928373736594606158}
   - component: {fileID: 928373736594606159}
   m_Layer: 5
-  m_Name: UIDamagedImage
+  m_Name: UIDamaged_ObsImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -852,32 +852,29 @@ MonoBehaviour:
     keys:
     - SubBtn
     - MainBtn
-    - testB
-    - testA
+    - gameLoseImage
+    - gameWinImage
+    - inkImage
     - damagedImage
     - SubNotiText
     - MainNotiText
     - SubBtn2
-    - inkImage
-    - gameWinImage
-    - MainBtnText
+    - BlackImage
     unityValues:
     - {fileID: 928373736117495389}
     - {fileID: 928373736636432043}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 8311032755195797736}
+    - {fileID: 2515033279784180479}
+    - {fileID: 3777566842258546710}
     - {fileID: 928373736594606159}
     - {fileID: 928373737808679143}
     - {fileID: 928373736709199532}
     - {fileID: 928373737545756374}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 320328983911642876}
     values:
     - 
     - 
-    - '{"type":"System.Single, mscorlib","value":"0"}'
-    - '{"type":"System.Single, mscorlib","value":"0"}'
+    - 
     - 
     - 
     - 

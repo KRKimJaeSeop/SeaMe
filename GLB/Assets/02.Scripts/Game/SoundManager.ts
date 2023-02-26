@@ -15,7 +15,9 @@ export default class SoundManager extends ZepetoScriptBehaviour {
     @SerializeField()
     private UISFX: AudioSource;
     @SerializeField()
-    private EtcSFX: AudioSource;
+    private ScarySFX: AudioSource;
+    @SerializeField()
+    private WorldSFX: AudioSource;
 
     @Header("BGM")
     @SerializeField()
@@ -40,17 +42,20 @@ export default class SoundManager extends ZepetoScriptBehaviour {
     @Tooltip("슈퍼점프")
     private ClipSuperJump: AudioClip;
     @SerializeField()
-    @Tooltip("공표효과음")
-    private ClipScary: AudioClip;
+    @Tooltip("공표효과음 리스트")
+    private ClipScaryList: AudioClip[];
     @SerializeField()
-    @Tooltip("피해입음1")
-    private ClipDamaged1: AudioClip;
+    @Tooltip("장애물에게 피해입음 리스트")
+    private ClipDamagedList: AudioClip[];
+
     @SerializeField()
-    @Tooltip("피해입음2")
-    private ClipDamaged2: AudioClip;
+    @Tooltip("사람에게 피해입음")
+    private ClipDamagedByOther: AudioClip;
+
     @SerializeField()
     @Tooltip("사망")
     private ClipDie: AudioClip;
+
 
     @Header("UI or Game")
     @SerializeField()
@@ -69,40 +74,53 @@ export default class SoundManager extends ZepetoScriptBehaviour {
     @Tooltip("문어 공격")
     private ClipOctoAttack: AudioClip;
 
+    @SerializeField()
+    @Tooltip("게임결과 승리")
+    private ClipResultWin: AudioClip;
+    @SerializeField()
+    @Tooltip("게임결과 패배")
+    private ClipResultLose: AudioClip;
 
     //#region Name For Switch 
     @HideInInspector()
-    public AREA_1_2: string = "AREA_1_2"
+    public AREA_1_2: string = "AREA_1_2";
     @HideInInspector()
-    public AREA_3: string = "AREA_3"
+    public AREA_3: string = "AREA_3";
     @HideInInspector()
-    public AREA_WAITROOM: string = "AREA_WaitRoom"
+    public AREA_WAITROOM: string = "AREA_WaitRoom";
 
     @HideInInspector()
-    public WAITROOM_SPAWN: string = "WAITROOM_SPAWN"
+    public WAITROOM_SPAWN: string = "WAITROOM_SPAWN";
     @HideInInspector()
-    public WAITROOM_COUNT: string = "WAITROOM_COUNT"
+    public WAITROOM_COUNT: string = "WAITROOM_COUNT";
     @HideInInspector()
-    public WAITROOM_GOMAP: string = "WAITROOM_GOMAP"
+    public WAITROOM_GOMAP: string = "WAITROOM_GOMAP";
 
     @HideInInspector()
-    public CHAR_DAMAGED: string = "CHAR_DAMAGED"
+    public CHAR_DAMAGED_OBSTRACLE: string = "CHAR_DAMAGED_OBSTRACLE";
     @HideInInspector()
-    public CHAR_STEP: string = "CHAR_STEP"
+    public CHAR_DAMAGED_OTHER: string = "CHAR_DAMAGED_OTHER";
     @HideInInspector()
-    public CHAR_JUMP: string = "CHAR_JUMP"
+    public CHAR_STEP: string = "CHAR_STEP";
     @HideInInspector()
-    public CHAR_DIE: string = "CHAR_DIE"
+    public CHAR_JUMP: string = "CHAR_JUMP";
     @HideInInspector()
-    public CHAR_SUPERJUMP: string = "CHAR_SUPERJUMP"
+    public CHAR_DIE: string = "CHAR_DIE";
     @HideInInspector()
-    public CHAR_SCARY: string = "CHAR_SCARY"
+    public CHAR_SUPERJUMP: string = "CHAR_SUPERJUMP";
     @HideInInspector()
-    public MAP_DOME: string = "MAP_DOME"
+    public CHAR_SCARY: string = "CHAR_SCARY";
     @HideInInspector()
-    public MAP_OCTO: string = "MAP_OCTO"
+    public MAP_DOME: string = "MAP_DOME";
     @HideInInspector()
-    public UI_NOTI: string = "UI_NOTI"
+    public MAP_OCTO: string = "MAP_OCTO";
+    @HideInInspector()
+    public UI_NOTI: string = "UI_NOTI";
+
+    @HideInInspector()
+    public UI_WIN: string = "UI_WIN";
+    @HideInInspector()
+    public UI_LOSE: string = "UI_LOSE";
     //#endregion
 
 
@@ -116,12 +134,12 @@ export default class SoundManager extends ZepetoScriptBehaviour {
 
             case this.AREA_3:
                 this.BGM.clip = this.ClipArea_3;
-                this.BGM.volume = 1;
+                this.BGM.volume = 0.7;
                 break;
 
             case this.AREA_WAITROOM:
                 this.BGM.clip = this.ClipArea_WaitRoom;
-                this.BGM.volume = 1;
+                this.BGM.volume = 0.6;
                 break;
 
             default:
@@ -135,6 +153,7 @@ export default class SoundManager extends ZepetoScriptBehaviour {
 
         switch (name) {
             case this.CHAR_STEP:
+                this.WalkSFX.pitch = Math.random() + 1;
                 this.WalkSFX.PlayOneShot(this.ClipStep, 1.6);
                 break;
 
@@ -147,41 +166,55 @@ export default class SoundManager extends ZepetoScriptBehaviour {
                 break;
 
             case this.CHAR_SCARY:
-                this.JumpSFX.PlayOneShot(this.ClipScary);
+                this.ScarySFX.PlayOneShot(this.ClipScaryList[this.RandomNumber(0, 3)]);
                 break;
 
-            case this.CHAR_DAMAGED:
-                this.JumpSFX.PlayOneShot(this.ClipDamaged1);
-                this.JumpSFX.PlayOneShot(this.ClipDamaged2);
+            case this.CHAR_DAMAGED_OTHER:
+                this.WalkSFX.pitch = Math.random() + 1;
+                this.CharacterSFX.PlayOneShot(this.ClipDamagedByOther);
+                this.WalkSFX.pitch = 1;
+                break;
+
+            case this.CHAR_DAMAGED_OBSTRACLE:
+                this.CharacterSFX.PlayOneShot(this.ClipDamagedList[this.RandomNumber(0, 1)]);
                 break;
 
             case this.CHAR_DIE:
-                this.JumpSFX.PlayOneShot(this.ClipDie);
+                this.CharacterSFX.PlayOneShot(this.ClipDie);
                 break;
 
             //======================================================
             case this.WAITROOM_SPAWN:
-                this.JumpSFX.PlayOneShot(this.ClipWaitroom_Spawn);
+                this.CharacterSFX.PlayOneShot(this.ClipWaitroom_Spawn);
                 break;
 
             case this.WAITROOM_COUNT:
-                this.JumpSFX.PlayOneShot(this.ClipWaitroom_Count);
+                this.UISFX.PlayOneShot(this.ClipWaitroom_Count);
                 break;
 
             case this.MAP_DOME:
-                this.JumpSFX.PlayOneShot(this.ClipDomeComing);
+                this.WorldSFX.PlayOneShot(this.ClipDomeComing);
                 break;
 
             case this.MAP_OCTO:
-                this.JumpSFX.PlayOneShot(this.ClipOctoAttack);
+                this.WorldSFX.PlayOneShot(this.ClipOctoAttack);
                 break;
 
             case this.UI_NOTI:
-                this.JumpSFX.PlayOneShot(this.ClipWaitroom_Count);
+                this.UISFX.PlayOneShot(this.ClipWaitroom_Count);
                 break;
 
             case this.WAITROOM_GOMAP:
-                this.JumpSFX.PlayOneShot(this.ClipTpToMap);
+                this.WorldSFX.PlayOneShot(this.ClipTpToMap);
+                break;
+
+
+            case this.UI_WIN:
+                this.UISFX.PlayOneShot(this.ClipResultWin);
+                break;
+
+            case this.UI_LOSE:
+                this.UISFX.PlayOneShot(this.ClipResultLose);
                 break;
 
             default:
@@ -189,5 +222,14 @@ export default class SoundManager extends ZepetoScriptBehaviour {
                 break;
         }
     }
+
+    public RandomNumber(min: number, max: number): int {
+
+        let randomNum = Math.floor(Math.random() * (max - min + 1));
+        return randomNum;
+
+    }
+
+
 
 }
