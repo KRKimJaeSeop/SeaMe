@@ -1,5 +1,5 @@
 import { ZepetoScriptableObject, ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Coroutine, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion, WaitUntil, Collider, Resources, GameObject, CameraClearFlags, Color32 } from 'UnityEngine';
+import { Physics, RaycastHit, Input, Camera, Debug, WaitForSeconds, Coroutine, HumanBodyBones, Vector3, Ray, LayerMask, Color, Quaternion, WaitUntil, Collider, Resources, GameObject, CameraClearFlags, Color32, Material, Renderer } from 'UnityEngine';
 import { CharacterJumpState, ZepetoCamera, ZepetoCharacter, ZepetoCharacterCreator, ZepetoPlayer, ZepetoPlayers } from 'ZEPETO.Character.Controller';
 import { Room } from 'ZEPETO.Multiplay';
 import CharacterSettingScript from '../Table/CharacterSettingScript';
@@ -58,6 +58,10 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         MultiplayManager.instance.room.AddMessageHandler("GameOver", (message: string) => {
             Debug.Log(message);
             GameManager.instance.RemoveSurvivorList(message);
+         
+            let _winner = ZepetoPlayers.instance.GetPlayer(message).name;
+            GameManager.instance.UI.SubNotification(`${_winner} bubbled away..`);
+            GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_SPAWN);
         });
     }
 
@@ -66,7 +70,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         localCharacter.Teleport(GameManager.instance.GetUserSpawnPosition(this.sessionID), Quaternion.identity);
     }
 
-    *SetGuide(){
+    *SetGuide() {
         GameManager.instance.UI.SetGuideImage(true);
         yield this.wfs5;
         GameManager.instance.UI.SetGuideImage(false);
@@ -176,10 +180,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                     let hitInfo = $unref(ref);
                     let seaHare = hitInfo.collider.gameObject.GetComponent<SeaHareObject>();
-                    //    GameManager.instance.SetTestText(`Status::HIT::${seaHare?.sessionID}`);
-                    // Debug.Log(`gd`)
-                    // Debug.Log(`${seaHare}  ${seaHare.sessionID}  ${seaHare.userID}`)
-                    //이미 돌아가고있다면 중복호출X
                     if (this.AttackCoroutine == null && seaHare != null) {
 
                         this.AttackID = `${seaHare?.sessionID}`;
@@ -194,7 +194,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                     this.AttackCoroutine = null;
                 }
                 yield this.wfs005;
-                Debug.DrawRay(ZepetoPlayers.instance.ZepetoCamera.camera.transform.position, ray.direction, Color.red);
+              //  Debug.DrawRay(ZepetoPlayers.instance.ZepetoCamera.camera.transform.position, ray.direction, Color.red);
             }
         }
     }
@@ -202,9 +202,13 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     //공격
     *Attack(seaHare: SeaHareObject, id: string) {
         for (let index = 0; index < this.playerValue["playerAttackTime"]; index++) {
+            seaHare.transform.GetChild(1).GetComponent<Renderer>().material.color = Color.red;           
             GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OTHER);
             MultiplayManager.instance.room.Send("Hit", `${id}`);
-            yield new WaitForSeconds(1);
+            yield this.wfs005;
+            seaHare.transform.GetChild(1).GetComponent<Renderer>().material.color = Color.white;           
+
+            yield this.wfs005;
         }
         this.StopCoroutine(this.AttackCoroutine);
         this.AttackCoroutine = null;
@@ -230,7 +234,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (coll.gameObject.CompareTag("Dome")) {
                 this.ShootCoroutine = this.StartCoroutine(this.ShootRay());
                 GameManager.instance.UI.SetBlackImage(true);
-                ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(true);
+              //  ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(true);
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_GOMAP);
             }
             // 3구역 진입시
@@ -266,8 +270,9 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             //돔 나가면 게임오버
             if (coll.gameObject.CompareTag("Dome")) {
                 console.log("StartCorutine");
-                ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(false);
+              //  ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(false);
                 this.StopCoroutine(this.ShootCoroutine);
+                this.gameObject.transform.GetChild(0).GetChild(4).GetChild(1).GetComponent<Renderer>().material.color = Color.white;    
                 if (GameManager.instance.IsAbleDie()) {
                     MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
                 }
@@ -299,7 +304,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.additionalRunSpeed = 0;
     }
 
-  
+
     Update() {
 
         if (!this.sync)
@@ -322,7 +327,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     *WalkStep() {
 
         if (GameManager.instance.IsAbleDie()) {
-            if (GameManager.instance.Sound.RandomNumber(0, 100) < 3) {
+            if (GameManager.instance.Sound.RandomNumber(0, 100) < 1) {
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_SCARY);
             }
         }

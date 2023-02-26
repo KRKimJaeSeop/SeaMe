@@ -89,7 +89,7 @@ Material:
     - _SpecularMultiplier: 10
     - _SpecularMultiplier2: 10
     - _SrcBlend: 1
-    - _TintPower: 0.46
+    - _TintPower: 0.35
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

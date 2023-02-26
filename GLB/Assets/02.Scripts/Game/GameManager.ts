@@ -34,6 +34,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     private wfs1: WaitForSeconds = new WaitForSeconds(1);
     private wfs3: WaitForSeconds = new WaitForSeconds(3);
+    private CountdownCoroutine: Coroutine = null;
 
     public dome: GameObject;
     //public GameResetEvent: UnityEvent;
@@ -96,15 +97,14 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 }
             }
         });
+
         this.UI.SetIntroImage(false);
 
 
         //유저 수 충족. 카운트다운 시작
         if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
-
-
             if (this.SurvivorList.length == 0) {
-                this.StartCoroutine(this.StartGame());
+                this.CountdownCoroutine = this.StartCoroutine(this.StartGame());
             }
         }
         else {
@@ -209,6 +209,15 @@ export default class GameManager extends ZepetoScriptBehaviour {
         let count = this.worldSettings["countdownBeforeGameStart"];
         while (count > 0) {
             count--;
+
+            if (this.UserList.length < this.worldSettings["roomPlayerCapacity"]) {
+                GameManager.instance.UI.MainNotification
+                    (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 99999);
+                    
+                this.StopCoroutine(this.CountdownCoroutine);
+                this.CountdownCoroutine = null;
+            }
+
             GameManager.instance.UI.MainNotification(`The game will begin shortly..[${count}]`, 0.9);
             yield new WaitForSeconds(1);
         }
@@ -273,7 +282,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         //생존자 수가 0일때 게임시작?
         if (this.UserList.Length == this.worldSettings["roomPlayerCapacity"]) {
-            this.StartCoroutine(this.StartGame());
+            this.CountdownCoroutine = this.StartCoroutine(this.StartGame());
         }
         else {
             GameManager.instance.UI.MainNotification

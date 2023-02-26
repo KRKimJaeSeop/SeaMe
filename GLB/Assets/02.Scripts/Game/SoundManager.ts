@@ -166,12 +166,12 @@ export default class SoundManager extends ZepetoScriptBehaviour {
                 break;
 
             case this.CHAR_SCARY:
-                this.ScarySFX.PlayOneShot(this.ClipScaryList[this.RandomNumber(0, 3)]);
+                this.ScarySFX.PlayOneShot(this.ClipScaryList[this.RandomNumber(0, 3)], 1.5);
                 break;
 
             case this.CHAR_DAMAGED_OTHER:
                 this.CharacterSFX.pitch = Math.random() + 1;
-                this.CharacterSFX.PlayOneShot(this.ClipDamagedByOther,0.8);
+                this.CharacterSFX.PlayOneShot(this.ClipDamagedByOther, 0.6);
                 this.CharacterSFX.pitch = 1;
                 break;
 
@@ -201,7 +201,7 @@ export default class SoundManager extends ZepetoScriptBehaviour {
                 break;
 
             case this.UI_NOTI:
-                this.UISFX.PlayOneShot(this.ClipWaitroom_Count,0.7);
+                this.UISFX.PlayOneShot(this.ClipWaitroom_Count, 0.7);
                 break;
 
             case this.WAITROOM_GOMAP:
@@ -210,11 +210,11 @@ export default class SoundManager extends ZepetoScriptBehaviour {
 
 
             case this.UI_WIN:
-                this.UISFX.PlayOneShot(this.ClipResultWin,0.3);
+                this.UISFX.PlayOneShot(this.ClipResultWin, 0.3);
                 break;
 
             case this.UI_LOSE:
-                this.UISFX.PlayOneShot(this.ClipResultLose,0.6);
+                this.UISFX.PlayOneShot(this.ClipResultLose, 0.6);
                 break;
 
             default:
