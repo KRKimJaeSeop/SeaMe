@@ -4,7 +4,7 @@ import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import ScreenShotController from './ScreenShotController';
 import ScreenShotModeManager from './ScreenShotModeManager';
 
-export default class UIScreenShotController extends ZepetoScriptBehaviour {
+export default class UIController extends ZepetoScriptBehaviour {
     
     public safeAreaObject: GameObject;
     /* Panels */
@@ -16,22 +16,22 @@ export default class UIScreenShotController extends ZepetoScriptBehaviour {
     /* Screenshot Mode */
     @Header("Screenshot Mode")
     public screenShotModeButton: Button;
-    //public viewChangeButton: Button;
-    //public backgroundOnOffButton: Button;
+    public viewChangeButton: Button;
+    public backgroundOnOffButton: Button;
     public shootScreenShotButton: Button;
     public screenShotModeExitButton: Button;
-    //private viewChangeImage: Image
-    //private backgroundOnOffImage: Image
-    //public selfiViewSprite: Sprite;
-    //public thirdPersonViewSprite: Sprite;
-    //public backgroundOnSprite: Sprite;
-    //public backgroundOffSprite: Sprite;
+    private viewChangeImage: Image
+    private backgroundOnOffImage: Image
+    public selfiViewSprite: Sprite;
+    public thirdPersonViewSprite: Sprite;
+    public backgroundOnSprite: Sprite;
+    public backgroundOffSprite: Sprite;
 
     /* Gesture */
-    // @Header("Gesture")
-    // public gestureButton: Button;
-    // public gestureExitButton: Button;
-    // public gestureListView: GameObject;
+    @Header("Gesture")
+    public gestureButton: Button;
+    public gestureExitButton: Button;
+    public gestureListView: GameObject;
 
     /* Screenshot Result */
     @Header("Screenshot Result")
@@ -48,12 +48,12 @@ export default class UIScreenShotController extends ZepetoScriptBehaviour {
     private waitForSecond: YieldInstruction;
 
     /* Camera mode */
-    // private isThirdPersonView: boolean = false;
+    private isThirdPersonView: boolean = false;
 
     /* Background onoff */
-    // @Header("Background onoff")
-    // public backgroundCanvas: Canvas;
-    //private isBackgroundOn: boolean = true;
+    @Header("Background onoff")
+    public backgroundCanvas: Canvas;
+    private isBackgroundOn: boolean = true;
     
     /* Custom Class */
     private screenShot: ScreenShotController;
@@ -80,22 +80,22 @@ export default class UIScreenShotController extends ZepetoScriptBehaviour {
 
 
     Awake() {
-        //this.isBackgroundOn = true;
+        this.isBackgroundOn = true;
         this.zepetoScreenShotCanvas.sortingOrder = 1;
         this.waitForSecond = new WaitForSeconds(1);
 
         this.screenShotPanel.gameObject.SetActive(false);
-        //this.backgroundCanvas.gameObject.SetActive(false);
+        this.backgroundCanvas.gameObject.SetActive(false);
         this.screenShotResultPanel.gameObject.SetActive(false);
         this.screenShotResultBackground.gameObject.SetActive(false);
-        //this.gestureListView.gameObject.SetActive(false);
+        this.gestureListView.gameObject.SetActive(false);
         
         this.screenShot = this.screenShotModeModule.GetComponent<ScreenShotController>();
         this.screenShotModeManager = this.screenShotModeModule.GetComponent<ScreenShotModeManager>();
         this.playerLayer = this.screenShotModeManager.GetPlayerLayer();
 
-        //this.viewChangeImage = this.viewChangeButton.GetComponent<Image>();
-        //this.backgroundOnOffImage = this.backgroundOnOffButton.GetComponent<Image>();
+        this.viewChangeImage = this.viewChangeButton.GetComponent<Image>();
+        this.backgroundOnOffImage = this.backgroundOnOffButton.GetComponent<Image>();
         
     }
 
@@ -128,60 +128,60 @@ export default class UIScreenShotController extends ZepetoScriptBehaviour {
             this.screenShotPanel.gameObject.SetActive(true);
 
             //Initialize the camera view to the default ZEPETO camera
-            //this.isThirdPersonView = true;
-            //this.backgroundCanvas.worldCamera = this.screenShotModeManager.GetZepetoCamera();
+            this.isThirdPersonView = true;
+            this.backgroundCanvas.worldCamera = this.screenShotModeManager.GetZepetoCamera();
             this.screenShotModeManager.StartScreenShotMode();
         });
 
 
         // 2. Btn: Switch Views
-        // this.viewChangeButton.onClick.AddListener(() => {
-        //     if (this.isThirdPersonView) {
-        //         this.viewChangeImage.sprite = this.selfiViewSprite;
-        //         this.backgroundCanvas.worldCamera = this.screenShotModeManager.GetSelfieCamera();
-        //         this.screenShotModeManager.SetSelfieCameraMode();
-        //         this.gestureButton.gameObject.SetActive(false);
-        //         this.gestureListView.gameObject.SetActive(false);
-        //         this.isThirdPersonView = false;
-        //     } else {
-        //         this.viewChangeImage.sprite = this.thirdPersonViewSprite;
-        //         this.backgroundCanvas.worldCamera = this.screenShotModeManager.GetZepetoCamera();
-        //         this.screenShotModeManager.SetZepetoCameraMode();
-        //         this.gestureButton.gameObject.SetActive(true);
-        //         this.isThirdPersonView = true;
-        //     }
-        // });
+        this.viewChangeButton.onClick.AddListener(() => {
+            if (this.isThirdPersonView) {
+                this.viewChangeImage.sprite = this.selfiViewSprite;
+                this.backgroundCanvas.worldCamera = this.screenShotModeManager.GetSelfieCamera();
+                this.screenShotModeManager.SetSelfieCameraMode();
+                this.gestureButton.gameObject.SetActive(false);
+                this.gestureListView.gameObject.SetActive(false);
+                this.isThirdPersonView = false;
+            } else {
+                this.viewChangeImage.sprite = this.thirdPersonViewSprite;
+                this.backgroundCanvas.worldCamera = this.screenShotModeManager.GetZepetoCamera();
+                this.screenShotModeManager.SetZepetoCameraMode();
+                this.gestureButton.gameObject.SetActive(true);
+                this.isThirdPersonView = true;
+            }
+        });
 
 
         // 3. Btn: Background ON/OFF
-        // this.backgroundOnOffButton.onClick.AddListener(() => {
-        //     if (this.isBackgroundOn) {
-        //         this.backgroundOnOffImage.sprite = this.backgroundOffSprite;
-        //         this.SetBackgroundActive(!this.isBackgroundOn);
-        //         this.isBackgroundOn = false;
-        //     } else {
-        //         this.backgroundOnOffImage.sprite = this.backgroundOnSprite;
-        //         this.SetBackgroundActive(!this.isBackgroundOn);
-        //         this.isBackgroundOn = true;
-        //     }
-        // });
+        this.backgroundOnOffButton.onClick.AddListener(() => {
+            if (this.isBackgroundOn) {
+                this.backgroundOnOffImage.sprite = this.backgroundOffSprite;
+                this.SetBackgroundActive(!this.isBackgroundOn);
+                this.isBackgroundOn = false;
+            } else {
+                this.backgroundOnOffImage.sprite = this.backgroundOnSprite;
+                this.SetBackgroundActive(!this.isBackgroundOn);
+                this.isBackgroundOn = true;
+            }
+        });
 
         // 4. Btn: Exit Screenshot Mode
         this.screenShotModeExitButton.onClick.AddListener(() => {
-            // if (!this.isBackgroundOn) {
-            //     this.SetBackgroundActive(true);
-            //     this.isBackgroundOn = true;
-            // }
+            if (!this.isBackgroundOn) {
+                this.SetBackgroundActive(true);
+                this.isBackgroundOn = true;
+            }
             this.screenShotModeButton.gameObject.SetActive(true);
             this.screenShotPanel.gameObject.SetActive(false);
-            // this.gestureButton.gameObject.SetActive(true);
-            // this.screenShotModeManager.ExitScreenShotMode(this.isThirdPersonView);
+            this.gestureButton.gameObject.SetActive(true);
+            this.screenShotModeManager.ExitScreenShotMode(this.isThirdPersonView);
         });
 
         // 5. Btn: Take a screenshot
         this.shootScreenShotButton.onClick.AddListener(() => {
             // Take a screenshot
-            this.screenShot.TakeScreenShot(true);    //this.isBackgroundOn
+            this.screenShot.TakeScreenShot(this.isBackgroundOn);
             // Activating the Screenshot Results Screen
             this.screenShotResultBackground.gameObject.SetActive(true);
             this.screenShotResultPanel.gameObject.SetActive(true);
@@ -225,13 +225,13 @@ export default class UIScreenShotController extends ZepetoScriptBehaviour {
          */
 
         // 1. Btn: Gesture
-        // this.gestureButton.onClick.AddListener(() => {
-        //     this.gestureListView.SetActive(true);
-        // });
-        // // 2. Btn: Gesture Exit
-        // this.gestureExitButton.onClick.AddListener(() => {
-        //     this.gestureListView.SetActive(false);
-        // })
+        this.gestureButton.onClick.AddListener(() => {
+            this.gestureListView.SetActive(true);
+        });
+        // 2. Btn: Gesture Exit
+        this.gestureExitButton.onClick.AddListener(() => {
+            this.gestureListView.SetActive(false);
+        })
 
     }
     // Displays the screenshot results screen.
@@ -260,19 +260,19 @@ export default class UIScreenShotController extends ZepetoScriptBehaviour {
     }
 
     //Enables/disables MeshRender for background gameobjects.
-    // SetBackgroundActive(active: boolean) {
-    //     // Background canvas (checkered pattern) disabled/enabled
-    //     if (active) {
-    //         this.backgroundCanvas.gameObject.SetActive(!active);
-    //         //Layer Settings to Everything
-    //         this.screenShotModeManager.GetSelfieCamera().cullingMask = this.LAYER.everything;
-    //         this.screenShotModeManager.GetZepetoCamera().cullingMask = this.LAYER.everything;
-    //     } else {
-    //         this.backgroundCanvas.gameObject.SetActive(!active);
-    //         //Change the Layer setting to only include nothing, player, and UI Layers
-    //         this.screenShotModeManager.GetSelfieCamera().cullingMask = this.LAYER.nothing | 1 << this.playerLayer | 1 << this.LAYER.UI;
-    //         this.screenShotModeManager.GetZepetoCamera().cullingMask = this.LAYER.nothing | 1 << this.playerLayer | 1 << this.LAYER.UI;
-    //     }
-    // }
+    SetBackgroundActive(active: boolean) {
+        // Background canvas (checkered pattern) disabled/enabled
+        if (active) {
+            this.backgroundCanvas.gameObject.SetActive(!active);
+            //Layer Settings to Everything
+            this.screenShotModeManager.GetSelfieCamera().cullingMask = this.LAYER.everything;
+            this.screenShotModeManager.GetZepetoCamera().cullingMask = this.LAYER.everything;
+        } else {
+            this.backgroundCanvas.gameObject.SetActive(!active);
+            //Change the Layer setting to only include nothing, player, and UI Layers
+            this.screenShotModeManager.GetSelfieCamera().cullingMask = this.LAYER.nothing | 1 << this.playerLayer | 1 << this.LAYER.UI;
+            this.screenShotModeManager.GetZepetoCamera().cullingMask = this.LAYER.nothing | 1 << this.playerLayer | 1 << this.LAYER.UI;
+        }
+    }
 }
 

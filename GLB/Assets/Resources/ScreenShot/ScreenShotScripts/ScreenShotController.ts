@@ -1,7 +1,7 @@
 import { Camera, CameraClearFlags, Color, GameObject, RenderTexture, WaitForEndOfFrame } from 'UnityEngine';
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { ZepetoWorldContent } from 'ZEPETO.World';
-import UIController from './UIScreenShotController';
+import UIController from './UIController';
 
 export default class ScreenShotController extends ZepetoScriptBehaviour {
     
