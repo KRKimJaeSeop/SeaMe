@@ -263,12 +263,12 @@ export default class GameManager extends ZepetoScriptBehaviour {
         else {
             _winner = ZepetoPlayers.instance.GetPlayer(this.SurvivorList[0]).name;
         }
-        GameManager.instance.UI.MainNotification(`game finish`, 3);
+        GameManager.instance.UI.MainNotification(`game finish`, 2.9);
         GameManager.instance.UI.SubNotification(`Winner : ${_winner}`, 6);
         yield this.wfs3;
 
         //곧 시작합니다
-        GameManager.instance.UI.MainNotification(`will be start`, 3);
+        GameManager.instance.UI.MainNotification(`game will be restart`, 3);
         yield this.wfs3;
 
         //텔레포트

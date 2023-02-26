@@ -9,6 +9,7 @@ import { StyleInt } from 'UnityEngine.UIElements';
 import GameManager from '../Game/GameManager';
 import PlayerSync from '../../MultiplaySync/Player/PlayerSync';
 import SeaHareObject from './SeaHareObject';
+import { ZepetoChat } from 'ZEPETO.Chat';
 
 export default class PlayerController extends ZepetoScriptBehaviour {
 
@@ -61,8 +62,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             Debug.Log(message);
             GameManager.instance.RemoveSurvivorList(message);
 
-            let _winner = ZepetoPlayers.instance.GetPlayer(message).name;
-            GameManager.instance.UI.SubNotification(`${_winner} bubbled away..`);
+            // let _winner = ZepetoPlayers.instance.GetPlayer(message).name;
+            GameManager.instance.UI.SubNotification(`${message} someone bubbled away..`);//${_winner}
             GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_SPAWN);
         });
     }
@@ -111,6 +112,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 Debug.Log(`브금틀기`);
                 GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
                 GameManager.instance.UI.SetBlackImage(false);
+                ZepetoChat.SetActiveChatUI(true);
 
             }
         });
@@ -118,7 +120,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         // 최후의 1인 ID을 받는다.
         // 받은 ID가 내꺼라면, 전체에게 게임초기화 하라고 시킨다.
         MultiplayManager.instance.room.AddMessageHandler("WinnerID", (message) => {
-
 
             if (message == this.sessionID) {
                 GameManager.instance.UI.MainNotification("Victory!", 3);
@@ -177,7 +178,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                     ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
                     ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);
 
-
                 //OnEnter
                 if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                     let hitInfo = $unref(ref);
@@ -191,12 +191,14 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 //OnExit
                 else if (this.AttackCoroutine != null) {
                     Debug.Log("Attack::Escape");
+                    ZepetoPlayers.instance.GetPlayer(this.AttackID).character.gameObject.transform.GetChild(0).GetChild(4).GetChild(1).gameObject.
+                        GetComponent<Renderer>().material.color = Color.white;
+
                     this.AttackID = "";
                     this.StopCoroutine(this.AttackCoroutine);
                     this.AttackCoroutine = null;
                 }
                 yield this.wfs005;
-                //  Debug.DrawRay(ZepetoPlayers.instance.ZepetoCamera.camera.transform.position, ray.direction, Color.red);
             }
         }
     }
@@ -236,7 +238,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (coll.gameObject.CompareTag("Dome")) {
                 this.ShootCoroutine = this.StartCoroutine(this.ShootRay());
                 GameManager.instance.UI.SetBlackImage(true);
-                //  ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(true);
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_GOMAP);
             }
             // 3구역 진입시
@@ -274,7 +275,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                 console.log("StartCorutine");
                 //  ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(false);
                 this.StopCoroutine(this.ShootCoroutine);
-                this.gameObject.transform.GetChild(0).GetChild(4).GetChild(1).GetComponent<Renderer>().material.color = Color.white;
                 if (GameManager.instance.IsAbleDie()) {
                     MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
                 }
@@ -329,7 +329,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     *WalkStep() {
 
         if (GameManager.instance.IsAbleDie()) {
-            if (GameManager.instance.Sound.RandomNumber(0, 100) < 1) {
+            if (GameManager.instance.Sound.RandomNumber(0, 7000) < 1) {
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_SCARY);
             }
         }

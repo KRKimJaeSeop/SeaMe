@@ -56,7 +56,7 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
 
     Awake() {
-        
+
         this.uiMainNotification = this.MainNotiText.GetComponent<UIMainNotification>();
         this.MainNotiText.SetActive(false);
         this.uiSubNotification = this.SubNotiText.GetComponent<UISubNotification>();
@@ -131,9 +131,9 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
     //승리 코루틴
     private *WinRoutine() {
-        this.gameWinImage.gameObject.SetActive(false);
-        yield this.wfs3;
         this.gameWinImage.gameObject.SetActive(true);
+        yield this.wfs3;
+        this.gameWinImage.gameObject.SetActive(false);
     }
 
     //패배
@@ -143,9 +143,9 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
     //패배 코루틴
     private *LoseRoutine() {
-        this.gameLoseImage.gameObject.SetActive(false);
-        yield this.wfs3;
         this.gameLoseImage.gameObject.SetActive(true);
+        yield this.wfs3;
+        this.gameLoseImage.gameObject.SetActive(false);
 
     }
 
