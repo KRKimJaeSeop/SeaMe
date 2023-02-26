@@ -111,14 +111,17 @@ export default class SoundManager extends ZepetoScriptBehaviour {
         switch (name) {
             case this.AREA_1_2:
                 this.BGM.clip = this.ClipArea_1_2;
+                this.BGM.volume = 1;
                 break;
 
             case this.AREA_3:
                 this.BGM.clip = this.ClipArea_3;
+                this.BGM.volume = 1;
                 break;
 
             case this.AREA_WAITROOM:
                 this.BGM.clip = this.ClipArea_WaitRoom;
+                this.BGM.volume = 1;
                 break;
 
             default:
@@ -132,11 +135,11 @@ export default class SoundManager extends ZepetoScriptBehaviour {
 
         switch (name) {
             case this.CHAR_STEP:
-                this.WalkSFX.PlayOneShot(this.ClipStep);
+                this.WalkSFX.PlayOneShot(this.ClipStep, 1.6);
                 break;
 
             case this.CHAR_JUMP:
-                this.JumpSFX.PlayOneShot(this.ClipJump);
+                this.JumpSFX.PlayOneShot(this.ClipJump, 0.5);
                 break;
 
             case this.CHAR_SUPERJUMP:

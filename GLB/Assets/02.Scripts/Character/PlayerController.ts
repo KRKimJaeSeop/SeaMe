@@ -31,6 +31,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     private wfs005: WaitForSeconds = new WaitForSeconds(0.5);
     private wfs1: WaitForSeconds = new WaitForSeconds(1);
+    private wfs03: WaitForSeconds = new WaitForSeconds(0.3);
 
     private sync: PlayerSync;
     //#region [초기 세팅]
@@ -208,7 +209,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (coll.gameObject.CompareTag("Dome")) {
                 this.ShootCoroutine = this.StartCoroutine(this.ShootRay());
                 //GameManager.instance.dome.GetComponent<Dome>().StartDome();
-
+                ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(true);
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_GOMAP);
             }
             // 3구역 진입시
@@ -240,11 +241,11 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
     }
     OnTriggerExit(coll: Collider) {
-
         if (this.sync?.isLocal) {
             //돔 나가면 게임오버
             if (coll.gameObject.CompareTag("Dome")) {
                 console.log("StartCorutine");
+                ZepetoPlayers.instance.ZepetoCamera.camera.transform.GetChild(0).gameObject.SetActive(false);
                 this.StopCoroutine(this.ShootCoroutine);
                 if (GameManager.instance.IsAbleDie()) {
                     MultiplayManager.instance.room.Send("Kill", `${this.sessionID}`);
@@ -309,7 +310,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     *WalkStep() {
 
         GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
-        yield this.wfs1;
+        yield this.wfs03;
         this.StopCoroutine(this.WalkCoroutine);
         this.WalkCoroutine = null;
     }

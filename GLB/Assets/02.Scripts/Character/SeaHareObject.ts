@@ -10,9 +10,6 @@ export default class SeaHareObject extends ZepetoScriptBehaviour {
     public userID: string;
     public sessionID: string = "";
 
-
-    private damagedCount: number;
-
     @SerializeField()
     private Light: Light;
 
@@ -37,7 +34,7 @@ export default class SeaHareObject extends ZepetoScriptBehaviour {
             //라이트 설정
             this.Light.gameObject.transform.SetParent(ZepetoPlayers.instance.ZepetoCamera.camera.transform);
             this.Light.gameObject.transform.localPosition = new Vector3(0, 0, 1.5);
-
+            this.Light.gameObject.SetActive(false);
             this.gameObject.layer = 0;
 
         }

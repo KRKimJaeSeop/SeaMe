@@ -87,7 +87,6 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
     public SubNotification(text: string, time: number = 0.5) {
         this.uiSubNotification.Show(text, time);
-        GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.UI_NOTI);
     }
 
     public ShotDamagedEffect(time: number) {
@@ -124,9 +123,13 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
     //승리 코루틴
     private *WinRoutine(time: number) {
-        this.gameWinImage.color = new Color(1, 1, 1, 1);
+        this.gameWinImage.gameObject.SetActive(false);
         yield new WaitForSeconds(time);
-        this.gameWinImage.color = new Color(1, 1, 1, 0);
+        this.gameWinImage.gameObject.SetActive(true);
+
+        // this.gameWinImage.color = new Color(1, 1, 1, 1);
+        // yield new WaitForSeconds(time);
+        // this.gameWinImage.color = new Color(1, 1, 1, 0);
     }
 
 }
