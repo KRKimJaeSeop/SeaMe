@@ -45,13 +45,13 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
 
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent" "IsEmissive" = "true" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" } //"IsEmissive" = "true"
         //Tags{ "RenderType" = "TransparentCutout"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
         Blend SrcAlpha OneMinusSrcAlpha
         ZWrite Off
         Offset -1, -1
         Cull [_Cull]
-        LOD 200
+        LOD 100
 
         CGPROGRAM
         //#pragma surface surf Standard fullforwardshadows vertex:vert alpha:blend
@@ -201,5 +201,5 @@ Shader "SeaMe/SeaMe_Seaweed_Shader"
         ENDCG
     }
     //FallBack "Diffuse"
-    FallBack "Mobile/VertexLit"
+    //FallBack "Mobile/VertexLit"
 }
