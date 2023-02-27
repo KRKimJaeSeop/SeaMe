@@ -199,11 +199,11 @@ export default class extends Sandbox {
         this.onMessage(JS_Message.HIT, (clients, message) => {
             this.broadcast(JS_Message.DAMAGED, `${message}`);
         });
-        
+
         //플레이어 게임오버 시 방송
         this.onMessage(JS_Message.KILL, (clients, message) => {
-            this.broadcast(JS_Message.GAMEOVER, `${message}`);
-            this.broadcast(JS_Message.STARTOBSERVER, `${message}`);
+            this.broadcast(JS_Message.GAMEOVER, message);
+            this.broadcast(JS_Message.STARTOBSERVER, message);
         });
 
         // 최후의 1인 ID를 보내줌.
