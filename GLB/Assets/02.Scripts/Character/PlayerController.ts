@@ -172,10 +172,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
             //계속 레이 발사
             while (true) {
-                let ray: Ray = new Ray(
-                    ZepetoPlayers.instance.ZepetoCamera.camera.transform.position,
+                let ray: Ray = new Ray(this.transform.GetChild(0).GetChild(4).GetChild(2).transform.position,
                     ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward);
-
                 //OnEnter
                 if (Physics.Raycast(ray, ref, this.playerValue["playerAttackDistance"], layerMask)) {
                     let hitInfo = $unref(ref);
@@ -196,6 +194,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
                     this.StopCoroutine(this.AttackCoroutine);
                     this.AttackCoroutine = null;
                 }
+                //Debug.DrawRay(this.transform.GetChild(0).GetChild(4).GetChild(2).transform.position, ZepetoPlayers.instance.ZepetoCamera.camera.transform.forward, Color.red, 0.05);
                 yield this.wfs005;
             }
         }

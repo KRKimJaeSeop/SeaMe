@@ -89,7 +89,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 //찾은 오브젝트가 달팽이를 가지고있다고 뜨지 않으면
                 if (!_PlayerClass.isHaveSeaHare) {
 
-                                     let currentHare = this.RandomSeaHare();
+                    let currentHare = this.RandomSeaHare();
                     currentHare.transform.SetParent(currentPlayers.transform.GetChild(0));
                     currentHare.transform.localPosition = Vector3.zero;
                     currentHare.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -99,17 +99,17 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         this.UI.SetIntroImage(false);
 
-       
-            //유저 수 충족. 카운트다운 시작
-            if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
-                if (this.SurvivorList.length == 0) {
-                    this.CountdownCoroutine = this.StartCoroutine(this.StartGame());
-                }
+
+        //유저 수 충족. 카운트다운 시작
+        if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
+            if (this.SurvivorList.length == 0) {
+                this.CountdownCoroutine = this.StartCoroutine(this.StartGame());
             }
-            else {
-                GameManager.instance.UI.MainNotification
-                    (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 99999);
-            }
+        }
+        else {
+            GameManager.instance.UI.MainNotification
+                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 99999);
+        }
     }
 
     public RandomSeaHare(): GameObject {
@@ -287,7 +287,12 @@ export default class GameManager extends ZepetoScriptBehaviour {
         //브금틀기
         GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
         GameManager.instance.UI.SetBlackImage(false);
-   
+
+
+        if (this.CountdownCoroutine != null) {
+            this.StopCoroutine(this.CountdownCoroutine);
+            this.CountdownCoroutine = null;
+        }
 
         //생존자 수가 0일때 게임시작?
         if (this.UserList.Length == this.worldSettings["roomPlayerCapacity"]) {

@@ -129,7 +129,7 @@ export default class SoundManager extends ZepetoScriptBehaviour {
         switch (name) {
             case this.AREA_1_2:
                 this.BGM.clip = this.ClipArea_1_2;
-                this.BGM.volume = 1;
+                this.BGM.volume = 1.3;
                 break;
 
             case this.AREA_3:
@@ -166,7 +166,7 @@ export default class SoundManager extends ZepetoScriptBehaviour {
                 break;
 
             case this.CHAR_SCARY:
-                this.ScarySFX.PlayOneShot(this.ClipScaryList[this.RandomNumber(0, 3)], 1.5);
+                this.ScarySFX.PlayOneShot(this.ClipScaryList[this.RandomNumber(0, 3)], 1.2);
                 break;
 
             case this.CHAR_DAMAGED_OTHER:
