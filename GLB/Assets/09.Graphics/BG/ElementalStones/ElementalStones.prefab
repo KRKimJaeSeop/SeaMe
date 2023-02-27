@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2166489147772822915}
   - component: {fileID: 5136725087199737118}
   - component: {fileID: 529439800773041802}
+  - component: {fileID: 1353452503808969440}
   m_Layer: 0
   m_Name: elementalStones_earth
   m_TagString: Untagged
@@ -59,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815288331486748913}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.23, y: 0, z: -13.9}
+  m_LocalPosition: {x: -0.23, y: -0.53, z: -13.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2221519058517002077}
@@ -115,6 +116,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1353452503808969440
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815288331486748913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6016952677890144905, guid: e555c6e8311206944b0bc7d3054cb8af, type: 3}
 --- !u!1 &2147949628768061368
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +141,7 @@ GameObject:
   - component: {fileID: 6429006761299360531}
   - component: {fileID: 1319088643602600687}
   - component: {fileID: 6772326543416384461}
+  - component: {fileID: 4983783951372663059}
   m_Layer: 0
   m_Name: elementalStones_air
   m_TagString: Untagged
@@ -141,7 +157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147949628768061368}
   m_LocalRotation: {x: -0, y: -0.50541776, z: -0, w: 0.86287475}
-  m_LocalPosition: {x: -12.47, y: 0, z: 7.28}
+  m_LocalPosition: {x: -12.47, y: -0.1, z: 7.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2221519058517002077}
@@ -197,6 +213,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4983783951372663059
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147949628768061368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6704365474042122306, guid: e555c6e8311206944b0bc7d3054cb8af, type: 3}
 --- !u!1 &8499596727108616804
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +238,7 @@ GameObject:
   - component: {fileID: 2243235703892938716}
   - component: {fileID: 7593247650156176684}
   - component: {fileID: 6331884890396615744}
+  - component: {fileID: 1688328108922470951}
   m_Layer: 0
   m_Name: elementalStones_water
   m_TagString: Untagged
@@ -223,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8499596727108616804}
   m_LocalRotation: {x: -0, y: -0.89216965, z: -0, w: 0.45170048}
-  m_LocalPosition: {x: 12.36, y: -0.4, z: 7.05}
+  m_LocalPosition: {x: 12.36, y: -0.5, z: 7.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2221519058517002077}
@@ -279,3 +310,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1688328108922470951
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8499596727108616804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -197863310525313864, guid: e555c6e8311206944b0bc7d3054cb8af, type: 3}
