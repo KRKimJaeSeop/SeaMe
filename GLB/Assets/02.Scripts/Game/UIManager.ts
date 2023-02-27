@@ -63,7 +63,8 @@ export default class UIManager extends ZepetoScriptBehaviour {
         this.SubNotiText.SetActive(false);
 
         this.MainBtn.onClick.AddListener(() => {
-            GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
+            // GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
+            MultiplayManager.instance.room.Send("Kill", `${ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.id}`);
         });
         this.SubBtn.onClick.AddListener(() => {
             GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OBSTRACLE);

@@ -58,12 +58,11 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         }
 
         //게임오버인 플레이어 전체에게 게임오브젝트 해제
-        MultiplayManager.instance.room.AddMessageHandler("GameOver", (message: string) => {
-            Debug.Log(message);
-            GameManager.instance.RemoveSurvivorList(message);
-
-            // let _winner = ZepetoPlayers.instance.GetPlayer(message).name;
-            GameManager.instance.UI.SubNotification(`${message} someone bubbled away..`);//${_winner}
+        MultiplayManager.instance.room.AddMessageHandler("GameOver", (message) => {
+            let sessionID = `${message}`;
+            let _winner = ZepetoPlayers.instance.GetPlayer(sessionID);
+            GameManager.instance.UI.SubNotification(`[${_winner.name}] bubbled away..`, 3);
+            GameManager.instance.RemoveSurvivorList(sessionID);
             GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.WAITROOM_SPAWN);
         });
     }
@@ -337,6 +336,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
         yield this.wfs03;
         this.StopCoroutine(this.WalkCoroutine);
         this.WalkCoroutine = null;
+
     }
 
 

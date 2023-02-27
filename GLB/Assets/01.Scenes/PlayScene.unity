@@ -343,7 +343,7 @@ MonoBehaviour:
     layer:
       serializedVersion: 2
       m_Bits: 0
-    animatorController: {fileID: 9100000, guid: 78250deb83b239c4c87bd9cfc9ff61ad, type: 2}
+    animatorController: {fileID: 9100000, guid: beec92cfbf308134d8562220d6ee05c4, type: 2}
     shadow: {fileID: 1025544020809228, guid: 4512418b2a1844f42961867ad8421ab8, type: 3}
     motionController: 0
   controllerData:
@@ -11286,6 +11286,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 853887826120495629, guid: 902ba641c018d2643bb25a7e46f06ce9, type: 3}
   m_PrefabInstance: {fileID: 853887827332210430}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1550656106
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416412, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752097990732416413, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
+      propertyPath: m_Name
+      value: ZepetoScreenShotModule
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 89ba32aeb21e44d65ad852b8f5da47e4, type: 3}
 --- !u!1 &1559951931
 GameObject:
   m_ObjectHideFlags: 0
