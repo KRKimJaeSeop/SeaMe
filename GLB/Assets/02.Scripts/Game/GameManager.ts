@@ -75,7 +75,6 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     public SetPlayers(sessionId: string) {
 
-        let isGamePlaying = false;
         this.UserList.push(sessionId);
 
         this.UserList.forEach(element => {
@@ -90,11 +89,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 //찾은 오브젝트가 달팽이를 가지고있다고 뜨지 않으면
                 if (!_PlayerClass.isHaveSeaHare) {
 
-                    if (_PlayerClass.isInDome) {
-                        isGamePlaying = true;
-                    }
-
-                    let currentHare = this.RandomSeaHare();
+                                     let currentHare = this.RandomSeaHare();
                     currentHare.transform.SetParent(currentPlayers.transform.GetChild(0));
                     currentHare.transform.localPosition = Vector3.zero;
                     currentHare.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -104,13 +99,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         this.UI.SetIntroImage(false);
 
-        if (isGamePlaying) {
-            if (sessionId == ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.id) {
-                GameManager.instance.UI.MainNotification
-                    (`Waiting for GameOver `, 99999);
-            }
-        }
-        else {
+       
             //유저 수 충족. 카운트다운 시작
             if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
                 if (this.SurvivorList.length == 0) {
@@ -121,8 +110,6 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 GameManager.instance.UI.MainNotification
                     (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 99999);
             }
-        }
-
     }
 
     public RandomSeaHare(): GameObject {

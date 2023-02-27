@@ -30,8 +30,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     public isHaveSeaHare: bool = false;
     private isEnterOctopusZone: bool = false;
 
-    public isInDome: bool = false;
-
     private wfs005: WaitForSeconds = new WaitForSeconds(0.5);
     private wfs1: WaitForSeconds = new WaitForSeconds(1);
     private wfs03: WaitForSeconds = new WaitForSeconds(0.3);
@@ -333,10 +331,6 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (GameManager.instance.Sound.RandomNumber(0, 7000) < 1) {
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_SCARY);
             }
-            this.isInDome = false;
-        }
-        else {
-            this.isInDome = false;
         }
         GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
         yield this.wfs03;
