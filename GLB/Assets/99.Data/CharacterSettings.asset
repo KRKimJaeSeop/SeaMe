@@ -29,7 +29,7 @@ MonoBehaviour:
   - '{"type":"System.Single, mscorlib","value":"15"}'
   - '{"type":"System.Single, mscorlib","value":"10"}'
   - '{"type":"System.Single, mscorlib","value":"5"}'
-  - '{"type":"System.Single, mscorlib","value":"3"}'
+  - '{"type":"System.Single, mscorlib","value":"4"}'
   unityArrayValues: []
   arrayValues: []
   script: {fileID: 4458252877524076426, guid: 6ad40501d399f954098fb45b501367bc, type: 3}

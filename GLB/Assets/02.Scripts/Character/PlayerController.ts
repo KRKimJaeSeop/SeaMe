@@ -30,6 +30,8 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     public isHaveSeaHare: bool = false;
     private isEnterOctopusZone: bool = false;
 
+    public isInDome: bool = false;
+
     private wfs005: WaitForSeconds = new WaitForSeconds(0.5);
     private wfs1: WaitForSeconds = new WaitForSeconds(1);
     private wfs03: WaitForSeconds = new WaitForSeconds(0.3);
@@ -41,20 +43,19 @@ export default class PlayerController extends ZepetoScriptBehaviour {
     //#region [초기 세팅]
 
     public SetCharacter() {
-        GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
-        GameManager.instance.UI.SetBlackImage(false);
+
 
         //일단 다 끄기
         this.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
         this.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
-
-
 
         this.sync = this.transform.GetComponent<PlayerSync>();
         //자기 자신일때
         if (this.sync?.isLocal) {
             this.AddMessageHandler();
             this.PlayerValueSetting();
+            GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
+            GameManager.instance.UI.SetBlackImage(false);
         }
 
         //게임오버인 플레이어 전체에게 게임오브젝트 해제
@@ -242,6 +243,7 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             // 3구역 진입시
             if (coll.gameObject.CompareTag("Area3")) {
                 console.log("HIT!!!!");
+                Debug.Log("3구역");
                 GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_3);
             }
             //장애물과 부딫히면 액션
@@ -308,20 +310,20 @@ export default class PlayerController extends ZepetoScriptBehaviour {
 
     Update() {
 
-        if (!this.sync)
-            return;
-        if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.characterController.isGrounded) {
-            if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.tryJump) {
-                GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_JUMP);
-            }
-        }
-        if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.characterController.isGrounded) {
-            if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.tryMove) {
-                if (this.WalkCoroutine == null) {
-                    this.WalkCoroutine = this.StartCoroutine(this.WalkStep());
+        if (this.sync) {
+            if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.characterController.isGrounded) {
+                if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.tryJump) {
+                    GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_JUMP);
                 }
             }
+            if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.characterController.isGrounded) {
+                if (ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.tryMove) {
+                    if (this.WalkCoroutine == null) {
+                        this.WalkCoroutine = this.StartCoroutine(this.WalkStep());
+                    }
+                }
 
+            }
         }
     }
 
@@ -331,6 +333,10 @@ export default class PlayerController extends ZepetoScriptBehaviour {
             if (GameManager.instance.Sound.RandomNumber(0, 7000) < 1) {
                 GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_SCARY);
             }
+            this.isInDome = false;
+        }
+        else {
+            this.isInDome = false;
         }
         GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
         yield this.wfs03;

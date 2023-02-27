@@ -54,7 +54,6 @@ export default class UIManager extends ZepetoScriptBehaviour {
     private wfs3: WaitForSeconds = new WaitForSeconds(3);
     private wfs03: WaitForSeconds = new WaitForSeconds(0.3);
 
-
     Awake() {
 
         this.uiMainNotification = this.MainNotiText.GetComponent<UIMainNotification>();
@@ -64,7 +63,9 @@ export default class UIManager extends ZepetoScriptBehaviour {
 
         this.MainBtn.onClick.AddListener(() => {
             // GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_STEP);
-            MultiplayManager.instance.room.Send("Kill", `${ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.id}`);
+            // MultiplayManager.instance.room.Send("Kill", `${ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.id}`);
+
+
         });
         this.SubBtn.onClick.AddListener(() => {
             GameManager.instance.Sound.PlayOneShotSFX(GameManager.instance.Sound.CHAR_DAMAGED_OBSTRACLE);

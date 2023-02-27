@@ -12,6 +12,8 @@ export default class Dome extends ZepetoScriptBehaviour {
     private InitScale: Vector3
 
     private DomeCorouine: Coroutine = null;
+    
+    public isInDome : bool = false;
 
 
 
@@ -21,6 +23,7 @@ export default class Dome extends ZepetoScriptBehaviour {
     }
 
     public StartDome() {
+        this.isInDome =true;
         if (this.DomeCorouine == null) {
             this.DomeCorouine = this.StartCoroutine(this.DomeScaleControll());
         }
@@ -28,6 +31,7 @@ export default class Dome extends ZepetoScriptBehaviour {
 
 
     public EndDome() {
+        this.isInDome =false;
         if (this.DomeCorouine != null) {
             this.StopCoroutine(this.DomeCorouine);
             this.DomeCorouine = null;

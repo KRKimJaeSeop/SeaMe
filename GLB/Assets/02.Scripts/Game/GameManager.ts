@@ -75,22 +75,26 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
     public SetPlayers(sessionId: string) {
 
-
+        let isGamePlaying = false;
         this.UserList.push(sessionId);
 
         this.UserList.forEach(element => {
             Debug.Log(`SetPlayers:: Enter forEach${element}`);
             //오브젝트를 리스트에 있는 게임오브젝트를 찾는다.
             let currentPlayers = GameObject.Find(element);
-            Debug.Log(`${currentPlayers}}`);
+
             //찾은 오브젝트가 널이 아니라면
             if (currentPlayers != null) {
+                let _PlayerClass = currentPlayers.GetComponent<PlayerController>();
 
                 //찾은 오브젝트가 달팽이를 가지고있다고 뜨지 않으면
-                if (!currentPlayers.GetComponent<PlayerController>().isHaveSeaHare) {
+                if (!_PlayerClass.isHaveSeaHare) {
+
+                    if (_PlayerClass.isInDome) {
+                        isGamePlaying = true;
+                    }
+
                     let currentHare = this.RandomSeaHare();
-                    // let currentHare = Resources.Load("SeaHare_0") as GameObject;
-                    // currentHare = GameObject.Instantiate(currentHare) as GameObject;
                     currentHare.transform.SetParent(currentPlayers.transform.GetChild(0));
                     currentHare.transform.localPosition = Vector3.zero;
                     currentHare.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -100,17 +104,25 @@ export default class GameManager extends ZepetoScriptBehaviour {
 
         this.UI.SetIntroImage(false);
 
-
-        //유저 수 충족. 카운트다운 시작
-        if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
-            if (this.SurvivorList.length == 0) {
-                this.CountdownCoroutine = this.StartCoroutine(this.StartGame());
+        if (isGamePlaying) {
+            if (sessionId == ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.id) {
+                GameManager.instance.UI.MainNotification
+                    (`Waiting for GameOver `, 99999);
             }
         }
         else {
-            GameManager.instance.UI.MainNotification
-                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 9999);
+            //유저 수 충족. 카운트다운 시작
+            if (this.UserList.length == this.worldSettings["roomPlayerCapacity"]) {
+                if (this.SurvivorList.length == 0) {
+                    this.CountdownCoroutine = this.StartCoroutine(this.StartGame());
+                }
+            }
+            else {
+                GameManager.instance.UI.MainNotification
+                    (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 99999);
+            }
         }
+
     }
 
     public RandomSeaHare(): GameObject {
@@ -149,6 +161,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
         }
     }
 
+
     public RemovePlayer(sessionId: string) {
         for (let i = 0; i < this.UserList.length; i++) {
             if (this.UserList[i] === sessionId) {
@@ -169,12 +182,20 @@ export default class GameManager extends ZepetoScriptBehaviour {
                 i--;
             }
         }
-        if (!this.IsAbleDie()) {
-            Debug.Log("RemoveSurvivorList::Send Winner");
-            //지우고 나서, 남은유저가 1명 이하일 때 
-            MultiplayManager.instance.room.Send("Winner", this.SurvivorList[0]);
-            Debug.Log("RemoveSurvivorList::멀티로 보내기 진입");
+        //돔 안에 있을때에만 검사.
+        if (this.dome.GetComponent<Dome>().isInDome) {
+            if (!this.IsAbleDie()) {
+                Debug.Log("RemoveSurvivorList::Send Winner");
+                //지우고 나서, 남은유저가 1명 이하일 때 
+                MultiplayManager.instance.room.Send("Winner", this.SurvivorList[0]);
+                Debug.Log("RemoveSurvivorList::멀티로 보내기 진입");
+            }
         }
+        else {
+            GameManager.instance.UI.MainNotification
+                (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 99999);
+        }
+
     }
 
     public GetUserSpawnPosition(sessionId: string): Vector3 {
@@ -213,7 +234,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
             if (this.UserList.length < this.worldSettings["roomPlayerCapacity"]) {
                 GameManager.instance.UI.MainNotification
                     (`Waiting for other Players... \n ${this.UserList.length} / ${this.worldSettings["roomPlayerCapacity"]}`, 99999);
-                    
+
                 this.StopCoroutine(this.CountdownCoroutine);
                 this.CountdownCoroutine = null;
             }
@@ -279,6 +300,7 @@ export default class GameManager extends ZepetoScriptBehaviour {
         //브금틀기
         GameManager.instance.Sound.PlayBGM(GameManager.instance.Sound.AREA_WAITROOM);
         GameManager.instance.UI.SetBlackImage(false);
+   
 
         //생존자 수가 0일때 게임시작?
         if (this.UserList.Length == this.worldSettings["roomPlayerCapacity"]) {
